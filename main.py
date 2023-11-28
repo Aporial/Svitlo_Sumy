@@ -19,7 +19,7 @@ def main(page: ft.Page):
         alignment=ft.alignment.center,
         margin=10,
         height=50,
-        width=200,
+        # width=200,
         padding=10,
         border_radius=10,
         bgcolor=ft.colors.RED,
@@ -31,7 +31,7 @@ def main(page: ft.Page):
         height=100,
         padding=10,
         border_radius=10,
-        bgcolor=ft.colors.RED,
+        bgcolor=ft.colors.GREEN,
     )
     img = ft.Image(
         src=f'/Images/lamp.jpg',
@@ -41,7 +41,7 @@ def main(page: ft.Page):
     )
 
     page.vertical_alignment = 'End'
-    page.add(time_cherg, name_cherg, img)
+    page.add(time_cherg, name_cherg)
     page.update()
 
 
