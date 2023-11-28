@@ -14,13 +14,14 @@ def main(page: ft.Page):
         content=ft.Text('Перша Черга:', size=20),
         alignment=ft.alignment.center,
         margin=10,
-        height=100,
+        height=50,
+        width=200,
         padding=10,
         border_radius=10,
         bgcolor=ft.colors.RED,
     )
     name_cherg = ft.Container(
-        content=ft.Text('111', size=20),
+        content=ft.Text('06:00 - 08:00', size=20),
         alignment=ft.alignment.center,
         margin=10,
         height=100,
@@ -28,8 +29,15 @@ def main(page: ft.Page):
         border_radius=10,
         bgcolor=ft.colors.RED,
     )
+    img = ft.Image(
+        src=f'/Images/lamp.jpg',
+        width=100,
+        height=100,
+        fit=ft.ImageFit.CONTAIN,
+    )
+    
     page.vertical_alignment = ft.MainAxisAlignment.END
-    page.add(time_cherg, name_cherg)
+    page.add(time_cherg, name_cherg, img)
     page.update()
 
 
