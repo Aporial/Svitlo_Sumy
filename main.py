@@ -40,7 +40,7 @@ def main(page: ft.Page):
         fit=ft.ImageFit.CONTAIN,
     )
 
-    page.vertical_alignment = 'END'
+    page.vertical_alignment = 'End'
     page.add(time_cherg, name_cherg, img)
     page.update()
 
