@@ -4,7 +4,7 @@ def main(page: ft.Page):
     page.bgcolor = ft.colors.BLACK
     page.title = 'Svitlo'
     page.navigation_bar = ft.NavigationBar(height=80, bgcolor = ft.colors.BLACK,
-        destinations=[
+        destinations = [
             ft.NavigationDestination(icon=ft.icons.LIST_ROUNDED, label='Черги'),
             ft.NavigationDestination(icon=ft.icons.HOME_ROUNDED, label='Головна'),
             ft.NavigationDestination(icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація')
