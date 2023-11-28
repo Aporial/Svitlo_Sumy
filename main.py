@@ -10,18 +10,26 @@ def main(page: ft.Page):
             ft.NavigationDestination(icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація')
         ]
     )
-    c1 = ft.Container(
+    time_cherg = ft.Container(
         content=ft.Text('Перша Черга:', size=20),
         alignment=ft.alignment.center,
         margin=10,
-        width=600,
+        height=100,
+        padding=10,
+        border_radius=10,
+        bgcolor=ft.colors.RED,
+    )
+    name_cherg = ft.Container(
+        content=ft.Text('111', size=20),
+        alignment=ft.alignment.center,
+        margin=10,
         height=100,
         padding=10,
         border_radius=10,
         bgcolor=ft.colors.RED,
     )
     page.vertical_alignment = ft.MainAxisAlignment.END
-    page.add(c1)
+    page.add(time_cherg, name_cherg)
     page.update()
 
 
