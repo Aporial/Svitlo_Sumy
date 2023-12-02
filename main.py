@@ -34,14 +34,14 @@ def main(page: ft.Page):
         bgcolor=ft.colors.GREEN,
     )
     img = ft.Image(
-        src=f'/Images/lamp.jpg',
+        src=f'./Images/lamp.jpg',
         width=100,
         height=100,
         fit=ft.ImageFit.CONTAIN,
     )
     
     page.vertical_alignment = 'End'
-    page.add(time_cherg, name_cherg)
+    page.add(img, time_cherg, name_cherg)
     page.update()
 
 
