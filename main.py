@@ -7,10 +7,10 @@ def main(page: ft.Page):
     page.window_width = 400
     page.window_height = 700
     page.window_resizable = True
-    page.navigation_bar = ft.NavigationBar(height=80, bgcolor=ft.colors.BLACK,
+    page.navigation_bar = ft.NavigationBar(height=80, bgcolor=ft.colors.BLACK, selected_index=1,
                                            destinations=[
                                                ft.NavigationDestination(
-                                                   icon=ft.icons.LIST_ROUNDED, label='Черги'),
+                                                   icon=ft.icons.LIST_ROUNDED, label='Черги',),
                                                ft.NavigationDestination(
                                                    icon=ft.icons.HOME_ROUNDED, label='Головна'),
                                                ft.NavigationDestination(
@@ -26,6 +26,7 @@ def main(page: ft.Page):
         padding=10,
         border_radius=10,
         bgcolor=ft.colors.RED,
+        visible=False
     )
     name_cherg = ft.Container(
         content=ft.Text('06:00 - 08:00', size=20),
@@ -43,7 +44,7 @@ def main(page: ft.Page):
         height=300,
         fit=ft.ImageFit.CONTAIN,
     )
-    
+
     page.vertical_alignment = 'End'
     page.add(img, time_cherg, name_cherg)
     page.update()
