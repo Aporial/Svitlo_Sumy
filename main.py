@@ -1,13 +1,35 @@
 import flet as ft
 
 
+
+
 def main(page: ft.Page):
+    def on_tab(e):
+        my_index = e.control.selected_index
+        if my_index == 0:
+            img.visible = False
+            name_cherg.visible = False
+            time_cherg.visible = False
+            info_tab.visible = False
+            page.update()
+        if my_index == 1:
+            img.visible = True
+            name_cherg.visible = True
+            time_cherg.visible = True
+            info_tab.visible = False
+            page.update()
+        if my_index == 2:
+            img.visible = False
+            name_cherg.visible = False
+            time_cherg.visible = False
+            info_tab.visible = True
+            page.update()
     page.bgcolor = ft.colors.BLACK
     page.title = 'Svitlo Sumy'
     page.window_width = 400
     page.window_height = 700
     page.window_resizable = True
-    page.navigation_bar = ft.NavigationBar(height=80, bgcolor=ft.colors.BLACK, on_change = lambda e: print(e.control.selected_index),
+    page.navigation_bar = ft.NavigationBar(height=80, bgcolor=ft.colors.BLACK, on_change=on_tab,
                                            destinations=[
                                                ft.NavigationDestination(
                                                    icon=ft.icons.LIST_ROUNDED, label='Черги',),
@@ -15,18 +37,18 @@ def main(page: ft.Page):
                                                    icon=ft.icons.HOME_ROUNDED, label='Головна'),
                                                ft.NavigationDestination(
                                                    icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація')
-                                           ]
-                                           )
+    ]
+    )
     time_cherg = ft.Container(
         content=ft.Text('Перша Черга:', size=20),
         alignment=ft.alignment.center,
         margin=10,
         height=60,
-        width=200,
-        padding=10,
+        # width=200,
+        padding=,
         border_radius=10,
         bgcolor=ft.colors.RED,
-        visible=False
+        
     )
     name_cherg = ft.Container(
         content=ft.Text('06:00 - 08:00', size=20),
@@ -43,6 +65,9 @@ def main(page: ft.Page):
         width=300,
         height=300,
         fit=ft.ImageFit.CONTAIN,
+    )
+    info_tab = ft.Column(
+        
     )
 
     page.vertical_alignment = 'End'
