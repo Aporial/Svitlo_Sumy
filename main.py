@@ -3,7 +3,7 @@ import flet as ft
 
 def main(page: ft.Page):
     page.bgcolor = ft.colors.BLACK
-    page.title = 'Svitlo'
+    page.title = 'Svitlo Sumy'
     page.window_width = 400
     page.window_height = 700
     page.window_resizable = True
