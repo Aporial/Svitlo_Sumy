@@ -34,7 +34,7 @@ def main(page: ft.Page):
         height=100,
         padding=10,
         border_radius=10,
-        bgcolor=ft.colors.RED,
+        bgcolor=ft.colors.GREEN,
     )
     img = ft.Image(
         src=f'./Images/lamp.jpg',
@@ -43,7 +43,7 @@ def main(page: ft.Page):
         height=300,
         fit=ft.ImageFit.CONTAIN,
     )
-
+    
     page.vertical_alignment = 'End'
     page.add(img, time_cherg, name_cherg)
     page.update()
