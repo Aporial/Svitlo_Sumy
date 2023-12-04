@@ -29,7 +29,7 @@ def main(page: ft.Page):
     page.window_width = 400
     page.window_height = 700
     page.window_resizable = True
-    page.navigation_bar = ft.NavigationBar(height=80, bgcolor=ft.colors.BLACK, on_change=on_tab,
+    page.navigation_bar = ft.NavigationBar(height=80, bgcolor=ft.colors.BLACK, on_change=on_tab, selected_index=1,
                                            destinations=[
                                                ft.NavigationDestination(
                                                    icon=ft.icons.LIST_ROUNDED, label='Черги',),
@@ -45,7 +45,7 @@ def main(page: ft.Page):
         margin=10,
         height=60,
         # width=200,
-        padding=,
+        padding=10,
         border_radius=10,
         bgcolor=ft.colors.RED,
         
@@ -60,7 +60,7 @@ def main(page: ft.Page):
         bgcolor=ft.colors.GREEN,
     )
     img = ft.Image(
-        src=f'./Images/lamp.jpg',
+        src=f'/Images/lamp.jpg',
         border_radius=10,
         width=300,
         height=300,
@@ -75,4 +75,7 @@ def main(page: ft.Page):
     page.update()
 
 
-ft.app(target=main)
+ft.app(
+    target=main,
+    assets_dir='assets'
+    )
