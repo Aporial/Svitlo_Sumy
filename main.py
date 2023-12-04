@@ -18,7 +18,7 @@ def main(page: ft.Page):
         content=ft.Text('Перша Черга:', size=20),
         alignment=ft.alignment.center,
         margin=10,
-        height=50,
+        height=60,
         width=200,
         padding=10,
         border_radius=10,
@@ -34,14 +34,15 @@ def main(page: ft.Page):
         bgcolor=ft.colors.RED,
     )
     img = ft.Image(
-        src=f'/Images/lamp.jpg',
-        width=100,
-        height=100,
+        src=f'./Images/lamp.jpg',
+        border_radius=10,
+        width=300,
+        height=300,
         fit=ft.ImageFit.CONTAIN,
     )
 
     page.vertical_alignment = 'End'
-    page.add(time_cherg, name_cherg, img)
+    page.add(img, time_cherg, name_cherg)
     page.update()
 
 
