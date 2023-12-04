@@ -7,6 +7,7 @@ def main(page: ft.Page):
     page.window_width = 400
     page.window_height = 700
     page.window_resizable = True
+
     page.navigation_bar = ft.NavigationBar(height=80, bgcolor=ft.colors.BLACK,
                                            destinations=[
                                                ft.NavigationDestination(
