@@ -7,7 +7,7 @@ def main(page: ft.Page):
     page.window_width = 400
     page.window_height = 700
     page.window_resizable = True
-    page.navigation_bar = ft.NavigationBar(height=80, bgcolor=ft.colors.BLACK,
+    page.navigation_bar = ft.NavigationBar(height=80, bgcolor=ft.colors.BLACK, on_change = lambda e: print(e.control.selected_index),
                                            destinations=[
                                                ft.NavigationDestination(
                                                    icon=ft.icons.LIST_ROUNDED, label='Черги',),
