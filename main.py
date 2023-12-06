@@ -1,6 +1,5 @@
 import flet as ft
 
-
 def main(page: ft.Page):
     def open_list():
         bs.open = True
