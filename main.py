@@ -29,7 +29,7 @@ def main(page: ft.Page):
     page.title = 'Svitlo Sumy'
     page.window_height = 700
     page.window_width = 400
-    page.window_resizable = False
+    page.window_resizable = True
     page.navigation_bar = ft.NavigationBar(height=80, bgcolor=ft.colors.BLACK, on_change=on_tab, selected_index=1,
                                            destinations=[
                                                ft.NavigationDestination(
