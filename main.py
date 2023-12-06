@@ -4,47 +4,44 @@ import flet as ft
 def main(page: ft.Page):
     def open_list():
         bs.open = True
+        page.navigation_bar.selected_index = 1
         bs.update()
+        page.update()
 
     def close_list(e):
         bs.open = False
         bs.update()
 
+
     bs = ft.BottomSheet(
-        ft.Container(
-            ft.Column(
-                horizontal_alignment='center',
-                controls=[
-                    ft.ElevatedButton(
-                        "Перша черга", color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, scale=1.2, on_click=close_list),
-                    ft.ElevatedButton(
-                        "Друга черга", color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, scale=1.2, on_click=close_list),
-                    ft.ElevatedButton(
-                        "Третя черга", color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, scale=1.2, on_click=close_list),
-                    ft.ElevatedButton(
-                        "Четверта черга", color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, scale=1.2, on_click=close_list),
-                    ft.ElevatedButton(
-                        "П'ята черга", color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, scale=1.2, on_click=close_list),
-                    ft.ElevatedButton(
-                        "Шоста черга", color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, scale=1.2, on_click=close_list),
-                ],
-                tight=True
-            ),
-            padding=20,
+        content=ft.Column(
+            horizontal_alignment='center',
+            alignment='center',
+            width=400,
+            height=600,
+            spacing=10,
+            controls=[
+                ft.ElevatedButton("Перша черга", width=300, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                ft.ElevatedButton("Друга черга", width=300, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                ft.ElevatedButton("Третя черга", width=300, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                ft.ElevatedButton("Четверта черга", width=300, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                ft.ElevatedButton("П'ята черга", width=300, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                ft.ElevatedButton("Шоста черга", width=300, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+            ]
         ),
-        bgcolor=ft.colors.BLACK
+        bgcolor='gray',
     )
 
     def on_tab(e):
         my_index = e.control.selected_index
         if my_index == 0:
-            # img.visible = False
-            # name_cherg.visible = False
-            # time_cherg.visible = False
-            # info_tab.visible = False
-            # list_cherg2.visible = True
             open_list()
-            # page.update()
         if my_index == 1:
             img.visible = True
             name_cherg.visible = True
