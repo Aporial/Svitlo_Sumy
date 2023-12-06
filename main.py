@@ -2,15 +2,49 @@ import flet as ft
 
 
 def main(page: ft.Page):
+    def open_list():
+        bs.open = True
+        bs.update()
+
+    def close_list(e):
+        bs.open = False
+        bs.update()
+
+    bs = ft.BottomSheet(
+        ft.Container(
+            ft.Column(
+                horizontal_alignment='center',
+                controls=[
+                    ft.ElevatedButton(
+                        "Перша черга", color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, scale=1.2, on_click=close_list),
+                    ft.ElevatedButton(
+                        "Друга черга", color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, scale=1.2, on_click=close_list),
+                    ft.ElevatedButton(
+                        "Третя черга", color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, scale=1.2, on_click=close_list),
+                    ft.ElevatedButton(
+                        "Четверта черга", color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, scale=1.2, on_click=close_list),
+                    ft.ElevatedButton(
+                        "П'ята черга", color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, scale=1.2, on_click=close_list),
+                    ft.ElevatedButton(
+                        "Шоста черга", color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, scale=1.2, on_click=close_list),
+                ],
+                tight=True
+            ),
+            padding=20,
+        ),
+        bgcolor=ft.colors.BLACK
+    )
+
     def on_tab(e):
         my_index = e.control.selected_index
         if my_index == 0:
-            img.visible = False
-            name_cherg.visible = False
-            time_cherg.visible = False
-            info_tab.visible = False
-            list_cherg2.visible = True
-            page.update()
+            # img.visible = False
+            # name_cherg.visible = False
+            # time_cherg.visible = False
+            # info_tab.visible = False
+            # list_cherg2.visible = True
+            open_list()
+            # page.update()
         if my_index == 1:
             img.visible = True
             name_cherg.visible = True
@@ -242,6 +276,7 @@ def main(page: ft.Page):
 
     page.vertical_alignment = 'End'
     page.add(img, time_cherg, name_cherg, info_tab, list_cherg2)
+    page.overlay.append(bs)
     page.update()
 
 
