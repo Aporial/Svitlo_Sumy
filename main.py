@@ -29,7 +29,7 @@ def main(page: ft.Page):
     page.title = 'Svitlo Sumy'
     page.window_height = 700
     page.window_width = 400
-    page.window_resizable = True
+    page.window_resizable = False
     page.navigation_bar = ft.NavigationBar(height=80, bgcolor=ft.colors.BLACK, on_change=on_tab, selected_index=1,
                                            destinations=[
                                                ft.NavigationDestination(
@@ -151,8 +151,8 @@ def main(page: ft.Page):
 
                     ]
                 )
-                
-                
+
+
 
 
 
@@ -240,99 +240,6 @@ def main(page: ft.Page):
         ]
     )
 
-    list_cherg = ft.Column(
-        visible=True,
-        horizontal_alignment='center',
-        spacing=18,
-        controls=[
-            ft.Container(
-                bgcolor=ft.colors.WHITE,
-                height=80,
-                width=700,
-                border_radius=20,
-                alignment=ft.alignment.center,
-                content=ft.Text(
-                    'Перша черга',
-                    size=50,
-                    color='black',
-                    text_align='center',
-                    weight='w500'
-                )
-            ),
-            ft.Container(
-                bgcolor=ft.colors.WHITE,
-                height=80,
-                width=700,
-                border_radius=20,
-                alignment=ft.alignment.center,
-                content=ft.Text(
-                    'Друга черга',
-                    size=50,
-                    color='black',
-                    text_align='center',
-                    weight='w500'
-                )
-            ),
-            ft.Container(
-                bgcolor=ft.colors.WHITE,
-                height=80,
-                width=700,
-                border_radius=20,
-                alignment=ft.alignment.center,
-                content=ft.Text(
-                    'Третя черга',
-                    size=50,
-                    color='black',
-                    text_align='center',
-                    weight='w500'
-                )
-            ),
-            ft.Container(
-                bgcolor=ft.colors.WHITE,
-                height=80,
-                width=700,
-                border_radius=20,
-                alignment=ft.alignment.center,
-                content=ft.Text(
-                    'Четверта черга',
-                    size=50,
-                    color='black',
-                    text_align='center',
-                    weight='w500'
-                )
-            ),
-            ft.Container(
-                bgcolor=ft.colors.WHITE,
-                height=80,
-                width=700,
-                border_radius=20,
-                alignment=ft.alignment.center,
-                content=ft.Text(
-                    "П'ята черга",
-                    size=50,
-                    color='black',
-                    text_align='center',
-                    weight='w500'
-                )
-            ),
-            ft.Container(
-                bgcolor=ft.colors.WHITE,
-                height=80,
-                width=700,
-                border_radius=20,
-                alignment=ft.alignment.center,
-                content=ft.Text(
-                    'Шоста черга',
-                    size=50,
-                    color='black',
-                    text_align='center',
-                    weight='w500'
-                )
-            ),
-
-        ]
-    )
-    
     page.vertical_alignment = 'End'
     page.add(img, time_cherg, name_cherg, info_tab, list_cherg2)
     page.update()
