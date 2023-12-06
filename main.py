@@ -1,5 +1,6 @@
 import flet as ft
 
+
 def main(page: ft.Page):
     def open_list():
         bs.open = True
@@ -10,7 +11,6 @@ def main(page: ft.Page):
     def close_list(e):
         bs.open = False
         bs.update()
-
 
     bs = ft.BottomSheet(
         content=ft.Column(
