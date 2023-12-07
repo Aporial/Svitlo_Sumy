@@ -45,7 +45,6 @@ def main(page: ft.Page):
             horizontal_alignment='center',
             alignment='center',
             width=400,
-            # height=700,
             spacing=5,
             controls=[
                 ft.Text(
