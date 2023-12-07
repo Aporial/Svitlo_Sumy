@@ -12,55 +12,19 @@ def main(page: ft.Page):
         bs.open = False
         bs.update()
 
-    bs = ft.BottomSheet(
-        content=ft.Column(
-            horizontal_alignment='center',
-            alignment='center',
-            width=400,
-            # height=700,
-            spacing=10,
-            controls=[
-                ft.Text(
-                    "Виберіть чергу:",
-                    size=20,
-                    weight='w500',
-                    text_align='center',
-                ),
-                ft.ElevatedButton(content=ft.Text("Перша черга", size=20, weight='w600'), width=300, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
-                ft.ElevatedButton(content=ft.Text("Друга черга", size=20, weight='w600'), width=300, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
-                ft.ElevatedButton(content=ft.Text("Третя черга", size=20, weight='w600'), width=300, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
-                ft.ElevatedButton(content=ft.Text("Четверта черга", size=20, weight='w600'), width=300, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
-                ft.ElevatedButton(content=ft.Text("П'ята черга", size=20, weight='w600'), width=300, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
-                ft.ElevatedButton(content=ft.Text("Шоста черга", size=20, weight='w600'), width=300, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
-            ]
-        ),
-        bgcolor='gray',
-    )
-
     def on_tab(e):
         my_index = e.control.selected_index
         if my_index == 0:
             open_list()
         if my_index == 1:
-            img.visible = True
-            name_cherg.visible = True
-            time_cherg.visible = True
             info_tab.visible = False
             page.update()
         if my_index == 2:
-            img.visible = False
-            name_cherg.visible = False
-            time_cherg.visible = False
             info_tab.visible = True
             page.update()
-    page.bgcolor = ft.colors.BLACK
+
     page.title = 'Svitlo Sumy'
+    page.bgcolor = ft.colors.BLACK
     page.window_height = 700
     page.window_width = 400
     page.window_resizable = True
@@ -74,36 +38,39 @@ def main(page: ft.Page):
                                                    icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація')
                                            ]
                                            )
-    time_cherg = ft.Container(
-        content=ft.Text('Перша Черга:', size=20),
-        alignment=ft.alignment.center,
-        margin=10,
-        height=60,
-        # width=200,
-        padding=10,
-        border_radius=10,
-        bgcolor=ft.colors.RED,
-        visible=True
 
+    bs = ft.BottomSheet(
+        content=ft.Column(
+            horizontal_alignment='center',
+            alignment='center',
+            width=400,
+            # height=700,
+            spacing=5,
+            controls=[
+                ft.Text(
+                    "Виберіть чергу:",
+                    size=20,
+                    weight='w500',
+                    text_align='center',
+                ),
+                ft.ElevatedButton(content=ft.Text("Перша черга", size=20, weight='w600'), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                ft.ElevatedButton(content=ft.Text("Друга черга", size=20, weight='w600'), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                ft.ElevatedButton(content=ft.Text("Третя черга", size=20, weight='w600'), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                ft.ElevatedButton(content=ft.Text("Четверта черга", size=20, weight='w600'), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                ft.ElevatedButton(content=ft.Text("П'ята черга", size=20, weight='w600'), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                ft.ElevatedButton(content=ft.Text("Шоста черга", size=20, weight='w600'), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+            ]
+        ),
+        bgcolor='gray',
+        # show_drag_handle=True,
     )
-    name_cherg = ft.Container(
-        content=ft.Text('06:00 - 08:00', size=20),
-        alignment=ft.alignment.center,
-        margin=10,
-        height=100,
-        padding=10,
-        border_radius=10,
-        bgcolor=ft.colors.GREEN,
-        visible=True
-    )
-    img = ft.Image(
-        src=f'/Images/lamp.jpg',
-        border_radius=10,
-        width=300,
-        height=300,
-        fit=ft.ImageFit.CONTAIN,
-        visible=True
-    )
+
     info_tab = ft.Column(
         visible=False,
         controls=[
@@ -124,17 +91,12 @@ def main(page: ft.Page):
                         ),
                     ]
                 )
-
-
-
-
-
             )
         ]
     )
 
     page.vertical_alignment = 'End'
-    page.add(img, time_cherg, name_cherg, info_tab)
+    page.add(info_tab)
     page.overlay.append(bs)
     page.update()
 
