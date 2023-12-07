@@ -17,20 +17,26 @@ def main(page: ft.Page):
             horizontal_alignment='center',
             alignment='center',
             width=400,
-            height=600,
+            # height=700,
             spacing=10,
             controls=[
-                ft.ElevatedButton("Перша черга", width=300, height=50,
+                ft.Text(
+                    "Виберіть чергу:",
+                    size=20,
+                    weight='w500',
+                    text_align='center',
+                ),
+                ft.ElevatedButton(content=ft.Text("Перша черга", size=20, weight='w600'), width=300, height=50,
                                   color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
-                ft.ElevatedButton("Друга черга", width=300, height=50,
+                ft.ElevatedButton(content=ft.Text("Друга черга", size=20, weight='w600'), width=300, height=50,
                                   color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
-                ft.ElevatedButton("Третя черга", width=300, height=50,
+                ft.ElevatedButton(content=ft.Text("Третя черга", size=20, weight='w600'), width=300, height=50,
                                   color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
-                ft.ElevatedButton("Четверта черга", width=300, height=50,
+                ft.ElevatedButton(content=ft.Text("Четверта черга", size=20, weight='w600'), width=300, height=50,
                                   color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
-                ft.ElevatedButton("П'ята черга", width=300, height=50,
+                ft.ElevatedButton(content=ft.Text("П'ята черга", size=20, weight='w600'), width=300, height=50,
                                   color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
-                ft.ElevatedButton("Шоста черга", width=300, height=50,
+                ft.ElevatedButton(content=ft.Text("Шоста черга", size=20, weight='w600'), width=300, height=50,
                                   color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
             ]
         ),
@@ -46,14 +52,12 @@ def main(page: ft.Page):
             name_cherg.visible = True
             time_cherg.visible = True
             info_tab.visible = False
-            list_cherg2.visible = False
             page.update()
         if my_index == 2:
             img.visible = False
             name_cherg.visible = False
             time_cherg.visible = False
             info_tab.visible = True
-            list_cherg2.visible = False
             page.update()
     page.bgcolor = ft.colors.BLACK
     page.title = 'Svitlo Sumy'
@@ -118,67 +122,6 @@ def main(page: ft.Page):
                             color=ft.colors.BLACK87,
                             weight='bolt',
                         ),
-                        ft.Text(
-                            'КОХАЮ ТЕТЯН!',
-                            size=20,
-                            color=ft.colors.BLACK38,
-                        ),
-                        ft.Text(
-                            'КОХАЮ ТЕТЯН!',
-                            size=20,
-                            color=ft.colors.BLACK38,
-                        ),
-                        ft.Text(
-                            'КОХАЮ ТЕТЯН!',
-                            size=20,
-                            color=ft.colors.BLACK38,
-                        ),
-                        ft.Text(
-                            'КОХАЮ ТЕТЯН!',
-                            size=20,
-                            color=ft.colors.BLACK38,
-                        ),
-                        ft.Text(
-                            'КОХАЮ ТЕТЯН!',
-                            size=20,
-                            color=ft.colors.BLACK38,
-                        ),
-                        ft.Text(
-                            'КОХАЮ ТЕТЯН!',
-                            size=20,
-                            color=ft.colors.BLACK38,
-                        ),
-                        ft.Text(
-                            'КОХАЮ ТЕТЯН!',
-                            size=20,
-                            color=ft.colors.BLACK38,
-                        ),
-                        ft.Text(
-                            'КОХАЮ ТЕТЯН!',
-                            size=20,
-                            color=ft.colors.BLACK38,
-                        ),
-                        ft.Text(
-                            'КОХАЮ ТЕТЯН!',
-                            size=20,
-                            color=ft.colors.BLACK38,
-                        ),
-                        ft.Text(
-                            'КОХАЮ ТЕТЯН!',
-                            size=20,
-                            color=ft.colors.BLACK38,
-                        ),
-                        ft.Text(
-                            'КОХАЮ ТЕТЯН!',
-                            size=20,
-                            color=ft.colors.BLACK38,
-                        ),
-                        ft.Text(
-                            'КОХАЮ ТЕТЯН!',
-                            size=20,
-                            color=ft.colors.BLACK38,
-                        ),
-
                     ]
                 )
 
@@ -190,88 +133,8 @@ def main(page: ft.Page):
         ]
     )
 
-    list_cherg2 = ft.Column(
-        visible=False,
-        horizontal_alignment='center',
-        spacing=18,
-        controls=[
-            ft.ElevatedButton(
-                width=600,
-                height=80,
-                color=ft.colors.BLACK,
-                bgcolor=ft.colors.WHITE,
-                content=ft.Text(
-                    'Перша черга',
-                    color='black',
-                    size=40,
-                    weight='w500',
-                )
-            ),
-            ft.ElevatedButton(
-                width=600,
-                height=80,
-                color=ft.colors.BLACK,
-                bgcolor=ft.colors.WHITE,
-                content=ft.Text(
-                    'Друга черга',
-                    color='black',
-                    size=40,
-                    weight='w500',
-                )
-            ),
-            ft.ElevatedButton(
-                width=600,
-                height=80,
-                color=ft.colors.BLACK,
-                bgcolor=ft.colors.WHITE,
-                content=ft.Text(
-                    'Третя черга',
-                    color='black',
-                    size=40,
-                    weight='w500',
-                )
-            ),
-            ft.ElevatedButton(
-                width=600,
-                height=80,
-                color=ft.colors.BLACK,
-                bgcolor=ft.colors.WHITE,
-                content=ft.Text(
-                    'Четверта черга',
-                    color='black',
-                    size=40,
-                    weight='w500',
-                )
-            ),
-            ft.ElevatedButton(
-                width=600,
-                height=80,
-                color=ft.colors.BLACK,
-                bgcolor=ft.colors.WHITE,
-                content=ft.Text(
-                    "П'ята черга",
-                    color='black',
-                    size=40,
-                    weight='w500',
-                )
-            ),
-            ft.ElevatedButton(
-                width=600,
-                height=80,
-                color=ft.colors.BLACK,
-                bgcolor=ft.colors.WHITE,
-                content=ft.Text(
-                    'Шоста черга',
-                    color='black',
-                    size=40,
-                    weight='w500',
-                )
-            ),
-        ]
-    )
-
     page.vertical_alignment = 'End'
-    page.add(img, time_cherg, name_cherg, info_tab, list_cherg2)
+    page.add(img, time_cherg, name_cherg, info_tab)
     page.overlay.append(bs)
     page.update()
 
