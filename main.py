@@ -5,6 +5,7 @@ def main(page: ft.Page):
     def open_list():
         bs.open = True
         page.navigation_bar.selected_index = 1
+        info_tab.visible = False
         bs.update()
         page.update()
 
