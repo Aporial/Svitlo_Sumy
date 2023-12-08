@@ -1,6 +1,5 @@
 import flet as ft
 
-
 def main(page: ft.Page):
     def open_list():
         bs.open = True
@@ -114,7 +113,7 @@ def main(page: ft.Page):
         )
     )
 
-    
+
 
     # page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
