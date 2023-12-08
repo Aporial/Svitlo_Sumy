@@ -113,7 +113,7 @@ def main(page: ft.Page):
 
     main_info = ft.Container(
         padding=20,
-        bgcolor=ft.colors.WHITE,
+        bgcolor=ft.colors.GREY_300,
         # height=350,
         # width=400,
         border_radius=30,
@@ -241,7 +241,7 @@ def main(page: ft.Page):
         controls=[
             ft.Container(height=100),
             ft.Container(
-                bgcolor=ft.colors.WHITE,
+                bgcolor=ft.colors.GREY_300,
                 height=580,
                 width=500,
                 border_radius=30,
