@@ -292,9 +292,11 @@ def main(page: ft.Page):
         ]
     )
 
-    # page.vertical_alignment = 'center'
+    page.vertical_alignment = 'end'
     page.horizontal_alignment = 'center'
-    page.add(empty_cont1, lamp_on, lamp_off, empty_cont2, main_info, info_tab)
+    page.scroll = 'HIDDEN'
+    # page.add(lamp_on, lamp_off, main_info, info_tab)
+    page.add(main_info)
     page.overlay.append(bs)
     page.update()
 
