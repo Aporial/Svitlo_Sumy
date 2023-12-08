@@ -18,16 +18,12 @@ def main(page: ft.Page):
         if my_index == 0:
             main_info.visible = True
             lamp_on.visible = True
-            empty_cont1.visible = True
-            empty_cont2.visible = True
             lamp_off.visible = False
             info_tab.visible = False
             open_list()
         if my_index == 1:
             main_info.visible = True
             lamp_on.visible = True
-            empty_cont1.visible = True
-            empty_cont2.visible = True
             lamp_off.visible = False
             info_tab.visible = False
             page.update()
@@ -36,8 +32,6 @@ def main(page: ft.Page):
             main_info.visible = False
             lamp_on.visible = False
             lamp_off.visible = False
-            empty_cont1.visible = False
-            empty_cont2.visible = False
             page.update()
 
     def mono_click(e):
@@ -87,10 +81,7 @@ def main(page: ft.Page):
             ]
         ),
         bgcolor='gray',
-        # show_drag_handle=True,
     )
-
-    empty_cont1 = ft.Container(height=50)
 
     lamp_on = ft.Container(
         visible=True,
@@ -109,13 +100,9 @@ def main(page: ft.Page):
         )
     )
 
-    empty_cont2 = ft.Container(height=50)
-
     main_info = ft.Container(
         padding=20,
         bgcolor=ft.colors.GREY_300,
-        # height=350,
-        # width=400,
         border_radius=15,
         content=ft.Column(
             horizontal_alignment='center',
@@ -144,11 +131,11 @@ def main(page: ft.Page):
                                     border_radius=5,
                                     padding=3,
                                     height=50,
-                                    width=150,
+                                    width=145,
                                     alignment=ft.alignment.center,
                                     content=ft.Text(
                                         "00:00-02:00",
-                                        size=24,
+                                        size=21,
                                         weight='w600',
                                         color=ft.colors.BLACK,
                                     )
@@ -159,11 +146,11 @@ def main(page: ft.Page):
                                     border_radius=5,
                                     padding=3,
                                     height=50,
-                                    width=150,
+                                    width=145,
                                     alignment=ft.alignment.center,
                                     content=ft.Text(
                                         "04:00-06:00",
-                                        size=24,
+                                        size=21,
                                         weight='w600',
                                         color=ft.colors.BLACK,
                                     )
@@ -174,11 +161,11 @@ def main(page: ft.Page):
                                     border_radius=5,
                                     padding=3,
                                     height=50,
-                                    width=150,
+                                    width=145,
                                     alignment=ft.alignment.center,
                                     content=ft.Text(
                                         "08:00-10:00",
-                                        size=24,
+                                        size=21,
                                         weight='w600',
                                         color=ft.colors.BLACK,
                                     )
@@ -189,11 +176,11 @@ def main(page: ft.Page):
                                     border_radius=5,
                                     padding=3,
                                     height=50,
-                                    width=150,
+                                    width=145,
                                     alignment=ft.alignment.center,
                                     content=ft.Text(
                                         "12:00-14:00",
-                                        size=24,
+                                        size=21,
                                         weight='w600',
                                         color=ft.colors.BLACK,
                                     )
@@ -204,11 +191,11 @@ def main(page: ft.Page):
                                     border_radius=5,
                                     padding=3,
                                     height=50,
-                                    width=150,
+                                    width=145,
                                     alignment=ft.alignment.center,
                                     content=ft.Text(
                                         "16:00-18:00",
-                                        size=24,
+                                        size=21,
                                         weight='w600',
                                         color=ft.colors.BLACK,
                                     )
@@ -219,11 +206,11 @@ def main(page: ft.Page):
                                     border_radius=5,
                                     padding=3,
                                     height=50,
-                                    width=150,
+                                    width=145,
                                     alignment=ft.alignment.center,
                                     content=ft.Text(
                                         "20:00-22:00",
-                                        size=24,
+                                        size=21,
                                         weight='w600',
                                         color=ft.colors.BLACK,
                                     )
@@ -240,11 +227,9 @@ def main(page: ft.Page):
         visible=False,
         horizontal_alignment='center',
         controls=[
-            ft.Container(height=50),
+            ft.Container(height=5),
             ft.Container(
                 bgcolor=ft.colors.GREY_300,
-                height=580,
-                width=500,
                 border_radius=15,
                 padding=15,
                 content=ft.Column(
@@ -253,32 +238,32 @@ def main(page: ft.Page):
                     controls=[
                         ft.Text(
                             'Інформація',
-                            size=40,
+                            size=35,
                             color=ft.colors.BLACK87,
                             weight='bolt',
                         ),
-                        ft.Divider(),
+                        ft.Divider(height=0.1),
                         ft.Text(
                             "Застосунок розроблений для безкоштовного користування.",
-                            size=18,
+                            size=16,
                             color='black',
                             text_align='center'
                         ),
-                        ft.Divider(),
+                        ft.Divider(height=0.1),
                         ft.Text(
                             "Головна мета - максимально спростити пошук актуальної інформації про відключення світла.",
-                            size=18,
+                            size=16,
                             color='black',
                             text_align='center'
                         ),
-                        ft.Divider(),
+                        ft.Divider(height=0.1),
                         ft.Text(
                             "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку з монобанку.",
-                            size=18,
+                            size=16,
                             color='black',
                             text_align='center'
                         ),
-                        ft.Divider(),
+                        ft.Divider(height=0.1),
                         ft.TextButton(
                             on_click=mono_click,
                             content=ft.Image(
@@ -292,10 +277,9 @@ def main(page: ft.Page):
             )
         ]
     )
-    # page.vertical_alignment = 'end'
+    page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
-    page.scroll = 'HIDDEN'
-    page.add(empty_cont1, lamp_on, lamp_off, empty_cont2, main_info, info_tab)
+    page.add(lamp_on, lamp_off, main_info, info_tab)
     page.overlay.append(bs)
     page.update()
 
