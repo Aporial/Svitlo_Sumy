@@ -101,7 +101,7 @@ def main(page: ft.Page):
     )
 
     main_info = ft.Container(
-        padding=20,
+        padding=15,
         bgcolor=ft.colors.GREY_300,
         border_radius=15,
         content=ft.Column(
