@@ -90,7 +90,7 @@ def main(page: ft.Page):
         # show_drag_handle=True,
     )
 
-    empty_cont1 = ft.Container(height=100)
+    empty_cont1 = ft.Container(height=50)
 
     lamp_on = ft.Container(
         visible=True,
@@ -116,7 +116,7 @@ def main(page: ft.Page):
         bgcolor=ft.colors.GREY_300,
         # height=350,
         # width=400,
-        border_radius=30,
+        border_radius=15,
         content=ft.Column(
             horizontal_alignment='center',
             controls=[
@@ -238,13 +238,14 @@ def main(page: ft.Page):
 
     info_tab = ft.Column(
         visible=False,
+        horizontal_alignment='center',
         controls=[
-            ft.Container(height=100),
+            ft.Container(height=50),
             ft.Container(
                 bgcolor=ft.colors.GREY_300,
                 height=580,
                 width=500,
-                border_radius=30,
+                border_radius=15,
                 padding=15,
                 content=ft.Column(
                     horizontal_alignment='center',
@@ -291,12 +292,10 @@ def main(page: ft.Page):
             )
         ]
     )
-
-    page.vertical_alignment = 'end'
+    # page.vertical_alignment = 'end'
     page.horizontal_alignment = 'center'
     page.scroll = 'HIDDEN'
-    # page.add(lamp_on, lamp_off, main_info, info_tab)
-    page.add(main_info)
+    page.add(empty_cont1, lamp_on, lamp_off, empty_cont2, main_info, info_tab)
     page.overlay.append(bs)
     page.update()
 
