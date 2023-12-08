@@ -34,6 +34,9 @@ def main(page: ft.Page):
             lamp_off.visible = False
             page.update()
 
+    def mono_click(e):
+        page.launch_url('https://send.monobank.ua/jar/7rkGHNfQpV')
+
     page.title = 'Svitlo Sumy'
     page.bgcolor = ft.colors.BLACK
     page.window_height = 700
@@ -81,46 +84,71 @@ def main(page: ft.Page):
         # show_drag_handle=True,
     )
 
-    info_tab = ft.Column(
+    info_tab = ft.Container(
         visible=False,
-        controls=[
-            ft.Container(
-                bgcolor=ft.colors.WHITE,
-                height=580,
-                width=400,
-                border_radius=50,
-                content=ft.Column(
-                    horizontal_alignment='center',
-                    alignment='start',
-                    controls=[
-                        ft.Text(
-                            'Інформація',
-                            size=50,
-                            color=ft.colors.BLACK87,
-                            weight='bolt',
-                        ),
-                    ]
+        bgcolor=ft.colors.WHITE,
+        height=580,
+        width=500,
+        border_radius=30,
+        padding=15,
+        content=ft.Column(
+            horizontal_alignment='center',
+            alignment='start',
+            controls=[
+                ft.Text(
+                    'Інформація',
+                    size=40,
+                    color=ft.colors.BLACK87,
+                    weight='bolt',
+                ),
+                ft.Divider(),
+                ft.Text(
+                    "Застосунок розроблений для безкоштовного користування.",
+                    size=18,
+                    color='black',
+                    text_align='center'
+                ),
+                ft.Divider(),
+                ft.Text(
+                    "Головна мета - максимально спростити пошук актуальної інформації про відключення світла.",
+                    size=18,
+                    color='black',
+                    text_align='center'
+                ),
+                ft.Divider(),
+                ft.Text(
+                    "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку з монобанку.",
+                    size=18,
+                    color='black',
+                    text_align='center'
+                ),
+                ft.Divider(),
+                ft.TextButton(
+                    on_click=mono_click,
+                    content=ft.Image(
+                        src=f"/Images/monobanka.png",
+                        height=100,
+                        width=100,
+                    )
                 )
-            )
-        ]
+            ]
+        )
     )
 
     lamp_on = ft.Container(
         visible=True,
         content=ft.Image(
             src=f"/Images/lamp_on.png",
-            height=200,
-            width=200,
-
+            height=280,
+            width=280,
         )
     )
     lamp_off = ft.Container(
         visible=False,
         content=ft.Image(
             src=f"/Images/lamp_off.png",
-            height=200,
-            width=200,
-
+            height=300,
+            width=300,
         )
     )
 
