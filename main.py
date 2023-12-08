@@ -80,7 +80,7 @@ def main(page: ft.Page):
                                   color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
             ]
         ),
-        bgcolor='gray',
+        bgcolor=ft.colors.GREY_900,
     )
 
     lamp_on = ft.Container(
