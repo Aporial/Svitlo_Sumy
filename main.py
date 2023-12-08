@@ -18,12 +18,16 @@ def main(page: ft.Page):
         if my_index == 0:
             main_info.visible = True
             lamp_on.visible = True
+            empty_cont1.visible = True
+            empty_cont2.visible = True
             lamp_off.visible = False
             info_tab.visible = False
             open_list()
         if my_index == 1:
             main_info.visible = True
             lamp_on.visible = True
+            empty_cont1.visible = True
+            empty_cont2.visible = True
             lamp_off.visible = False
             info_tab.visible = False
             page.update()
@@ -32,6 +36,8 @@ def main(page: ft.Page):
             main_info.visible = False
             lamp_on.visible = False
             lamp_off.visible = False
+            empty_cont1.visible = False
+            empty_cont2.visible = False
             page.update()
 
     def mono_click(e):
@@ -84,56 +90,63 @@ def main(page: ft.Page):
         # show_drag_handle=True,
     )
 
-    info_tab = ft.Container(
+    info_tab = ft.Column(
         visible=False,
-        bgcolor=ft.colors.WHITE,
-        height=580,
-        width=500,
-        border_radius=30,
-        padding=15,
-        content=ft.Column(
-            horizontal_alignment='center',
-            alignment='start',
-            controls=[
-                ft.Text(
-                    'Інформація',
-                    size=40,
-                    color=ft.colors.BLACK87,
-                    weight='bolt',
-                ),
-                ft.Divider(),
-                ft.Text(
-                    "Застосунок розроблений для безкоштовного користування.",
-                    size=18,
-                    color='black',
-                    text_align='center'
-                ),
-                ft.Divider(),
-                ft.Text(
-                    "Головна мета - максимально спростити пошук актуальної інформації про відключення світла.",
-                    size=18,
-                    color='black',
-                    text_align='center'
-                ),
-                ft.Divider(),
-                ft.Text(
-                    "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку з монобанку.",
-                    size=18,
-                    color='black',
-                    text_align='center'
-                ),
-                ft.Divider(),
-                ft.TextButton(
-                    on_click=mono_click,
-                    content=ft.Image(
-                        src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/monobanka.png?raw=true",
-                        height=100,
-                        width=100,
-                    )
+        controls=[
+            ft.Container(height=100),
+            ft.Container(
+                bgcolor=ft.colors.WHITE,
+                height=580,
+                width=500,
+                border_radius=30,
+                padding=15,
+                content=ft.Column(
+                    horizontal_alignment='center',
+                    alignment='start',
+                    controls=[
+                        ft.Text(
+                            'Інформація',
+                            size=40,
+                            color=ft.colors.BLACK87,
+                            weight='bolt',
+                        ),
+                        ft.Divider(),
+                        ft.Text(
+                            "Застосунок розроблений для безкоштовного користування.",
+                            size=18,
+                            color='black',
+                            text_align='center'
+                        ),
+                        ft.Divider(),
+                        ft.Text(
+                            "Головна мета - максимально спростити пошук актуальної інформації про відключення світла.",
+                            size=18,
+                            color='black',
+                            text_align='center'
+                        ),
+                        ft.Divider(),
+                        ft.Text(
+                            "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку з монобанку.",
+                            size=18,
+                            color='black',
+                            text_align='center'
+                        ),
+                        ft.Divider(),
+                        ft.TextButton(
+                            on_click=mono_click,
+                            content=ft.Image(
+                                src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/monobanka.png?raw=true",
+                                height=100,
+                                width=100,
+                            )
+                        )
+                    ]
                 )
-            ]
-        )
+            )
+        ]
     )
+
+    empty_cont1 = ft.Container(height=50)
 
     lamp_on = ft.Container(
         visible=True,
@@ -151,6 +164,8 @@ def main(page: ft.Page):
             width=300,
         )
     )
+
+    empty_cont2 = ft.Container(height=25)
 
     main_info = ft.Container(
         padding=20,
@@ -306,7 +321,7 @@ def main(page: ft.Page):
 
     # page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
-    page.add(info_tab, lamp_on, lamp_off, main_info)
+    page.add(empty_cont1, lamp_on, lamp_off, empty_cont2, main_info, info_tab)
     page.overlay.append(bs)
     page.update()
 
