@@ -90,7 +90,7 @@ def main(page: ft.Page):
         # show_drag_handle=True,
     )
 
-    empty_cont1 = ft.Container(height=50)
+    empty_cont1 = ft.Container(height=100)
 
     lamp_on = ft.Container(
         visible=True,
@@ -109,7 +109,7 @@ def main(page: ft.Page):
         )
     )
 
-    empty_cont2 = ft.Container(height=25)
+    empty_cont2 = ft.Container(height=50)
 
     main_info = ft.Container(
         padding=20,
@@ -143,12 +143,12 @@ def main(page: ft.Page):
                                     bgcolor=ft.colors.RED,
                                     border_radius=5,
                                     padding=3,
-                                    height=35,
-                                    width=110,
+                                    height=50,
+                                    width=150,
                                     alignment=ft.alignment.center,
                                     content=ft.Text(
                                         "00:00-02:00",
-                                        size=18,
+                                        size=24,
                                         weight='w600',
                                         color=ft.colors.BLACK,
                                     )
@@ -158,12 +158,12 @@ def main(page: ft.Page):
                                     bgcolor=ft.colors.RED,
                                     border_radius=5,
                                     padding=3,
-                                    height=35,
-                                    width=110,
+                                    height=50,
+                                    width=150,
                                     alignment=ft.alignment.center,
                                     content=ft.Text(
                                         "04:00-06:00",
-                                        size=18,
+                                        size=24,
                                         weight='w600',
                                         color=ft.colors.BLACK,
                                     )
@@ -173,12 +173,12 @@ def main(page: ft.Page):
                                     bgcolor=ft.colors.RED,
                                     border_radius=5,
                                     padding=3,
-                                    height=35,
-                                    width=110,
+                                    height=50,
+                                    width=150,
                                     alignment=ft.alignment.center,
                                     content=ft.Text(
                                         "08:00-10:00",
-                                        size=18,
+                                        size=24,
                                         weight='w600',
                                         color=ft.colors.BLACK,
                                     )
@@ -188,12 +188,12 @@ def main(page: ft.Page):
                                     bgcolor=ft.colors.RED,
                                     border_radius=5,
                                     padding=3,
-                                    height=35,
-                                    width=110,
+                                    height=50,
+                                    width=150,
                                     alignment=ft.alignment.center,
                                     content=ft.Text(
                                         "12:00-14:00",
-                                        size=18,
+                                        size=24,
                                         weight='w600',
                                         color=ft.colors.BLACK,
                                     )
@@ -203,12 +203,12 @@ def main(page: ft.Page):
                                     bgcolor=ft.colors.RED,
                                     border_radius=5,
                                     padding=3,
-                                    height=35,
-                                    width=110,
+                                    height=50,
+                                    width=150,
                                     alignment=ft.alignment.center,
                                     content=ft.Text(
                                         "16:00-18:00",
-                                        size=18,
+                                        size=24,
                                         weight='w600',
                                         color=ft.colors.BLACK,
                                     )
@@ -218,12 +218,12 @@ def main(page: ft.Page):
                                     bgcolor=ft.colors.RED,
                                     border_radius=5,
                                     padding=3,
-                                    height=35,
-                                    width=110,
+                                    height=50,
+                                    width=150,
                                     alignment=ft.alignment.center,
                                     content=ft.Text(
                                         "20:00-22:00",
-                                        size=18,
+                                        size=24,
                                         weight='w600',
                                         color=ft.colors.BLACK,
                                     )
