@@ -126,7 +126,7 @@ def main(page: ft.Page):
                 ft.TextButton(
                     on_click=mono_click,
                     content=ft.Image(
-                        src=f"/Images/monobanka.png",
+                        src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/monobanka.png?raw=true",
                         height=100,
                         width=100,
                     )
@@ -138,7 +138,7 @@ def main(page: ft.Page):
     lamp_on = ft.Container(
         visible=True,
         content=ft.Image(
-            src=f"/Images/lamp_on.png",
+            src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/lamp_on.png?raw=true",
             height=280,
             width=280,
         )
@@ -146,7 +146,7 @@ def main(page: ft.Page):
     lamp_off = ft.Container(
         visible=False,
         content=ft.Image(
-            src=f"/Images/lamp_off.png",
+            src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/lamp_off.png?raw=true",
             height=300,
             width=300,
         )
