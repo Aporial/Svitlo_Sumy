@@ -1,5 +1,6 @@
 import flet as ft
 
+
 def main(page: ft.Page):
     def open_list():
         bs.open = True
@@ -98,8 +99,8 @@ def main(page: ft.Page):
         visible=True,
         content=ft.Image(
             src=f"/Images/lamp_on.png",
-            height=300,
-            width=300,
+            height=200,
+            width=200,
 
         )
     )
@@ -107,17 +108,134 @@ def main(page: ft.Page):
         visible=False,
         content=ft.Image(
             src=f"/Images/lamp_off.png",
-            height=300,
-            width=300,
+            height=200,
+            width=200,
 
         )
     )
 
-
+    main_info = ft.Container(
+        bgcolor=ft.colors.WHITE,
+        height=350,
+        width=400,
+        border_radius=30,
+        content=ft.Column(
+            horizontal_alignment='center',
+            controls=[
+                ft.Container(),
+                ft.Text(
+                    "Розклад:",
+                    size=20,
+                    weight='w600',
+                    color='black',
+                ),
+                ft.Divider(
+                    height=1,
+                    thickness=1,
+                    color=ft.colors.BLACK38
+                ),
+                ft.Container(
+                    bgcolor='black',
+                    # height=100,
+                    width=350,
+                    border_radius=20,
+                    padding=15,
+                    content=ft.Column(
+                        horizontal_alignment='center',
+                        controls=[
+                            ft.Text(
+                                "Години відключень:",
+                                size=15,
+                                weight='w600',
+                            ),
+                            ft.Row(
+                                alignment='center',
+                                wrap=True,
+                                controls=[
+                                    ft.Container(
+                                        visible=True,
+                                        bgcolor=ft.colors.RED,
+                                        border_radius=5,
+                                        padding=3,
+                                        content=ft.Text(
+                                            "00:00-02:00",
+                                            size=16,
+                                            weight='w600',
+                                            color=ft.colors.BLACK
+                                        )
+                                    ),
+                                    ft.Container(
+                                        visible=True,
+                                        bgcolor=ft.colors.RED,
+                                        border_radius=5,
+                                        padding=3,
+                                        content=ft.Text(
+                                            "12:00-04:00",
+                                            size=16,
+                                            weight='w600',
+                                            color=ft.colors.BLACK
+                                        )
+                                    ),
+                                    ft.Container(
+                                        visible=False,
+                                        bgcolor=ft.colors.RED,
+                                        border_radius=5,
+                                        padding=3,
+                                        content=ft.Text(
+                                            "12:00-04:00",
+                                            size=16,
+                                            weight='w600',
+                                            color=ft.colors.BLACK
+                                        )
+                                    ),
+                                    ft.Container(
+                                        visible=False,
+                                        bgcolor=ft.colors.RED,
+                                        border_radius=5,
+                                        padding=3,
+                                        content=ft.Text(
+                                            "12:00-04:00",
+                                            size=16,
+                                            weight='w600',
+                                            color=ft.colors.BLACK
+                                        )
+                                    ),
+                                    ft.Container(
+                                        visible=False,
+                                        bgcolor=ft.colors.RED,
+                                        border_radius=5,
+                                        padding=3,
+                                        content=ft.Text(
+                                            "12:00-04:00",
+                                            size=16,
+                                            weight='w600',
+                                            color=ft.colors.BLACK
+                                        )
+                                    ),
+                                    ft.Container(
+                                        visible=False,
+                                        bgcolor=ft.colors.RED,
+                                        border_radius=5,
+                                        padding=3,
+                                        content=ft.Text(
+                                            "12:00-04:00",
+                                            size=16,
+                                            weight='w600',
+                                            color=ft.colors.BLACK
+                                        )
+                                    ),
+                                ]
+                            )
+                        ]
+                    )
+                )
+            ]
+        )
+    )
 
     # page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
-    page.add(info_tab, lamp_on, lamp_off)
+    page.add(info_tab, lamp_on, lamp_off, main_info)
     page.overlay.append(bs)
     page.update()
 
