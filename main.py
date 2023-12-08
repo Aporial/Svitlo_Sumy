@@ -16,12 +16,22 @@ def main(page: ft.Page):
     def on_tab(e):
         my_index = e.control.selected_index
         if my_index == 0:
+            main_info.visible = True
+            lamp_on.visible = True
+            lamp_off.visible = False
+            info_tab.visible = False
             open_list()
         if my_index == 1:
+            main_info.visible = True
+            lamp_on.visible = True
+            lamp_off.visible = False
             info_tab.visible = False
             page.update()
         if my_index == 2:
             info_tab.visible = True
+            main_info.visible = False
+            lamp_on.visible = False
+            lamp_off.visible = False
             page.update()
 
     page.title = 'Svitlo Sumy'
@@ -115,17 +125,17 @@ def main(page: ft.Page):
     )
 
     main_info = ft.Container(
+        padding=20,
         bgcolor=ft.colors.WHITE,
-        height=350,
-        width=400,
+        # height=350,
+        # width=400,
         border_radius=30,
         content=ft.Column(
             horizontal_alignment='center',
             controls=[
-                ft.Container(),
                 ft.Text(
-                    "Розклад:",
-                    size=20,
+                    "Графік відключень:",
+                    size=25,
                     weight='w600',
                     color='black',
                 ),
@@ -137,7 +147,7 @@ def main(page: ft.Page):
                 ft.Container(
                     bgcolor='black',
                     # height=100,
-                    width=350,
+                    # width=350,
                     border_radius=20,
                     padding=15,
                     content=ft.Column(
@@ -145,7 +155,7 @@ def main(page: ft.Page):
                         controls=[
                             ft.Text(
                                 "Години відключень:",
-                                size=15,
+                                size=16,
                                 weight='w600',
                             ),
                             ft.Row(
@@ -157,11 +167,14 @@ def main(page: ft.Page):
                                         bgcolor=ft.colors.RED,
                                         border_radius=5,
                                         padding=3,
+                                        height=35,
+                                        width=110,
+                                        alignment=ft.alignment.center,
                                         content=ft.Text(
                                             "00:00-02:00",
-                                            size=16,
+                                            size=18,
                                             weight='w600',
-                                            color=ft.colors.BLACK
+                                            color=ft.colors.BLACK,
                                         )
                                     ),
                                     ft.Container(
@@ -169,66 +182,96 @@ def main(page: ft.Page):
                                         bgcolor=ft.colors.RED,
                                         border_radius=5,
                                         padding=3,
+                                        height=35,
+                                        width=110,
+                                        alignment=ft.alignment.center,
                                         content=ft.Text(
-                                            "12:00-04:00",
-                                            size=16,
+                                            "04:00-06:00",
+                                            size=18,
                                             weight='w600',
-                                            color=ft.colors.BLACK
+                                            color=ft.colors.BLACK,
                                         )
                                     ),
                                     ft.Container(
-                                        visible=False,
+                                        visible=True,
                                         bgcolor=ft.colors.RED,
                                         border_radius=5,
                                         padding=3,
+                                        height=35,
+                                        width=110,
+                                        alignment=ft.alignment.center,
                                         content=ft.Text(
-                                            "12:00-04:00",
-                                            size=16,
+                                            "08:00-10:00",
+                                            size=18,
                                             weight='w600',
-                                            color=ft.colors.BLACK
+                                            color=ft.colors.BLACK,
                                         )
                                     ),
                                     ft.Container(
-                                        visible=False,
+                                        visible=True,
                                         bgcolor=ft.colors.RED,
                                         border_radius=5,
                                         padding=3,
+                                        height=35,
+                                        width=110,
+                                        alignment=ft.alignment.center,
                                         content=ft.Text(
-                                            "12:00-04:00",
-                                            size=16,
+                                            "12:00-14:00",
+                                            size=18,
                                             weight='w600',
-                                            color=ft.colors.BLACK
+                                            color=ft.colors.BLACK,
                                         )
                                     ),
                                     ft.Container(
-                                        visible=False,
+                                        visible=True,
                                         bgcolor=ft.colors.RED,
                                         border_radius=5,
                                         padding=3,
+                                        height=35,
+                                        width=110,
+                                        alignment=ft.alignment.center,
                                         content=ft.Text(
-                                            "12:00-04:00",
-                                            size=16,
+                                            "16:00-18:00",
+                                            size=18,
                                             weight='w600',
-                                            color=ft.colors.BLACK
+                                            color=ft.colors.BLACK,
                                         )
                                     ),
                                     ft.Container(
-                                        visible=False,
+                                        visible=True,
                                         bgcolor=ft.colors.RED,
                                         border_radius=5,
                                         padding=3,
+                                        height=35,
+                                        width=110,
+                                        alignment=ft.alignment.center,
                                         content=ft.Text(
-                                            "12:00-04:00",
-                                            size=16,
+                                            "20:00-22:00",
+                                            size=18,
                                             weight='w600',
-                                            color=ft.colors.BLACK
+                                            color=ft.colors.BLACK,
                                         )
                                     ),
                                 ]
                             )
                         ]
                     )
-                )
+                ),
+                # ft.Container(
+                #     bgcolor=ft.colors.GREEN,
+                #     height=170,
+                #     width=350,
+                #     border_radius=20,
+                #     content=ft.Column(
+                #         horizontal_alignment='center',
+                #         controls=[
+                #             ft.Text(
+                #                 "Зараз світло:",
+                #                 size=16,
+                #             )
+                #         ]
+                #     )
+                # )
             ]
         )
     )
