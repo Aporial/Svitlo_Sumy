@@ -95,8 +95,30 @@ def main(page: ft.Page):
         ]
     )
 
-    page.vertical_alignment = 'End'
-    page.add(info_tab)
+    lamp_on = ft.Container(
+        visible=True,
+        content=ft.Image(
+            src=f"/Images/lamp_on.png",
+            height=300,
+            width=300,
+
+        )
+    )
+    lamp_off = ft.Container(
+        visible=False,
+        content=ft.Image(
+            src=f"/Images/lamp_off.png",
+            height=300,
+            width=300,
+
+        )
+    )
+
+    
+
+    # page.vertical_alignment = 'center'
+    page.horizontal_alignment = 'center'
+    page.add(info_tab, lamp_on, lamp_off)
     page.overlay.append(bs)
     page.update()
 
