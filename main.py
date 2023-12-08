@@ -101,6 +101,11 @@ def main(page: ft.Page):
     )
 
     main_info = ft.Container(
+        shadow=ft.BoxShadow(
+            spread_radius=2,
+            blur_radius=2,
+            color=ft.colors.WHITE
+        ),
         padding=15,
         bgcolor=ft.colors.GREY_300,
         border_radius=15,
@@ -229,6 +234,11 @@ def main(page: ft.Page):
         controls=[
             ft.Container(height=5),
             ft.Container(
+                shadow=ft.BoxShadow(
+                    spread_radius=2,
+                    blur_radius=2,
+                    color=ft.colors.WHITE
+                ),
                 bgcolor=ft.colors.GREY_300,
                 border_radius=15,
                 padding=15,
