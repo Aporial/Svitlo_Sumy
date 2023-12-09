@@ -35,7 +35,8 @@ def main(page: ft.Page):
             page.update()
 
     def mono_click(e):
-        page.launch_url('https://send.monobank.ua/jar/7rkGHNfQpV')
+        page.launch_url('https://send.monobank.ua/jar/7rkGHNfQpV',
+                        web_window_name='Monobank')
 
     def cherg_choise(e):
         numb_cherg = e.control.data
