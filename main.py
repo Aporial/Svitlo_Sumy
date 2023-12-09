@@ -1,4 +1,9 @@
 import flet as ft
+import sqlite3
+from functions import day_num, check_cherg
+
+DB_NAME = 'DATA_BASE.db'
+
 
 def main(page: ft.Page):
     def open_list():
@@ -32,18 +37,53 @@ def main(page: ft.Page):
     def mono_click(e):
         page.launch_url('https://send.monobank.ua/jar/7rkGHNfQpV')
 
-    def cherg_storege(e):
+    def cherg_choise(e):
         numb_cherg = e.control.data
         page.client_storage.set("number", numb_cherg)
-        storage = page.client_storage.get("number")
         bs.open = False
         bs.update()
+        sqlite_conn = sqlite3.connect(DB_NAME)
+        storage_info = storage()
+        cherg = check_cherg(storage_info)
+        sql_request = f"SELECT {day_num} FROM '{cherg}'"
+        sql_cursor = sqlite_conn.execute(sql_request)
+        result_one = sql_cursor.fetchone()[0]
+        result_two = sql_cursor.fetchone()[0]
+        page.client_storage.set("one", result_one)
+        page.client_storage.set("two", result_two)
+        one = page.client_storage.get("one")
+        two = page.client_storage.get("two")
+        time_1.content = ft.Text(
+            one,
+            size=21,
+            weight='w600',
+            color=ft.colors.BLACK,
+        )
+        time_2.content = ft.Text(
+            two,
+            size=21,
+            weight='w600',
+            color=ft.colors.BLACK,
+        )
+        page.update()
 
     def check_storage():
         if page.client_storage.get("number") == None:
             open_list()
         else:
-            pass
+            with sqlite3.connect(DB_NAME) as sqlite_conn:
+                storage_info = storage()
+                cherg = check_cherg(storage_info)
+                sql_request = f"SELECT {day_num} FROM '{cherg}'"
+                sql_cursor = sqlite_conn.execute(sql_request)
+                result_one = sql_cursor.fetchone()[0]
+                result_two = sql_cursor.fetchone()[0]
+                page.client_storage.set("one", result_one)
+                page.client_storage.set("two", result_two)
+
+    def storage():
+        storage = page.client_storage.get("number")
+        return storage
 
     page.title = 'Svitlo Sumy'
     page.bgcolor = ft.colors.BLACK
@@ -58,8 +98,106 @@ def main(page: ft.Page):
                                                    icon=ft.icons.HOME_ROUNDED, label='Головна'),
                                                ft.NavigationDestination(
                                                    icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація')
-                                                ]
+                                           ]
                                            )
+    one = page.client_storage.get("one")
+    two = page.client_storage.get("two")
+
+    time_1 = ft.Container(
+        visible=True,
+        bgcolor=ft.colors.RED,
+        border_radius=5,
+        padding=3,
+        height=50,
+        width=145,
+        alignment=ft.alignment.center,
+        content=ft.Text(
+            one,
+            size=21,
+            weight='w600',
+            color=ft.colors.BLACK,
+        )
+    )
+
+    time_2 = ft.Container(
+        visible=True,
+        bgcolor=ft.colors.RED,
+        border_radius=5,
+        padding=3,
+        height=50,
+        width=145,
+        alignment=ft.alignment.center,
+        content=ft.Text(
+            two,
+            size=21,
+            weight='w600',
+            color=ft.colors.BLACK,
+        )
+    )
+
+    time_3 = ft.Container(
+        visible=False,
+        bgcolor=ft.colors.RED,
+        border_radius=5,
+        padding=3,
+        height=50,
+        width=145,
+        alignment=ft.alignment.center,
+        content=ft.Text(
+            '',
+            size=21,
+            weight='w600',
+            color=ft.colors.BLACK,
+        )
+    )
+
+    time_4 = ft.Container(
+        visible=False,
+        bgcolor=ft.colors.RED,
+        border_radius=5,
+        padding=3,
+        height=50,
+        width=145,
+        alignment=ft.alignment.center,
+        content=ft.Text(
+            '',
+            size=21,
+            weight='w600',
+            color=ft.colors.BLACK,
+        )
+    )
+
+    time_5 = ft.Container(
+        visible=False,
+        bgcolor=ft.colors.RED,
+        border_radius=5,
+        padding=3,
+        height=50,
+        width=145,
+        alignment=ft.alignment.center,
+        content=ft.Text(
+            '',
+            size=21,
+            weight='w600',
+            color=ft.colors.BLACK,
+        )
+    )
+
+    time_6 = ft.Container(
+        visible=False,
+        bgcolor=ft.colors.RED,
+        border_radius=5,
+        padding=3,
+        height=50,
+        width=145,
+        alignment=ft.alignment.center,
+        content=ft.Text(
+            '',
+            size=21,
+            weight='w600',
+            color=ft.colors.BLACK,
+        )
+    )
 
     bs = ft.BottomSheet(
         content=ft.Column(
@@ -75,21 +213,22 @@ def main(page: ft.Page):
                     text_align='center',
                 ),
                 ft.ElevatedButton(content=ft.Text("Перша черга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_storege, data = 1),
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=1),
                 ft.ElevatedButton(content=ft.Text("Друга черга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_storege, data = 2),
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=2),
                 ft.ElevatedButton(content=ft.Text("Третя черга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_storege, data = 3),
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=3),
                 ft.ElevatedButton(content=ft.Text("Четверта черга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_storege, data = 4),
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=4),
                 ft.ElevatedButton(content=ft.Text("П'ята черга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_storege, data = 5),
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=5),
                 ft.ElevatedButton(content=ft.Text("Шоста черга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_storege, data = 6),
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=6),
             ]
         ),
         bgcolor=ft.colors.GREY_900,
     )
+
     lamp_on = ft.Container(
         visible=True,
         content=ft.Image(
@@ -98,6 +237,7 @@ def main(page: ft.Page):
             width=280,
         )
     )
+
     lamp_off = ft.Container(
         visible=False,
         content=ft.Image(
@@ -108,11 +248,6 @@ def main(page: ft.Page):
     )
 
     main_info = ft.Container(
-        # shadow=ft.BoxShadow(
-        #     spread_radius=2,
-        #     blur_radius=2,
-        #     color=ft.colors.WHITE
-        # ),
         padding=15,
         bgcolor=ft.colors.GREY_300,
         border_radius=15,
@@ -131,104 +266,21 @@ def main(page: ft.Page):
                     color=ft.colors.BLACK38
                 ),
                 ft.Column(
-                    horizontal_alignment='center',
+                    alignment='center',
+                    wrap=True,
                     controls=[
                         ft.Row(
                             alignment='center',
                             wrap=True,
                             controls=[
-                                ft.Container(
-                                    visible=True,
-                                    bgcolor=ft.colors.RED,
-                                    border_radius=5,
-                                    padding=3,
-                                    height=50,
-                                    width=145,
-                                    alignment=ft.alignment.center,
-                                    content=ft.Text(
-                                        "00:00-02:00",
-                                        size=21,
-                                        weight='w600',
-                                        color=ft.colors.BLACK,
-                                    )
-                                ),
-                                ft.Container(
-                                    visible=True,
-                                    bgcolor=ft.colors.RED,
-                                    border_radius=5,
-                                    padding=3,
-                                    height=50,
-                                    width=145,
-                                    alignment=ft.alignment.center,
-                                    content=ft.Text(
-                                        "04:00-06:00",
-                                        size=21,
-                                        weight='w600',
-                                        color=ft.colors.BLACK,
-                                    )
-                                ),
-                                ft.Container(
-                                    visible=True,
-                                    bgcolor=ft.colors.RED,
-                                    border_radius=5,
-                                    padding=3,
-                                    height=50,
-                                    width=145,
-                                    alignment=ft.alignment.center,
-                                    content=ft.Text(
-                                        "08:00-10:00",
-                                        size=21,
-                                        weight='w600',
-                                        color=ft.colors.BLACK,
-                                    )
-                                ),
-                                ft.Container(
-                                    visible=True,
-                                    bgcolor=ft.colors.RED,
-                                    border_radius=5,
-                                    padding=3,
-                                    height=50,
-                                    width=145,
-                                    alignment=ft.alignment.center,
-                                    content=ft.Text(
-                                        "12:00-14:00",
-                                        size=21,
-                                        weight='w600',
-                                        color=ft.colors.BLACK,
-                                    )
-                                ),
-                                ft.Container(
-                                    visible=True,
-                                    bgcolor=ft.colors.RED,
-                                    border_radius=5,
-                                    padding=3,
-                                    height=50,
-                                    width=145,
-                                    alignment=ft.alignment.center,
-                                    content=ft.Text(
-                                        "16:00-18:00",
-                                        size=21,
-                                        weight='w600',
-                                        color=ft.colors.BLACK,
-                                    )
-                                ),
-                                ft.Container(
-                                    visible=True,
-                                    bgcolor=ft.colors.RED,
-                                    border_radius=5,
-                                    padding=3,
-                                    height=50,
-                                    width=145,
-                                    alignment=ft.alignment.center,
-                                    content=ft.Text(
-                                        "20:00-22:00",
-                                        size=21,
-                                        weight='w600',
-                                        color=ft.colors.BLACK,
-                                    )
-                                ),
+                                time_1,
+                                time_2,
+                                time_3,
+                                time_4,
+                                time_5,
+                                time_6
                             ]
-                        )
+                        ),
                     ]
                 ),
             ]
@@ -241,11 +293,6 @@ def main(page: ft.Page):
         controls=[
             ft.Container(height=5),
             ft.Container(
-                # shadow=ft.BoxShadow(
-                #     spread_radius=2,
-                #     blur_radius=2,
-                #     color=ft.colors.WHITE
-                # ),
                 bgcolor=ft.colors.GREY_300,
                 border_radius=15,
                 padding=15,
@@ -294,6 +341,7 @@ def main(page: ft.Page):
             )
         ]
     )
+
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
     page.add(lamp_on, lamp_off, main_info, info_tab)
