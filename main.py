@@ -1,6 +1,5 @@
 import flet as ft
 
-
 def main(page: ft.Page):
     def open_list():
         bs.open = True
@@ -8,10 +7,6 @@ def main(page: ft.Page):
         info_tab.visible = False
         bs.update()
         page.update()
-
-    def close_list(e):
-        bs.open = False
-        bs.update()
 
     def on_tab(e):
         my_index = e.control.selected_index
@@ -37,6 +32,19 @@ def main(page: ft.Page):
     def mono_click(e):
         page.launch_url('https://send.monobank.ua/jar/7rkGHNfQpV')
 
+    def cherg_storege(e):
+        numb_cherg = e.control.data
+        page.client_storage.set("number", numb_cherg)
+        storage = page.client_storage.get("number")
+        bs.open = False
+        bs.update()
+
+    def check_storage():
+        if page.client_storage.get("number") == None:
+            open_list()
+        else:
+            pass
+
     page.title = 'Svitlo Sumy'
     page.bgcolor = ft.colors.BLACK
     page.window_height = 700
@@ -50,7 +58,7 @@ def main(page: ft.Page):
                                                    icon=ft.icons.HOME_ROUNDED, label='Головна'),
                                                ft.NavigationDestination(
                                                    icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація')
-                                           ]
+                                                ]
                                            )
 
     bs = ft.BottomSheet(
@@ -67,22 +75,21 @@ def main(page: ft.Page):
                     text_align='center',
                 ),
                 ft.ElevatedButton(content=ft.Text("Перша черга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_storege, data = 1),
                 ft.ElevatedButton(content=ft.Text("Друга черга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_storege, data = 2),
                 ft.ElevatedButton(content=ft.Text("Третя черга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_storege, data = 3),
                 ft.ElevatedButton(content=ft.Text("Четверта черга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_storege, data = 4),
                 ft.ElevatedButton(content=ft.Text("П'ята черга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_storege, data = 5),
                 ft.ElevatedButton(content=ft.Text("Шоста черга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=close_list),
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_storege, data = 6),
             ]
         ),
         bgcolor=ft.colors.GREY_900,
     )
-
     lamp_on = ft.Container(
         visible=True,
         content=ft.Image(
@@ -101,11 +108,11 @@ def main(page: ft.Page):
     )
 
     main_info = ft.Container(
-        shadow=ft.BoxShadow(
-            spread_radius=2,
-            blur_radius=2,
-            color=ft.colors.WHITE
-        ),
+        # shadow=ft.BoxShadow(
+        #     spread_radius=2,
+        #     blur_radius=2,
+        #     color=ft.colors.WHITE
+        # ),
         padding=15,
         bgcolor=ft.colors.GREY_300,
         border_radius=15,
@@ -234,11 +241,11 @@ def main(page: ft.Page):
         controls=[
             ft.Container(height=5),
             ft.Container(
-                shadow=ft.BoxShadow(
-                    spread_radius=2,
-                    blur_radius=2,
-                    color=ft.colors.WHITE
-                ),
+                # shadow=ft.BoxShadow(
+                #     spread_radius=2,
+                #     blur_radius=2,
+                #     color=ft.colors.WHITE
+                # ),
                 bgcolor=ft.colors.GREY_300,
                 border_radius=15,
                 padding=15,
@@ -292,6 +299,7 @@ def main(page: ft.Page):
     page.add(lamp_on, lamp_off, main_info, info_tab)
     page.overlay.append(bs)
     page.update()
+    check_storage()
 
 
 ft.app(
