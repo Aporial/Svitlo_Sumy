@@ -2,7 +2,7 @@ import flet as ft
 import sqlite3
 from functions import day_num, check_cherg
 
-DB_NAME = 'DATA_BASE.db'
+DB_NAME = 'assets/DATA_BASE.db'
 
 
 def main(page: ft.Page):
