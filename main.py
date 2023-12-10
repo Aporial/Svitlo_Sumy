@@ -2,8 +2,8 @@ import flet as ft
 import sqlite3
 from functions import day_num, check_cherg
 from datetime import datetime
-import wget
-import os
+# import wget
+# import os
 
 # URL = "https://github.com/Aporial/Svitlo/blob/bd55ffb5ffc04a250201e0b0b33cec260275b805/assets/DATA_BASE.db?raw=true"
 # if os.path.exists('assets/DATA_BASE.db'):
