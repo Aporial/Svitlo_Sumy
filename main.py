@@ -2,8 +2,13 @@ import flet as ft
 import sqlite3
 from functions import day_num, check_cherg
 from datetime import datetime
+import wget
+import os
 
-DB_NAME = 'assets/DATA_BASE.db'
+URL = "https://github.com/Aporial/Svitlo/blob/bd55ffb5ffc04a250201e0b0b33cec260275b805/assets/DATA_BASE.db?raw=true"
+if os.path.exists('assets/DATA_BASE.db'):
+    os.remove('assets/DATA_BASE.db')
+wget.download(URL, out='assets/DATA_BASE.db')
 
 
 def main(page: ft.Page):
@@ -41,6 +46,7 @@ def main(page: ft.Page):
         page.client_storage.set("number", numb_cherg)
         bs.open = False
         bs.update()
+        DB_NAME = "assets/DATA_BASE.db"
         sqlite_conn = sqlite3.connect(DB_NAME)
         storage_info = storage()
         cherg = check_cherg(storage_info)
@@ -74,6 +80,7 @@ def main(page: ft.Page):
         if page.client_storage.get("number") == None:
             open_list()
         else:
+            DB_NAME = "assets/DATA_BASE.db"
             with sqlite3.connect(DB_NAME) as sqlite_conn:
                 storage_info = storage()
                 cherg = check_cherg(storage_info)
@@ -375,5 +382,6 @@ def main(page: ft.Page):
 
 ft.app(
     target=main,
-    assets_dir='assets'
+    assets_dir='assets',
+    upload_dir="assets/uploads"
 )
