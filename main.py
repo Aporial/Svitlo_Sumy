@@ -4,7 +4,7 @@ from functions import day_num, check_cherg
 from datetime import datetime
 from urllib.request import urlretrieve
 
-URL = "https://github.com/Aporial/Svitlo/blob/bd55ffb5ffc04a250201e0b0b33cec260275b805/assets/DATA_BASE.db?raw=true"
+# URL = "https://github.com/Aporial/Svitlo/blob/bd55ffb5ffc04a250201e0b0b33cec260275b805/assets/DATA_BASE.db?raw=true"
 # urlretrieve(URL, "assets/DATA_BASE.db")
 
 
@@ -72,7 +72,6 @@ def main(page: ft.Page):
         else:
             check_time_interval(two)
         page.update()
-        urlretrieve(URL, "assets/DATA_BASE.db")
 
     def check_storage():
         if page.client_storage.get("number") == None:
