@@ -1,6 +1,7 @@
 import flet as ft
 import sqlite3
 from functions import day_num, check_cherg
+from datetime import datetime
 
 DB_NAME = 'assets/DATA_BASE.db'
 
@@ -17,21 +18,18 @@ def main(page: ft.Page):
         my_index = e.control.selected_index
         if my_index == 0:
             main_info.visible = True
-            lamp_on.visible = True
-            lamp_off.visible = False
+            lamp_img.visible = True
             info_tab.visible = False
             open_list()
         if my_index == 1:
             main_info.visible = True
-            lamp_on.visible = True
-            lamp_off.visible = False
             info_tab.visible = False
+            lamp_img.visible = True
             page.update()
         if my_index == 2:
             info_tab.visible = True
             main_info.visible = False
-            lamp_on.visible = False
-            lamp_off.visible = False
+            lamp_img.visible = False
             page.update()
 
     def mono_click(e):
@@ -66,6 +64,10 @@ def main(page: ft.Page):
             weight='w600',
             color=ft.colors.BLACK,
         )
+        if check_time_interval(one) == True:
+            pass
+        else:
+            check_time_interval(two)
         page.update()
 
     def check_storage():
@@ -85,6 +87,28 @@ def main(page: ft.Page):
     def storage():
         storage = page.client_storage.get("number")
         return storage
+
+    def check_time_interval(time_interval):
+        current_time = datetime.now().time()
+        start_time_str, end_time_str = time_interval.split('-')
+
+        start_time = datetime.strptime(start_time_str, '%H:%M').time()
+        end_time = datetime.strptime(end_time_str, '%H:%M').time()
+
+        if start_time <= current_time <= end_time:
+            lamp_img.content = ft.Image(
+                src=f"/Images/lamp_off.png",
+                height=280,
+                width=280,
+            )
+            return True
+        else:
+            lamp_img.content = ft.Image(
+                src=f"/Images/lamp_on.png",
+                height=280,
+                width=280,
+            )
+            return False
 
     page.title = 'Svitlo Sumy'
     page.bgcolor = ft.colors.BLACK
@@ -230,23 +254,13 @@ def main(page: ft.Page):
         bgcolor=ft.colors.GREY_900,
     )
 
-    lamp_on = ft.Container(
+    lamp_img = ft.Container(
         visible=True,
         content=ft.Image(
-            # src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/lamp_on.png?raw=true",
+            # src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/lamp_off.png?raw=true",
             src=f"/Images/lamp_on.png",
             height=280,
             width=280,
-        )
-    )
-
-    lamp_off = ft.Container(
-        visible=False,
-        content=ft.Image(
-            # src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/lamp_off.png?raw=true",
-            src=f"/Images/lamp_off.png",
-            height=300,
-            width=300,
         )
     )
 
@@ -348,7 +362,7 @@ def main(page: ft.Page):
 
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
-    page.add(lamp_on, lamp_off, main_info, info_tab)
+    page.add(lamp_img, main_info, info_tab)
     page.overlay.append(bs)
     page.update()
     check_storage()
