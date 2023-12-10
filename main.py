@@ -87,6 +87,7 @@ def main(page: ft.Page):
                     pass
                 else:
                     check_time_interval(two)
+                page.update()
 
     def storage():
         storage = page.client_storage.get("number")
