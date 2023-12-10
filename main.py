@@ -364,6 +364,10 @@ def main(page: ft.Page):
     page.horizontal_alignment = 'center'
     page.add(lamp_img, main_info, info_tab)
     page.overlay.append(bs)
+    if check_time_interval(one) == True:
+        pass
+    else:
+        check_time_interval(two)
     page.update()
     check_storage()
 
