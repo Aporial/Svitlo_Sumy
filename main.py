@@ -83,6 +83,10 @@ def main(page: ft.Page):
                 result_two = sql_cursor.fetchone()[0]
                 page.client_storage.set("one", result_one)
                 page.client_storage.set("two", result_two)
+                if check_time_interval(one) == True:
+                    pass
+                else:
+                    check_time_interval(two)
 
     def storage():
         storage = page.client_storage.get("number")
@@ -364,10 +368,6 @@ def main(page: ft.Page):
     page.horizontal_alignment = 'center'
     page.add(lamp_img, main_info, info_tab)
     page.overlay.append(bs)
-    if check_time_interval(one) == True:
-        pass
-    else:
-        check_time_interval(two)
     page.update()
     check_storage()
 
