@@ -202,7 +202,7 @@ def main(page: ft.Page):
     )
 
     time_3 = ft.Container(
-        visible=True,
+        visible=False,
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=3,
@@ -218,7 +218,7 @@ def main(page: ft.Page):
     )
 
     time_4 = ft.Container(
-        visible=True,
+        visible=False,
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=3,
@@ -234,7 +234,7 @@ def main(page: ft.Page):
     )
 
     time_5 = ft.Container(
-        visible=True,
+        visible=False,
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=3,
@@ -250,7 +250,7 @@ def main(page: ft.Page):
     )
 
     time_6 = ft.Container(
-        visible=True,
+        visible=False,
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=3,
