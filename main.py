@@ -121,6 +121,7 @@ def main(page: ft.Page):
 
     page.title = 'Svitlo Sumy'
     page.bgcolor = ft.colors.BLACK
+    page.theme_mode = ft.ThemeMode.DARK
     page.window_height = 700
     page.window_width = 400
     page.window_resizable = True
@@ -134,6 +135,7 @@ def main(page: ft.Page):
                                                    icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація')
                                            ]
                                            )
+
     one = page.client_storage.get("one")
     two = page.client_storage.get("two")
 
@@ -275,7 +277,7 @@ def main(page: ft.Page):
 
     main_info = ft.Container(
         padding=15,
-        bgcolor=ft.colors.GREY_300,
+        bgcolor=ft.colors.WHITE,
         border_radius=15,
         content=ft.Column(
             horizontal_alignment='center',
@@ -319,7 +321,7 @@ def main(page: ft.Page):
         controls=[
             ft.Container(height=5),
             ft.Container(
-                bgcolor=ft.colors.GREY_300,
+                bgcolor=ft.colors.WHITE,
                 border_radius=15,
                 padding=15,
                 content=ft.Column(
@@ -380,5 +382,4 @@ def main(page: ft.Page):
 ft.app(
     target=main,
     assets_dir='assets',
-    upload_dir="assets/uploads"
 )
