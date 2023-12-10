@@ -173,9 +173,9 @@ def main(page: ft.Page):
         visible=True,
         bgcolor=ft.colors.RED,
         border_radius=5,
-        padding=5,
-        # height=50,
-        # width=145,
+        padding=1,
+        height=50,
+        width=145,
         alignment=ft.alignment.center,
         content=ft.Text(
             one,
@@ -190,8 +190,8 @@ def main(page: ft.Page):
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=5,
-        # height=50,
-        # width=145,
+        height=50,
+        width=145,
         alignment=ft.alignment.center,
         content=ft.Text(
             two,
@@ -202,7 +202,7 @@ def main(page: ft.Page):
     )
 
     time_3 = ft.Container(
-        visible=False,
+        visible=True,
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=3,
@@ -210,7 +210,7 @@ def main(page: ft.Page):
         width=145,
         alignment=ft.alignment.center,
         content=ft.Text(
-            '',
+            '22:00-24:00',
             size=21,
             weight='w600',
             color=ft.colors.BLACK,
@@ -218,7 +218,7 @@ def main(page: ft.Page):
     )
 
     time_4 = ft.Container(
-        visible=False,
+        visible=True,
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=3,
@@ -226,7 +226,7 @@ def main(page: ft.Page):
         width=145,
         alignment=ft.alignment.center,
         content=ft.Text(
-            '',
+            '22:00-24:00',
             size=21,
             weight='w600',
             color=ft.colors.BLACK,
@@ -234,7 +234,7 @@ def main(page: ft.Page):
     )
 
     time_5 = ft.Container(
-        visible=False,
+        visible=True,
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=3,
@@ -242,7 +242,7 @@ def main(page: ft.Page):
         width=145,
         alignment=ft.alignment.center,
         content=ft.Text(
-            '',
+            '22:00-24:00',
             size=21,
             weight='w600',
             color=ft.colors.BLACK,
@@ -250,7 +250,7 @@ def main(page: ft.Page):
     )
 
     time_6 = ft.Container(
-        visible=False,
+        visible=True,
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=3,
@@ -258,7 +258,7 @@ def main(page: ft.Page):
         width=145,
         alignment=ft.alignment.center,
         content=ft.Text(
-            '',
+            '22:00-24:00',
             size=21,
             weight='w600',
             color=ft.colors.BLACK,
@@ -323,22 +323,17 @@ def main(page: ft.Page):
                     thickness=1,
                     color=ft.colors.BLACK38
                 ),
-                ft.Column(
+                ft.Row(
                     alignment='center',
+                    vertical_alignment='center',
                     wrap=True,
                     controls=[
-                        ft.Row(
-                            alignment='center',
-                            wrap=True,
-                            controls=[
-                                time_1,
-                                time_2,
-                                time_3,
-                                time_4,
-                                time_5,
-                                time_6
-                            ]
-                        ),
+                        time_1,
+                        time_2,
+                        time_3,
+                        time_4,
+                        time_5,
+                        time_6,
                     ]
                 ),
             ]
