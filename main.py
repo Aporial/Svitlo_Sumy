@@ -53,8 +53,20 @@ def main(page: ft.Page):
         result_two = sql_cursor.fetchone()[0]
         page.client_storage.set("one", result_one)
         page.client_storage.set("two", result_two)
-        one = page.client_storage.get("one")
-        two = page.client_storage.get("two")
+        one_check = page.client_storage.get("one")
+        two_check = page.client_storage.get("two")
+        if page.client_storage.get("one") == '22:00-23:59':
+            one = '22:00-24:00'
+        else:
+            one = page.client_storage.get("one")
+        if page.client_storage.get("two") == '22:00-23:59':
+            two = '22:00-24:00'
+        else:
+            two = page.client_storage.get("two")
+        if check_time_interval(one_check) == True:
+            pass
+        else:
+            check_time_interval(two_check)
         time_1.content = ft.Text(
             one,
             size=21,
@@ -67,10 +79,6 @@ def main(page: ft.Page):
             weight='w600',
             color=ft.colors.BLACK,
         )
-        if check_time_interval(one) == True:
-            pass
-        else:
-            check_time_interval(two)
         page.update()
 
     def check_storage():
@@ -87,10 +95,32 @@ def main(page: ft.Page):
                 result_two = sql_cursor.fetchone()[0]
                 page.client_storage.set("one", result_one)
                 page.client_storage.set("two", result_two)
-                if check_time_interval(one) == True:
+                one_check = page.client_storage.get("one")
+                two_check = page.client_storage.get("two")
+                if page.client_storage.get("one") == '22:00-23:59':
+                    one = '22:00-24:00'
+                else:
+                    one = page.client_storage.get("one")
+                if page.client_storage.get("two") == '22:00-23:59':
+                    two = '22:00-24:00'
+                else:
+                    two = page.client_storage.get("two")
+                if check_time_interval(one_check) == True:
                     pass
                 else:
-                    check_time_interval(two)
+                    check_time_interval(two_check)
+                time_1.content = ft.Text(
+                    one,
+                    size=21,
+                    weight='w600',
+                    color=ft.colors.BLACK,
+                )
+                time_2.content = ft.Text(
+                    two,
+                    size=21,
+                    weight='w600',
+                    color=ft.colors.BLACK,
+                )
                 page.update()
 
     def storage():
