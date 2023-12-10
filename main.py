@@ -268,7 +268,8 @@ def main(page: ft.Page):
     bs = ft.BottomSheet(
         content=ft.Column(
             horizontal_alignment='center',
-            alignment='center',
+            alignment='end',
+            height=380,
             width=400,
             spacing=5,
             controls=[
@@ -290,9 +291,11 @@ def main(page: ft.Page):
                                   color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=5),
                 ft.ElevatedButton(content=ft.Text("Шоста", size=20, weight='w600'), width=250, height=50,
                                   color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=6),
+                ft.Container(height=10)
             ]
         ),
         bgcolor=ft.colors.GREY_900,
+
     )
 
     lamp_img = ft.Container(
