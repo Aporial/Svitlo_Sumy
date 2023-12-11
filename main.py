@@ -136,7 +136,7 @@ def main(page: ft.Page):
 
         if start_time <= current_time <= end_time:
             lamp_img.content = ft.Image(
-                src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/lamp_on.png?raw=true",
+                src=f"/Images/lamp_off.png",
                 height=280,
                 width=280,
             )
