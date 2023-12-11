@@ -136,7 +136,7 @@ def main(page: ft.Page):
 
         if start_time <= current_time <= end_time:
             lamp_img.content = ft.Image(
-                src=f"/Images/lamp_off.png",
+                src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/lamp_on.png?raw=true",
                 height=280,
                 width=280,
             )
@@ -150,13 +150,18 @@ def main(page: ft.Page):
             return False
 
     page.title = 'Svitlo Sumy'
-    page.theme_mode = ft.ThemeMode.DARK
+    page.theme_mode = ft.ThemeMode.LIGHT
     page.window_height = 700
     page.window_width = 400
     page.padding = 0
-    page.window_center()
+    # page.window_center()
     page.window_resizable = True
-    page.navigation_bar = ft.NavigationBar(height=65, bgcolor=ft.colors.BLACK, on_change=on_tab, selected_index=1,
+    page.navigation_bar = ft.NavigationBar(surface_tint_color=ft.colors.ORANGE,
+                                           indicator_color=ft.colors.WHITE,
+                                           height=65,
+                                           bgcolor=ft.colors.WHITE,
+                                           on_change=on_tab,
+                                           selected_index=1,
                                            destinations=[
                                                ft.NavigationDestination(
                                                    icon=ft.icons.LIST_ROUNDED, label='Черги',),
@@ -172,7 +177,18 @@ def main(page: ft.Page):
 
     time_1 = ft.Container(
         visible=True,
-        bgcolor=ft.colors.RED,
+        gradient=ft.LinearGradient(
+            begin=ft.alignment.top_center,
+            end=ft.alignment.bottom_center,
+            colors=[ft.colors.ORANGE_700, ft.colors.RED]
+        ),
+        shadow=ft.BoxShadow(
+            blur_radius=6,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 5),
+            color=ft.colors.BLACK87
+        ),
+        bgcolor=ft.colors.DEEP_ORANGE_500,
         border_radius=5,
         padding=1,
         height=50,
@@ -188,7 +204,18 @@ def main(page: ft.Page):
 
     time_2 = ft.Container(
         visible=True,
-        bgcolor=ft.colors.RED,
+        gradient=ft.LinearGradient(
+            begin=ft.alignment.top_center,
+            end=ft.alignment.bottom_center,
+            colors=[ft.colors.ORANGE_700, ft.colors.RED]
+        ),
+        shadow=ft.BoxShadow(
+            blur_radius=6,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 5),
+            color=ft.colors.BLACK87
+        ),
+        bgcolor=ft.colors.DEEP_ORANGE_500,
         border_radius=5,
         padding=5,
         height=50,
@@ -203,8 +230,19 @@ def main(page: ft.Page):
     )
 
     time_3 = ft.Container(
-        visible=True,
-        bgcolor=ft.colors.RED,
+        visible=False,
+        gradient=ft.LinearGradient(
+            begin=ft.alignment.top_center,
+            end=ft.alignment.bottom_center,
+            colors=[ft.colors.ORANGE_700, ft.colors.RED]
+        ),
+        shadow=ft.BoxShadow(
+            blur_radius=6,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 5),
+            color=ft.colors.BLACK87
+        ),
+        bgcolor=ft.colors.DEEP_ORANGE_500,
         border_radius=5,
         padding=3,
         height=50,
@@ -219,8 +257,19 @@ def main(page: ft.Page):
     )
 
     time_4 = ft.Container(
-        visible=True,
-        bgcolor=ft.colors.RED,
+        visible=False,
+        gradient=ft.LinearGradient(
+            begin=ft.alignment.top_center,
+            end=ft.alignment.bottom_center,
+            colors=[ft.colors.ORANGE_700, ft.colors.RED]
+        ),
+        shadow=ft.BoxShadow(
+            blur_radius=6,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 5),
+            color=ft.colors.BLACK87
+        ),
+        bgcolor=ft.colors.DEEP_ORANGE_500,
         border_radius=5,
         padding=3,
         height=50,
@@ -235,8 +284,19 @@ def main(page: ft.Page):
     )
 
     time_5 = ft.Container(
-        visible=True,
-        bgcolor=ft.colors.RED,
+        visible=False,
+        gradient=ft.LinearGradient(
+            begin=ft.alignment.top_center,
+            end=ft.alignment.bottom_center,
+            colors=[ft.colors.ORANGE_700, ft.colors.RED]
+        ),
+        shadow=ft.BoxShadow(
+            blur_radius=6,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 5),
+            color=ft.colors.BLACK87
+        ),
+        bgcolor=ft.colors.DEEP_ORANGE_500,
         border_radius=5,
         padding=3,
         height=50,
@@ -251,8 +311,19 @@ def main(page: ft.Page):
     )
 
     time_6 = ft.Container(
-        visible=True,
-        bgcolor=ft.colors.RED,
+        visible=False,
+        gradient=ft.LinearGradient(
+            begin=ft.alignment.top_center,
+            end=ft.alignment.bottom_center,
+            colors=[ft.colors.ORANGE_700, ft.colors.RED]
+        ),
+        shadow=ft.BoxShadow(
+            blur_radius=6,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 5),
+            color=ft.colors.BLACK87
+        ),
+        bgcolor=ft.colors.DEEP_ORANGE_500,
         border_radius=5,
         padding=3,
         height=50,
@@ -275,28 +346,33 @@ def main(page: ft.Page):
             spacing=5,
             controls=[
                 ft.Text(
-                    "Виберіть чергу:",
+                    "Оберіть чергу:",
                     size=20,
                     weight='w500',
                     text_align='center',
                 ),
-                ft.ElevatedButton(content=ft.Text("Перша", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=1),
-                ft.ElevatedButton(content=ft.Text("Друга", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=2),
-                ft.ElevatedButton(content=ft.Text("Третя", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=3),
-                ft.ElevatedButton(content=ft.Text("Четверта", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=4),
-                ft.ElevatedButton(content=ft.Text("П'ята", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=5),
-                ft.ElevatedButton(content=ft.Text("Шоста", size=20, weight='w600'), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.WHITE, on_click=cherg_choise, data=6),
+                ft.ElevatedButton(content=ft.Text("Перша", size=20, weight='w600'),
+                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_300), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.AMBER_600, on_click=cherg_choise, data=1),
+                ft.ElevatedButton(content=ft.Text("Друга", size=20, weight='w600'),
+                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_300), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.AMBER_600, on_click=cherg_choise, data=2),
+                ft.ElevatedButton(content=ft.Text("Третя", size=20, weight='w600'),
+                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_300), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.AMBER_600, on_click=cherg_choise, data=3),
+                ft.ElevatedButton(content=ft.Text("Четверта", size=20, weight='w600'),
+                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_300), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.AMBER_600, on_click=cherg_choise, data=4),
+                ft.ElevatedButton(content=ft.Text("П'ята", size=20, weight='w600'),
+                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_300), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.AMBER_600, on_click=cherg_choise, data=5),
+                ft.ElevatedButton(content=ft.Text("Шоста", size=20, weight='w600'),
+                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_300), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor=ft.colors.AMBER_600, on_click=cherg_choise, data=6),
                 ft.Container(height=10)
             ]
         ),
-        bgcolor=ft.colors.GREY_900,
-
+        bgcolor=ft.colors.WHITE,
     )
 
     lamp_img = ft.Container(
@@ -310,6 +386,12 @@ def main(page: ft.Page):
     )
 
     main_info = ft.Container(
+        shadow=ft.BoxShadow(
+            blur_radius=15,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 8),
+            color=ft.colors.BLACK87
+        ),
         padding=15,
         bgcolor=ft.colors.WHITE,
         border_radius=15,
@@ -344,67 +426,70 @@ def main(page: ft.Page):
         )
     )
 
-    info_tab = ft.Column(
+    info_tab = ft.Container(
+        shadow=ft.BoxShadow(
+            blur_radius=15,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 8),
+            color=ft.colors.BLACK87
+        ),
         visible=False,
-        horizontal_alignment='center',
-        controls=[
-            ft.Container(height=5),
-            ft.Container(
-                bgcolor=ft.colors.WHITE,
-                border_radius=15,
-                padding=15,
-                content=ft.Column(
-                    horizontal_alignment='center',
-                    alignment='start',
-                    controls=[
-                        ft.Text(
-                            'Інформація',
-                            size=35,
-                            color=ft.colors.BLACK87,
-                            weight='bolt',
-                        ),
-                        ft.Divider(height=0.1),
-                        ft.Text(
-                            "Застосунок розроблений для безкоштовного користування.",
-                            size=16,
-                            color='black',
-                            text_align='center'
-                        ),
-                        ft.Divider(height=0.1),
-                        ft.Text(
-                            "Головна мета - максимально спростити пошук актуальної інформації про відключення світла.",
-                            size=16,
-                            color='black',
-                            text_align='center'
-                        ),
-                        ft.Divider(height=0.1),
-                        ft.Text(
-                            "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку з монобанку.",
-                            size=16,
-                            color='black',
-                            text_align='center'
-                        ),
-                        ft.Divider(height=0.1),
-                        ft.TextButton(
-                            on_click=mono_click,
-                            content=ft.Image(
-                                # src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/monobanka.png?raw=true",
-                                src=f"/Images/monobanka.png",
-                                height=100,
-                                width=100,
-                            )
-                        )
-                    ]
+        bgcolor=ft.colors.WHITE,
+        border_radius=15,
+        padding=15,
+        content=ft.Column(
+            horizontal_alignment='center',
+            alignment='start',
+            controls=[
+                ft.Text(
+                    'Інформація',
+                    size=35,
+                    color=ft.colors.BLACK87,
+                    weight='bolt',
+                ),
+                ft.Divider(height=0.1),
+                ft.Text(
+                    "Застосунок розроблений для безкоштовного користування.",
+                    size=16,
+                    color='black',
+                    text_align='center'
+                ),
+                ft.Divider(height=0.1),
+                ft.Text(
+                    "Головна мета - максимально спростити пошук актуальної інформації про відключення світла.",
+                    size=16,
+                    color='black',
+                    text_align='center'
+                ),
+                ft.Divider(height=0.1),
+                ft.Text(
+                    "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку з монобанку.",
+                    size=16,
+                    color='black',
+                    text_align='center'
+                ),
+                ft.Divider(height=0.1),
+                ft.TextButton(
+                    style=ft.ButtonStyle(overlay_color=ft.colors.AMBER_200),
+                    on_click=mono_click,
+                    content=ft.Image(
+                        # src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/monobanka.png?raw=true",
+                        src=f"/Images/monobanka.png",
+                        height=100,
+                        width=100,
+                    )
                 )
-            )
-        ]
+            ]
+        )
     )
 
     main_container = ft.Container(
         gradient=ft.LinearGradient(
             begin=ft.alignment.top_right,
             end=ft.alignment.bottom_left,
-            colors=[ft.colors.AMBER, ft.colors.RED]
+            colors=[ft.colors.YELLOW_500,
+                    ft.colors.AMBER_900, ft.colors.RED_500]
+            # colors=[ft.colors.AMBER, ft.colors.RED]
         ),
         height=page.height,
         padding=15,
