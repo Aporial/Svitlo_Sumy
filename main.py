@@ -15,7 +15,6 @@ def main(page: ft.Page):
         info_tab.visible = False
         bs.update()
         page.update()
-        main_container.update()
 
     def on_tab(e):
         my_index = e.control.selected_index
@@ -29,13 +28,11 @@ def main(page: ft.Page):
             info_tab.visible = False
             lamp_img.visible = True
             page.update()
-            main_container.update()
         if my_index == 2:
             info_tab.visible = True
             main_info.visible = False
             lamp_img.visible = False
             page.update()
-            main_container.update()
 
     def mono_click(e):
         page.launch_url('https://send.monobank.ua/jar/7rkGHNfQpV',
@@ -83,7 +80,6 @@ def main(page: ft.Page):
             color=ft.colors.BLACK,
         )
         page.update()
-        main_container.update()
 
     def check_storage():
         if page.client_storage.get("number") == None:
@@ -126,7 +122,6 @@ def main(page: ft.Page):
                     color=ft.colors.BLACK,
                 )
                 page.update()
-                main_container.update()
 
     def storage():
         storage = page.client_storage.get("number")
@@ -153,29 +148,6 @@ def main(page: ft.Page):
                 width=280,
             )
             return False
-
-    page.title = 'Svitlo Sumy'
-    page.theme_mode = ft.ThemeMode.LIGHT
-    page.window_height = 700
-    page.window_width = 400
-    page.padding = 0
-    page.window_center()
-    page.window_resizable = True
-    page.navigation_bar = ft.NavigationBar(surface_tint_color=ft.colors.ORANGE,
-                                           indicator_color=ft.colors.WHITE,
-                                           height=65,
-                                           bgcolor=ft.colors.WHITE,
-                                           on_change=on_tab,
-                                           selected_index=1,
-                                           destinations=[
-                                               ft.NavigationDestination(
-                                                   icon=ft.icons.LIST_ROUNDED, label='Черги',),
-                                               ft.NavigationDestination(
-                                                   icon=ft.icons.HOME_ROUNDED, label='Головна'),
-                                               ft.NavigationDestination(
-                                                   icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація')
-                                           ]
-                                           )
 
     one = page.client_storage.get("one")
     two = page.client_storage.get("two")
@@ -432,6 +404,7 @@ def main(page: ft.Page):
     )
 
     info_tab = ft.Container(
+        # alignment=ft.alignment.center,
         shadow=ft.BoxShadow(
             blur_radius=15,
             blur_style=ft.ShadowBlurStyle.NORMAL,
@@ -497,11 +470,11 @@ def main(page: ft.Page):
             # colors=[ft.colors.AMBER, ft.colors.RED]
         ),
         height=page.height,
-        width=page.width,
         padding=15,
         content=ft.Column(
             horizontal_alignment='center',
             alignment='center',
+            # height=page.height,
             controls=[
                 lamp_img,
                 main_info,
@@ -511,12 +484,34 @@ def main(page: ft.Page):
         )
     )
 
+    page.title = 'Svitlo Sumy'
+    page.theme_mode = ft.ThemeMode.LIGHT
+    page.window_height = 700
+    page.window_width = 400
+    page.padding = 0
+    page.window_center()
+    page.window_resizable = True
+    page.navigation_bar = ft.NavigationBar(surface_tint_color=ft.colors.ORANGE,
+                                           indicator_color=ft.colors.WHITE,
+                                           height=65,
+                                           bgcolor=ft.colors.WHITE,
+                                           on_change=on_tab,
+                                           selected_index=1,
+                                           destinations=[
+                                               ft.NavigationDestination(
+                                                   icon=ft.icons.LIST_ROUNDED, label='Черги',),
+                                               ft.NavigationDestination(
+                                                   icon=ft.icons.HOME_ROUNDED, label='Головна'),
+                                               ft.NavigationDestination(
+                                                   icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація')
+                                           ]
+                                           )
+    # main_container.visible = True
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
     page.add(main_container)
     page.overlay.append(bs)
     page.update()
-    main_container.update()
     check_storage()
 
 
