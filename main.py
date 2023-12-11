@@ -492,6 +492,7 @@ def main(page: ft.Page):
             # colors=[ft.colors.AMBER, ft.colors.RED]
         ),
         height=page.height,
+        width=page.width,
         padding=15,
         content=ft.Column(
             horizontal_alignment='center',
