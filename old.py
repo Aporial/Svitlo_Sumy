@@ -151,7 +151,7 @@ def main(page: ft.Page):
 
     page.title = 'Svitlo Sumy'
     page.bgcolor = ft.colors.BLACK
-    page.theme_mode = ft.ThemeMode.DARK
+    page.theme_mode = ft.ThemeMode.LIGHT
     page.window_height = 700
     page.window_width = 400
     page.window_resizable = True

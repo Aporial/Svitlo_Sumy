@@ -160,12 +160,12 @@ def main(page: ft.Page):
         #     colors=[ft.colors.ORANGE_700, ft.colors.RED]
         # ),
         shadow=ft.BoxShadow(
-            blur_radius=6,
+            blur_radius=2,
             blur_style=ft.ShadowBlurStyle.NORMAL,
-            offset=ft.Offset(0, 5),
+            offset=ft.Offset(0, 2),
             color=ft.colors.BLACK87
         ),
-        bgcolor=ft.colors.AMBER_600,
+        bgcolor='#ffcc66',
         border_radius=5,
         padding=1,
         height=50,
@@ -187,12 +187,12 @@ def main(page: ft.Page):
         #     colors=[ft.colors.ORANGE_700, ft.colors.RED]
         # ),
         shadow=ft.BoxShadow(
-            blur_radius=6,
+            blur_radius=2,
             blur_style=ft.ShadowBlurStyle.NORMAL,
-            offset=ft.Offset(0, 5),
+            offset=ft.Offset(0, 2),
             color=ft.colors.BLACK87
         ),
-        bgcolor=ft.colors.AMBER_600,
+        bgcolor='#ffcc66',
         border_radius=5,
         padding=5,
         height=50,
@@ -329,23 +329,23 @@ def main(page: ft.Page):
                     text_align='center',
                 ),
                 ft.ElevatedButton(content=ft.Text("Перша", size=20, weight='w600'),
-                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_300), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.AMBER_600, on_click=cherg_choise, data=1),
+                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=1),
                 ft.ElevatedButton(content=ft.Text("Друга", size=20, weight='w600'),
-                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_300), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.AMBER_600, on_click=cherg_choise, data=2),
+                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=2),
                 ft.ElevatedButton(content=ft.Text("Третя", size=20, weight='w600'),
-                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_300), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.AMBER_600, on_click=cherg_choise, data=3),
+                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=3),
                 ft.ElevatedButton(content=ft.Text("Четверта", size=20, weight='w600'),
-                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_300), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.AMBER_600, on_click=cherg_choise, data=4),
+                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=4),
                 ft.ElevatedButton(content=ft.Text("П'ята", size=20, weight='w600'),
-                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_300), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.AMBER_600, on_click=cherg_choise, data=5),
+                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=5),
                 ft.ElevatedButton(content=ft.Text("Шоста", size=20, weight='w600'),
-                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_300), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor=ft.colors.AMBER_600, on_click=cherg_choise, data=6),
+                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                  color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=6),
                 ft.Container(height=10)
             ]
         ),
@@ -364,9 +364,9 @@ def main(page: ft.Page):
 
     main_info = ft.Container(
         shadow=ft.BoxShadow(
-            blur_radius=15,
+            blur_radius=2,
             blur_style=ft.ShadowBlurStyle.NORMAL,
-            offset=ft.Offset(0, 8),
+            offset=ft.Offset(0, 2),
             color=ft.colors.BLACK87
         ),
         padding=15,
@@ -406,9 +406,9 @@ def main(page: ft.Page):
     info_tab = ft.Container(
         # alignment=ft.alignment.center,
         shadow=ft.BoxShadow(
-            blur_radius=15,
+            blur_radius=2,
             blur_style=ft.ShadowBlurStyle.NORMAL,
-            offset=ft.Offset(0, 8),
+            offset=ft.Offset(0, 2),
             color=ft.colors.BLACK87
         ),
         visible=False,
@@ -465,11 +465,10 @@ def main(page: ft.Page):
         gradient=ft.LinearGradient(
             begin=ft.alignment.top_right,
             end=ft.alignment.bottom_left,
-            colors=[ft.colors.YELLOW_500,
-                    ft.colors.AMBER_900, ft.colors.RED_500]
+            colors=['#ffcc66', '#ff6666']
             # colors=[ft.colors.AMBER, ft.colors.RED]
         ),
-        height=page.height,
+        height=600,
         padding=15,
         content=ft.Column(
             horizontal_alignment='center',
@@ -486,13 +485,14 @@ def main(page: ft.Page):
 
     page.title = 'Svitlo Sumy'
     page.theme_mode = ft.ThemeMode.LIGHT
+    page.bgcolor = ft.colors.BLUE_GREY_50
     page.window_height = 700
     page.window_width = 400
-    page.padding = 0
-    page.window_center()
+    page.padding = 15
+    # page.window_center()
     page.window_resizable = True
-    page.navigation_bar = ft.NavigationBar(surface_tint_color=ft.colors.ORANGE,
-                                           indicator_color=ft.colors.WHITE,
+    page.navigation_bar = ft.NavigationBar(surface_tint_color=ft.colors.BLUE_GREY_100,
+                                           indicator_color='#ffcc66',
                                            height=65,
                                            bgcolor=ft.colors.WHITE,
                                            on_change=on_tab,
@@ -506,10 +506,11 @@ def main(page: ft.Page):
                                                    icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація')
                                            ]
                                            )
-    # main_container.visible = True
+
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
-    page.add(main_container)
+    # page.add(main_container)
+    page.add(lamp_img, main_info, info_tab)
     page.overlay.append(bs)
     page.update()
     check_storage()
