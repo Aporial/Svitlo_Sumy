@@ -150,12 +150,13 @@ def main(page: ft.Page):
             return False
 
     page.title = 'Svitlo Sumy'
-    page.bgcolor = ft.colors.BLACK
     page.theme_mode = ft.ThemeMode.DARK
     page.window_height = 700
     page.window_width = 400
+    page.padding = 0
+    page.window_center()
     page.window_resizable = True
-    page.navigation_bar = ft.NavigationBar(height=80, bgcolor=ft.colors.BLACK, on_change=on_tab, selected_index=1,
+    page.navigation_bar = ft.NavigationBar(height=65, bgcolor=ft.colors.BLACK, on_change=on_tab, selected_index=1,
                                            destinations=[
                                                ft.NavigationDestination(
                                                    icon=ft.icons.LIST_ROUNDED, label='Черги',),
@@ -202,7 +203,7 @@ def main(page: ft.Page):
     )
 
     time_3 = ft.Container(
-        visible=False,
+        visible=True,
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=3,
@@ -218,7 +219,7 @@ def main(page: ft.Page):
     )
 
     time_4 = ft.Container(
-        visible=False,
+        visible=True,
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=3,
@@ -234,7 +235,7 @@ def main(page: ft.Page):
     )
 
     time_5 = ft.Container(
-        visible=False,
+        visible=True,
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=3,
@@ -250,7 +251,7 @@ def main(page: ft.Page):
     )
 
     time_6 = ft.Container(
-        visible=False,
+        visible=True,
         bgcolor=ft.colors.RED,
         border_radius=5,
         padding=3,
@@ -399,9 +400,29 @@ def main(page: ft.Page):
         ]
     )
 
+    main_container = ft.Container(
+        gradient=ft.LinearGradient(
+            begin=ft.alignment.top_right,
+            end=ft.alignment.bottom_left,
+            colors=[ft.colors.AMBER, ft.colors.RED]
+        ),
+        height=page.height,
+        padding=15,
+        content=ft.Column(
+            horizontal_alignment='center',
+            alignment='center',
+            controls=[
+                lamp_img,
+                main_info,
+                info_tab,
+                ft.Container(height=65)
+            ]
+        )
+    )
+
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
-    page.add(lamp_img, main_info, info_tab)
+    page.add(main_container)
     page.overlay.append(bs)
     page.update()
     check_storage()
