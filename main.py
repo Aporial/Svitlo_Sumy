@@ -154,7 +154,7 @@ def main(page: ft.Page):
     page.window_height = 700
     page.window_width = 400
     page.padding = 0
-    # page.window_center()
+    page.window_center()
     page.window_resizable = True
     page.navigation_bar = ft.NavigationBar(surface_tint_color=ft.colors.ORANGE,
                                            indicator_color=ft.colors.WHITE,
