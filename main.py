@@ -15,6 +15,7 @@ def main(page: ft.Page):
         info_tab.visible = False
         bs.update()
         page.update()
+        main_container.update()
 
     def on_tab(e):
         my_index = e.control.selected_index
@@ -28,11 +29,13 @@ def main(page: ft.Page):
             info_tab.visible = False
             lamp_img.visible = True
             page.update()
+            main_container.update()
         if my_index == 2:
             info_tab.visible = True
             main_info.visible = False
             lamp_img.visible = False
             page.update()
+            main_container.update()
 
     def mono_click(e):
         page.launch_url('https://send.monobank.ua/jar/7rkGHNfQpV',
@@ -80,6 +83,7 @@ def main(page: ft.Page):
             color=ft.colors.BLACK,
         )
         page.update()
+        main_container.update()
 
     def check_storage():
         if page.client_storage.get("number") == None:
@@ -122,6 +126,7 @@ def main(page: ft.Page):
                     color=ft.colors.BLACK,
                 )
                 page.update()
+                main_container.update()
 
     def storage():
         storage = page.client_storage.get("number")
@@ -511,6 +516,7 @@ def main(page: ft.Page):
     page.add(main_container)
     page.overlay.append(bs)
     page.update()
+    main_container.update()
     check_storage()
 
 
