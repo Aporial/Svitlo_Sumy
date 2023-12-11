@@ -169,7 +169,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=1,
         height=50,
-        width=145,
+        width=150,
         alignment=ft.alignment.center,
         content=ft.Text(
             one,
@@ -196,7 +196,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=5,
         height=50,
-        width=145,
+        width=150,
         alignment=ft.alignment.center,
         content=ft.Text(
             two,
@@ -223,7 +223,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=3,
         height=50,
-        width=145,
+        width=150,
         alignment=ft.alignment.center,
         content=ft.Text(
             '22:00-24:00',
@@ -250,7 +250,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=3,
         height=50,
-        width=145,
+        width=150,
         alignment=ft.alignment.center,
         content=ft.Text(
             '22:00-24:00',
@@ -277,7 +277,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=3,
         height=50,
-        width=145,
+        width=150,
         alignment=ft.alignment.center,
         content=ft.Text(
             '22:00-24:00',
@@ -304,7 +304,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=3,
         height=50,
-        width=145,
+        width=150,
         alignment=ft.alignment.center,
         content=ft.Text(
             '22:00-24:00',
