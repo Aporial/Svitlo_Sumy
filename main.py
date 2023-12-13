@@ -85,7 +85,6 @@ def main(page: ft.Page):
 
     def check_storage():
         if page.client_storage.get("number") == None:
-            save_device_rez()
             open_list()
         else:
             DB_NAME = "assets/DATA_BASE.db"
@@ -155,8 +154,9 @@ def main(page: ft.Page):
             return False
 
     def save_device_rez():
-        page.client_storage.set("page_height", page.height)
-        page.client_storage.set("page_width", page.width)
+        if page.client_storage.get("page_height") == None:
+            page.client_storage.set("page_height", page.height)
+            page.client_storage.set("page_width", page.width)
         main_container.height = page.client_storage.get("page_height")
         main_container.width = page.client_storage.get("page_wight")
         page.update()
@@ -543,6 +543,7 @@ def main(page: ft.Page):
     page.overlay.append(bs)
     page.update()
     check_storage()
+    save_device_rez()
 
 
 ft.app(
