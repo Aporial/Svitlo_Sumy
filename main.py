@@ -149,6 +149,23 @@ def main(page: ft.Page):
             )
             return False
 
+    def test_button_click(e):
+        time_3.content = ft.Text(
+            page.height,
+            size=21,
+            weight='w600',
+            color=ft.colors.BLACK,
+        )
+        print(page.height)
+        time_4.content = ft.Text(
+            page.width,
+            size=21,
+            weight='w600',
+            color=ft.colors.BLACK,
+        )
+        print(page.width)
+        page.update()
+
     one = page.client_storage.get("one")
     two = page.client_storage.get("two")
 
@@ -207,7 +224,7 @@ def main(page: ft.Page):
     )
 
     time_3 = ft.Container(
-        visible=False,
+        visible=True,
         # gradient=ft.LinearGradient(
         #     begin=ft.alignment.top_center,
         #     end=ft.alignment.bottom_center,
@@ -219,14 +236,14 @@ def main(page: ft.Page):
             offset=ft.Offset(0, 5),
             color=ft.colors.BLACK87
         ),
-        bgcolor=ft.colors.AMBER_600,
+        bgcolor='#ffcc66',
         border_radius=5,
         padding=3,
         height=50,
         width=150,
         alignment=ft.alignment.center,
         content=ft.Text(
-            '22:00-24:00',
+            page.height,
             size=21,
             weight='w600',
             color=ft.colors.BLACK,
@@ -234,7 +251,7 @@ def main(page: ft.Page):
     )
 
     time_4 = ft.Container(
-        visible=False,
+        visible=True,
         # gradient=ft.LinearGradient(
         #     begin=ft.alignment.top_center,
         #     end=ft.alignment.bottom_center,
@@ -246,14 +263,14 @@ def main(page: ft.Page):
             offset=ft.Offset(0, 5),
             color=ft.colors.BLACK87
         ),
-        bgcolor=ft.colors.AMBER_600,
+        bgcolor='#ffcc66',
         border_radius=5,
         padding=3,
         height=50,
         width=150,
         alignment=ft.alignment.center,
         content=ft.Text(
-            '22:00-24:00',
+            page.width,
             size=21,
             weight='w600',
             color=ft.colors.BLACK,
@@ -483,11 +500,19 @@ def main(page: ft.Page):
         )
     )
 
+    test_button = ft.ElevatedButton(
+        'Тест',
+        height=50,
+        width=100,
+        on_click=test_button_click
+    )
+
     page.title = 'Svitlo Sumy'
     page.theme_mode = ft.ThemeMode.LIGHT
     page.bgcolor = ft.colors.BLUE_GREY_50
     page.window_height = 700
     page.window_width = 400
+
     page.padding = 15
     # page.window_center()
     page.window_resizable = True
@@ -510,7 +535,7 @@ def main(page: ft.Page):
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
     # page.add(main_container)
-    page.add(lamp_img, main_info, info_tab)
+    page.add(lamp_img, main_info, info_tab, test_button)
     page.overlay.append(bs)
     page.update()
     check_storage()
