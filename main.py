@@ -399,7 +399,8 @@ def main(page: ft.Page):
                     size=25,
                     weight='w500',
                     color=ft.colors.BLACK87,
-                    font_family="Golos Text"
+                    font_family="Golos Text",
+                    text_align='center'
                 ),
                 ft.Divider(
                     height=1,
@@ -444,7 +445,8 @@ def main(page: ft.Page):
                     size=35,
                     color=ft.colors.BLACK87,
                     weight="w400",
-                    font_family="Golos Text"
+                    font_family="Golos Text",
+                    text_align="center"
                 ),
                 ft.Divider(height=0.1, color=ft.colors.BLACK26),
                 ft.Text(
