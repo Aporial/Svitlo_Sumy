@@ -70,14 +70,16 @@ def main(page: ft.Page):
         time_1.content = ft.Text(
             one,
             size=21,
-            weight='w600',
+            weight='w500',
             color=ft.colors.BLACK,
+            font_family="Golos Text"
         )
         time_2.content = ft.Text(
             two,
             size=21,
-            weight='w600',
+            weight='w500',
             color=ft.colors.BLACK,
+            font_family="Golos Text"
         )
         page.update()
 
@@ -113,14 +115,16 @@ def main(page: ft.Page):
                 time_1.content = ft.Text(
                     one,
                     size=21,
-                    weight='w600',
+                    weight='w500',
                     color=ft.colors.BLACK,
+                    font_family="Golos Text"
                 )
                 time_2.content = ft.Text(
                     two,
                     size=21,
-                    weight='w600',
+                    weight='w500',
                     color=ft.colors.BLACK,
+                    font_family="Golos Text"
                 )
                 page.update()
 
@@ -174,7 +178,7 @@ def main(page: ft.Page):
             blur_radius=2,
             blur_style=ft.ShadowBlurStyle.NORMAL,
             offset=ft.Offset(0, 2),
-            color=ft.colors.BLACK87
+            color=ft.colors.BLACK54
         ),
         bgcolor='#ffcc66',
         border_radius=5,
@@ -185,8 +189,9 @@ def main(page: ft.Page):
         content=ft.Text(
             one,
             size=21,
-            weight='w600',
+            weight='w500',
             color=ft.colors.BLACK,
+            font_family="Golos Text"
         )
     )
 
@@ -201,7 +206,7 @@ def main(page: ft.Page):
             blur_radius=2,
             blur_style=ft.ShadowBlurStyle.NORMAL,
             offset=ft.Offset(0, 2),
-            color=ft.colors.BLACK87
+            color=ft.colors.BLACK54
         ),
         bgcolor='#ffcc66',
         border_radius=5,
@@ -212,8 +217,9 @@ def main(page: ft.Page):
         content=ft.Text(
             two,
             size=21,
-            weight='w600',
+            weight='w500',
             color=ft.colors.BLACK,
+            font_family="Golos Text"
         )
     )
 
@@ -237,10 +243,10 @@ def main(page: ft.Page):
         width=150,
         alignment=ft.alignment.center,
         content=ft.Text(
-            '3',
+            '10:00-12:00',
             size=21,
             weight='w600',
-            color=ft.colors.BLACK,
+            color=ft.colors.WHITE,
         )
     )
 
@@ -338,23 +344,24 @@ def main(page: ft.Page):
                     size=20,
                     weight='w500',
                     text_align='center',
+                    font_family="Golos Text"
                 ),
-                ft.ElevatedButton(content=ft.Text("Перша", size=20, weight='w600'),
+                ft.ElevatedButton(content=ft.Text("Перша", size=22, weight='w500', font_family="Golos Text"),
                                   style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
                                   color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=1),
-                ft.ElevatedButton(content=ft.Text("Друга", size=20, weight='w600'),
+                ft.ElevatedButton(content=ft.Text("Друга", size=22, weight='w500', font_family="Golos Text"),
                                   style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
                                   color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=2),
-                ft.ElevatedButton(content=ft.Text("Третя", size=20, weight='w600'),
+                ft.ElevatedButton(content=ft.Text("Третя", size=22, weight='w500', font_family="Golos Text"),
                                   style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
                                   color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=3),
-                ft.ElevatedButton(content=ft.Text("Четверта", size=20, weight='w600'),
+                ft.ElevatedButton(content=ft.Text("Четверта", size=22, weight='w500', font_family="Golos Text"),
                                   style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
                                   color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=4),
-                ft.ElevatedButton(content=ft.Text("П'ята", size=20, weight='w600'),
+                ft.ElevatedButton(content=ft.Text("П'ята", size=22, weight='w500', font_family="Golos Text"),
                                   style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
                                   color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=5),
-                ft.ElevatedButton(content=ft.Text("Шоста", size=20, weight='w600'),
+                ft.ElevatedButton(content=ft.Text("Шоста", size=22, weight='w500', font_family="Golos Text"),
                                   style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
                                   color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=6),
                 ft.Container(height=10)
@@ -374,14 +381,15 @@ def main(page: ft.Page):
     )
 
     main_info = ft.Container(
-        shadow=ft.BoxShadow(
-            blur_radius=2,
-            blur_style=ft.ShadowBlurStyle.NORMAL,
-            offset=ft.Offset(0, 2),
-            color=ft.colors.BLACK87
-        ),
+        blur=10,
+        # shadow=ft.BoxShadow(
+        #     blur_radius=2,
+        #     blur_style=ft.ShadowBlurStyle.NORMAL,
+        #     offset=ft.Offset(0, 2),
+        #     color=ft.colors.BLACK54
+        # ),
         padding=15,
-        bgcolor=ft.colors.WHITE,
+        bgcolor=ft.colors.BLACK26,
         border_radius=15,
         content=ft.Column(
             horizontal_alignment='center',
@@ -389,8 +397,9 @@ def main(page: ft.Page):
                 ft.Text(
                     "Графік відключень:",
                     size=25,
-                    weight='w600',
-                    color='black',
+                    weight='w500',
+                    color=ft.colors.BLACK87,
+                    font_family="Golos Text"
                 ),
                 ft.Divider(
                     height=1,
@@ -415,15 +424,15 @@ def main(page: ft.Page):
     )
 
     info_tab = ft.Container(
-        # alignment=ft.alignment.center,
-        shadow=ft.BoxShadow(
-            blur_radius=2,
-            blur_style=ft.ShadowBlurStyle.NORMAL,
-            offset=ft.Offset(0, 2),
-            color=ft.colors.BLACK87
-        ),
+        blur=10,
+        # shadow=ft.BoxShadow(
+        #     blur_radius=2,
+        #     blur_style=ft.ShadowBlurStyle.NORMAL,
+        #     offset=ft.Offset(0, 2),
+        #     color=ft.colors.BLACK87
+        # ),
         visible=False,
-        bgcolor=ft.colors.WHITE,
+        bgcolor=ft.colors.BLACK12,
         border_radius=15,
         padding=15,
         content=ft.Column(
@@ -434,30 +443,37 @@ def main(page: ft.Page):
                     'Інформація',
                     size=35,
                     color=ft.colors.BLACK87,
-                    weight='bolt',
+                    weight="w400",
+                    font_family="Golos Text"
                 ),
-                ft.Divider(height=0.1),
+                ft.Divider(height=0.1, color=ft.colors.BLACK26),
                 ft.Text(
                     "Застосунок розроблений для безкоштовного користування.",
                     size=16,
                     color='black',
-                    text_align='center'
+                    text_align='center',
+                    font_family="Golos Text",
+                    weight="w500"
                 ),
-                ft.Divider(height=0.1),
+                ft.Divider(height=0.1, color=ft.colors.BLACK26),
                 ft.Text(
                     "Головна мета - максимально спростити пошук актуальної інформації про відключення світла.",
                     size=16,
                     color='black',
-                    text_align='center'
+                    text_align='center',
+                    font_family="Golos Text",
+                    weight="w500"
                 ),
-                ft.Divider(height=0.1),
+                ft.Divider(height=0.1, color=ft.colors.BLACK26),
                 ft.Text(
                     "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку з монобанку.",
                     size=16,
                     color='black',
-                    text_align='center'
+                    text_align='center',
+                    font_family="Golos Text",
+                    weight="w500"
                 ),
-                ft.Divider(height=0.1),
+                ft.Divider(height=0.1, color=ft.colors.BLACK26),
                 ft.TextButton(
                     style=ft.ButtonStyle(overlay_color=ft.colors.AMBER_200),
                     on_click=mono_click,
@@ -494,6 +510,9 @@ def main(page: ft.Page):
         ),
     )
 
+    page.fonts = {
+        "Golos Text": "/fonts/GolosText.ttf"
+    }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ft.ThemeMode.LIGHT
     page.bgcolor = ft.colors.BLUE_GREY_50
@@ -502,7 +521,7 @@ def main(page: ft.Page):
     page.padding = 0
     # page.window_center()
     page.window_resizable = True
-    page.navigation_bar = ft.NavigationBar(surface_tint_color=ft.colors.BLUE_GREY_100,
+    page.navigation_bar = ft.NavigationBar(surface_tint_color='#ffcc66',
                                            indicator_color='#ffcc66',
                                            height=65,
                                            bgcolor=ft.colors.WHITE,
@@ -521,13 +540,13 @@ def main(page: ft.Page):
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
     page.add(main_container)
-    # page.add(lamp_img, main_info, info_tab)
     page.overlay.append(bs)
     page.update()
     check_storage()
 
 
-ft.app(
-    target=main,
-    assets_dir='assets',
-)
+if __name__ == "__main__":
+    ft.app(
+        target=main,
+        assets_dir='assets',
+    )
