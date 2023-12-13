@@ -83,6 +83,7 @@ def main(page: ft.Page):
 
     def check_storage():
         if page.client_storage.get("number") == None:
+            save_device_rez()
             open_list()
         else:
             DB_NAME = "assets/DATA_BASE.db"
@@ -149,25 +150,18 @@ def main(page: ft.Page):
             )
             return False
 
-    def test_button_click(e):
-        time_3.content = ft.Text(
-            page.height,
-            size=21,
-            weight='w600',
-            color=ft.colors.BLACK,
-        )
-        print(page.height)
-        time_4.content = ft.Text(
-            page.width,
-            size=21,
-            weight='w600',
-            color=ft.colors.BLACK,
-        )
-        print(page.width)
+    def save_device_rez():
+        page.client_storage.set("page_height", page.height)
+        page.client_storage.set("page_width", page.width)
+        main_container.height = page.client_storage.get("page_height")
+        main_container.width = page.client_storage.get("page_wight")
         page.update()
 
     one = page.client_storage.get("one")
     two = page.client_storage.get("two")
+
+    page_height = page.client_storage.get("page_height")
+    page_width = page.client_storage.get("page_width")
 
     time_1 = ft.Container(
         visible=True,
@@ -224,7 +218,7 @@ def main(page: ft.Page):
     )
 
     time_3 = ft.Container(
-        visible=True,
+        visible=False,
         # gradient=ft.LinearGradient(
         #     begin=ft.alignment.top_center,
         #     end=ft.alignment.bottom_center,
@@ -243,7 +237,7 @@ def main(page: ft.Page):
         width=150,
         alignment=ft.alignment.center,
         content=ft.Text(
-            page.height,
+            '3',
             size=21,
             weight='w600',
             color=ft.colors.BLACK,
@@ -251,7 +245,7 @@ def main(page: ft.Page):
     )
 
     time_4 = ft.Container(
-        visible=True,
+        visible=False,
         # gradient=ft.LinearGradient(
         #     begin=ft.alignment.top_center,
         #     end=ft.alignment.bottom_center,
@@ -270,7 +264,7 @@ def main(page: ft.Page):
         width=150,
         alignment=ft.alignment.center,
         content=ft.Text(
-            page.width,
+            '4',
             size=21,
             weight='w600',
             color=ft.colors.BLACK,
@@ -479,32 +473,25 @@ def main(page: ft.Page):
     )
 
     main_container = ft.Container(
+        height=page_height,
+        width=page_width,
         gradient=ft.LinearGradient(
             begin=ft.alignment.top_right,
             end=ft.alignment.bottom_left,
             colors=['#ffcc66', '#ff6666']
             # colors=[ft.colors.AMBER, ft.colors.RED]
         ),
-        height=600,
         padding=15,
         content=ft.Column(
             horizontal_alignment='center',
             alignment='center',
-            # height=page.height,
             controls=[
                 lamp_img,
                 main_info,
                 info_tab,
                 ft.Container(height=65)
             ]
-        )
-    )
-
-    test_button = ft.ElevatedButton(
-        'Тест',
-        height=50,
-        width=100,
-        on_click=test_button_click
+        ),
     )
 
     page.title = 'Svitlo Sumy'
@@ -512,8 +499,7 @@ def main(page: ft.Page):
     page.bgcolor = ft.colors.BLUE_GREY_50
     page.window_height = 700
     page.window_width = 400
-
-    page.padding = 15
+    page.padding = 0
     # page.window_center()
     page.window_resizable = True
     page.navigation_bar = ft.NavigationBar(surface_tint_color=ft.colors.BLUE_GREY_100,
@@ -534,8 +520,8 @@ def main(page: ft.Page):
 
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
-    # page.add(main_container)
-    page.add(lamp_img, main_info, info_tab, test_button)
+    page.add(main_container)
+    # page.add(lamp_img, main_info, info_tab)
     page.overlay.append(bs)
     page.update()
     check_storage()
