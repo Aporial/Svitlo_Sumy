@@ -378,7 +378,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=1,
         height=50,
-        width=150,
+        width=160,
         alignment=ft.alignment.center,
         content=ft.Text(
             one,
@@ -406,7 +406,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=5,
         height=50,
-        width=150,
+        width=160,
         alignment=ft.alignment.center,
         content=ft.Text(
             two,
@@ -434,7 +434,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=5,
         height=50,
-        width=150,
+        width=160,
         alignment=ft.alignment.center,
         content=ft.Text(
             three,
@@ -462,7 +462,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=5,
         height=50,
-        width=150,
+        width=160,
         alignment=ft.alignment.center,
         content=ft.Text(
             four,
@@ -490,7 +490,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=5,
         height=50,
-        width=150,
+        width=160,
         alignment=ft.alignment.center,
         content=ft.Text(
             five,
@@ -518,7 +518,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=5,
         height=50,
-        width=150,
+        width=160,
         alignment=ft.alignment.center,
         content=ft.Text(
             six,
@@ -695,7 +695,6 @@ def main(page: ft.Page):
             begin=ft.alignment.top_right,
             end=ft.alignment.bottom_left,
             colors=['#ffcc66', '#ff6666']
-            # colors=[ft.colors.AMBER, ft.colors.RED]
         ),
         padding=15,
         content=ft.Column(
@@ -730,7 +729,7 @@ def main(page: ft.Page):
     page.theme_mode = ft.ThemeMode.LIGHT
     page.bgcolor = ft.colors.BLUE_GREY_50
     page.window_height = 700
-    page.window_width = 400
+    page.window_width = 410
     page.padding = 0
     # page.window_center()
     page.window_resizable = True
