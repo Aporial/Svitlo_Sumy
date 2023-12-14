@@ -2,14 +2,18 @@ import flet as ft
 import sqlite3
 from functions import day_num, check_cherg
 from datetime import datetime
-from urllib.request import urlretrieve
+# import firebase_admin
+# from firebase_admin import credentials
+# from firebase_admin import db
+import requests
 
-
-# URL = "https://github.com/Aporial/Svitlo/blob/bd55ffb5ffc04a250201e0b0b33cec260275b805/assets/DATA_BASE.db?raw=true"
-# urlretrieve(URL, "assets/DATA_BASE.db")
+URL = URL = "https://github.com/Aporial/Svitlo/blob/main/assets/DATA_BASE.db?raw=true"
+response = requests.get(URL)
+open("assets/DATA_BASE.db", "wb").write(response.content)
 
 
 def main(page: ft.Page):
+
     def open_list():
         bs.open = True
         page.navigation_bar.selected_index = 1

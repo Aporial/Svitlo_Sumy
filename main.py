@@ -1,14 +1,21 @@
 import flet as ft
 from functions import check_cherg, day_num_one, day_num_two, day_num_three, day_num_four, day_num_five, day_num_six
 from datetime import datetime
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import db
+import pyrebase
 
-cred = credentials.Certificate("./assets/firebase_init.json")
-firebase_admin.initialize_app(
-    cred, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
+conf = {
+    "apiKey": "AIzaSyDA-lGFexei3q2CdRl62b94i0w-MTTedY4",
+    "authDomain": "svitlo-sumy.firebaseapp.com",
+    "databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app",
+    "projectId": "svitlo-sumy",
+    "storageBucket": "svitlo-sumy.appspot.com",
+    "messagingSenderId": "676377055076",
+    "appId": "1:676377055076:web:188e3d20d8abbd32a57471",
+    "measurementId": "G-TCL7TG18XP"
+}
 
+firebase = pyrebase.initialize_app(conf)
+db = firebase.database()
 
 def main(page: ft.Page):
     def open_list():
@@ -48,8 +55,8 @@ def main(page: ft.Page):
         storage_info = storage()
         cherg = check_cherg(storage_info)
         try:
-            try_one = db.reference(f"/{cherg}/{day_num_one}")
-            result_one = try_one.get()
+            try_one = db.child(cherg).child(day_num_one).get()
+            result_one = try_one.val()
             page.client_storage.set("one", result_one)
             if page.client_storage.get("one") == '22:00-23:59':
                 one = '22:00-24:00'
@@ -68,8 +75,8 @@ def main(page: ft.Page):
             print("One not found!")
 
         try:
-            try_two = db.reference(f"/{cherg}/{day_num_two}")
-            result_two = try_two.get()
+            try_two = db.child(cherg).child(day_num_two).get()
+            result_two = try_two.val()
             page.client_storage.set("two", result_two)
             if page.client_storage.get("two") == '22:00-23:59':
                 two = '22:00-24:00'
@@ -88,8 +95,8 @@ def main(page: ft.Page):
             print("Two not found!")
         pass
         try:
-            try_three = db.reference(f"/{cherg}/{day_num_three}")
-            result_three = try_three.get()
+            try_three = db.child(cherg).child(day_num_three).get()
+            result_three = try_three.val()
             page.client_storage.set("three", result_three)
             if page.client_storage.get("three") == '22:00-23:59':
                 three = '22:00-24:00'
@@ -108,8 +115,8 @@ def main(page: ft.Page):
             print("Three not found!")
 
         try:
-            try_four = db.reference(f"/{cherg}/{day_num_four}")
-            result_four = try_four.get()
+            try_four = db.child(cherg).child(day_num_four).get()
+            result_four = try_four.val()
             page.client_storage.set("four", result_four)
             if page.client_storage.get("four") == '22:00-23:59':
                 four = '22:00-24:00'
@@ -128,8 +135,8 @@ def main(page: ft.Page):
             print("Four time not found!")
 
         try:
-            try_five = db.reference(f"/{cherg}/{day_num_five}")
-            result_five = try_five.get()
+            try_five = db.child(cherg).child(day_num_five).get()
+            result_five = try_five.val()
             page.client_storage.set("five", result_five)
             if page.client_storage.get("five") == '22:00-23:59':
                 five = '22:00-24:00'
@@ -148,8 +155,8 @@ def main(page: ft.Page):
             print("Five time not found!")
 
         try:
-            try_six = db.reference(f"/{cherg}/{day_num_six}")
-            result_six = try_six.get()
+            try_six = db.child(cherg).child(day_num_six).get()
+            result_six = try_six.val()
             page.client_storage.set("six", result_six)
             if page.client_storage.get("six") == '22:00-23:59':
                 six = '22:00-24:00'
@@ -174,8 +181,8 @@ def main(page: ft.Page):
             storage_info = storage()
             cherg = check_cherg(storage_info)
             try:
-                try_one = db.reference(f"/{cherg}/{day_num_one}")
-                result_one = try_one.get()
+                try_one = db.child(cherg).child(day_num_one).get()
+                result_one = try_one.val()
                 page.client_storage.set("one", result_one)
                 if page.client_storage.get("one") == '22:00-23:59':
                     one = '22:00-24:00'
@@ -194,8 +201,8 @@ def main(page: ft.Page):
                 print("One not found!")
 
             try:
-                try_two = db.reference(f"/{cherg}/{day_num_two}")
-                result_two = try_two.get()
+                try_two = db.child(cherg).child(day_num_two).get()
+                result_two = try_two.val()
                 page.client_storage.set("two", result_two)
                 if page.client_storage.get("two") == '22:00-23:59':
                     two = '22:00-24:00'
@@ -214,8 +221,8 @@ def main(page: ft.Page):
                 print("Two not found!")
 
             try:
-                try_three = db.reference(f"/{cherg}/{day_num_three}")
-                result_three = try_three.get()
+                try_three = db.child(cherg).child(day_num_three).get()
+                result_three = try_three.val()
                 page.client_storage.set("three", result_three)
                 if page.client_storage.get("three") == '22:00-23:59':
                     three = '22:00-24:00'
@@ -234,8 +241,8 @@ def main(page: ft.Page):
                 print("Three not found!")
 
             try:
-                try_four = db.reference(f"/{cherg}/{day_num_four}")
-                result_four = try_four.get()
+                try_four = db.child(cherg).child(day_num_four).get()
+                result_four = try_four.val()
                 page.client_storage.set("four", result_four)
                 if page.client_storage.get("four") == '22:00-23:59':
                     four = '22:00-24:00'
@@ -254,8 +261,8 @@ def main(page: ft.Page):
                 print("Four time not found!")
 
             try:
-                try_five = db.reference(f"/{cherg}/{day_num_five}")
-                result_five = try_five.get()
+                try_five = db.child(cherg).child(day_num_five).get()
+                result_five = try_five.val()
                 page.client_storage.set("five", result_five)
                 if page.client_storage.get("five") == '22:00-23:59':
                     five = '22:00-24:00'
@@ -274,8 +281,8 @@ def main(page: ft.Page):
                 print("Five time not found!")
 
             try:
-                try_six = db.reference(f"/{cherg}/{day_num_six}")
-                result_six = try_six.get()
+                try_six = db.child(cherg).child(day_num_six).get()
+                result_six = try_six.val()
                 page.client_storage.set("six", result_six)
                 if page.client_storage.get("six") == '22:00-23:59':
                     six = '22:00-24:00'
