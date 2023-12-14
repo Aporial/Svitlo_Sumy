@@ -1,13 +1,12 @@
 import flet as ft
-from functions import check_cherg, day_num_one, day_num_two, day_num_three, day_num_four, day_num_five, day_num_six
+import sqlite3
+from functions import day_num, check_cherg
 from datetime import datetime
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import db
+from urllib.request import urlretrieve
 
-cred = credentials.Certificate("./assets/firebase_init.json")
-firebase_admin.initialize_app(
-    cred, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
+
+# URL = "https://github.com/Aporial/Svitlo/blob/bd55ffb5ffc04a250201e0b0b33cec260275b805/assets/DATA_BASE.db?raw=true"
+# urlretrieve(URL, "assets/DATA_BASE.db")
 
 
 def main(page: ft.Page):
@@ -45,143 +44,74 @@ def main(page: ft.Page):
         page.client_storage.set("number", numb_cherg)
         bs.open = False
         bs.update()
+        DB_NAME = "assets/DATA_BASE.db"
+        sqlite_conn = sqlite3.connect(DB_NAME)
         storage_info = storage()
         cherg = check_cherg(storage_info)
-        try:
-            try_one = db.reference(f"/{cherg}/{day_num_one}")
-            result_one = try_one.get()
-            page.client_storage.set("one", result_one)
-            if page.client_storage.get("one") == '22:00-23:59':
-                one = '22:00-24:00'
-            else:
-                one = page.client_storage.get("one")
-            time_1.visible = True
-            time_1.content = ft.Text(
-                one,
-                size=21,
-                weight='w500',
-                color=ft.colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-        except:
-            print("One not found!")
-
-        try:
-            try_two = db.reference(f"/{cherg}/{day_num_two}")
-            result_two = try_two.get()
-            page.client_storage.set("two", result_two)
-            if page.client_storage.get("two") == '22:00-23:59':
-                two = '22:00-24:00'
-            else:
-                two = page.client_storage.get("two")
-            time_2.visible = True
-            time_2.content = ft.Text(
-                two,
-                size=21,
-                weight='w500',
-                color=ft.colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-        except:
-            print("Two not found!")
-        pass
-        try:
-            try_three = db.reference(f"/{cherg}/{day_num_three}")
-            result_three = try_three.get()
-            page.client_storage.set("three", result_three)
-            if page.client_storage.get("three") == '22:00-23:59':
-                three = '22:00-24:00'
-            else:
-                three = page.client_storage.get("three")
-            time_3.visible = True
-            time_3.content = ft.Text(
-                three,
-                size=21,
-                weight='w500',
-                color=ft.colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-        except:
-            print("Three not found!")
-
-        try:
-            try_four = db.reference(f"/{cherg}/{day_num_four}")
-            result_four = try_four.get()
-            page.client_storage.set("four", result_four)
-            if page.client_storage.get("four") == '22:00-23:59':
-                four = '22:00-24:00'
-            else:
-                four = page.client_storage.get("four")
-            time_4.visible = True
-            time_4.content = ft.Text(
-                four,
-                size=21,
-                weight='w500',
-                color=ft.colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-        except:
-            print("Four time not found!")
-
-        try:
-            try_five = db.reference(f"/{cherg}/{day_num_five}")
-            result_five = try_five.get()
-            page.client_storage.set("five", result_five)
-            if page.client_storage.get("five") == '22:00-23:59':
-                five = '22:00-24:00'
-            else:
-                five = page.client_storage.get("five")
-            time_5.visible = True
-            time_5.content = ft.Text(
-                five,
-                size=21,
-                weight='w500',
-                color=ft.colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-        except:
-            print("Five time not found!")
-
-        try:
-            try_six = db.reference(f"/{cherg}/{day_num_six}")
-            result_six = try_six.get()
-            page.client_storage.set("six", result_six)
-            if page.client_storage.get("six") == '22:00-23:59':
-                six = '22:00-24:00'
-            else:
-                six = page.client_storage.get("six")
-            time_6.visible = True
-            time_6.content = ft.Text(
-                six,
-                size=21,
-                weight='w500',
-                color=ft.colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-        except:
-            print("Six time not found!")
+        sql_request = f"SELECT {day_num} FROM '{cherg}'"
+        sql_cursor = sqlite_conn.execute(sql_request)
+        result_one = sql_cursor.fetchone()[0]
+        result_two = sql_cursor.fetchone()[0]
+        page.client_storage.set("one", result_one)
+        page.client_storage.set("two", result_two)
+        one_check = page.client_storage.get("one")
+        two_check = page.client_storage.get("two")
+        if page.client_storage.get("one") == '22:00-23:59':
+            one = '22:00-24:00'
+        else:
+            one = page.client_storage.get("one")
+        if page.client_storage.get("two") == '22:00-23:59':
+            two = '22:00-24:00'
+        else:
+            two = page.client_storage.get("two")
+        if check_time_interval(one_check) == True:
+            pass
+        else:
+            check_time_interval(two_check)
+        time_1.content = ft.Text(
+            one,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+        time_2.content = ft.Text(
+            two,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+        page.update()
 
     def check_storage():
         if page.client_storage.get("number") == None:
             open_list()
         else:
-            storage_info = storage()
-            cherg = check_cherg(storage_info)
-            try:
-                try_one = db.reference(f"/{cherg}/{day_num_one}")
-                result_one = try_one.get()
+            DB_NAME = "assets/DATA_BASE.db"
+            with sqlite3.connect(DB_NAME) as sqlite_conn:
+                storage_info = storage()
+                cherg = check_cherg(storage_info)
+                sql_request = f"SELECT {day_num} FROM '{cherg}'"
+                sql_cursor = sqlite_conn.execute(sql_request)
+                result_one = sql_cursor.fetchone()[0]
+                result_two = sql_cursor.fetchone()[0]
                 page.client_storage.set("one", result_one)
+                page.client_storage.set("two", result_two)
+                one_check = page.client_storage.get("one")
+                two_check = page.client_storage.get("two")
                 if page.client_storage.get("one") == '22:00-23:59':
                     one = '22:00-24:00'
                 else:
                     one = page.client_storage.get("one")
-                time_1.visible = True
+                if page.client_storage.get("two") == '22:00-23:59':
+                    two = '22:00-24:00'
+                else:
+                    two = page.client_storage.get("two")
+                if check_time_interval(one_check) == True:
+                    pass
+                else:
+                    check_time_interval(two_check)
                 time_1.content = ft.Text(
                     one,
                     size=21,
@@ -189,19 +119,6 @@ def main(page: ft.Page):
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
                 )
-                page.update()
-            except:
-                print("One not found!")
-
-            try:
-                try_two = db.reference(f"/{cherg}/{day_num_two}")
-                result_two = try_two.get()
-                page.client_storage.set("two", result_two)
-                if page.client_storage.get("two") == '22:00-23:59':
-                    two = '22:00-24:00'
-                else:
-                    two = page.client_storage.get("two")
-                time_2.visible = True
                 time_2.content = ft.Text(
                     two,
                     size=21,
@@ -210,88 +127,6 @@ def main(page: ft.Page):
                     font_family="Golos Text"
                 )
                 page.update()
-            except:
-                print("Two not found!")
-
-            try:
-                try_three = db.reference(f"/{cherg}/{day_num_three}")
-                result_three = try_three.get()
-                page.client_storage.set("three", result_three)
-                if page.client_storage.get("three") == '22:00-23:59':
-                    three = '22:00-24:00'
-                else:
-                    three = page.client_storage.get("three")
-                time_3.visible = True
-                time_3.content = ft.Text(
-                    three,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
-                page.update()
-            except:
-                print("Three not found!")
-
-            try:
-                try_four = db.reference(f"/{cherg}/{day_num_four}")
-                result_four = try_four.get()
-                page.client_storage.set("four", result_four)
-                if page.client_storage.get("four") == '22:00-23:59':
-                    four = '22:00-24:00'
-                else:
-                    four = page.client_storage.get("four")
-                time_4.visible = True
-                time_4.content = ft.Text(
-                    four,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
-                page.update()
-            except:
-                print("Four time not found!")
-
-            try:
-                try_five = db.reference(f"/{cherg}/{day_num_five}")
-                result_five = try_five.get()
-                page.client_storage.set("five", result_five)
-                if page.client_storage.get("five") == '22:00-23:59':
-                    five = '22:00-24:00'
-                else:
-                    five = page.client_storage.get("five")
-                time_5.visible = True
-                time_5.content = ft.Text(
-                    five,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
-                page.update()
-            except:
-                print("Five time not found!")
-
-            try:
-                try_six = db.reference(f"/{cherg}/{day_num_six}")
-                result_six = try_six.get()
-                page.client_storage.set("six", result_six)
-                if page.client_storage.get("six") == '22:00-23:59':
-                    six = '22:00-24:00'
-                else:
-                    six = page.client_storage.get("six")
-                time_6.visible = True
-                time_6.content = ft.Text(
-                    six,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
-                page.update()
-            except:
-                print("Six time not found!")
 
     def storage():
         storage = page.client_storage.get("number")
@@ -334,7 +169,7 @@ def main(page: ft.Page):
     page_width = page.client_storage.get("page_width")
 
     time_1 = ft.Container(
-        visible=False,
+        visible=True,
         # gradient=ft.LinearGradient(
         #     begin=ft.alignment.top_center,
         #     end=ft.alignment.bottom_center,
@@ -362,7 +197,7 @@ def main(page: ft.Page):
     )
 
     time_2 = ft.Container(
-        visible=False,
+        visible=True,
         # gradient=ft.LinearGradient(
         #     begin=ft.alignment.top_center,
         #     end=ft.alignment.bottom_center,
