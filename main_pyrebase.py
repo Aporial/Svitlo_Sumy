@@ -1,16 +1,23 @@
 import flet as ft
-import sqlite3
-from functions import day_num, check_cherg
+from functions import check_cherg, day_num_one, day_num_two, day_num_three, day_num_four, day_num_five, day_num_six
 from datetime import datetime
-import requests
+import pyrebase
 
-URL = "https://github.com/Aporial/Svitlo/blob/main/assets/DATA_BASE.db?raw=true"
-response = requests.get(URL)
-open("assets/DATA_BASE.db", "wb").write(response.content)
+conf = {
+    "apiKey": "AIzaSyDA-lGFexei3q2CdRl62b94i0w-MTTedY4",
+    "authDomain": "svitlo-sumy.firebaseapp.com",
+    "databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app",
+    "projectId": "svitlo-sumy",
+    "storageBucket": "svitlo-sumy.appspot.com",
+    "messagingSenderId": "676377055076",
+    "appId": "1:676377055076:web:188e3d20d8abbd32a57471",
+    "measurementId": "G-TCL7TG18XP"
+}
 
+firebase = pyrebase.initialize_app(conf)
+db = firebase.database()
 
 def main(page: ft.Page):
-
     def open_list():
         bs.open = True
         page.navigation_bar.selected_index = 1
@@ -45,16 +52,12 @@ def main(page: ft.Page):
         page.client_storage.set("number", numb_cherg)
         bs.open = False
         bs.update()
-        DB_NAME = "assets/DATA_BASE.db"
-        sqlite_conn = sqlite3.connect(DB_NAME)
         storage_info = storage()
         cherg = check_cherg(storage_info)
-        sql_request = f"SELECT {day_num} FROM '{cherg}'"
-        sql_cursor = sqlite_conn.execute(sql_request)
         try:
-            result_one = sql_cursor.fetchone()[0]
+            try_one = db.child(cherg).child(day_num_one).get()
+            result_one = try_one.val()
             page.client_storage.set("one", result_one)
-            one_check = page.client_storage.get("one")
             if page.client_storage.get("one") == '22:00-23:59':
                 one = '22:00-24:00'
             else:
@@ -72,9 +75,9 @@ def main(page: ft.Page):
             print("One not found!")
 
         try:
-            result_two = sql_cursor.fetchone()[0]
+            try_two = db.child(cherg).child(day_num_two).get()
+            result_two = try_two.val()
             page.client_storage.set("two", result_two)
-            two_check = page.client_storage.get("two")
             if page.client_storage.get("two") == '22:00-23:59':
                 two = '22:00-24:00'
             else:
@@ -90,11 +93,11 @@ def main(page: ft.Page):
             page.update()
         except:
             print("Two not found!")
-
+        pass
         try:
-            result_three = sql_cursor.fetchone()[0]
+            try_three = db.child(cherg).child(day_num_three).get()
+            result_three = try_three.val()
             page.client_storage.set("three", result_three)
-            three_check = page.client_storage.get("three")
             if page.client_storage.get("three") == '22:00-23:59':
                 three = '22:00-24:00'
             else:
@@ -112,9 +115,9 @@ def main(page: ft.Page):
             print("Three not found!")
 
         try:
-            result_four = sql_cursor.fetchone()[0]
+            try_four = db.child(cherg).child(day_num_four).get()
+            result_four = try_four.val()
             page.client_storage.set("four", result_four)
-            four_check = page.client_storage.get("four")
             if page.client_storage.get("four") == '22:00-23:59':
                 four = '22:00-24:00'
             else:
@@ -129,12 +132,12 @@ def main(page: ft.Page):
             )
             page.update()
         except:
-            print("Four not found!")
+            print("Four time not found!")
 
         try:
-            result_five = sql_cursor.fetchone()[0]
+            try_five = db.child(cherg).child(day_num_five).get()
+            result_five = try_five.val()
             page.client_storage.set("five", result_five)
-            five_check = page.client_storage.get("five")
             if page.client_storage.get("five") == '22:00-23:59':
                 five = '22:00-24:00'
             else:
@@ -149,12 +152,12 @@ def main(page: ft.Page):
             )
             page.update()
         except:
-            print("Five not found!")
+            print("Five time not found!")
 
         try:
-            result_six = sql_cursor.fetchone()[0]
+            try_six = db.child(cherg).child(day_num_six).get()
+            result_six = try_six.val()
             page.client_storage.set("six", result_six)
-            six_check = page.client_storage.get("six")
             if page.client_storage.get("six") == '22:00-23:59':
                 six = '22:00-24:00'
             else:
@@ -169,27 +172,18 @@ def main(page: ft.Page):
             )
             page.update()
         except:
-            print("Six not found!")
-        if check_time_interval(one_check) == True:
-            pass
-        else:
-            check_time_interval(two_check)
-        page.update()
+            print("Six time not found!")
 
     def check_storage():
         if page.client_storage.get("number") == None:
             open_list()
         else:
-            DB_NAME = "assets/DATA_BASE.db"
-            with sqlite3.connect(DB_NAME) as sqlite_conn:
-                storage_info = storage()
-                cherg = check_cherg(storage_info)
-                sql_request = f"SELECT {day_num} FROM '{cherg}'"
-                sql_cursor = sqlite_conn.execute(sql_request)
+            storage_info = storage()
+            cherg = check_cherg(storage_info)
             try:
-                result_one = sql_cursor.fetchone()[0]
+                try_one = db.child(cherg).child(day_num_one).get()
+                result_one = try_one.val()
                 page.client_storage.set("one", result_one)
-                one_check = page.client_storage.get("one")
                 if page.client_storage.get("one") == '22:00-23:59':
                     one = '22:00-24:00'
                 else:
@@ -207,9 +201,9 @@ def main(page: ft.Page):
                 print("One not found!")
 
             try:
-                result_two = sql_cursor.fetchone()[0]
+                try_two = db.child(cherg).child(day_num_two).get()
+                result_two = try_two.val()
                 page.client_storage.set("two", result_two)
-                two_check = page.client_storage.get("two")
                 if page.client_storage.get("two") == '22:00-23:59':
                     two = '22:00-24:00'
                 else:
@@ -227,9 +221,9 @@ def main(page: ft.Page):
                 print("Two not found!")
 
             try:
-                result_three = sql_cursor.fetchone()[0]
+                try_three = db.child(cherg).child(day_num_three).get()
+                result_three = try_three.val()
                 page.client_storage.set("three", result_three)
-                three_check = page.client_storage.get("three")
                 if page.client_storage.get("three") == '22:00-23:59':
                     three = '22:00-24:00'
                 else:
@@ -247,9 +241,9 @@ def main(page: ft.Page):
                 print("Three not found!")
 
             try:
-                result_four = sql_cursor.fetchone()[0]
+                try_four = db.child(cherg).child(day_num_four).get()
+                result_four = try_four.val()
                 page.client_storage.set("four", result_four)
-                four_check = page.client_storage.get("four")
                 if page.client_storage.get("four") == '22:00-23:59':
                     four = '22:00-24:00'
                 else:
@@ -264,12 +258,12 @@ def main(page: ft.Page):
                 )
                 page.update()
             except:
-                print("Four not found!")
+                print("Four time not found!")
 
             try:
-                result_five = sql_cursor.fetchone()[0]
+                try_five = db.child(cherg).child(day_num_five).get()
+                result_five = try_five.val()
                 page.client_storage.set("five", result_five)
-                five_check = page.client_storage.get("five")
                 if page.client_storage.get("five") == '22:00-23:59':
                     five = '22:00-24:00'
                 else:
@@ -284,12 +278,12 @@ def main(page: ft.Page):
                 )
                 page.update()
             except:
-                print("Five not found!")
+                print("Five time not found!")
 
             try:
-                result_six = sql_cursor.fetchone()[0]
+                try_six = db.child(cherg).child(day_num_six).get()
+                result_six = try_six.val()
                 page.client_storage.set("six", result_six)
-                six_check = page.client_storage.get("six")
                 if page.client_storage.get("six") == '22:00-23:59':
                     six = '22:00-24:00'
                 else:
@@ -304,12 +298,7 @@ def main(page: ft.Page):
                 )
                 page.update()
             except:
-                print("Six not found!")
-            if check_time_interval(one_check) == True:
-                pass
-            else:
-                check_time_interval(two_check)
-            page.update()
+                print("Six time not found!")
 
     def storage():
         storage = page.client_storage.get("number")
