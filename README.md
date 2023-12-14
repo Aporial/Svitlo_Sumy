@@ -1,1 +1,1 @@
-# Svitlo
+# Svitlo Sumy
