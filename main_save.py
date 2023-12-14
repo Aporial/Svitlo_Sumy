@@ -7,7 +7,7 @@ from datetime import datetime
 # from firebase_admin import db
 import requests
 
-URL = URL = "https://github.com/Aporial/Svitlo/blob/main/assets/DATA_BASE.db?raw=true"
+URL = "https://github.com/Aporial/Svitlo/blob/main/assets/DATA_BASE.db?raw=true"
 response = requests.get(URL)
 open("assets/DATA_BASE.db", "wb").write(response.content)
 
