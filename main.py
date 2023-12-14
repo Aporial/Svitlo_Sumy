@@ -3,7 +3,6 @@ import sqlite3
 from functions import day_num, check_cherg
 from datetime import datetime
 import requests
-import subprocess
 
 URL = "https://github.com/Aporial/Svitlo/blob/main/assets/DATA_BASE.db?raw=true"
 try:
