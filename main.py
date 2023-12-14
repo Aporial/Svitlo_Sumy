@@ -755,7 +755,6 @@ def main(page: ft.Page):
     page.add(main_container)
     page.overlay.append(bs)
     page.overlay.append(alert_conn)
-    alert_conn.open = True
     page.update()
     check_storage()
     save_device_rez()
