@@ -3,6 +3,7 @@ import sqlite3
 from functions import day_num, check_cherg
 from datetime import datetime
 import requests
+import subprocess
 
 URL = "https://github.com/Aporial/Svitlo/blob/main/assets/DATA_BASE.db?raw=true"
 try:
@@ -348,7 +349,7 @@ def main(page: ft.Page):
         main_container.width = page.client_storage.get("page_wight")
         page.update()
 
-    def alert_conn_start(e):
+    def alert_conn_start():
         alert_conn.open = True
         page.update()
 
@@ -759,7 +760,8 @@ def main(page: ft.Page):
     check_storage()
     save_device_rez()
     try:
-        requests.get(URL)
+        requests.get(URL).ok
+        print("Connect!")
     except:
         alert_conn_start()
 
