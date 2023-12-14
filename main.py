@@ -719,6 +719,7 @@ def main(page: ft.Page):
             color='black',
             text_align='center',
             font_family="Golos Text",
+            weight="w500",
         )
     )
 
