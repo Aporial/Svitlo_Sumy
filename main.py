@@ -712,10 +712,12 @@ def main(page: ft.Page):
 
     alert_conn = ft.SnackBar(
         behavior=ft.SnackBarBehavior.FLOATING,
-        elevation=5,
-        duration=7000,
+        elevation=15,
+        duration=5000,
+        bgcolor='#ffcc66',
         content=ft.Text(
-            "Немає доступу до інтернету або погане з'єднання. Використовується інформація, яка була завантажена в минуле відкриття застосунку!",
+            "Немає доступу до інтернету або слабке з'єднання. Використовується інформація, яка була завантажена в минуле відкриття застосунку!",
+            color='black',
             text_align='center',
             font_family="Golos Text",
         )
@@ -753,6 +755,7 @@ def main(page: ft.Page):
     page.add(main_container)
     page.overlay.append(bs)
     page.overlay.append(alert_conn)
+    alert_conn.open = True
     page.update()
     check_storage()
     save_device_rez()
