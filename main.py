@@ -5,11 +5,11 @@ from datetime import datetime
 import requests
 
 URL = "https://github.com/Aporial/Svitlo/blob/main/assets/DATA_BASE.db?raw=true"
-try:
-    response = requests.get(URL)
-    open("assets/DATA_BASE.db", "wb").write(response.content)
-except:
-    print("Fail connection!")
+# try:
+#     response = requests.get(URL)
+#     open("assets/DATA_BASE.db", "wb").write(response.content)
+# except:
+#     print("Fail connection!")
 
 
 def main(page: ft.Page):
@@ -351,6 +351,28 @@ def main(page: ft.Page):
     def alert_conn_start():
         alert_conn.open = True
         page.update()
+
+    alert_conn = ft.SnackBar(
+        behavior=ft.SnackBarBehavior.FLOATING,
+        elevation=15,
+        duration=5000,
+        bgcolor='#ffcc66',
+        content=ft.Text(
+            "Немає доступу до інтернету або слабке з'єднання. Використовується інформація, яка була завантажена в минуле відкриття застосунку!",
+            color='black',
+            text_align='center',
+            font_family="Golos Text",
+            weight="w500",
+        )
+    )
+
+    try:
+        response = requests.get(URL)
+        open("assets/DATA_BASE.db", "wb").write(response.content)
+        print("Connect!")
+    except:
+        alert_conn_start()
+        print("Fail connection!")
 
     one = page.client_storage.get("one")
     two = page.client_storage.get("two")
@@ -709,20 +731,6 @@ def main(page: ft.Page):
         ),
     )
 
-    alert_conn = ft.SnackBar(
-        behavior=ft.SnackBarBehavior.FLOATING,
-        elevation=15,
-        duration=5000,
-        bgcolor='#ffcc66',
-        content=ft.Text(
-            "Немає доступу до інтернету або слабке з'єднання. Використовується інформація, яка була завантажена в минуле відкриття застосунку!",
-            color='black',
-            text_align='center',
-            font_family="Golos Text",
-            weight="w500",
-        )
-    )
-
     page.fonts = {
         "Golos Text": "/fonts/GolosText.ttf"
     }
@@ -758,11 +766,11 @@ def main(page: ft.Page):
     page.update()
     check_storage()
     save_device_rez()
-    try:
-        requests.get(URL).ok
-        print("Connect!")
-    except:
-        alert_conn_start()
+    # try:
+    #     requests.get(URL).ok
+    # print("Connect!")
+    # except:
+    # alert_conn_start()
 
 
 ft.app(
