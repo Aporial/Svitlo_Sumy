@@ -4,7 +4,6 @@ from datetime import datetime
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
-import requests
 
 
 def main(page: ft.Page):
@@ -268,7 +267,23 @@ def main(page: ft.Page):
 
     def check_storage():
         if page.client_storage.get("number") == None:
-            open_list()
+            try:
+                connect_firebase = credentials.Certificate(
+                    "./assets/firebase_init.json")
+                firebase_admin.initialize_app(
+                    connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
+                test_connect = db.reference()
+                test_connect.get()
+                open_list()
+            except:
+                one_button.disabled = True
+                two_button.disabled = True
+                three_button.disabled = True
+                four_button.disabled = True
+                five_button.disabled = True
+                six_button.disabled = True
+                alert_conn_start()
+                print("Fail connection!")
         else:
             storage_info = storage()
             cherg = check_cherg(storage_info)
@@ -491,7 +506,7 @@ def main(page: ft.Page):
                 pass
             else:
                 check_time_interval(two_check)
-            page.update()
+        page.update()
 
     def storage():
         storage = page.client_storage.get("number")
@@ -915,10 +930,12 @@ def main(page: ft.Page):
     )
 
     try:
-        requests.get("https://google.com").ok
-        cred = credentials.Certificate("./assets/firebase_init.json")
+        connect_firebase = credentials.Certificate(
+            "./assets/firebase_init.json")
         firebase_admin.initialize_app(
-            cred, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
+            connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
+        test_connect = db.reference()
+        test_connect.get()
     except:
         one_button.disabled = True
         two_button.disabled = True
