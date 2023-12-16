@@ -7,13 +7,6 @@ from firebase_admin import db
 import requests
 
 
-# try:
-#     response = requests.get(URL)
-#     open("assets/DATA_BASE.db", "wb").write(response.content)
-# except:
-#     print("Fail connection!")
-
-
 def main(page: ft.Page):
 
     def open_list():
@@ -61,8 +54,8 @@ def main(page: ft.Page):
         try:
             try_one = db.reference(f"/{cherg}/{day_num_one}")
             result_one = try_one.get()
-            one_check = page.client_storage.get("one")
             page.client_storage.set("one", result_one)
+            one_check = page.client_storage.get("one")
             if page.client_storage.get("one") == '22:00-23:59':
                 one = '22:00-24:00'
             else:
@@ -90,14 +83,14 @@ def main(page: ft.Page):
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
                 )
-                page.update()
-                print("One not found!")
+            page.update()
+            print("One not found!")
 
         try:
             try_two = db.reference(f"/{cherg}/{day_num_two}")
             result_two = try_two.get()
-            two_check = page.client_storage.get("two")
             page.client_storage.set("two", result_two)
+            two_check = page.client_storage.get("two")
             if page.client_storage.get("two") == '22:00-23:59':
                 two = '22:00-24:00'
             else:
@@ -125,14 +118,14 @@ def main(page: ft.Page):
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
                 )
-                page.update()
-                print("Two not found!")
+            page.update()
+            print("Two not found!")
 
         try:
             try_three = db.reference(f"/{cherg}/{day_num_three}")
             result_three = try_three.get()
-            three_check = page.client_storage.get("three")
             page.client_storage.set("three", result_three)
+            three_check = page.client_storage.get("three")
             if page.client_storage.get("three") == '22:00-23:59':
                 three = '22:00-24:00'
             else:
@@ -160,14 +153,14 @@ def main(page: ft.Page):
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
                 )
-                page.update()
-                print("Three not found!")
+            page.update()
+            print("Three not found!")
 
         try:
             try_four = db.reference(f"/{cherg}/{day_num_four}")
             result_four = try_four.get()
-            four_check = page.client_storage.get("four")
             page.client_storage.set("four", result_four)
+            four_check = page.client_storage.get("four")
             if page.client_storage.get("four") == '22:00-23:59':
                 four = '22:00-24:00'
             else:
@@ -195,14 +188,14 @@ def main(page: ft.Page):
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
                 )
-                page.update()
-                print("Four not found!")
+            page.update()
+            print("Four not found!")
 
         try:
             try_five = db.reference(f"/{cherg}/{day_num_five}")
             result_five = try_five.get()
-            five_check = page.client_storage.get("five")
             page.client_storage.set("five", result_five)
+            five_check = page.client_storage.get("five")
             if page.client_storage.get("five") == '22:00-23:59':
                 five = '22:00-24:00'
             else:
@@ -230,14 +223,14 @@ def main(page: ft.Page):
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
                 )
-                page.update()
-                print("Five not found!")
+            page.update()
+            print("Five not found!")
 
         try:
             try_six = db.reference(f"/{cherg}/{day_num_six}")
             result_six = try_six.get()
-            six_check = page.client_storage.get("six")
             page.client_storage.set("six", result_six)
+            six_check = page.client_storage.get("six")
             if page.client_storage.get("six") == '22:00-23:59':
                 six = '22:00-24:00'
             else:
@@ -265,13 +258,13 @@ def main(page: ft.Page):
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
                 )
-                page.update()
-                print("Six not found!")
+            page.update()
+            print("Six not found!")
         if check_time_interval(one_check) == True:
             pass
         else:
             check_time_interval(two_check)
-            page.update()
+        page.update()
 
     def check_storage():
         if page.client_storage.get("number") == None:
@@ -288,8 +281,8 @@ def main(page: ft.Page):
             try:
                 try_one = db.reference(f"/{cherg}/{day_num_one}")
                 result_one = try_one.get()
-                one_check = page.client_storage.get("one")
                 page.client_storage.set("one", result_one)
+                one_check = page.client_storage.get("one")
                 if page.client_storage.get("one") == '22:00-23:59':
                     one = '22:00-24:00'
                 else:
@@ -317,14 +310,14 @@ def main(page: ft.Page):
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
                     )
-                    page.update()
-                    print("One not found!")
+                page.update()
+                print("One not found!")
 
             try:
                 try_two = db.reference(f"/{cherg}/{day_num_two}")
                 result_two = try_two.get()
-                two_check = page.client_storage.get("two")
                 page.client_storage.set("two", result_two)
+                two_check = page.client_storage.get("two")
                 if page.client_storage.get("two") == '22:00-23:59':
                     two = '22:00-24:00'
                 else:
@@ -352,14 +345,14 @@ def main(page: ft.Page):
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
                     )
-                    page.update()
-                    print("Two not found!")
+                page.update()
+                print("Two not found!")
 
             try:
                 try_three = db.reference(f"/{cherg}/{day_num_three}")
                 result_three = try_three.get()
-                three_check = page.client_storage.get("three")
                 page.client_storage.set("three", result_three)
+                three_check = page.client_storage.get("three")
                 if page.client_storage.get("three") == '22:00-23:59':
                     three = '22:00-24:00'
                 else:
@@ -387,14 +380,14 @@ def main(page: ft.Page):
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
                     )
-                    page.update()
-                    print("Three not found!")
+                page.update()
+                print("Three not found!")
 
             try:
                 try_four = db.reference(f"/{cherg}/{day_num_four}")
                 result_four = try_four.get()
-                four_check = page.client_storage.get("four")
                 page.client_storage.set("four", result_four)
+                four_check = page.client_storage.get("four")
                 if page.client_storage.get("four") == '22:00-23:59':
                     four = '22:00-24:00'
                 else:
@@ -422,14 +415,14 @@ def main(page: ft.Page):
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
                     )
-                    page.update()
-                    print("Four not found!")
+                page.update()
+                print("Four not found!")
 
             try:
                 try_five = db.reference(f"/{cherg}/{day_num_five}")
                 result_five = try_five.get()
-                five_check = page.client_storage.get("five")
                 page.client_storage.set("five", result_five)
+                five_check = page.client_storage.get("five")
                 if page.client_storage.get("five") == '22:00-23:59':
                     five = '22:00-24:00'
                 else:
@@ -457,14 +450,14 @@ def main(page: ft.Page):
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
                     )
-                    page.update()
-                    print("Five not found!")
+                page.update()
+                print("Five not found!")
 
             try:
                 try_six = db.reference(f"/{cherg}/{day_num_six}")
                 result_six = try_six.get()
-                six_check = page.client_storage.get("six")
                 page.client_storage.set("six", result_six)
+                six_check = page.client_storage.get("six")
                 if page.client_storage.get("six") == '22:00-23:59':
                     six = '22:00-24:00'
                 else:
@@ -492,8 +485,8 @@ def main(page: ft.Page):
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
                     )
-                    page.update()
-                    print("Six not found!")
+                page.update()
+                print("Six not found!")
             if check_time_interval(one_check) == True:
                 pass
             else:
@@ -551,15 +544,6 @@ def main(page: ft.Page):
             weight="w500",
         )
     )
-
-    try:
-        requests.get("https://google.com").ok
-        cred = credentials.Certificate("./assets/firebase_init.json")
-        firebase_admin.initialize_app(
-            cred, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
-    except:
-        alert_conn_start()
-        print("Fail connection!")
 
     one = page.client_storage.get("one")
     two = page.client_storage.get("two")
@@ -738,6 +722,30 @@ def main(page: ft.Page):
         )
     )
 
+    one_button = ft.ElevatedButton(content=ft.Text("Перша", size=22, weight='w500', font_family="Golos Text"),
+                                   style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                   color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=1)
+
+    two_button = ft.ElevatedButton(content=ft.Text("Друга", size=22, weight='w500', font_family="Golos Text"),
+                                   style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                   color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=2)
+
+    three_button = ft.ElevatedButton(content=ft.Text("Третя", size=22, weight='w500', font_family="Golos Text"),
+                                     style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                     color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=3)
+
+    four_button = ft.ElevatedButton(content=ft.Text("Четверта", size=22, weight='w500', font_family="Golos Text"),
+                                    style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                    color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=4)
+
+    five_button = ft.ElevatedButton(content=ft.Text("П'ята", size=22, weight='w500', font_family="Golos Text"),
+                                    style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                    color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=5)
+
+    six_button = ft.ElevatedButton(content=ft.Text("Шоста", size=22, weight='w500', font_family="Golos Text"),
+                                   style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                   color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=6)
+
     bs = ft.BottomSheet(
         content=ft.Column(
             horizontal_alignment='center',
@@ -753,25 +761,13 @@ def main(page: ft.Page):
                     text_align='center',
                     font_family="Golos Text"
                 ),
-                ft.ElevatedButton(content=ft.Text("Перша", size=22, weight='w500', font_family="Golos Text"),
-                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=1),
-                ft.ElevatedButton(content=ft.Text("Друга", size=22, weight='w500', font_family="Golos Text"),
-                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=2),
-                ft.ElevatedButton(content=ft.Text("Третя", size=22, weight='w500', font_family="Golos Text"),
-                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=3),
-                ft.ElevatedButton(content=ft.Text("Четверта", size=22, weight='w500', font_family="Golos Text"),
-                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=4),
-                ft.ElevatedButton(content=ft.Text("П'ята", size=22, weight='w500', font_family="Golos Text"),
-                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=5),
-                ft.ElevatedButton(content=ft.Text("Шоста", size=22, weight='w500', font_family="Golos Text"),
-                                  style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
-                                  color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=6),
-                ft.Container(height=10)
+                one_button,
+                two_button,
+                three_button,
+                four_button,
+                five_button,
+                six_button,
+                ft.Container(height=10),
             ]
         ),
         bgcolor=ft.colors.WHITE,
@@ -917,6 +913,21 @@ def main(page: ft.Page):
             ]
         ),
     )
+
+    try:
+        requests.get("https://google.com").ok
+        cred = credentials.Certificate("./assets/firebase_init.json")
+        firebase_admin.initialize_app(
+            cred, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
+    except:
+        one_button.disabled = True
+        two_button.disabled = True
+        three_button.disabled = True
+        four_button.disabled = True
+        five_button.disabled = True
+        six_button.disabled = True
+        alert_conn_start()
+        print("Fail connection!")
 
     page.fonts = {
         "Golos Text": "/fonts/GolosText.ttf"
