@@ -282,7 +282,7 @@ def main(page: ft.Page):
                 four_button.disabled = True
                 five_button.disabled = True
                 six_button.disabled = True
-                alert_conn_start()
+                alert_conn_first()
                 print("Fail connection!")
         else:
             try:
@@ -562,6 +562,10 @@ def main(page: ft.Page):
         alert_conn.open = True
         page.update()
 
+    def alert_conn_first():
+        alert_first_conn.open = True
+        page.update()
+
     alert_conn = ft.SnackBar(
         behavior=ft.SnackBarBehavior.FLOATING,
         elevation=15,
@@ -569,6 +573,20 @@ def main(page: ft.Page):
         bgcolor='#ffcc66',
         content=ft.Text(
             "Немає доступу до інтернету або слабке з'єднання. Використовується інформація, яка була завантажена в минуле відкриття застосунку!",
+            color='black',
+            text_align='center',
+            font_family="Golos Text",
+            weight="w500",
+        )
+    )
+
+    alert_first_conn = ft.SnackBar(
+        behavior=ft.SnackBarBehavior.FLOATING,
+        elevation=15,
+        duration=5000,
+        bgcolor='#ffcc66',
+        content=ft.Text(
+            "Немає доступу до інтернету або слабке з'єднання. Для оновлення інформації потрібне підключення до інтернету!",
             color='black',
             text_align='center',
             font_family="Golos Text",
@@ -944,23 +962,6 @@ def main(page: ft.Page):
             ]
         ),
     )
-
-    # try:
-    #     connect_firebase = credentials.Certificate(
-    #         "./assets/firebase_init.json")
-    #     firebase_admin.initialize_app(
-    #         connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
-    #     test_connect = db.reference()
-    #     test_connect.get()
-    # except:
-    #     one_button.disabled = True
-    #     two_button.disabled = True
-    #     three_button.disabled = True
-    #     four_button.disabled = True
-    #     five_button.disabled = True
-    #     six_button.disabled = True
-    #     alert_conn_start()
-    #     print("Fail connection!")
 
     page.fonts = {
         "Golos Text": "/fonts/GolosText.ttf"
