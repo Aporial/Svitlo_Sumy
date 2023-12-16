@@ -4,6 +4,7 @@ from datetime import datetime
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
+import requests
 
 
 def main(page: ft.Page):
@@ -268,12 +269,11 @@ def main(page: ft.Page):
     def check_storage():
         if page.client_storage.get("number") == None:
             try:
+                requests.get("http://google.com").ok
                 connect_firebase = credentials.Certificate(
                     "./assets/firebase_init.json")
                 firebase_admin.initialize_app(
                     connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
-                test_connect = db.reference()
-                test_connect.get()
                 open_list()
             except:
                 one_button.disabled = True
@@ -285,6 +285,22 @@ def main(page: ft.Page):
                 alert_conn_start()
                 print("Fail connection!")
         else:
+            try:
+                connect_firebase = credentials.Certificate(
+                    "./assets/firebase_init.json")
+                firebase_admin.initialize_app(
+                    connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
+                test_connect = db.reference()
+                test_connect.get()
+            except:
+                one_button.disabled = True
+                two_button.disabled = True
+                three_button.disabled = True
+                four_button.disabled = True
+                five_button.disabled = True
+                six_button.disabled = True
+                alert_conn_start()
+                print("Fail connection!")
             storage_info = storage()
             cherg = check_cherg(storage_info)
             one_check = page.client_storage.get("one")
@@ -929,22 +945,22 @@ def main(page: ft.Page):
         ),
     )
 
-    try:
-        connect_firebase = credentials.Certificate(
-            "./assets/firebase_init.json")
-        firebase_admin.initialize_app(
-            connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
-        test_connect = db.reference()
-        test_connect.get()
-    except:
-        one_button.disabled = True
-        two_button.disabled = True
-        three_button.disabled = True
-        four_button.disabled = True
-        five_button.disabled = True
-        six_button.disabled = True
-        alert_conn_start()
-        print("Fail connection!")
+    # try:
+    #     connect_firebase = credentials.Certificate(
+    #         "./assets/firebase_init.json")
+    #     firebase_admin.initialize_app(
+    #         connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
+    #     test_connect = db.reference()
+    #     test_connect.get()
+    # except:
+    #     one_button.disabled = True
+    #     two_button.disabled = True
+    #     three_button.disabled = True
+    #     four_button.disabled = True
+    #     five_button.disabled = True
+    #     six_button.disabled = True
+    #     alert_conn_start()
+    #     print("Fail connection!")
 
     page.fonts = {
         "Golos Text": "/fonts/GolosText.ttf"
