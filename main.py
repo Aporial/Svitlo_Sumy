@@ -936,7 +936,7 @@ def main(page: ft.Page):
     page.theme_mode = ft.ThemeMode.LIGHT
     page.bgcolor = ft.colors.BLUE_GREY_50
     page.window_height = 700
-    page.window_width = 400
+    page.window_width = 410
     page.padding = 0
     # page.window_center()
     page.window_resizable = True
