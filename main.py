@@ -631,7 +631,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=1,
         height=50,
-        width=160,
+        width=155,
         alignment=ft.alignment.center,
         content=ft.Text(
             one,
@@ -659,7 +659,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=5,
         height=50,
-        width=160,
+        width=155,
         alignment=ft.alignment.center,
         content=ft.Text(
             two,
@@ -687,7 +687,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=5,
         height=50,
-        width=160,
+        width=155,
         alignment=ft.alignment.center,
         content=ft.Text(
             three,
@@ -715,7 +715,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=5,
         height=50,
-        width=160,
+        width=155,
         alignment=ft.alignment.center,
         content=ft.Text(
             four,
@@ -771,7 +771,7 @@ def main(page: ft.Page):
         border_radius=5,
         padding=5,
         height=50,
-        width=160,
+        width=155,
         alignment=ft.alignment.center,
         content=ft.Text(
             six,
@@ -985,7 +985,7 @@ def main(page: ft.Page):
     page.theme_mode = ft.ThemeMode.LIGHT
     page.bgcolor = ft.colors.BLUE_GREY_50
     page.window_height = 700
-    page.window_width = 410
+    page.window_width = 400
     page.padding = 0
     # page.window_center()
     page.window_resizable = True
