@@ -260,6 +260,8 @@ def main(page: ft.Page):
                 )
             page.update()
             print("Six not found!")
+        progress_bar.visible = False
+        all_time.visible = True
         if check_time_interval(one_check) == True:
             pass
         else:
@@ -518,6 +520,8 @@ def main(page: ft.Page):
                     )
                 page.update()
                 print("Six not found!")
+            progress_bar.visible = False
+            all_time.visible = True
             if check_time_interval(one_check) == True:
                 pass
             else:
@@ -602,6 +606,13 @@ def main(page: ft.Page):
     six = page.client_storage.get("six")
     page_height = page.client_storage.get("page_height")
     page_width = page.client_storage.get("page_width")
+
+    progress_bar = ft.ProgressBar(
+        visible=True,
+        bgcolor="white",
+        color="#ffcc66",
+        bar_height=5,
+    )
 
     time_1 = ft.Container(
         visible=False,
@@ -771,6 +782,21 @@ def main(page: ft.Page):
         )
     )
 
+    all_time = ft.Row(
+        visible=False,
+        alignment='center',
+        vertical_alignment='center',
+        wrap=True,
+        controls=[
+            time_1,
+            time_2,
+            time_3,
+            time_4,
+            time_5,
+            time_6,
+        ]
+    )
+
     one_button = ft.ElevatedButton(content=ft.Text("Перша", size=22, weight='w500', font_family="Golos Text"),
                                    style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
                                    color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=1)
@@ -859,19 +885,8 @@ def main(page: ft.Page):
                     thickness=1,
                     color=ft.colors.BLACK38
                 ),
-                ft.Row(
-                    alignment='center',
-                    vertical_alignment='center',
-                    wrap=True,
-                    controls=[
-                        time_1,
-                        time_2,
-                        time_3,
-                        time_4,
-                        time_5,
-                        time_6,
-                    ]
-                ),
+                progress_bar,
+                all_time,
             ]
         )
     )
