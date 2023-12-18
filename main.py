@@ -1018,7 +1018,6 @@ def main(page: ft.Page):
     save_device_rez()
 
 
-
 ft.app(
     target=main,
     assets_dir='assets',
