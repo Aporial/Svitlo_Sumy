@@ -59,7 +59,7 @@ if today.day in five:
     day_num_five = 'five_5'
     day_num_six = 'five_6'
 if today.day in six:
-    day_num_one = 'six'
+    day_num_one = 'six_1'
     day_num_two = 'six_2'
     day_num_three = 'six_3'
     day_num_four = 'six_4'

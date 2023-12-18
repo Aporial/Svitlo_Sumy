@@ -258,6 +258,7 @@ def main(page: ft.Page):
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
                 )
+                page.update()
             page.update()
             print("Six not found!")
         progress_bar.visible = False
@@ -518,6 +519,7 @@ def main(page: ft.Page):
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
                     )
+                    page.update()
                 page.update()
                 print("Six not found!")
             progress_bar.visible = False
@@ -1014,6 +1016,7 @@ def main(page: ft.Page):
     page.update()
     check_storage()
     save_device_rez()
+
 
 
 ft.app(
