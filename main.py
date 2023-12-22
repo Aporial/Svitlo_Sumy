@@ -618,11 +618,6 @@ def main(page: ft.Page):
 
     time_1 = ft.Container(
         visible=False,
-        # gradient=ft.LinearGradient(
-        #     begin=ft.alignment.top_center,
-        #     end=ft.alignment.bottom_center,
-        #     colors=[ft.colors.ORANGE_700, ft.colors.RED]
-        # ),
         shadow=ft.BoxShadow(
             blur_radius=2,
             blur_style=ft.ShadowBlurStyle.NORMAL,
@@ -631,10 +626,10 @@ def main(page: ft.Page):
         ),
         bgcolor='#ffcc66',
         border_radius=5,
-        padding=1,
-        height=50,
-        width=155,
-        alignment=ft.alignment.center,
+        padding=10,
+        # height=50,
+        # width=155,
+        # alignment=ft.alignment.center,
         content=ft.Text(
             one,
             size=21,
@@ -646,11 +641,6 @@ def main(page: ft.Page):
 
     time_2 = ft.Container(
         visible=False,
-        # gradient=ft.LinearGradient(
-        #     begin=ft.alignment.top_center,
-        #     end=ft.alignment.bottom_center,
-        #     colors=[ft.colors.ORANGE_700, ft.colors.RED]
-        # ),
         shadow=ft.BoxShadow(
             blur_radius=2,
             blur_style=ft.ShadowBlurStyle.NORMAL,
@@ -659,10 +649,10 @@ def main(page: ft.Page):
         ),
         bgcolor='#ffcc66',
         border_radius=5,
-        padding=5,
-        height=50,
-        width=155,
-        alignment=ft.alignment.center,
+        padding=10,
+        # height=50,
+        # width=155,
+        # alignment=ft.alignment.center,
         content=ft.Text(
             two,
             size=21,
@@ -674,11 +664,6 @@ def main(page: ft.Page):
 
     time_3 = ft.Container(
         visible=False,
-        # gradient=ft.LinearGradient(
-        #     begin=ft.alignment.top_center,
-        #     end=ft.alignment.bottom_center,
-        #     colors=[ft.colors.ORANGE_700, ft.colors.RED]
-        # ),
         shadow=ft.BoxShadow(
             blur_radius=2,
             blur_style=ft.ShadowBlurStyle.NORMAL,
@@ -687,10 +672,10 @@ def main(page: ft.Page):
         ),
         bgcolor='#ffcc66',
         border_radius=5,
-        padding=5,
-        height=50,
-        width=155,
-        alignment=ft.alignment.center,
+        padding=10,
+        # height=50,
+        # width=155,
+        # alignment=ft.alignment.center,
         content=ft.Text(
             three,
             size=21,
@@ -702,11 +687,6 @@ def main(page: ft.Page):
 
     time_4 = ft.Container(
         visible=False,
-        # gradient=ft.LinearGradient(
-        #     begin=ft.alignment.top_center,
-        #     end=ft.alignment.bottom_center,
-        #     colors=[ft.colors.ORANGE_700, ft.colors.RED]
-        # ),
         shadow=ft.BoxShadow(
             blur_radius=2,
             blur_style=ft.ShadowBlurStyle.NORMAL,
@@ -715,10 +695,10 @@ def main(page: ft.Page):
         ),
         bgcolor='#ffcc66',
         border_radius=5,
-        padding=5,
-        height=50,
-        width=155,
-        alignment=ft.alignment.center,
+        padding=10,
+        # height=50,
+        # width=155,
+        # alignment=ft.alignment.center,
         content=ft.Text(
             four,
             size=21,
@@ -730,11 +710,6 @@ def main(page: ft.Page):
 
     time_5 = ft.Container(
         visible=False,
-        # gradient=ft.LinearGradient(
-        #     begin=ft.alignment.top_center,
-        #     end=ft.alignment.bottom_center,
-        #     colors=[ft.colors.ORANGE_700, ft.colors.RED]
-        # ),
         shadow=ft.BoxShadow(
             blur_radius=2,
             blur_style=ft.ShadowBlurStyle.NORMAL,
@@ -743,10 +718,10 @@ def main(page: ft.Page):
         ),
         bgcolor='#ffcc66',
         border_radius=5,
-        padding=5,
-        height=50,
-        width=160,
-        alignment=ft.alignment.center,
+        padding=10,
+        # height=50,
+        # width=160,
+        # alignment=ft.alignment.center,
         content=ft.Text(
             five,
             size=21,
@@ -758,11 +733,6 @@ def main(page: ft.Page):
 
     time_6 = ft.Container(
         visible=False,
-        # gradient=ft.LinearGradient(
-        #     begin=ft.alignment.top_center,
-        #     end=ft.alignment.bottom_center,
-        #     colors=[ft.colors.ORANGE_700, ft.colors.RED]
-        # ),
         shadow=ft.BoxShadow(
             blur_radius=2,
             blur_style=ft.ShadowBlurStyle.NORMAL,
@@ -771,10 +741,10 @@ def main(page: ft.Page):
         ),
         bgcolor='#ffcc66',
         border_radius=5,
-        padding=5,
-        height=50,
-        width=155,
-        alignment=ft.alignment.center,
+        padding=10,
+        # height=50,
+        # width=155,
+        # alignment=ft.alignment.center,
         content=ft.Text(
             six,
             size=21,
