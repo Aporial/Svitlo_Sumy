@@ -906,84 +906,88 @@ def main(page: ft.Page):
         )
     )
 
-    info_tab = ft.Container(
-        blur=10,
-        visible=False,
-        bgcolor=ft.colors.BLACK12,
-        border_radius=15,
-        padding=15,
-        alignment=ft.alignment.center,
-        expand=True,
-        content=ft.Column(
-            scroll=ft.ScrollMode.ADAPTIVE,
-            horizontal_alignment='center',
-            alignment='start',
-            controls=[
-                ft.Text(
-                    'Інформація',
-                    size=35,
-                    color=ft.colors.BLACK87,
-                    weight="w400",
-                    font_family="Golos Text",
-                    text_align="center"
-                ),
-                ft.Divider(height=0.1, color=ft.colors.BLACK26),
-                ft.Text(
-                    "Розроблено для безплатного користування.",
-                    size=16,
-                    color='black',
-                    text_align='center',
-                    font_family="Golos Text",
-                    weight="w500"
-                ),
-                ft.Divider(height=0.1, color=ft.colors.BLACK26),
-                ft.Text(
-                    "Застосунок використовує актуальні графіки відключень світла з сайту Сумиобленерго.",
-                    size=16,
-                    color='black',
-                    text_align='center',
-                    font_family="Golos Text",
-                    weight="w500"
-                ),
-                ft.Divider(height=0.1, color=ft.colors.BLACK26),
-                ft.Text(
-                    "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку монобанку.",
-                    size=16,
-                    color='black',
-                    text_align='center',
-                    font_family="Golos Text",
-                    weight="w500"
-                ),
-                ft.Divider(height=0.1, color=ft.colors.BLACK26),
-                ft.ElevatedButton(
-                    content=ft.Text(
-                        "Дізнатися свою чергу",
-                        size=18,
+    info_tab = ft.SafeArea(
+        ft.Container(
+            blur=10,
+            bgcolor=ft.colors.BLACK12,
+            border_radius=15,
+            padding=15,
+            alignment=ft.alignment.center,
+            expand=True,
+            content=ft.Column(
+                scroll=ft.ScrollMode.ADAPTIVE,
+                horizontal_alignment='center',
+                alignment='start',
+                controls=[
+                    ft.Text(
+                        'Інформація',
+                        size=35,
+                        color=ft.colors.BLACK87,
+                        weight="w400",
+                        font_family="Golos Text",
+                        text_align="center"
+                    ),
+                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
+                    ft.Text(
+                        "Розроблено для безплатного користування.",
+                        size=16,
                         color='black',
                         text_align='center',
                         font_family="Golos Text",
                         weight="w500"
                     ),
-                    style=ft.ButtonStyle(
-                        shape=ft.RoundedRectangleBorder(radius=15),
-                        overlay_color=ft.colors.AMBER_200),
-                    width=250,
-                    height=50,
-                    color=ft.colors.BLACK,
-                    bgcolor='#ffcc66',
-                    on_click=open_pdf
-                ),
-                ft.TextButton(
-                    style=ft.ButtonStyle(overlay_color=ft.colors.AMBER_200),
-                    on_click=mono_click,
-                    content=ft.Image(
-                        src=f"/Images/monobanka.png",
-                        height=100,
-                        width=100,
+                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
+                    ft.Text(
+                        "Застосунок використовує актуальні графіки відключень світла з сайту Сумиобленерго.",
+                        size=16,
+                        color='black',
+                        text_align='center',
+                        font_family="Golos Text",
+                        weight="w500"
+                    ),
+                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
+                    ft.Text(
+                        "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку монобанку.",
+                        size=16,
+                        color='black',
+                        text_align='center',
+                        font_family="Golos Text",
+                        weight="w500"
+                    ),
+                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
+                    ft.ElevatedButton(
+                        content=ft.Text(
+                            "Дізнатися свою чергу",
+                            size=18,
+                            color='black',
+                            text_align='center',
+                            font_family="Golos Text",
+                            weight="w500"
+                        ),
+                        style=ft.ButtonStyle(
+                            shape=ft.RoundedRectangleBorder(radius=15),
+                            overlay_color=ft.colors.AMBER_200),
+                        width=250,
+                        height=50,
+                        color=ft.colors.BLACK,
+                        bgcolor='#ffcc66',
+                        on_click=open_pdf
+                    ),
+                    ft.TextButton(
+                        style=ft.ButtonStyle(
+                            overlay_color=ft.colors.AMBER_200),
+                        on_click=mono_click,
+                        content=ft.Image(
+                            src=f"/Images/monobanka.png",
+                            height=100,
+                            width=100,
+                        )
                     )
-                )
-            ]
-        )
+                ]
+            )
+        ),
+        expand=True,
+        visible=False
     )
 
     main_container = ft.Container(
@@ -994,13 +998,12 @@ def main(page: ft.Page):
         ),
         padding=15,
         content=ft.Column(
-            # scroll=ft.ScrollMode.HIDDEN,
             horizontal_alignment='center',
             alignment='center',
             controls=[
                 lamp_img,
                 main_info,
-                info_tab,
+                info_tab
             ]
         ),
         expand=True
@@ -1011,7 +1014,7 @@ def main(page: ft.Page):
     }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ft.ThemeMode.LIGHT
-    page.bgcolor = ft.colors.BLUE_GREY_50
+    # page.bgcolor = ft.colors.BLACK
     page.window_height = 700
     page.window_width = 400
     page.padding = 0
