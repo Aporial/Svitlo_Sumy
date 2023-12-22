@@ -632,14 +632,6 @@ def main(page: ft.Page):
             )
             return False
 
-    def save_device_rez():
-        if page.client_storage.get("page_height") == None:
-            page.client_storage.set("page_height", page.height)
-            page.client_storage.set("page_width", page.width)
-        main_container.height = page.client_storage.get("page_height")
-        main_container.width = page.client_storage.get("page_wight")
-        page.update()
-
     def alert_conn_start():
         alert_conn.open = True
         page.update()
@@ -682,8 +674,6 @@ def main(page: ft.Page):
     four = page.client_storage.get("four")
     five = page.client_storage.get("five")
     six = page.client_storage.get("six")
-    page_height = page.client_storage.get("page_height")
-    page_width = page.client_storage.get("page_width")
 
     progress_bar = ft.ProgressBar(
         visible=True,
@@ -916,8 +906,6 @@ def main(page: ft.Page):
     )
 
     info_tab = ft.Container(
-        height=page_height*0.8,
-        width=page_width,
         blur=10,
         visible=False,
         bgcolor=ft.colors.BLACK12,
@@ -995,9 +983,30 @@ def main(page: ft.Page):
         )
     )
 
+    main_container1 = ft.SafeArea(
+        ft.Container(
+            gradient=ft.LinearGradient(
+                begin=ft.alignment.top_right,
+                end=ft.alignment.bottom_left,
+                colors=['#ffcc66', '#ff6666']
+            ),
+            padding=15,
+            content=ft.Column(
+                # scroll=ft.ScrollMode.HIDDEN,
+                horizontal_alignment='center',
+                alignment='center',
+                controls=[
+                    lamp_img,
+                    main_info,
+                    info_tab,
+                    ft.Container(height=65)
+                ]
+            ),
+        ),
+        expand=True
+    )
+
     main_container = ft.Container(
-        height=page_height,
-        width=page_width,
         gradient=ft.LinearGradient(
             begin=ft.alignment.top_right,
             end=ft.alignment.bottom_left,
@@ -1015,6 +1024,7 @@ def main(page: ft.Page):
                 ft.Container(height=65)
             ]
         ),
+        expand=True
     )
 
     page.fonts = {
@@ -1052,7 +1062,6 @@ def main(page: ft.Page):
     page.overlay.append(alert_first_conn)
     page.update()
     check_storage()
-    save_device_rez()
 
 
 ft.app(
