@@ -803,7 +803,6 @@ def main(page: ft.Page):
     )
 
     all_time = ft.Row(
-        scroll=ft.ScrollMode.ALWAYS,
         visible=False,
         alignment='center',
         vertical_alignment='center',
@@ -883,7 +882,9 @@ def main(page: ft.Page):
         padding=15,
         bgcolor=ft.colors.BLACK26,
         border_radius=15,
+        # expand=True,
         content=ft.Column(
+            scroll=ft.ScrollMode.ADAPTIVE,
             horizontal_alignment='center',
             controls=[
                 ft.Text(
@@ -911,6 +912,8 @@ def main(page: ft.Page):
         bgcolor=ft.colors.BLACK12,
         border_radius=15,
         padding=15,
+        alignment=ft.alignment.center,
+        expand=True,
         content=ft.Column(
             scroll=ft.ScrollMode.ADAPTIVE,
             horizontal_alignment='center',
