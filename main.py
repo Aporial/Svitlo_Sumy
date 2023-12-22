@@ -56,8 +56,9 @@ def main(page: ft.Page):
             result_one = try_one.get()
             page.client_storage.set("one", result_one)
             one_check = page.client_storage.get("one")
-            if page.client_storage.get("one") == '22:00-23:59':
-                one = '22:00-24:00'
+            start_time, end_time = one_check.split('-')
+            if end_time == '23:59':
+                one = f'{start_time}-24:00'
             else:
                 one = page.client_storage.get("one")
             time_1.visible = True
@@ -69,10 +70,13 @@ def main(page: ft.Page):
                 font_family="Golos Text"
             )
             page.update()
+            print("One found!")
         except:
             if page.client_storage.get("one") != None:
-                if page.client_storage.get("one") == '22:00-23:59':
-                    one = '22:00-24:00'
+                one_check = page.client_storage.get("one")
+                start_time, end_time = one_check.split('-')
+                if end_time == '23:59':
+                    one = f'{start_time}-24:00'
                 else:
                     one = page.client_storage.get("one")
                 time_1.visible = True
@@ -91,8 +95,10 @@ def main(page: ft.Page):
             result_two = try_two.get()
             page.client_storage.set("two", result_two)
             two_check = page.client_storage.get("two")
-            if page.client_storage.get("two") == '22:00-23:59':
-                two = '22:00-24:00'
+            two_check = page.client_storage.get("two")
+            start_time, end_time = two_check.split('-')
+            if end_time == '23:59':
+                two = f'{start_time}-24:00'
             else:
                 two = page.client_storage.get("two")
             time_2.visible = True
@@ -104,10 +110,13 @@ def main(page: ft.Page):
                 font_family="Golos Text"
             )
             page.update()
+            print("Two found!")
         except:
             if page.client_storage.get("two") != None:
-                if page.client_storage.get("two") == '22:00-23:59':
-                    two = '22:00-24:00'
+                two_check = page.client_storage.get("two")
+                start_time, end_time = two_check.split('-')
+                if end_time == '23:59':
+                    two = f'{start_time}-24:00'
                 else:
                     two = page.client_storage.get("two")
                 time_2.visible = True
@@ -126,8 +135,9 @@ def main(page: ft.Page):
             result_three = try_three.get()
             page.client_storage.set("three", result_three)
             three_check = page.client_storage.get("three")
-            if page.client_storage.get("three") == '22:00-23:59':
-                three = '22:00-24:00'
+            start_time, end_time = three_check.split('-')
+            if end_time == '23:59':
+                three = f'{start_time}-24:00'
             else:
                 three = page.client_storage.get("three")
             time_3.visible = True
@@ -139,10 +149,13 @@ def main(page: ft.Page):
                 font_family="Golos Text"
             )
             page.update()
+            print("Three found!")
         except:
             if page.client_storage.get("three") != None:
-                if page.client_storage.get("three") == '22:00-23:59':
-                    three = '22:00-24:00'
+                three_check = page.client_storage.get("three")
+                start_time, end_time = three_check.split('-')
+                if end_time == '23:59':
+                    three = f'{start_time}-24:00'
                 else:
                     three = page.client_storage.get("three")
                 time_3.visible = True
@@ -161,8 +174,9 @@ def main(page: ft.Page):
             result_four = try_four.get()
             page.client_storage.set("four", result_four)
             four_check = page.client_storage.get("four")
-            if page.client_storage.get("four") == '22:00-23:59':
-                four = '22:00-24:00'
+            start_time, end_time = four_check.split('-')
+            if end_time == '23:59':
+                four = f'{start_time}-24:00'
             else:
                 four = page.client_storage.get("four")
             time_4.visible = True
@@ -174,10 +188,13 @@ def main(page: ft.Page):
                 font_family="Golos Text"
             )
             page.update()
+            print("Four found!")
         except:
             if page.client_storage.get("four") != None:
-                if page.client_storage.get("four") == '22:00-23:59':
-                    four = '22:00-24:00'
+                four_check = page.client_storage.get("four")
+                start_time, end_time = four_check.split('-')
+                if end_time == '23:59':
+                    four = f'{start_time}-24:00'
                 else:
                     four = page.client_storage.get("four")
                 time_4.visible = True
@@ -196,8 +213,9 @@ def main(page: ft.Page):
             result_five = try_five.get()
             page.client_storage.set("five", result_five)
             five_check = page.client_storage.get("five")
-            if page.client_storage.get("five") == '22:00-23:59':
-                five = '22:00-24:00'
+            start_time, end_time = five_check.split('-')
+            if end_time == '23:59':
+                five = f'{start_time}-24:00'
             else:
                 five = page.client_storage.get("five")
             time_5.visible = True
@@ -209,10 +227,13 @@ def main(page: ft.Page):
                 font_family="Golos Text"
             )
             page.update()
+            print("Five found!")
         except:
             if page.client_storage.get("five") != None:
-                if page.client_storage.get("five") == '22:00-23:59':
-                    five = '22:00-24:00'
+                five_check = page.client_storage.get("five")
+                start_time, end_time = five_check.split('-')
+                if end_time == '23:59':
+                    five = f'{start_time}-24:00'
                 else:
                     five = page.client_storage.get("five")
                 time_5.visible = True
@@ -231,8 +252,9 @@ def main(page: ft.Page):
             result_six = try_six.get()
             page.client_storage.set("six", result_six)
             six_check = page.client_storage.get("six")
-            if page.client_storage.get("six") == '22:00-23:59':
-                six = '22:00-24:00'
+            start_time, end_time = six_check.split('-')
+            if end_time == '23:59':
+                six = f'{start_time}-24:00'
             else:
                 six = page.client_storage.get("six")
             time_6.visible = True
@@ -244,10 +266,13 @@ def main(page: ft.Page):
                 font_family="Golos Text"
             )
             page.update()
+            print("Six found!")
         except:
             if page.client_storage.get("six") != None:
-                if page.client_storage.get("six") == '22:00-23:59':
-                    six = '22:00-24:00'
+                six_check = page.client_storage.get("six")
+                start_time, end_time = six_check.split('-')
+                if end_time == '23:59':
+                     six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six")
                 time_6.visible = True
@@ -278,6 +303,7 @@ def main(page: ft.Page):
                 firebase_admin.initialize_app(
                     connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
                 open_list()
+                print('Connected!')
             except:
                 one_button.disabled = True
                 two_button.disabled = True
@@ -295,6 +321,7 @@ def main(page: ft.Page):
                     connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
                 test_connect = db.reference()
                 test_connect.get()
+                print('Connected!')
             except:
                 one_button.disabled = True
                 two_button.disabled = True
@@ -317,8 +344,9 @@ def main(page: ft.Page):
                 result_one = try_one.get()
                 page.client_storage.set("one", result_one)
                 one_check = page.client_storage.get("one")
-                if page.client_storage.get("one") == '22:00-23:59':
-                    one = '22:00-24:00'
+                start_time, end_time = one_check.split('-')
+                if end_time == '23:59':
+                    one = f'{start_time}-24:00'
                 else:
                     one = page.client_storage.get("one")
                 time_1.visible = True
@@ -330,10 +358,13 @@ def main(page: ft.Page):
                     font_family="Golos Text"
                 )
                 page.update()
+                print("One found!")
             except:
                 if page.client_storage.get("one") != None:
-                    if page.client_storage.get("one") == '22:00-23:59':
-                        one = '22:00-24:00'
+                    one_check = page.client_storage.get("one")
+                    start_time, end_time = one_check.split('-')
+                    if end_time == '23:59':
+                        one = f'{start_time}-24:00'
                     else:
                         one = page.client_storage.get("one")
                     time_1.visible = True
@@ -352,8 +383,9 @@ def main(page: ft.Page):
                 result_two = try_two.get()
                 page.client_storage.set("two", result_two)
                 two_check = page.client_storage.get("two")
-                if page.client_storage.get("two") == '22:00-23:59':
-                    two = '22:00-24:00'
+                start_time, end_time = two_check.split('-')
+                if end_time == '23:59':
+                    two = f'{start_time}-24:00'
                 else:
                     two = page.client_storage.get("two")
                 time_2.visible = True
@@ -365,10 +397,13 @@ def main(page: ft.Page):
                     font_family="Golos Text"
                 )
                 page.update()
+                print("Two found!")
             except:
                 if page.client_storage.get("two") != None:
-                    if page.client_storage.get("two") == '22:00-23:59':
-                        two = '22:00-24:00'
+                    two_check = page.client_storage.get("two")
+                    start_time, end_time = two_check.split('-')
+                    if end_time == '23:59':
+                        two = f'{start_time}-24:00'
                     else:
                         two = page.client_storage.get("two")
                     time_2.visible = True
@@ -387,8 +422,9 @@ def main(page: ft.Page):
                 result_three = try_three.get()
                 page.client_storage.set("three", result_three)
                 three_check = page.client_storage.get("three")
-                if page.client_storage.get("three") == '22:00-23:59':
-                    three = '22:00-24:00'
+                start_time, end_time = three_check.split('-')
+                if end_time == '23:59':
+                    three = f'{start_time}-24:00'
                 else:
                     three = page.client_storage.get("three")
                 time_3.visible = True
@@ -400,10 +436,13 @@ def main(page: ft.Page):
                     font_family="Golos Text"
                 )
                 page.update()
+                print("Three found!")
             except:
                 if page.client_storage.get("three") != None:
-                    if page.client_storage.get("three") == '22:00-23:59':
-                        three = '22:00-24:00'
+                    three_check = page.client_storage.get("three")
+                    start_time, end_time = three_check.split('-')
+                    if end_time == '23:59':
+                        three = f'{start_time}-24:00'
                     else:
                         three = page.client_storage.get("three")
                     time_3.visible = True
@@ -422,8 +461,9 @@ def main(page: ft.Page):
                 result_four = try_four.get()
                 page.client_storage.set("four", result_four)
                 four_check = page.client_storage.get("four")
-                if page.client_storage.get("four") == '22:00-23:59':
-                    four = '22:00-24:00'
+                start_time, end_time = four_check.split('-')
+                if end_time == '23:59':
+                    four = f'{start_time}-24:00'
                 else:
                     four = page.client_storage.get("four")
                 time_4.visible = True
@@ -435,10 +475,13 @@ def main(page: ft.Page):
                     font_family="Golos Text"
                 )
                 page.update()
+                print("Four found!")
             except:
                 if page.client_storage.get("four") != None:
-                    if page.client_storage.get("four") == '22:00-23:59':
-                        four = '22:00-24:00'
+                    four_check = page.client_storage.get("four")
+                    start_time, end_time = four_check.split('-')
+                    if end_time == '23:59':
+                        four = f'{start_time}-24:00'
                     else:
                         four = page.client_storage.get("four")
                     time_4.visible = True
@@ -457,8 +500,9 @@ def main(page: ft.Page):
                 result_five = try_five.get()
                 page.client_storage.set("five", result_five)
                 five_check = page.client_storage.get("five")
-                if page.client_storage.get("five") == '22:00-23:59':
-                    five = '22:00-24:00'
+                start_time, end_time = five_check.split('-')
+                if end_time == '23:59':
+                    five = f'{start_time}-24:00'
                 else:
                     five = page.client_storage.get("five")
                 time_5.visible = True
@@ -470,10 +514,13 @@ def main(page: ft.Page):
                     font_family="Golos Text"
                 )
                 page.update()
+                print("Five found!")
             except:
                 if page.client_storage.get("five") != None:
-                    if page.client_storage.get("five") == '22:00-23:59':
-                        five = '22:00-24:00'
+                    five_check = page.client_storage.get("five")
+                    start_time, end_time = five_check.split('-')
+                    if end_time == '23:59':
+                        five = f'{start_time}-24:00'
                     else:
                         five = page.client_storage.get("five")
                     time_5.visible = True
@@ -492,8 +539,9 @@ def main(page: ft.Page):
                 result_six = try_six.get()
                 page.client_storage.set("six", result_six)
                 six_check = page.client_storage.get("six")
-                if page.client_storage.get("six") == '22:00-23:59':
-                    six = '22:00-24:00'
+                start_time, end_time = six_check.split('-')
+                if end_time == '23:59':
+                    six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six")
                 time_6.visible = True
@@ -505,10 +553,13 @@ def main(page: ft.Page):
                     font_family="Golos Text"
                 )
                 page.update()
+                print("Six found!")
             except:
                 if page.client_storage.get("six") != None:
-                    if page.client_storage.get("six") == '22:00-23:59':
-                        six = '22:00-24:00'
+                    six_check = page.client_storage.get("six")
+                    start_time, end_time = six_check.split('-')
+                    if end_time == '23:59':
+                        six = f'{start_time}-24:00'
                     else:
                         six = page.client_storage.get("six")
                     time_6.visible = True
