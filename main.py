@@ -916,12 +916,15 @@ def main(page: ft.Page):
     )
 
     info_tab = ft.Container(
+        height=page_height*0.8,
+        width=page_width,
         blur=10,
         visible=False,
         bgcolor=ft.colors.BLACK12,
         border_radius=15,
         padding=15,
         content=ft.Column(
+            scroll=ft.ScrollMode.ADAPTIVE,
             horizontal_alignment='center',
             alignment='start',
             controls=[
@@ -973,11 +976,11 @@ def main(page: ft.Page):
                     style=ft.ButtonStyle(
                         shape=ft.RoundedRectangleBorder(radius=15),
                         overlay_color=ft.colors.AMBER_200),
-                        width=250,
-                        height=50,
-                        color=ft.colors.BLACK,
-                        bgcolor='#ffcc66',
-                        on_click=open_pdf
+                    width=250,
+                    height=50,
+                    color=ft.colors.BLACK,
+                    bgcolor='#ffcc66',
+                    on_click=open_pdf
                 ),
                 ft.TextButton(
                     style=ft.ButtonStyle(overlay_color=ft.colors.AMBER_200),
