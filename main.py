@@ -38,6 +38,9 @@ def main(page: ft.Page):
         page.launch_url('https://send.monobank.ua/jar/7rkGHNfQpV',
                         web_window_name='Monobank')
 
+    def open_pdf(e):
+        page.launch_url('https://www.soe.com.ua/images/gr23-24-adr.pdf')
+
     def cherg_choise(e):
         numb_cherg = e.control.data
         page.client_storage.set("number", numb_cherg)
@@ -932,7 +935,7 @@ def main(page: ft.Page):
                 ),
                 ft.Divider(height=0.1, color=ft.colors.BLACK26),
                 ft.Text(
-                    "Застосунок розроблений для безкоштовного користування.",
+                    "Розроблено для безплатного користування.",
                     size=16,
                     color='black',
                     text_align='center',
@@ -941,7 +944,7 @@ def main(page: ft.Page):
                 ),
                 ft.Divider(height=0.1, color=ft.colors.BLACK26),
                 ft.Text(
-                    "Головна мета - максимально спростити пошук актуальної інформації про відключення світла.",
+                    "Застосунок використовує актуальні графіки відключень світла з сайту Сумиобленерго.",
                     size=16,
                     color='black',
                     text_align='center',
@@ -950,7 +953,7 @@ def main(page: ft.Page):
                 ),
                 ft.Divider(height=0.1, color=ft.colors.BLACK26),
                 ft.Text(
-                    "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку з монобанку.",
+                    "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку монобанку.",
                     size=16,
                     color='black',
                     text_align='center',
@@ -958,11 +961,28 @@ def main(page: ft.Page):
                     weight="w500"
                 ),
                 ft.Divider(height=0.1, color=ft.colors.BLACK26),
+                ft.ElevatedButton(
+                    content=ft.Text(
+                        "Дізнатися свою чергу",
+                        size=18,
+                        color='black',
+                        text_align='center',
+                        font_family="Golos Text",
+                        weight="w500"
+                    ),
+                    style=ft.ButtonStyle(
+                        shape=ft.RoundedRectangleBorder(radius=15),
+                        overlay_color=ft.colors.AMBER_200),
+                        width=250,
+                        height=50,
+                        color=ft.colors.BLACK,
+                        bgcolor='#ffcc66',
+                        on_click=open_pdf
+                ),
                 ft.TextButton(
                     style=ft.ButtonStyle(overlay_color=ft.colors.AMBER_200),
                     on_click=mono_click,
                     content=ft.Image(
-                        # src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/monobanka.png?raw=true",
                         src=f"/Images/monobanka.png",
                         height=100,
                         width=100,
