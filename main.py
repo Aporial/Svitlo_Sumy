@@ -272,7 +272,7 @@ def main(page: ft.Page):
                 six_check = page.client_storage.get("six")
                 start_time, end_time = six_check.split('-')
                 if end_time == '23:59':
-                     six = f'{start_time}-24:00'
+                    six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six")
                 time_6.visible = True
@@ -288,10 +288,21 @@ def main(page: ft.Page):
             print("Six not found!")
         progress_bar.visible = False
         all_time.visible = True
-        if check_time_interval(one_check) == True:
-            pass
-        else:
-            check_time_interval(two_check)
+        try:
+            if check_time_interval(one_check) == True:
+                print("One time check is True!")
+            elif check_time_interval(two_check) == True:
+                print("Two time check is True!")
+            elif check_time_interval(three_check) == True:
+                print("Three time check is True!")
+            elif check_time_interval(four_check) == True:
+                print("Four time check is True!")
+            elif check_time_interval(five_check) == True:
+                print("Five time check is True!")
+            elif check_time_interval(six_check) == True:
+                print("Six time check is True!")
+        except:
+            print("All time check is False!")
         page.update()
 
     def check_storage():
@@ -575,10 +586,21 @@ def main(page: ft.Page):
                 print("Six not found!")
             progress_bar.visible = False
             all_time.visible = True
-            if check_time_interval(one_check) == True:
-                pass
-            else:
-                check_time_interval(two_check)
+            try:
+                if check_time_interval(one_check) == True:
+                    print("One time check is True!")
+                elif check_time_interval(two_check) == True:
+                    print("Two time check is True!")
+                elif check_time_interval(three_check) == True:
+                    print("Three time check is True!")
+                elif check_time_interval(four_check) == True:
+                    print("Four time check is True!")
+                elif check_time_interval(five_check) == True:
+                    print("Five time check is True!")
+                elif check_time_interval(six_check) == True:
+                    print("Six time check is True!")
+            except:
+                print("All time check is False!")
         page.update()
 
     def storage():
