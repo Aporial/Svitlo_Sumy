@@ -700,9 +700,6 @@ def main(page: ft.Page):
         bgcolor='#ffcc66',
         border_radius=5,
         padding=10,
-        # height=50,
-        # width=155,
-        # alignment=ft.alignment.center,
         content=ft.Text(
             one,
             size=21,
@@ -723,9 +720,6 @@ def main(page: ft.Page):
         bgcolor='#ffcc66',
         border_radius=5,
         padding=10,
-        # height=50,
-        # width=155,
-        # alignment=ft.alignment.center,
         content=ft.Text(
             two,
             size=21,
@@ -746,9 +740,6 @@ def main(page: ft.Page):
         bgcolor='#ffcc66',
         border_radius=5,
         padding=10,
-        # height=50,
-        # width=155,
-        # alignment=ft.alignment.center,
         content=ft.Text(
             three,
             size=21,
@@ -769,9 +760,6 @@ def main(page: ft.Page):
         bgcolor='#ffcc66',
         border_radius=5,
         padding=10,
-        # height=50,
-        # width=155,
-        # alignment=ft.alignment.center,
         content=ft.Text(
             four,
             size=21,
@@ -792,9 +780,6 @@ def main(page: ft.Page):
         bgcolor='#ffcc66',
         border_radius=5,
         padding=10,
-        # height=50,
-        # width=160,
-        # alignment=ft.alignment.center,
         content=ft.Text(
             five,
             size=21,
@@ -815,9 +800,6 @@ def main(page: ft.Page):
         bgcolor='#ffcc66',
         border_radius=5,
         padding=10,
-        # height=50,
-        # width=155,
-        # alignment=ft.alignment.center,
         content=ft.Text(
             six,
             size=21,
@@ -828,6 +810,7 @@ def main(page: ft.Page):
     )
 
     all_time = ft.Row(
+        scroll=ft.ScrollMode.ALWAYS,
         visible=False,
         alignment='center',
         vertical_alignment='center',
@@ -896,7 +879,6 @@ def main(page: ft.Page):
     lamp_img = ft.Container(
         visible=True,
         content=ft.Image(
-            # src=f"https://github.com/Aporial/Svitlo/blob/main/assets/Images/lamp_off.png?raw=true",
             src=f"/Images/lamp_on.png",
             height=280,
             width=280,
@@ -905,12 +887,6 @@ def main(page: ft.Page):
 
     main_info = ft.Container(
         blur=10,
-        # shadow=ft.BoxShadow(
-        #     blur_radius=2,
-        #     blur_style=ft.ShadowBlurStyle.NORMAL,
-        #     offset=ft.Offset(0, 2),
-        #     color=ft.colors.BLACK54
-        # ),
         padding=15,
         bgcolor=ft.colors.BLACK26,
         border_radius=15,
@@ -931,19 +907,13 @@ def main(page: ft.Page):
                     color=ft.colors.BLACK38
                 ),
                 progress_bar,
-                all_time,
+                all_time
             ]
         )
     )
 
     info_tab = ft.Container(
         blur=10,
-        # shadow=ft.BoxShadow(
-        #     blur_radius=2,
-        #     blur_style=ft.ShadowBlurStyle.NORMAL,
-        #     offset=ft.Offset(0, 2),
-        #     color=ft.colors.BLACK87
-        # ),
         visible=False,
         bgcolor=ft.colors.BLACK12,
         border_radius=15,
@@ -1012,6 +982,7 @@ def main(page: ft.Page):
         ),
         padding=15,
         content=ft.Column(
+            # scroll=ft.ScrollMode.HIDDEN,
             horizontal_alignment='center',
             alignment='center',
             controls=[
@@ -1063,5 +1034,6 @@ def main(page: ft.Page):
 
 ft.app(
     target=main,
+    name="Svitlo Sumy",
     assets_dir='assets',
 )
