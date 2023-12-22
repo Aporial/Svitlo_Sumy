@@ -983,29 +983,6 @@ def main(page: ft.Page):
         )
     )
 
-    main_container1 = ft.SafeArea(
-        ft.Container(
-            gradient=ft.LinearGradient(
-                begin=ft.alignment.top_right,
-                end=ft.alignment.bottom_left,
-                colors=['#ffcc66', '#ff6666']
-            ),
-            padding=15,
-            content=ft.Column(
-                # scroll=ft.ScrollMode.HIDDEN,
-                horizontal_alignment='center',
-                alignment='center',
-                controls=[
-                    lamp_img,
-                    main_info,
-                    info_tab,
-                    ft.Container(height=65)
-                ]
-            ),
-        ),
-        expand=True
-    )
-
     main_container = ft.Container(
         gradient=ft.LinearGradient(
             begin=ft.alignment.top_right,
@@ -1021,7 +998,6 @@ def main(page: ft.Page):
                 lamp_img,
                 main_info,
                 info_tab,
-                ft.Container(height=65)
             ]
         ),
         expand=True
