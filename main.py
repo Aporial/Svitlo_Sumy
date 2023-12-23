@@ -67,7 +67,7 @@ def main(page: ft.Page):
             time_1.visible = True
             time_1.content = ft.Text(
                 one,
-                size=21,
+                size=20,
                 weight='w500',
                 color=ft.colors.BLACK,
                 font_family="Golos Text"
@@ -85,7 +85,7 @@ def main(page: ft.Page):
                 time_1.visible = True
                 time_1.content = ft.Text(
                     one,
-                    size=21,
+                    size=20,
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
@@ -107,7 +107,7 @@ def main(page: ft.Page):
             time_2.visible = True
             time_2.content = ft.Text(
                 two,
-                size=21,
+                size=20,
                 weight='w500',
                 color=ft.colors.BLACK,
                 font_family="Golos Text"
@@ -125,7 +125,7 @@ def main(page: ft.Page):
                 time_2.visible = True
                 time_2.content = ft.Text(
                     two,
-                    size=21,
+                    size=20,
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
@@ -146,7 +146,7 @@ def main(page: ft.Page):
             time_3.visible = True
             time_3.content = ft.Text(
                 three,
-                size=21,
+                size=20,
                 weight='w500',
                 color=ft.colors.BLACK,
                 font_family="Golos Text"
@@ -164,7 +164,7 @@ def main(page: ft.Page):
                 time_3.visible = True
                 time_3.content = ft.Text(
                     three,
-                    size=21,
+                    size=20,
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
@@ -185,7 +185,7 @@ def main(page: ft.Page):
             time_4.visible = True
             time_4.content = ft.Text(
                 four,
-                size=21,
+                size=20,
                 weight='w500',
                 color=ft.colors.BLACK,
                 font_family="Golos Text"
@@ -203,7 +203,7 @@ def main(page: ft.Page):
                 time_4.visible = True
                 time_4.content = ft.Text(
                     four,
-                    size=21,
+                    size=20,
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
@@ -224,7 +224,7 @@ def main(page: ft.Page):
             time_5.visible = True
             time_5.content = ft.Text(
                 five,
-                size=21,
+                size=20,
                 weight='w500',
                 color=ft.colors.BLACK,
                 font_family="Golos Text"
@@ -242,7 +242,7 @@ def main(page: ft.Page):
                 time_5.visible = True
                 time_5.content = ft.Text(
                     five,
-                    size=21,
+                    size=20,
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
@@ -263,7 +263,7 @@ def main(page: ft.Page):
             time_6.visible = True
             time_6.content = ft.Text(
                 six,
-                size=21,
+                size=20,
                 weight='w500',
                 color=ft.colors.BLACK,
                 font_family="Golos Text"
@@ -281,7 +281,7 @@ def main(page: ft.Page):
                 time_6.visible = True
                 time_6.content = ft.Text(
                     six,
-                    size=21,
+                    size=20,
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
@@ -366,7 +366,7 @@ def main(page: ft.Page):
                 time_1.visible = True
                 time_1.content = ft.Text(
                     one,
-                    size=21,
+                    size=20,
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
@@ -384,7 +384,7 @@ def main(page: ft.Page):
                     time_1.visible = True
                     time_1.content = ft.Text(
                         one,
-                        size=21,
+                        size=20,
                         weight='w500',
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
@@ -405,7 +405,7 @@ def main(page: ft.Page):
                 time_2.visible = True
                 time_2.content = ft.Text(
                     two,
-                    size=21,
+                    size=20,
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
@@ -423,7 +423,7 @@ def main(page: ft.Page):
                     time_2.visible = True
                     time_2.content = ft.Text(
                         two,
-                        size=21,
+                        size=20,
                         weight='w500',
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
@@ -444,7 +444,7 @@ def main(page: ft.Page):
                 time_3.visible = True
                 time_3.content = ft.Text(
                     three,
-                    size=21,
+                    size=20,
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
@@ -462,7 +462,7 @@ def main(page: ft.Page):
                     time_3.visible = True
                     time_3.content = ft.Text(
                         three,
-                        size=21,
+                        size=20,
                         weight='w500',
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
@@ -483,7 +483,7 @@ def main(page: ft.Page):
                 time_4.visible = True
                 time_4.content = ft.Text(
                     four,
-                    size=21,
+                    size=20,
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
@@ -501,7 +501,7 @@ def main(page: ft.Page):
                     time_4.visible = True
                     time_4.content = ft.Text(
                         four,
-                        size=21,
+                        size=20,
                         weight='w500',
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
@@ -522,7 +522,7 @@ def main(page: ft.Page):
                 time_5.visible = True
                 time_5.content = ft.Text(
                     five,
-                    size=21,
+                    size=20,
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
@@ -540,7 +540,7 @@ def main(page: ft.Page):
                     time_5.visible = True
                     time_5.content = ft.Text(
                         five,
-                        size=21,
+                        size=20,
                         weight='w500',
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
@@ -561,7 +561,7 @@ def main(page: ft.Page):
                 time_6.visible = True
                 time_6.content = ft.Text(
                     six,
-                    size=21,
+                    size=20,
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text"
@@ -579,7 +579,7 @@ def main(page: ft.Page):
                     time_6.visible = True
                     time_6.content = ft.Text(
                         six,
-                        size=21,
+                        size=20,
                         weight='w500',
                         color=ft.colors.BLACK,
                         font_family="Golos Text"
@@ -692,10 +692,10 @@ def main(page: ft.Page):
         ),
         bgcolor='#ffcc66',
         border_radius=5,
-        padding=10,
+        padding=8,
         content=ft.Text(
             one,
-            size=21,
+            size=20,
             weight='w500',
             color=ft.colors.BLACK,
             font_family="Golos Text"
@@ -712,10 +712,10 @@ def main(page: ft.Page):
         ),
         bgcolor='#ffcc66',
         border_radius=5,
-        padding=10,
+        padding=8,
         content=ft.Text(
             two,
-            size=21,
+            size=20,
             weight='w500',
             color=ft.colors.BLACK,
             font_family="Golos Text"
@@ -732,10 +732,10 @@ def main(page: ft.Page):
         ),
         bgcolor='#ffcc66',
         border_radius=5,
-        padding=10,
+        padding=8,
         content=ft.Text(
             three,
-            size=21,
+            size=20,
             weight='w500',
             color=ft.colors.BLACK,
             font_family="Golos Text"
@@ -752,10 +752,10 @@ def main(page: ft.Page):
         ),
         bgcolor='#ffcc66',
         border_radius=5,
-        padding=10,
+        padding=8,
         content=ft.Text(
             four,
-            size=21,
+            size=20,
             weight='w500',
             color=ft.colors.BLACK,
             font_family="Golos Text"
@@ -772,10 +772,10 @@ def main(page: ft.Page):
         ),
         bgcolor='#ffcc66',
         border_radius=5,
-        padding=10,
+        padding=8,
         content=ft.Text(
             five,
-            size=21,
+            size=20,
             weight='w500',
             color=ft.colors.BLACK,
             font_family="Golos Text"
@@ -792,10 +792,10 @@ def main(page: ft.Page):
         ),
         bgcolor='#ffcc66',
         border_radius=5,
-        padding=10,
+        padding=8,
         content=ft.Text(
             six,
-            size=21,
+            size=20,
             weight='w500',
             color=ft.colors.BLACK,
             font_family="Golos Text"
@@ -807,6 +807,7 @@ def main(page: ft.Page):
         alignment='center',
         vertical_alignment='center',
         wrap=True,
+        spacing=8,
         controls=[
             time_1,
             time_2,
