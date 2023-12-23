@@ -887,6 +887,7 @@ def main(page: ft.Page):
             content=ft.Column(
                 scroll=ft.ScrollMode.ADAPTIVE,
                 horizontal_alignment='center',
+                alignment="center",
                 controls=[
                     ft.Text(
                         "Графік відключень:",
@@ -905,8 +906,7 @@ def main(page: ft.Page):
                     all_time
                 ]
             )
-        ),
-        # expand=True
+        )
     )
 
     info_tab = ft.SafeArea(
@@ -970,7 +970,6 @@ def main(page: ft.Page):
                         style=ft.ButtonStyle(
                             shape=ft.RoundedRectangleBorder(radius=15),
                             overlay_color=ft.colors.AMBER_200),
-                        width=250,
                         height=50,
                         color=ft.colors.BLACK,
                         bgcolor='#ffcc66',
