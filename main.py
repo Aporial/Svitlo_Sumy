@@ -976,6 +976,7 @@ def main(page: ft.Page):
                         bgcolor='#ffcc66',
                         on_click=open_pdf
                     ),
+                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
                     ft.TextButton(
                         style=ft.ButtonStyle(
                             overlay_color=ft.colors.AMBER_200),
