@@ -1037,7 +1037,7 @@ def main(page: ft.Page):
                                                    icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація')
                                            ]
                                            )
-
+    
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
     page.add(main_container)
