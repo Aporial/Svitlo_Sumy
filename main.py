@@ -892,7 +892,7 @@ def main(page: ft.Page):
                 controls=[
                     ft.Text(
                         "Графік відключень:",
-                        size=25,
+                        size=24,
                         weight='w500',
                         color=ft.colors.BLACK87,
                         font_family="Golos Text",
@@ -925,7 +925,7 @@ def main(page: ft.Page):
                 controls=[
                     ft.Text(
                         'Інформація',
-                        size=35,
+                        size=30,
                         color=ft.colors.BLACK87,
                         weight="w400",
                         font_family="Golos Text",
