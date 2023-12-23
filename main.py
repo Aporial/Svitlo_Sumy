@@ -868,42 +868,45 @@ def main(page: ft.Page):
         bgcolor=ft.colors.WHITE,
     )
 
-    lamp_img = ft.Container(
-        visible=True,
-        content=ft.Image(
-            src=f"/Images/lamp_on.png",
-            height=280,
-            width=280,
+    lamp_img = ft.SafeArea(
+        ft.Container(
+            content=ft.Image(
+                src=f"/Images/lamp_on.png",
+                height=280,
+                width=280,
+            )
         )
     )
 
-    main_info = ft.Container(
-        blur=10,
-        padding=15,
-        bgcolor=ft.colors.BLACK26,
-        border_radius=15,
-        # expand=True,
-        content=ft.Column(
-            scroll=ft.ScrollMode.ADAPTIVE,
-            horizontal_alignment='center',
-            controls=[
-                ft.Text(
-                    "Графік відключень:",
-                    size=25,
-                    weight='w500',
-                    color=ft.colors.BLACK87,
-                    font_family="Golos Text",
-                    text_align='center'
-                ),
-                ft.Divider(
-                    height=1,
-                    thickness=1,
-                    color=ft.colors.BLACK38
-                ),
-                progress_bar,
-                all_time
-            ]
-        )
+    main_info = ft.SafeArea(
+        ft.Container(
+            blur=10,
+            padding=15,
+            bgcolor=ft.colors.BLACK26,
+            border_radius=15,
+            content=ft.Column(
+                scroll=ft.ScrollMode.ADAPTIVE,
+                horizontal_alignment='center',
+                controls=[
+                    ft.Text(
+                        "Графік відключень:",
+                        size=25,
+                        weight='w500',
+                        color=ft.colors.BLACK87,
+                        font_family="Golos Text",
+                        text_align='center'
+                    ),
+                    ft.Divider(
+                        height=1,
+                        thickness=1,
+                        color=ft.colors.BLACK38
+                    ),
+                    progress_bar,
+                    all_time
+                ]
+            )
+        ),
+        # expand=True
     )
 
     info_tab = ft.SafeArea(
@@ -1014,7 +1017,6 @@ def main(page: ft.Page):
     }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ft.ThemeMode.LIGHT
-    # page.bgcolor = ft.colors.BLACK
     page.window_height = 700
     page.window_width = 400
     page.padding = 0
