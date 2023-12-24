@@ -1037,6 +1037,7 @@ def main(page: ft.Page):
         height=65,
         on_change=on_tab,
         selected_index=1,
+        adaptive=True,
         destinations=[
             ft.NavigationDestination(
                 icon=ft.icons.LIST_ROUNDED, label='Черги',),
