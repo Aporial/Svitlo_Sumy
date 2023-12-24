@@ -22,17 +22,20 @@ def main(page: ft.Page):
         my_index = e.control.selected_index
         if my_index == 0:
             lamp_img.visible = True
+            text_after_img.visible = True
             main_info.visible = True
             info_tab.visible = False
             open_list()
         if my_index == 1:
             lamp_img.visible = True
+            text_after_img.visible = True
             main_info.visible = True
             info_tab.visible = False
             page.update()
         if my_index == 2:
             info_tab.visible = True
             lamp_img.visible = False
+            text_after_img.visible = False
             main_info.visible = False
             page.update()
 
@@ -296,6 +299,7 @@ def main(page: ft.Page):
         time_now.visible = True
         time_tomorrow.visible = True
         time_after_tomorrow.visible = True
+        main_tab_anim()
         try:
             if check_time_interval(one_check) == True:
                 print("One time check is True!")
@@ -599,6 +603,7 @@ def main(page: ft.Page):
             time_now.visible = True
             time_tomorrow.visible = True
             time_after_tomorrow.visible = True
+            main_tab_anim()
             try:
                 if check_time_interval(one_check) == True:
                     print("One time check is True!")
@@ -1128,6 +1133,15 @@ def main(page: ft.Page):
                 page.update()
             page.update()
             print("Six_After_Tomorrow not found!")
+        page.update()
+
+    def main_tab_anim():
+        main_info.expand = True
+        main_info.content = ft.Column(
+            controls=[
+                main_tab
+            ]
+        )
         page.update()
 
     alert_conn = ft.SnackBar(
@@ -1664,6 +1678,15 @@ def main(page: ft.Page):
         )
     )
 
+    text_after_img = ft.Text(
+        "Графік відключень",
+        size=24,
+        weight='w500',
+        color=ft.colors.BLACK87,
+        font_family="Golos Text",
+        text_align='center'
+    )
+
     main_tab = ft.Tabs(
         visible=False,
         tab_alignment=ft.TabAlignment.CENTER,
@@ -1720,10 +1743,8 @@ def main(page: ft.Page):
             alignment="center",
             controls=[
                 progress_bar,
-                main_tab,
             ]
-        ),
-        expand=True
+        )
     )
 
     info_tab = ft.SafeArea(
@@ -1821,19 +1842,7 @@ def main(page: ft.Page):
             alignment='center',
             controls=[
                 lamp_img,
-                ft.Text(
-                    "Графік відключень",
-                    size=24,
-                    weight='w500',
-                    color=ft.colors.BLACK87,
-                    font_family="Golos Text",
-                    text_align='center'
-                ),
-                # ft.Divider(
-                #     height=1,
-                #     thickness=1,
-                #     color=ft.colors.BLACK38
-                # ),
+                text_after_img,
                 main_info,
                 info_tab
             ]
