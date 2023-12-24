@@ -1,5 +1,7 @@
 import flet as ft
 from functions import check_cherg, day_num_one, day_num_two, day_num_three, day_num_four, day_num_five, day_num_six
+from functions import day_tomorrow_one, day_tomorrow_two, day_tomorrow_three, day_tomorrow_four, day_tomorrow_five, day_tomorrow_six
+from functions import day_after_tomorrow_one, day_after_tomorrow_two, day_after_tomorrow_three, day_after_tomorrow_four, day_after_tomorrow_five, day_after_tomorrow_six
 from datetime import datetime
 import firebase_admin
 from firebase_admin import credentials
@@ -64,8 +66,8 @@ def main(page: ft.Page):
                 one = f'{start_time}-24:00'
             else:
                 one = page.client_storage.get("one")
-            time_1.visible = True
-            time_1.content = ft.Text(
+            time_now_1.visible = True
+            time_now_1.content = ft.Text(
                 one,
                 size=21,
                 weight='w500',
@@ -82,8 +84,8 @@ def main(page: ft.Page):
                     one = f'{start_time}-24:00'
                 else:
                     one = page.client_storage.get("one")
-                time_1.visible = True
-                time_1.content = ft.Text(
+                time_now_1.visible = True
+                time_now_1.content = ft.Text(
                     one,
                     size=21,
                     weight='w500',
@@ -104,8 +106,8 @@ def main(page: ft.Page):
                 two = f'{start_time}-24:00'
             else:
                 two = page.client_storage.get("two")
-            time_2.visible = True
-            time_2.content = ft.Text(
+            time_now_2.visible = True
+            time_now_2.content = ft.Text(
                 two,
                 size=21,
                 weight='w500',
@@ -122,8 +124,8 @@ def main(page: ft.Page):
                     two = f'{start_time}-24:00'
                 else:
                     two = page.client_storage.get("two")
-                time_2.visible = True
-                time_2.content = ft.Text(
+                time_now_2.visible = True
+                time_now_2.content = ft.Text(
                     two,
                     size=21,
                     weight='w500',
@@ -143,8 +145,8 @@ def main(page: ft.Page):
                 three = f'{start_time}-24:00'
             else:
                 three = page.client_storage.get("three")
-            time_3.visible = True
-            time_3.content = ft.Text(
+            time_now_3.visible = True
+            time_now_3.content = ft.Text(
                 three,
                 size=21,
                 weight='w500',
@@ -161,8 +163,8 @@ def main(page: ft.Page):
                     three = f'{start_time}-24:00'
                 else:
                     three = page.client_storage.get("three")
-                time_3.visible = True
-                time_3.content = ft.Text(
+                time_now_3.visible = True
+                time_now_3.content = ft.Text(
                     three,
                     size=21,
                     weight='w500',
@@ -182,8 +184,8 @@ def main(page: ft.Page):
                 four = f'{start_time}-24:00'
             else:
                 four = page.client_storage.get("four")
-            time_4.visible = True
-            time_4.content = ft.Text(
+            time_now_4.visible = True
+            time_now_4.content = ft.Text(
                 four,
                 size=21,
                 weight='w500',
@@ -200,8 +202,8 @@ def main(page: ft.Page):
                     four = f'{start_time}-24:00'
                 else:
                     four = page.client_storage.get("four")
-                time_4.visible = True
-                time_4.content = ft.Text(
+                time_now_4.visible = True
+                time_now_4.content = ft.Text(
                     four,
                     size=21,
                     weight='w500',
@@ -221,8 +223,8 @@ def main(page: ft.Page):
                 five = f'{start_time}-24:00'
             else:
                 five = page.client_storage.get("five")
-            time_5.visible = True
-            time_5.content = ft.Text(
+            time_now_5.visible = True
+            time_now_5.content = ft.Text(
                 five,
                 size=21,
                 weight='w500',
@@ -239,8 +241,8 @@ def main(page: ft.Page):
                     five = f'{start_time}-24:00'
                 else:
                     five = page.client_storage.get("five")
-                time_5.visible = True
-                time_5.content = ft.Text(
+                time_now_5.visible = True
+                time_now_5.content = ft.Text(
                     five,
                     size=21,
                     weight='w500',
@@ -260,8 +262,8 @@ def main(page: ft.Page):
                 six = f'{start_time}-24:00'
             else:
                 six = page.client_storage.get("six")
-            time_6.visible = True
-            time_6.content = ft.Text(
+            time_now_6.visible = True
+            time_now_6.content = ft.Text(
                 six,
                 size=21,
                 weight='w500',
@@ -278,8 +280,8 @@ def main(page: ft.Page):
                     six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six")
-                time_6.visible = True
-                time_6.content = ft.Text(
+                time_now_6.visible = True
+                time_now_6.content = ft.Text(
                     six,
                     size=21,
                     weight='w500',
@@ -291,7 +293,9 @@ def main(page: ft.Page):
             print("Six not found!")
         progress_bar.visible = False
         main_tab.visible = True
-        all_time.visible = True
+        time_now.visible = True
+        time_tomorrow.visible = True
+        time_after_tomorrow.visible = True
         try:
             if check_time_interval(one_check) == True:
                 print("One time check is True!")
@@ -308,6 +312,8 @@ def main(page: ft.Page):
         except:
             print("All time check is False!")
         page.update()
+        get_time_tomorrow()
+        get_time_after_tomorrow()
 
     def check_storage():
         if page.client_storage.get("number") == None:
@@ -364,8 +370,8 @@ def main(page: ft.Page):
                     one = f'{start_time}-24:00'
                 else:
                     one = page.client_storage.get("one")
-                time_1.visible = True
-                time_1.content = ft.Text(
+                time_now_1.visible = True
+                time_now_1.content = ft.Text(
                     one,
                     size=21,
                     weight='w500',
@@ -382,8 +388,8 @@ def main(page: ft.Page):
                         one = f'{start_time}-24:00'
                     else:
                         one = page.client_storage.get("one")
-                    time_1.visible = True
-                    time_1.content = ft.Text(
+                    time_now_1.visible = True
+                    time_now_1.content = ft.Text(
                         one,
                         size=21,
                         weight='w500',
@@ -403,8 +409,8 @@ def main(page: ft.Page):
                     two = f'{start_time}-24:00'
                 else:
                     two = page.client_storage.get("two")
-                time_2.visible = True
-                time_2.content = ft.Text(
+                time_now_2.visible = True
+                time_now_2.content = ft.Text(
                     two,
                     size=21,
                     weight='w500',
@@ -421,8 +427,8 @@ def main(page: ft.Page):
                         two = f'{start_time}-24:00'
                     else:
                         two = page.client_storage.get("two")
-                    time_2.visible = True
-                    time_2.content = ft.Text(
+                    time_now_2.visible = True
+                    time_now_2.content = ft.Text(
                         two,
                         size=21,
                         weight='w500',
@@ -442,8 +448,8 @@ def main(page: ft.Page):
                     three = f'{start_time}-24:00'
                 else:
                     three = page.client_storage.get("three")
-                time_3.visible = True
-                time_3.content = ft.Text(
+                time_now_3.visible = True
+                time_now_3.content = ft.Text(
                     three,
                     size=21,
                     weight='w500',
@@ -460,8 +466,8 @@ def main(page: ft.Page):
                         three = f'{start_time}-24:00'
                     else:
                         three = page.client_storage.get("three")
-                    time_3.visible = True
-                    time_3.content = ft.Text(
+                    time_now_3.visible = True
+                    time_now_3.content = ft.Text(
                         three,
                         size=21,
                         weight='w500',
@@ -481,8 +487,8 @@ def main(page: ft.Page):
                     four = f'{start_time}-24:00'
                 else:
                     four = page.client_storage.get("four")
-                time_4.visible = True
-                time_4.content = ft.Text(
+                time_now_4.visible = True
+                time_now_4.content = ft.Text(
                     four,
                     size=21,
                     weight='w500',
@@ -499,8 +505,8 @@ def main(page: ft.Page):
                         four = f'{start_time}-24:00'
                     else:
                         four = page.client_storage.get("four")
-                    time_4.visible = True
-                    time_4.content = ft.Text(
+                    time_now_4.visible = True
+                    time_now_4.content = ft.Text(
                         four,
                         size=21,
                         weight='w500',
@@ -520,8 +526,8 @@ def main(page: ft.Page):
                     five = f'{start_time}-24:00'
                 else:
                     five = page.client_storage.get("five")
-                time_5.visible = True
-                time_5.content = ft.Text(
+                time_now_5.visible = True
+                time_now_5.content = ft.Text(
                     five,
                     size=21,
                     weight='w500',
@@ -538,8 +544,8 @@ def main(page: ft.Page):
                         five = f'{start_time}-24:00'
                     else:
                         five = page.client_storage.get("five")
-                    time_5.visible = True
-                    time_5.content = ft.Text(
+                    time_now_5.visible = True
+                    time_now_5.content = ft.Text(
                         five,
                         size=21,
                         weight='w500',
@@ -559,8 +565,8 @@ def main(page: ft.Page):
                     six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six")
-                time_6.visible = True
-                time_6.content = ft.Text(
+                time_now_6.visible = True
+                time_now_6.content = ft.Text(
                     six,
                     size=21,
                     weight='w500',
@@ -577,8 +583,8 @@ def main(page: ft.Page):
                         six = f'{start_time}-24:00'
                     else:
                         six = page.client_storage.get("six")
-                    time_6.visible = True
-                    time_6.content = ft.Text(
+                    time_now_6.visible = True
+                    time_now_6.content = ft.Text(
                         six,
                         size=21,
                         weight='w500',
@@ -590,7 +596,9 @@ def main(page: ft.Page):
                 print("Six not found!")
             progress_bar.visible = False
             main_tab.visible = True
-            all_time.visible = True
+            time_now.visible = True
+            time_tomorrow.visible = True
+            time_after_tomorrow.visible = True
             try:
                 if check_time_interval(one_check) == True:
                     print("One time check is True!")
@@ -607,6 +615,8 @@ def main(page: ft.Page):
             except:
                 print("All time check is False!")
         page.update()
+        get_time_tomorrow()
+        get_time_after_tomorrow()
 
     def storage():
         storage = page.client_storage.get("number")
@@ -640,6 +650,484 @@ def main(page: ft.Page):
 
     def alert_conn_first():
         alert_first_conn.open = True
+        page.update()
+
+    def get_time_tomorrow():
+        storage_info = storage()
+        cherg = check_cherg(storage_info)
+        try:
+            try_one = db.reference(f"/{cherg}/{day_tomorrow_one}")
+            result_one = try_one.get()
+            page.client_storage.set("one_tomorrow", result_one)
+            one_check = page.client_storage.get("one_tomorrow")
+            start_time, end_time = one_check.split('-')
+            if end_time == '23:59':
+                one = f'{start_time}-24:00'
+            else:
+                one = page.client_storage.get("one_tomorrow")
+            time_tomorrow_1.visible = True
+            time_tomorrow_1.content = ft.Text(
+                one,
+                size=21,
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("One_Tomorrow found!")
+        except:
+            if page.client_storage.get("one_tomorrow") != None:
+                one_check = page.client_storage.get("one_tomorrow")
+                start_time, end_time = one_check.split('-')
+                if end_time == '23:59':
+                    one = f'{start_time}-24:00'
+                else:
+                    one = page.client_storage.get("one_tomorrow")
+                time_tomorrow_1.visible = True
+                time_tomorrow_1.content = ft.Text(
+                    one,
+                    size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
+            page.update()
+            print("One_Tomorrow not found!")
+
+        try:
+            try_two = db.reference(f"/{cherg}/{day_tomorrow_two}")
+            result_two = try_two.get()
+            page.client_storage.set("two_tomorrow", result_two)
+            two_check = page.client_storage.get("two_tomorrow")
+            start_time, end_time = two_check.split('-')
+            if end_time == '23:59':
+                two = f'{start_time}-24:00'
+            else:
+                two = page.client_storage.get("two_tomorrow")
+            time_tomorrow_2.visible = True
+            time_tomorrow_2.content = ft.Text(
+                two,
+                size=21,
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Two_Tomorrow found!")
+        except:
+            if page.client_storage.get("two_tomorrow") != None:
+                two_check = page.client_storage.get("two_tomorrow")
+                start_time, end_time = two_check.split('-')
+                if end_time == '23:59':
+                    two = f'{start_time}-24:00'
+                else:
+                    two = page.client_storage.get("two_tomorrow")
+                time_tomorrow_2.visible = True
+                time_tomorrow_2.content = ft.Text(
+                    two,
+                    size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
+            page.update()
+            print("Two_Tomorrow not found!")
+
+        try:
+            try_three = db.reference(f"/{cherg}/{day_tomorrow_three}")
+            result_three = try_three.get()
+            page.client_storage.set("three_tomorrow", result_three)
+            three_check = page.client_storage.get("three_tomorrow")
+            start_time, end_time = three_check.split('-')
+            if end_time == '23:59':
+                three = f'{start_time}-24:00'
+            else:
+                three = page.client_storage.get("three_tomorrow")
+            time_tomorrow_3.visible = True
+            time_tomorrow_3.content = ft.Text(
+                three,
+                size=21,
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Three_Tomorrow found!")
+        except:
+            if page.client_storage.get("three_tomorrow") != None:
+                three_check = page.client_storage.get("three_tomorrow")
+                start_time, end_time = three_check.split('-')
+                if end_time == '23:59':
+                    three = f'{start_time}-24:00'
+                else:
+                    three = page.client_storage.get("three_tomorrow")
+                time_tomorrow_3.visible = True
+                time_tomorrow_3.content = ft.Text(
+                    three,
+                    size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
+            page.update()
+            print("Three_Tomorrow not found!")
+
+        try:
+            try_four = db.reference(f"/{cherg}/{day_tomorrow_four}")
+            result_four = try_four.get()
+            page.client_storage.set("four_tomorrow", result_four)
+            four_check = page.client_storage.get("four_tomorrow")
+            start_time, end_time = four_check.split('-')
+            if end_time == '23:59':
+                four = f'{start_time}-24:00'
+            else:
+                four = page.client_storage.get("four_tomorrow")
+            time_tomorrow_4.visible = True
+            time_tomorrow_4.content = ft.Text(
+                four,
+                size=21,
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Four_Tomorrow found!")
+        except:
+            if page.client_storage.get("four_tomorrow") != None:
+                four_check = page.client_storage.get("four_tomorrow")
+                start_time, end_time = four_check.split('-')
+                if end_time == '23:59':
+                    four = f'{start_time}-24:00'
+                else:
+                    four = page.client_storage.get("four_tomorrow")
+                time_tomorrow_4.visible = True
+                time_tomorrow_4.content = ft.Text(
+                    four,
+                    size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
+            page.update()
+            print("Four_Tomorrow not found!")
+
+        try:
+            try_five = db.reference(f"/{cherg}/{day_tomorrow_five}")
+            result_five = try_five.get()
+            page.client_storage.set("five_tomorrow", result_five)
+            five_check = page.client_storage.get("five_tomorrow")
+            start_time, end_time = five_check.split('-')
+            if end_time == '23:59':
+                five = f'{start_time}-24:00'
+            else:
+                five = page.client_storage.get("five_tomorrow")
+            time_tomorrow_5.visible = True
+            time_tomorrow_5.content = ft.Text(
+                five,
+                size=21,
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Five_Tomorrow found!")
+        except:
+            if page.client_storage.get("five_tomorrow") != None:
+                five_check = page.client_storage.get("five_tomorrow")
+                start_time, end_time = five_check.split('-')
+                if end_time == '23:59':
+                    five = f'{start_time}-24:00'
+                else:
+                    five = page.client_storage.get("five_tomorrow")
+                time_tomorrow_5.visible = True
+                time_tomorrow_5.content = ft.Text(
+                    five,
+                    size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
+            page.update()
+            print("Five_Tomorrow not found!")
+
+        try:
+            try_six = db.reference(f"/{cherg}/{day_tomorrow_six}")
+            result_six = try_six.get()
+            page.client_storage.set("six_tomorrow", result_six)
+            six_check = page.client_storage.get("six_tomorrow")
+            start_time, end_time = six_check.split('-')
+            if end_time == '23:59':
+                six = f'{start_time}-24:00'
+            else:
+                six = page.client_storage.get("six_tomorrow")
+            time_tomorrow_6.visible = True
+            time_tomorrow_6.content = ft.Text(
+                six,
+                size=21,
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Six_Tomorrow found!")
+        except:
+            if page.client_storage.get("six_tomorrow") != None:
+                six_check = page.client_storage.get("six_tomorrow")
+                start_time, end_time = six_check.split('-')
+                if end_time == '23:59':
+                    six = f'{start_time}-24:00'
+                else:
+                    six = page.client_storage.get("six_tomorrow")
+                time_tomorrow_6.visible = True
+                time_tomorrow_6.content = ft.Text(
+                    six,
+                    size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+            page.update()
+            print("Six_Tomorrow not found!")
+        page.update()
+
+    def get_time_after_tomorrow():
+        storage_info = storage()
+        cherg = check_cherg(storage_info)
+        try:
+            try_one = db.reference(f"/{cherg}/{day_after_tomorrow_one}")
+            result_one = try_one.get()
+            page.client_storage.set("one_after_tomorrow", result_one)
+            one_check = page.client_storage.get("one_after_tomorrow")
+            start_time, end_time = one_check.split('-')
+            if end_time == '23:59':
+                one = f'{start_time}-24:00'
+            else:
+                one = page.client_storage.get("one_after_tomorrow")
+            time_after_tomorrow_1.visible = True
+            time_after_tomorrow_1.content = ft.Text(
+                one,
+                size=21,
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("One_After_Tomorrow found!")
+        except:
+            if page.client_storage.get("one_after_tomorrow") != None:
+                one_check = page.client_storage.get("one_after_tomorrow")
+                start_time, end_time = one_check.split('-')
+                if end_time == '23:59':
+                    one = f'{start_time}-24:00'
+                else:
+                    one = page.client_storage.get("one_after_tomorrow")
+                time_after_tomorrow_1.visible = True
+                time_after_tomorrow_1.content = ft.Text(
+                    one,
+                    size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
+            page.update()
+            print("One_After_Tomorrow not found!")
+
+        try:
+            try_two = db.reference(f"/{cherg}/{day_after_tomorrow_two}")
+            result_two = try_two.get()
+            page.client_storage.set("two_after_tomorrow", result_two)
+            two_check = page.client_storage.get("two_after_tomorrow")
+            start_time, end_time = two_check.split('-')
+            if end_time == '23:59':
+                two = f'{start_time}-24:00'
+            else:
+                two = page.client_storage.get("two_after_tomorrow")
+            time_after_tomorrow_2.visible = True
+            time_after_tomorrow_2.content = ft.Text(
+                two,
+                size=21,
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Two_After_Tomorrow found!")
+        except:
+            if page.client_storage.get("two_after_tomorrow") != None:
+                two_check = page.client_storage.get("two_after_tomorrow")
+                start_time, end_time = two_check.split('-')
+                if end_time == '23:59':
+                    two = f'{start_time}-24:00'
+                else:
+                    two = page.client_storage.get("two_after_tomorrow")
+                time_after_tomorrow_2.visible = True
+                time_after_tomorrow_2.content = ft.Text(
+                    two,
+                    size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
+            page.update()
+            print("Two_After_Tomorrow not found!")
+
+        try:
+            try_three = db.reference(f"/{cherg}/{day_after_tomorrow_three}")
+            result_three = try_three.get()
+            page.client_storage.set("three_after_tomorrow", result_three)
+            three_check = page.client_storage.get("three_after_tomorrow")
+            start_time, end_time = three_check.split('-')
+            if end_time == '23:59':
+                three = f'{start_time}-24:00'
+            else:
+                three = page.client_storage.get("three_after_tomorrow")
+            time_after_tomorrow_3.visible = True
+            time_after_tomorrow_3.content = ft.Text(
+                three,
+                size=21,
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Three_After_Tomorrow found!")
+        except:
+            if page.client_storage.get("three_after_tomorrow") != None:
+                three_check = page.client_storage.get("three_after_tomorrow")
+                start_time, end_time = three_check.split('-')
+                if end_time == '23:59':
+                    three = f'{start_time}-24:00'
+                else:
+                    three = page.client_storage.get("three_after_tomorrow")
+                time_after_tomorrow_3.visible = True
+                time_after_tomorrow_3.content = ft.Text(
+                    three,
+                    size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
+            page.update()
+            print("Three_After_Tomorrow not found!")
+
+        try:
+            try_four = db.reference(f"/{cherg}/{day_after_tomorrow_four}")
+            result_four = try_four.get()
+            page.client_storage.set("four_after_tomorrow", result_four)
+            four_check = page.client_storage.get("four_after_tomorrow")
+            start_time, end_time = four_check.split('-')
+            if end_time == '23:59':
+                four = f'{start_time}-24:00'
+            else:
+                four = page.client_storage.get("four_after_tomorrow")
+            time_after_tomorrow_4.visible = True
+            time_after_tomorrow_4.content = ft.Text(
+                four,
+                size=21,
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Four_After_Tomorrow found!")
+        except:
+            if page.client_storage.get("four_after_tomorrow") != None:
+                four_check = page.client_storage.get("four_after_tomorrow")
+                start_time, end_time = four_check.split('-')
+                if end_time == '23:59':
+                    four = f'{start_time}-24:00'
+                else:
+                    four = page.client_storage.get("four_after_tomorrow")
+                time_after_tomorrow_4.visible = True
+                time_after_tomorrow_4.content = ft.Text(
+                    four,
+                    size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
+            page.update()
+            print("Four_After_Tomorrow not found!")
+
+        try:
+            try_five = db.reference(f"/{cherg}/{day_after_tomorrow_five}")
+            result_five = try_five.get()
+            page.client_storage.set("five_after_tomorrow", result_five)
+            five_check = page.client_storage.get("five_after_tomorrow")
+            start_time, end_time = five_check.split('-')
+            if end_time == '23:59':
+                five = f'{start_time}-24:00'
+            else:
+                five = page.client_storage.get("five_after_tomorrow")
+            time_after_tomorrow_5.visible = True
+            time_after_tomorrow_5.content = ft.Text(
+                five,
+                size=21,
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Five_After_Tomorrow found!")
+        except:
+            if page.client_storage.get("five_after_tomorrow") != None:
+                five_check = page.client_storage.get("five_after_tomorrow")
+                start_time, end_time = five_check.split('-')
+                if end_time == '23:59':
+                    five = f'{start_time}-24:00'
+                else:
+                    five = page.client_storage.get("five_after_tomorrow")
+                time_after_tomorrow_5.visible = True
+                time_after_tomorrow_5.content = ft.Text(
+                    five,
+                    size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
+            page.update()
+            print("Five_After_Tomorrow not found!")
+
+        try:
+            try_six = db.reference(f"/{cherg}/{day_after_tomorrow_six}")
+            result_six = try_six.get()
+            page.client_storage.set("six_after_tomorrow", result_six)
+            six_check = page.client_storage.get("six_after_tomorrow")
+            start_time, end_time = six_check.split('-')
+            if end_time == '23:59':
+                six = f'{start_time}-24:00'
+            else:
+                six = page.client_storage.get("six_after_tomorrow")
+            time_after_tomorrow_6.visible = True
+            time_after_tomorrow_6.content = ft.Text(
+                six,
+                size=21,
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Six_After_Tomorrow found!")
+        except:
+            if page.client_storage.get("six_after_tomorrow") != None:
+                six_check = page.client_storage.get("six_after_tomorrow")
+                start_time, end_time = six_check.split('-')
+                if end_time == '23:59':
+                    six = f'{start_time}-24:00'
+                else:
+                    six = page.client_storage.get("six_after_tomorrow")
+                time_after_tomorrow_6.visible = True
+                time_after_tomorrow_6.content = ft.Text(
+                    six,
+                    size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+            page.update()
+            print("Six_After_Tomorrow not found!")
         page.update()
 
     alert_conn = ft.SnackBar(
@@ -677,6 +1165,20 @@ def main(page: ft.Page):
     five = page.client_storage.get("five")
     six = page.client_storage.get("six")
 
+    one_tomorrow = page.client_storage.get("one_tomorrow")
+    two_tomorrow = page.client_storage.get("two_tomorrow")
+    three_tomorrow = page.client_storage.get("three_tomorrow")
+    four_tomorrow = page.client_storage.get("four_tomorrow")
+    five_tomorrow = page.client_storage.get("five_tomorrow")
+    six_tomorrow = page.client_storage.get("six_tomorrow")
+
+    one_after_tomorrow = page.client_storage.get("one_after_tomorrow")
+    two_after_tomorrow = page.client_storage.get("two_after_tomorrow")
+    three_after_tomorrow = page.client_storage.get("three_after_tomorrow")
+    four_after_tomorrow = page.client_storage.get("four_after_tomorrow")
+    five_after_tomorrow = page.client_storage.get("five_after_tomorrow")
+    six_after_tomorrow = page.client_storage.get("six_after_tomorrow")
+
     progress_bar = ft.ProgressBar(
         visible=True,
         bgcolor="white",
@@ -684,7 +1186,7 @@ def main(page: ft.Page):
         bar_height=5,
     )
 
-    time_1 = ft.Container(
+    time_now_1 = ft.Container(
         visible=False,
         shadow=ft.BoxShadow(
             blur_radius=2,
@@ -704,7 +1206,7 @@ def main(page: ft.Page):
         )
     )
 
-    time_2 = ft.Container(
+    time_now_2 = ft.Container(
         visible=False,
         shadow=ft.BoxShadow(
             blur_radius=2,
@@ -724,7 +1226,7 @@ def main(page: ft.Page):
         )
     )
 
-    time_3 = ft.Container(
+    time_now_3 = ft.Container(
         visible=False,
         shadow=ft.BoxShadow(
             blur_radius=2,
@@ -744,7 +1246,7 @@ def main(page: ft.Page):
         )
     )
 
-    time_4 = ft.Container(
+    time_now_4 = ft.Container(
         visible=False,
         shadow=ft.BoxShadow(
             blur_radius=2,
@@ -764,7 +1266,7 @@ def main(page: ft.Page):
         )
     )
 
-    time_5 = ft.Container(
+    time_now_5 = ft.Container(
         visible=False,
         shadow=ft.BoxShadow(
             blur_radius=2,
@@ -784,7 +1286,7 @@ def main(page: ft.Page):
         )
     )
 
-    time_6 = ft.Container(
+    time_now_6 = ft.Container(
         visible=False,
         shadow=ft.BoxShadow(
             blur_radius=2,
@@ -804,37 +1306,301 @@ def main(page: ft.Page):
         )
     )
 
-    all_time = ft.Row(
-        scroll=ft.ScrollMode.ADAPTIVE,
-        alignment='center',
-        vertical_alignment='center',
-        wrap=True,
-        spacing=9,
-        controls=[
-            time_1,
-            time_2,
-            time_3,
-            time_4,
-            time_5,
-            time_6,
-        ]
+    time_tomorrow_1 = ft.Container(
+        visible=False,
+        shadow=ft.BoxShadow(
+            blur_radius=2,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 2),
+            color=ft.colors.BLACK54
+        ),
+        bgcolor='#ffcc66',
+        border_radius=5,
+        padding=10,
+        content=ft.Text(
+            one_tomorrow,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
     )
 
-    all_time1 = ft.Row(
+    time_tomorrow_2 = ft.Container(
         visible=False,
-        alignment='center',
-        vertical_alignment='center',
-        wrap=True,
-        spacing=9,
-        scroll=ft.ScrollMode.ADAPTIVE,
-        controls=[
-            time_1,
-            time_2,
-            time_3,
-            time_4,
-            time_5,
-            time_6,
-        ]
+        shadow=ft.BoxShadow(
+            blur_radius=2,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 2),
+            color=ft.colors.BLACK54
+        ),
+        bgcolor='#ffcc66',
+        border_radius=5,
+        padding=10,
+        content=ft.Text(
+            two_tomorrow,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+    )
+
+    time_tomorrow_3 = ft.Container(
+        visible=False,
+        shadow=ft.BoxShadow(
+            blur_radius=2,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 2),
+            color=ft.colors.BLACK54
+        ),
+        bgcolor='#ffcc66',
+        border_radius=5,
+        padding=10,
+        content=ft.Text(
+            three_tomorrow,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+    )
+
+    time_tomorrow_4 = ft.Container(
+        visible=False,
+        shadow=ft.BoxShadow(
+            blur_radius=2,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 2),
+            color=ft.colors.BLACK54
+        ),
+        bgcolor='#ffcc66',
+        border_radius=5,
+        padding=10,
+        content=ft.Text(
+            four_tomorrow,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+    )
+
+    time_tomorrow_5 = ft.Container(
+        visible=False,
+        shadow=ft.BoxShadow(
+            blur_radius=2,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 2),
+            color=ft.colors.BLACK54
+        ),
+        bgcolor='#ffcc66',
+        border_radius=5,
+        padding=10,
+        content=ft.Text(
+            five_tomorrow,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+    )
+
+    time_tomorrow_6 = ft.Container(
+        visible=False,
+        shadow=ft.BoxShadow(
+            blur_radius=2,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 2),
+            color=ft.colors.BLACK54
+        ),
+        bgcolor='#ffcc66',
+        border_radius=5,
+        padding=10,
+        content=ft.Text(
+            six_tomorrow,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+    )
+
+    time_after_tomorrow_1 = ft.Container(
+        visible=False,
+        shadow=ft.BoxShadow(
+            blur_radius=2,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 2),
+            color=ft.colors.BLACK54
+        ),
+        bgcolor='#ffcc66',
+        border_radius=5,
+        padding=10,
+        content=ft.Text(
+            one_after_tomorrow,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+    )
+
+    time_after_tomorrow_2 = ft.Container(
+        visible=False,
+        shadow=ft.BoxShadow(
+            blur_radius=2,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 2),
+            color=ft.colors.BLACK54
+        ),
+        bgcolor='#ffcc66',
+        border_radius=5,
+        padding=10,
+        content=ft.Text(
+            two_after_tomorrow,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+    )
+
+    time_after_tomorrow_3 = ft.Container(
+        visible=False,
+        shadow=ft.BoxShadow(
+            blur_radius=2,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 2),
+            color=ft.colors.BLACK54
+        ),
+        bgcolor='#ffcc66',
+        border_radius=5,
+        padding=10,
+        content=ft.Text(
+            three_after_tomorrow,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+    )
+
+    time_after_tomorrow_4 = ft.Container(
+        visible=False,
+        shadow=ft.BoxShadow(
+            blur_radius=2,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 2),
+            color=ft.colors.BLACK54
+        ),
+        bgcolor='#ffcc66',
+        border_radius=5,
+        padding=10,
+        content=ft.Text(
+            four_after_tomorrow,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+    )
+
+    time_after_tomorrow_5 = ft.Container(
+        visible=False,
+        shadow=ft.BoxShadow(
+            blur_radius=2,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 2),
+            color=ft.colors.BLACK54
+        ),
+        bgcolor='#ffcc66',
+        border_radius=5,
+        padding=10,
+        content=ft.Text(
+            five_after_tomorrow,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+    )
+
+    time_after_tomorrow_6 = ft.Container(
+        visible=False,
+        shadow=ft.BoxShadow(
+            blur_radius=2,
+            blur_style=ft.ShadowBlurStyle.NORMAL,
+            offset=ft.Offset(0, 2),
+            color=ft.colors.BLACK54
+        ),
+        bgcolor='#ffcc66',
+        border_radius=5,
+        padding=10,
+        content=ft.Text(
+            six_after_tomorrow,
+            size=21,
+            weight='w500',
+            color=ft.colors.BLACK,
+            font_family="Golos Text"
+        )
+    )
+
+    time_now = ft.Container(
+        padding=10,
+        content=ft.Row(
+            scroll=ft.ScrollMode.ADAPTIVE,
+            alignment='center',
+            vertical_alignment='center',
+            wrap=True,
+            spacing=9,
+            controls=[
+                time_now_1,
+                time_now_2,
+                time_now_3,
+                time_now_4,
+                time_now_5,
+                time_now_6,
+            ]
+        )
+    )
+
+    time_tomorrow = ft.Container(
+        padding=10,
+        content=ft.Row(
+            scroll=ft.ScrollMode.ADAPTIVE,
+            alignment='center',
+            vertical_alignment='center',
+            wrap=True,
+            spacing=9,
+            controls=[
+                time_tomorrow_1,
+                time_tomorrow_2,
+                time_tomorrow_3,
+                time_tomorrow_4,
+                time_tomorrow_5,
+                time_tomorrow_6,
+            ]
+        )
+    )
+
+    time_after_tomorrow = ft.Container(
+        padding=10,
+        content=ft.Row(
+            scroll=ft.ScrollMode.ADAPTIVE,
+            alignment='center',
+            vertical_alignment='center',
+            wrap=True,
+            spacing=9,
+            controls=[
+                time_after_tomorrow_1,
+                time_after_tomorrow_2,
+                time_after_tomorrow_3,
+                time_after_tomorrow_4,
+                time_after_tomorrow_5,
+                time_after_tomorrow_6,
+            ]
+        )
     )
 
     one_button = ft.ElevatedButton(content=ft.Text("Перша", size=22, weight='w500', font_family="Golos Text"),
@@ -900,21 +1666,45 @@ def main(page: ft.Page):
 
     main_tab = ft.Tabs(
         visible=False,
-        animation_duration=300,
         tab_alignment=ft.TabAlignment.CENTER,
+        divider_color=ft.colors.BLACK26,
+        animation_duration=300,
         scrollable=True,
+        indicator_color='#ffcc66',
+        label_color='#ffcc66',
+        unselected_label_color=ft.colors.BLACK87,
+        selected_index=0,
+        # indicator_padding=1,
         tabs=[
             ft.Tab(
-                text="Сьогодні",
-                content=all_time
+                tab_content=ft.Text(
+                    "Сьогодні",
+                    size=18,
+                    text_align='center',
+                    font_family="Golos Text",
+                    weight="w500"
+                ),
+                content=time_now
             ),
             ft.Tab(
-                text="Завтра",
-                # content=all_time
+                tab_content=ft.Text(
+                    "Завтра",
+                    size=18,
+                    text_align='center',
+                    font_family="Golos Text",
+                    weight="w500"
+                ),
+                content=time_tomorrow
             ),
             ft.Tab(
-                text="Післязавтра",
-                # content=all_time
+                tab_content=ft.Text(
+                    "Післязавтра",
+                    size=18,
+                    text_align='center',
+                    font_family="Golos Text",
+                    weight="w500"
+                ),
+                content=time_after_tomorrow
             )
         ],
         expand=True

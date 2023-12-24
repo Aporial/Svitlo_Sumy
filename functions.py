@@ -9,19 +9,8 @@ five = (5, 11, 17, 23, 29)
 six = (6, 12, 18, 24, 30)
 
 today = datetime.date.today()
-
-if today.day in one:
-    day_num = 'one'
-if today.day in two:
-    day_num = 'two'
-if today.day in three:
-    day_num = 'three'
-if today.day in four:
-    day_num = 'four'
-if today.day in five:
-    day_num = 'five'
-if today.day in six:
-    day_num = 'six'
+tomorrow = today + datetime.timedelta(days=1)
+after_tomorrow = today + datetime.timedelta(days=2)
 
 if today.day in one:
     day_num_one = 'one_1'
@@ -66,6 +55,91 @@ if today.day in six:
     day_num_five = 'six_5'
     day_num_six = 'six_6'
 
+if tomorrow.day in one:
+    day_tomorrow_one = 'one_1'
+    day_tomorrow_two = 'one_2'
+    day_tomorrow_three = 'one_3'
+    day_tomorrow_four = 'one_4'
+    day_tomorrow_five = 'one_5'
+    day_tomorrow_six = 'one_6'
+if tomorrow.day in two:
+    day_tomorrow_one = 'two_1'
+    day_tomorrow_two = 'two_2'
+    day_tomorrow_three = 'two_3'
+    day_tomorrow_four = 'two_4'
+    day_tomorrow_five = 'two_5'
+    day_tomorrow_six = 'two_6'
+if tomorrow.day in three:
+    day_tomorrow_one = 'three_1'
+    day_tomorrow_two = 'three_2'
+    day_tomorrow_three = 'three_3'
+    day_tomorrow_four = 'three_4'
+    day_tomorrow_five = 'three_5'
+    day_tomorrow_six = 'three_6'
+if tomorrow.day in four:
+    day_tomorrow_one = 'four_1'
+    day_tomorrow_two = 'four_2'
+    day_tomorrow_three = 'four_3'
+    day_tomorrow_four = 'four_4'
+    day_tomorrow_five = 'four_5'
+    day_tomorrow_six = 'four_6'
+if tomorrow.day in five:
+    day_tomorrow_one = 'five_1'
+    day_tomorrow_two = 'five_2'
+    day_tomorrow_three = 'five_3'
+    day_tomorrow_four = 'five_4'
+    day_tomorrow_five = 'five_5'
+    day_tomorrow_six = 'five_6'
+if tomorrow.day in six:
+    day_tomorrow_one = 'six_1'
+    day_tomorrow_two = 'six_2'
+    day_tomorrow_three = 'six_3'
+    day_tomorrow_four = 'six_4'
+    day_tomorrow_five = 'six_5'
+    day_tomorrow_six = 'six_6'
+
+if after_tomorrow.day in one:
+    day_after_tomorrow_one = 'one_1'
+    day_after_tomorrow_two = 'one_2'
+    day_after_tomorrow_three = 'one_3'
+    day_after_tomorrow_four = 'one_4'
+    day_after_tomorrow_five = 'one_5'
+    day_after_tomorrow_six = 'one_6'
+if after_tomorrow.day in two:
+    day_after_tomorrow_one = 'two_1'
+    day_after_tomorrow_two = 'two_2'
+    day_after_tomorrow_three = 'two_3'
+    day_after_tomorrow_four = 'two_4'
+    day_after_tomorrow_five = 'two_5'
+    day_after_tomorrow_six = 'two_6'
+if after_tomorrow.day in three:
+    day_after_tomorrow_one = 'three_1'
+    day_after_tomorrow_two = 'three_2'
+    day_after_tomorrow_three = 'three_3'
+    day_after_tomorrow_four = 'three_4'
+    day_after_tomorrow_five = 'three_5'
+    day_after_tomorrow_six = 'three_6'
+if after_tomorrow.day in four:
+    day_after_tomorrow_one = 'four_1'
+    day_after_tomorrow_two = 'four_2'
+    day_after_tomorrow_three = 'four_3'
+    day_after_tomorrow_four = 'four_4'
+    day_after_tomorrow_five = 'four_5'
+    day_after_tomorrow_six = 'four_6'
+if after_tomorrow.day in five:
+    day_after_tomorrow_one = 'five_1'
+    day_after_tomorrow_two = 'five_2'
+    day_after_tomorrow_three = 'five_3'
+    day_after_tomorrow_four = 'five_4'
+    day_after_tomorrow_five = 'five_5'
+    day_after_tomorrow_six = 'five_6'
+if after_tomorrow.day in six:
+    day_after_tomorrow_one = 'six_1'
+    day_after_tomorrow_two = 'six_2'
+    day_after_tomorrow_three = 'six_3'
+    day_after_tomorrow_four = 'six_4'
+    day_after_tomorrow_five = 'six_5'
+    day_after_tomorrow_six = 'six_6'
 
 def check_cherg(e):
     if e == 1:
