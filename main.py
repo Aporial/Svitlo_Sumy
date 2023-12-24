@@ -1561,6 +1561,7 @@ def main(page: ft.Page):
     )
 
     time_now = ft.Container(
+        alignment=ft.alignment.center,
         padding=10,
         content=ft.Row(
             scroll=ft.ScrollMode.ADAPTIVE,
@@ -1580,6 +1581,7 @@ def main(page: ft.Page):
     )
 
     time_tomorrow = ft.Container(
+        alignment=ft.alignment.center,
         padding=10,
         content=ft.Row(
             scroll=ft.ScrollMode.ADAPTIVE,
@@ -1599,6 +1601,7 @@ def main(page: ft.Page):
     )
 
     time_after_tomorrow = ft.Container(
+        alignment=ft.alignment.center,
         padding=10,
         content=ft.Row(
             scroll=ft.ScrollMode.ADAPTIVE,
