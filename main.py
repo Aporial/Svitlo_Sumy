@@ -19,16 +19,19 @@ def main(page: ft.Page):
     def on_tab(e):
         my_index = e.control.selected_index
         if my_index == 0:
-            expand_container.visible = True
+            lamp_img.visible = True
+            main_info.visible = True
             info_tab.visible = False
             open_list()
         if my_index == 1:
-            expand_container.visible = True
+            lamp_img.visible = True
+            main_info.visible = True
             info_tab.visible = False
             page.update()
         if my_index == 2:
             info_tab.visible = True
-            expand_container.visible = False
+            lamp_img.visible = False
+            main_info.visible = False
             page.update()
 
     def mono_click(e):
@@ -287,6 +290,7 @@ def main(page: ft.Page):
             page.update()
             print("Six not found!")
         progress_bar.visible = False
+        main_tab.visible = True
         all_time.visible = True
         try:
             if check_time_interval(one_check) == True:
@@ -585,6 +589,7 @@ def main(page: ft.Page):
                 page.update()
                 print("Six not found!")
             progress_bar.visible = False
+            main_tab.visible = True
             all_time.visible = True
             try:
                 if check_time_interval(one_check) == True:
@@ -800,11 +805,28 @@ def main(page: ft.Page):
     )
 
     all_time = ft.Row(
+        scroll=ft.ScrollMode.ADAPTIVE,
+        alignment='center',
+        vertical_alignment='center',
+        wrap=True,
+        spacing=9,
+        controls=[
+            time_1,
+            time_2,
+            time_3,
+            time_4,
+            time_5,
+            time_6,
+        ]
+    )
+
+    all_time1 = ft.Row(
         visible=False,
         alignment='center',
         vertical_alignment='center',
         wrap=True,
         spacing=9,
+        scroll=ft.ScrollMode.ADAPTIVE,
         controls=[
             time_1,
             time_2,
@@ -876,6 +898,28 @@ def main(page: ft.Page):
         )
     )
 
+    main_tab = ft.Tabs(
+        visible=False,
+        animation_duration=300,
+        tab_alignment=ft.TabAlignment.CENTER,
+        scrollable=True,
+        tabs=[
+            ft.Tab(
+                text="Сьогодні",
+                content=all_time
+            ),
+            ft.Tab(
+                text="Завтра",
+                # content=all_time
+            ),
+            ft.Tab(
+                text="Післязавтра",
+                # content=all_time
+            )
+        ],
+        expand=True
+    )
+
     main_info = ft.Container(
         blur=10,
         padding=15,
@@ -885,37 +929,9 @@ def main(page: ft.Page):
             horizontal_alignment='center',
             alignment="center",
             controls=[
-                ft.Text(
-                    "Графік відключень:",
-                    size=24,
-                    weight='w500',
-                    color=ft.colors.BLACK87,
-                    font_family="Golos Text",
-                    text_align='center'
-                ),
-                ft.Divider(
-                    height=1,
-                    thickness=1,
-                    color=ft.colors.BLACK38
-                ),
                 progress_bar,
-                all_time
+                main_tab,
             ]
-        )
-    )
-
-    expand_container = ft.SafeArea(
-        ft.Container(
-            alignment=ft.alignment.center,
-            content=ft.Column(
-                alignment='center',
-                horizontal_alignment='center',
-                scroll=ft.ScrollMode.ADAPTIVE,
-                controls=[
-                    lamp_img,
-                    main_info
-                ]
-            )
         ),
         expand=True
     )
@@ -1014,7 +1030,21 @@ def main(page: ft.Page):
             horizontal_alignment='center',
             alignment='center',
             controls=[
-                expand_container,
+                lamp_img,
+                ft.Text(
+                    "Графік відключень",
+                    size=24,
+                    weight='w500',
+                    color=ft.colors.BLACK87,
+                    font_family="Golos Text",
+                    text_align='center'
+                ),
+                # ft.Divider(
+                #     height=1,
+                #     thickness=1,
+                #     color=ft.colors.BLACK38
+                # ),
+                main_info,
                 info_tab
             ]
         ),
@@ -1034,10 +1064,10 @@ def main(page: ft.Page):
     page.navigation_bar = ft.NavigationBar(
         surface_tint_color='#ff6666',
         indicator_color='#ffcc66',
+        indicator_shape=ft.RoundedRectangleBorder(radius=10),
         height=65,
         on_change=on_tab,
         selected_index=1,
-        adaptive=True,
         destinations=[
             ft.NavigationDestination(
                 icon=ft.icons.LIST_ROUNDED, label='Черги',),
