@@ -1,5 +1,6 @@
 import flet as ft
-from functions import check_cherg, day_num_one, day_num_two, day_num_three, day_num_four, day_num_five, day_num_six
+from functions import check_cherg, today, tomorrow, after_tomorrow
+from functions import day_num_one, day_num_two, day_num_three, day_num_four, day_num_five, day_num_six
 from functions import day_tomorrow_one, day_tomorrow_two, day_tomorrow_three, day_tomorrow_four, day_tomorrow_five, day_tomorrow_six
 from functions import day_after_tomorrow_one, day_after_tomorrow_two, day_after_tomorrow_three, day_after_tomorrow_four, day_after_tomorrow_five, day_after_tomorrow_six
 from time_now import time_now_1, time_now_2, time_now_3, time_now_4, time_now_5, time_now_6
@@ -1319,35 +1320,76 @@ def main(page: ft.Page):
         label_color='#ffcc66',
         unselected_label_color=ft.colors.BLACK87,
         selected_index=0,
-        # indicator_padding=1,
         tabs=[
             ft.Tab(
-                tab_content=ft.Text(
-                    "Сьогодні",
-                    size=18,
-                    text_align='center',
-                    font_family="Golos Text",
-                    weight="w500"
+                tab_content=ft.Column(
+                    spacing=0,
+                    horizontal_alignment='center',
+                    alignment='start',
+                    controls=[
+                        ft.Text(
+                            "Сьогодні",
+                            size=18,
+                            text_align='center',
+                            font_family="Golos Text",
+                            weight="w500"
+                        ),
+                        ft.Text(
+                            today.strftime("(%d.%m)"),
+                            size=16,
+                            text_align='center',
+                            font_family="Golos Text",
+                            weight="w500"
+                        )
+                    ]
                 ),
                 content=time_now
             ),
             ft.Tab(
-                tab_content=ft.Text(
-                    "Завтра",
-                    size=18,
-                    text_align='center',
-                    font_family="Golos Text",
-                    weight="w500"
+                tab_content=ft.Column(
+                    spacing=0,
+                    horizontal_alignment='center',
+                    alignment='start',
+                    controls=[
+                        ft.Text(
+                            "Завтра",
+                            size=18,
+                            text_align='center',
+                            font_family="Golos Text",
+                            weight="w500"
+                        ),
+                        ft.Text(
+                            tomorrow.strftime("(%d.%m)"),
+                            size=16,
+                            text_align='center',
+                            font_family="Golos Text",
+                            weight="w500"
+                        )
+                    ]
                 ),
                 content=time_tomorrow
             ),
             ft.Tab(
-                tab_content=ft.Text(
-                    "Післязавтра",
-                    size=18,
-                    text_align='center',
-                    font_family="Golos Text",
-                    weight="w500"
+                tab_content=ft.Column(
+                    spacing=0,
+                    horizontal_alignment='center',
+                    alignment='start',
+                    controls=[
+                        ft.Text(
+                            "Післязавтра",
+                            size=18,
+                            text_align='center',
+                            font_family="Golos Text",
+                            weight="w500"
+                        ),
+                        ft.Text(
+                            after_tomorrow.strftime("(%d.%m)"),
+                            size=16,
+                            text_align='center',
+                            font_family="Golos Text",
+                            weight="w500"
+                        )
+                    ]
                 ),
                 content=time_after_tomorrow
             )
