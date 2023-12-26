@@ -11,6 +11,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 import requests
 
+
 def main(page: ft.Page):
 
     def open_list():
@@ -1184,11 +1185,10 @@ def main(page: ft.Page):
     time_now = ft.Container(
         alignment=ft.alignment.center,
         padding=10,
-        content=ft.Row(
+        content=ft.Column(
             scroll=ft.ScrollMode.ADAPTIVE,
             alignment='center',
-            vertical_alignment='center',
-            wrap=True,
+            horizontal_alignment='center',
             spacing=9,
             controls=[
                 time_now_1,
@@ -1204,11 +1204,10 @@ def main(page: ft.Page):
     time_tomorrow = ft.Container(
         alignment=ft.alignment.center,
         padding=10,
-        content=ft.Row(
+        content=ft.Column(
             scroll=ft.ScrollMode.ADAPTIVE,
             alignment='center',
-            vertical_alignment='center',
-            wrap=True,
+            horizontal_alignment='center',
             spacing=9,
             controls=[
                 time_tomorrow_1,
@@ -1224,11 +1223,10 @@ def main(page: ft.Page):
     time_after_tomorrow = ft.Container(
         alignment=ft.alignment.center,
         padding=10,
-        content=ft.Row(
+        content=ft.Column(
             scroll=ft.ScrollMode.ADAPTIVE,
             alignment='center',
-            vertical_alignment='center',
-            wrap=True,
+            horizontal_alignment='center',
             spacing=9,
             controls=[
                 time_after_tomorrow_1,
