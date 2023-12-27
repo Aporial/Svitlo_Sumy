@@ -55,6 +55,7 @@ def main(page: ft.Page):
         page.client_storage.set("number", numb_cherg)
         bs.open = False
         bs.update()
+        current_time = datetime.now().time()
         storage_info = storage()
         cherg = check_cherg(storage_info)
         one_check = page.client_storage.get("one")
@@ -69,6 +70,9 @@ def main(page: ft.Page):
             page.client_storage.set("one", result_one)
             one_check = page.client_storage.get("one")
             start_time, end_time = one_check.split('-')
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if time_end <= current_time:
+                time_now_1.bgcolor = ft.colors.GREY_400
             if end_time == '23:59':
                 one = f'{start_time}-24:00'
             else:
@@ -87,6 +91,9 @@ def main(page: ft.Page):
             if page.client_storage.get("one") != None:
                 one_check = page.client_storage.get("one")
                 start_time, end_time = one_check.split('-')
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_end <= current_time:
+                    time_now_1.bgcolor = ft.colors.GREY_400
                 if end_time == '23:59':
                     one = f'{start_time}-24:00'
                 else:
@@ -109,6 +116,9 @@ def main(page: ft.Page):
             two_check = page.client_storage.get("two")
             two_check = page.client_storage.get("two")
             start_time, end_time = two_check.split('-')
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if time_end <= current_time:
+                time_now_2.bgcolor = ft.colors.GREY_400
             if end_time == '23:59':
                 two = f'{start_time}-24:00'
             else:
@@ -127,6 +137,9 @@ def main(page: ft.Page):
             if page.client_storage.get("two") != None:
                 two_check = page.client_storage.get("two")
                 start_time, end_time = two_check.split('-')
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_end <= current_time:
+                    time_now_2.bgcolor = ft.colors.GREY_400
                 if end_time == '23:59':
                     two = f'{start_time}-24:00'
                 else:
@@ -148,6 +161,9 @@ def main(page: ft.Page):
             page.client_storage.set("three", result_three)
             three_check = page.client_storage.get("three")
             start_time, end_time = three_check.split('-')
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if time_end <= current_time:
+                time_now_3.bgcolor = ft.colors.GREY_400
             if end_time == '23:59':
                 three = f'{start_time}-24:00'
             else:
@@ -166,6 +182,9 @@ def main(page: ft.Page):
             if page.client_storage.get("three") != None:
                 three_check = page.client_storage.get("three")
                 start_time, end_time = three_check.split('-')
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_end <= current_time:
+                    time_now_3.bgcolor = ft.colors.GREY_400
                 if end_time == '23:59':
                     three = f'{start_time}-24:00'
                 else:
@@ -187,6 +206,9 @@ def main(page: ft.Page):
             page.client_storage.set("four", result_four)
             four_check = page.client_storage.get("four")
             start_time, end_time = four_check.split('-')
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if time_end <= current_time:
+                time_now_4.bgcolor = ft.colors.GREY_400
             if end_time == '23:59':
                 four = f'{start_time}-24:00'
             else:
@@ -205,6 +227,9 @@ def main(page: ft.Page):
             if page.client_storage.get("four") != None:
                 four_check = page.client_storage.get("four")
                 start_time, end_time = four_check.split('-')
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_end <= current_time:
+                    time_now_4.bgcolor = ft.colors.GREY_400
                 if end_time == '23:59':
                     four = f'{start_time}-24:00'
                 else:
@@ -226,6 +251,9 @@ def main(page: ft.Page):
             page.client_storage.set("five", result_five)
             five_check = page.client_storage.get("five")
             start_time, end_time = five_check.split('-')
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if time_end <= current_time:
+                time_now_5.bgcolor = ft.colors.GREY_400
             if end_time == '23:59':
                 five = f'{start_time}-24:00'
             else:
@@ -244,6 +272,9 @@ def main(page: ft.Page):
             if page.client_storage.get("five") != None:
                 five_check = page.client_storage.get("five")
                 start_time, end_time = five_check.split('-')
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_end <= current_time:
+                    time_now_5.bgcolor = ft.colors.GREY_400
                 if end_time == '23:59':
                     five = f'{start_time}-24:00'
                 else:
@@ -265,6 +296,9 @@ def main(page: ft.Page):
             page.client_storage.set("six", result_six)
             six_check = page.client_storage.get("six")
             start_time, end_time = six_check.split('-')
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if time_end <= current_time:
+                time_now_6.bgcolor = ft.colors.GREY_400
             if end_time == '23:59':
                 six = f'{start_time}-24:00'
             else:
@@ -283,6 +317,9 @@ def main(page: ft.Page):
             if page.client_storage.get("six") != None:
                 six_check = page.client_storage.get("six")
                 start_time, end_time = six_check.split('-')
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_end <= current_time:
+                    time_now_6.bgcolor = ft.colors.GREY_400
                 if end_time == '23:59':
                     six = f'{start_time}-24:00'
                 else:
@@ -360,6 +397,7 @@ def main(page: ft.Page):
                 six_button.disabled = True
                 alert_conn_start()
                 print("Fail connection!")
+            current_time = datetime.now().time()
             storage_info = storage()
             cherg = check_cherg(storage_info)
             one_check = page.client_storage.get("one")
@@ -374,6 +412,9 @@ def main(page: ft.Page):
                 page.client_storage.set("one", result_one)
                 one_check = page.client_storage.get("one")
                 start_time, end_time = one_check.split('-')
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_end <= current_time:
+                    time_now_1.bgcolor = ft.colors.GREY_400
                 if end_time == '23:59':
                     one = f'{start_time}-24:00'
                 else:
@@ -392,6 +433,9 @@ def main(page: ft.Page):
                 if page.client_storage.get("one") != None:
                     one_check = page.client_storage.get("one")
                     start_time, end_time = one_check.split('-')
+                    time_end = datetime.strptime(end_time, '%H:%M').time()
+                    if time_end <= current_time:
+                        time_now_1.bgcolor = ft.colors.GREY_400
                     if end_time == '23:59':
                         one = f'{start_time}-24:00'
                     else:
@@ -413,6 +457,9 @@ def main(page: ft.Page):
                 page.client_storage.set("two", result_two)
                 two_check = page.client_storage.get("two")
                 start_time, end_time = two_check.split('-')
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_end <= current_time:
+                    time_now_2.bgcolor = ft.colors.GREY_400
                 if end_time == '23:59':
                     two = f'{start_time}-24:00'
                 else:
@@ -431,6 +478,9 @@ def main(page: ft.Page):
                 if page.client_storage.get("two") != None:
                     two_check = page.client_storage.get("two")
                     start_time, end_time = two_check.split('-')
+                    time_end = datetime.strptime(end_time, '%H:%M').time()
+                    if time_end <= current_time:
+                        time_now_2.bgcolor = ft.colors.GREY_400
                     if end_time == '23:59':
                         two = f'{start_time}-24:00'
                     else:
@@ -452,6 +502,9 @@ def main(page: ft.Page):
                 page.client_storage.set("three", result_three)
                 three_check = page.client_storage.get("three")
                 start_time, end_time = three_check.split('-')
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_end <= current_time:
+                    time_now_3.bgcolor = ft.colors.GREY_400
                 if end_time == '23:59':
                     three = f'{start_time}-24:00'
                 else:
@@ -470,6 +523,9 @@ def main(page: ft.Page):
                 if page.client_storage.get("three") != None:
                     three_check = page.client_storage.get("three")
                     start_time, end_time = three_check.split('-')
+                    time_end = datetime.strptime(end_time, '%H:%M').time()
+                    if time_end <= current_time:
+                        time_now_3.bgcolor = ft.colors.GREY_400
                     if end_time == '23:59':
                         three = f'{start_time}-24:00'
                     else:
@@ -491,6 +547,9 @@ def main(page: ft.Page):
                 page.client_storage.set("four", result_four)
                 four_check = page.client_storage.get("four")
                 start_time, end_time = four_check.split('-')
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_end <= current_time:
+                    time_now_4.bgcolor = ft.colors.GREY_400
                 if end_time == '23:59':
                     four = f'{start_time}-24:00'
                 else:
@@ -509,6 +568,9 @@ def main(page: ft.Page):
                 if page.client_storage.get("four") != None:
                     four_check = page.client_storage.get("four")
                     start_time, end_time = four_check.split('-')
+                    time_end = datetime.strptime(end_time, '%H:%M').time()
+                    if time_end <= current_time:
+                        time_now_4.bgcolor = ft.colors.GREY_400
                     if end_time == '23:59':
                         four = f'{start_time}-24:00'
                     else:
@@ -530,6 +592,9 @@ def main(page: ft.Page):
                 page.client_storage.set("five", result_five)
                 five_check = page.client_storage.get("five")
                 start_time, end_time = five_check.split('-')
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_end <= current_time:
+                    time_now_5.bgcolor = ft.colors.GREY_400
                 if end_time == '23:59':
                     five = f'{start_time}-24:00'
                 else:
@@ -548,6 +613,9 @@ def main(page: ft.Page):
                 if page.client_storage.get("five") != None:
                     five_check = page.client_storage.get("five")
                     start_time, end_time = five_check.split('-')
+                    time_end = datetime.strptime(end_time, '%H:%M').time()
+                    if time_end <= current_time:
+                        time_now_5.bgcolor = ft.colors.GREY_400
                     if end_time == '23:59':
                         five = f'{start_time}-24:00'
                     else:
@@ -569,6 +637,9 @@ def main(page: ft.Page):
                 page.client_storage.set("six", result_six)
                 six_check = page.client_storage.get("six")
                 start_time, end_time = six_check.split('-')
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_end <= current_time:
+                    time_now_6.bgcolor = ft.colors.GREY_400
                 if end_time == '23:59':
                     six = f'{start_time}-24:00'
                 else:
@@ -587,6 +658,9 @@ def main(page: ft.Page):
                 if page.client_storage.get("six") != None:
                     six_check = page.client_storage.get("six")
                     start_time, end_time = six_check.split('-')
+                    time_end = datetime.strptime(end_time, '%H:%M').time()
+                    if time_end <= current_time:
+                        time_now_6.bgcolor = ft.colors.GREY_400
                     if end_time == '23:59':
                         six = f'{start_time}-24:00'
                     else:
