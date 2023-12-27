@@ -71,22 +71,44 @@ def main(page: ft.Page):
             one_check = page.client_storage.get("one")
             start_time, end_time = one_check.split('-')
             time_end = datetime.strptime(end_time, '%H:%M').time()
-            if time_end <= current_time:
-                time_now_1.bgcolor = ft.colors.GREY_400
-            else:
-                time_now_1.bgcolor = '#ffcc66'
             if end_time == '23:59':
                 one = f'{start_time}-24:00'
             else:
                 one = page.client_storage.get("one")
             time_now_1.visible = True
-            time_now_1.content = ft.Text(
-                one,
-                size=21,
-                weight='w500',
-                color=ft.colors.BLACK,
-                font_family="Golos Text"
-            )
+            if time_end <= current_time:
+                time_now_1.bgcolor = ft.colors.GREY_400
+                time_now_1.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            one,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED
+                        )
+                    ]
+                )
+            else:
+                time_now_1.bgcolor = '#ffcc66'
+                time_now_1.content = ft.Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        ft.Text(
+                            one,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
             page.update()
             print("One found!")
         except:
@@ -94,22 +116,44 @@ def main(page: ft.Page):
                 one_check = page.client_storage.get("one")
                 start_time, end_time = one_check.split('-')
                 time_end = datetime.strptime(end_time, '%H:%M').time()
-                if time_end <= current_time:
-                    time_now_1.bgcolor = ft.colors.GREY_400
-                else:
-                    time_now_1.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     one = f'{start_time}-24:00'
                 else:
                     one = page.client_storage.get("one")
                 time_now_1.visible = True
-                time_now_1.content = ft.Text(
-                    one,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
+                if time_end <= current_time:
+                    time_now_1.bgcolor = ft.colors.GREY_400
+                    time_now_1.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_1.bgcolor = '#ffcc66'
+                    time_now_1.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
             page.update()
             print("One not found!")
 
@@ -121,22 +165,44 @@ def main(page: ft.Page):
             two_check = page.client_storage.get("two")
             start_time, end_time = two_check.split('-')
             time_end = datetime.strptime(end_time, '%H:%M').time()
-            if time_end <= current_time:
-                time_now_2.bgcolor = ft.colors.GREY_400
-            else:
-                time_now_2.bgcolor = '#ffcc66'
             if end_time == '23:59':
                 two = f'{start_time}-24:00'
             else:
                 two = page.client_storage.get("two")
             time_now_2.visible = True
-            time_now_2.content = ft.Text(
-                two,
-                size=21,
-                weight='w500',
-                color=ft.colors.BLACK,
-                font_family="Golos Text"
-            )
+            if time_end <= current_time:
+                time_now_2.bgcolor = ft.colors.GREY_400
+                time_now_2.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            two,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED
+                        )
+                    ]
+                )
+            else:
+                time_now_2.bgcolor = '#ffcc66'
+                time_now_2.content = ft.Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        ft.Text(
+                            two,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
             page.update()
             print("Two found!")
         except:
@@ -144,22 +210,44 @@ def main(page: ft.Page):
                 two_check = page.client_storage.get("two")
                 start_time, end_time = two_check.split('-')
                 time_end = datetime.strptime(end_time, '%H:%M').time()
-                if time_end <= current_time:
-                    time_now_2.bgcolor = ft.colors.GREY_400
-                else:
-                    time_now_2.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     two = f'{start_time}-24:00'
                 else:
                     two = page.client_storage.get("two")
                 time_now_2.visible = True
-                time_now_2.content = ft.Text(
-                    two,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
+                if time_end <= current_time:
+                    time_now_2.bgcolor = ft.colors.GREY_400
+                    time_now_2.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                two,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_2.bgcolor = '#ffcc66'
+                    time_now_2.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                two,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
             page.update()
             print("Two not found!")
 
@@ -170,22 +258,44 @@ def main(page: ft.Page):
             three_check = page.client_storage.get("three")
             start_time, end_time = three_check.split('-')
             time_end = datetime.strptime(end_time, '%H:%M').time()
-            if time_end <= current_time:
-                time_now_3.bgcolor = ft.colors.GREY_400
-            else:
-                time_now_3.bgcolor = '#ffcc66'
             if end_time == '23:59':
                 three = f'{start_time}-24:00'
             else:
                 three = page.client_storage.get("three")
             time_now_3.visible = True
-            time_now_3.content = ft.Text(
-                three,
-                size=21,
-                weight='w500',
-                color=ft.colors.BLACK,
-                font_family="Golos Text"
-            )
+            if time_end <= current_time:
+                time_now_3.bgcolor = ft.colors.GREY_400
+                time_now_3.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            three,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED
+                        )
+                    ]
+                )
+            else:
+                time_now_3.bgcolor = '#ffcc66'
+                time_now_3.content = ft.Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        ft.Text(
+                            three,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
             page.update()
             print("Three found!")
         except:
@@ -193,22 +303,44 @@ def main(page: ft.Page):
                 three_check = page.client_storage.get("three")
                 start_time, end_time = three_check.split('-')
                 time_end = datetime.strptime(end_time, '%H:%M').time()
-                if time_end <= current_time:
-                    time_now_3.bgcolor = ft.colors.GREY_400
-                else:
-                    time_now_3.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     three = f'{start_time}-24:00'
                 else:
                     three = page.client_storage.get("three")
                 time_now_3.visible = True
-                time_now_3.content = ft.Text(
-                    three,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
+                if time_end <= current_time:
+                    time_now_3.bgcolor = ft.colors.GREY_400
+                    time_now_3.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                three,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_3.bgcolor = '#ffcc66'
+                    time_now_3.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                three,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
             page.update()
             print("Three not found!")
 
@@ -219,22 +351,44 @@ def main(page: ft.Page):
             four_check = page.client_storage.get("four")
             start_time, end_time = four_check.split('-')
             time_end = datetime.strptime(end_time, '%H:%M').time()
-            if time_end <= current_time:
-                time_now_4.bgcolor = ft.colors.GREY_400
-            else:
-                time_now_4.bgcolor = '#ffcc66'
             if end_time == '23:59':
                 four = f'{start_time}-24:00'
             else:
                 four = page.client_storage.get("four")
             time_now_4.visible = True
-            time_now_4.content = ft.Text(
-                four,
-                size=21,
-                weight='w500',
-                color=ft.colors.BLACK,
-                font_family="Golos Text"
-            )
+            if time_end <= current_time:
+                time_now_4.bgcolor = ft.colors.GREY_400
+                time_now_4.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            four,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED
+                        )
+                    ]
+                )
+            else:
+                time_now_4.bgcolor = '#ffcc66'
+                time_now_4.content = ft.Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        ft.Text(
+                            four,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
             page.update()
             print("Four found!")
         except:
@@ -242,22 +396,44 @@ def main(page: ft.Page):
                 four_check = page.client_storage.get("four")
                 start_time, end_time = four_check.split('-')
                 time_end = datetime.strptime(end_time, '%H:%M').time()
-                if time_end <= current_time:
-                    time_now_4.bgcolor = ft.colors.GREY_400
-                else:
-                    time_now_4.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     four = f'{start_time}-24:00'
                 else:
                     four = page.client_storage.get("four")
                 time_now_4.visible = True
-                time_now_4.content = ft.Text(
-                    four,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
+                if time_end <= current_time:
+                    time_now_4.bgcolor = ft.colors.GREY_400
+                    time_now_4.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                four,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_4.bgcolor = '#ffcc66'
+                    time_now_4.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                four,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
             page.update()
             print("Four not found!")
 
@@ -268,22 +444,44 @@ def main(page: ft.Page):
             five_check = page.client_storage.get("five")
             start_time, end_time = five_check.split('-')
             time_end = datetime.strptime(end_time, '%H:%M').time()
-            if time_end <= current_time:
-                time_now_5.bgcolor = ft.colors.GREY_400
-            else:
-                time_now_5.bgcolor = '#ffcc66'
             if end_time == '23:59':
                 five = f'{start_time}-24:00'
             else:
                 five = page.client_storage.get("five")
             time_now_5.visible = True
-            time_now_5.content = ft.Text(
-                five,
-                size=21,
-                weight='w500',
-                color=ft.colors.BLACK,
-                font_family="Golos Text"
-            )
+            if time_end <= current_time:
+                time_now_5.bgcolor = ft.colors.GREY_400
+                time_now_5.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            five,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED
+                        )
+                    ]
+                )
+            else:
+                time_now_5.bgcolor = '#ffcc66'
+                time_now_5.content = ft.Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        ft.Text(
+                            five,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
             page.update()
             print("Five found!")
         except:
@@ -291,22 +489,44 @@ def main(page: ft.Page):
                 five_check = page.client_storage.get("five")
                 start_time, end_time = five_check.split('-')
                 time_end = datetime.strptime(end_time, '%H:%M').time()
-                if time_end <= current_time:
-                    time_now_5.bgcolor = ft.colors.GREY_400
-                else:
-                    time_now_5.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     five = f'{start_time}-24:00'
                 else:
                     five = page.client_storage.get("five")
                 time_now_5.visible = True
-                time_now_5.content = ft.Text(
-                    five,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
+                if time_end <= current_time:
+                    time_now_5.bgcolor = ft.colors.GREY_400
+                    time_now_5.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                five,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_5.bgcolor = '#ffcc66'
+                    time_now_5.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                five,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
             page.update()
             print("Five not found!")
 
@@ -317,22 +537,44 @@ def main(page: ft.Page):
             six_check = page.client_storage.get("six")
             start_time, end_time = six_check.split('-')
             time_end = datetime.strptime(end_time, '%H:%M').time()
-            if time_end <= current_time:
-                time_now_6.bgcolor = ft.colors.GREY_400
-            else:
-                time_now_6.bgcolor = '#ffcc66'
             if end_time == '23:59':
                 six = f'{start_time}-24:00'
             else:
                 six = page.client_storage.get("six")
             time_now_6.visible = True
-            time_now_6.content = ft.Text(
-                six,
-                size=21,
-                weight='w500',
-                color=ft.colors.BLACK,
-                font_family="Golos Text"
-            )
+            if time_end <= current_time:
+                time_now_6.bgcolor = ft.colors.GREY_400
+                time_now_6.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            six,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED
+                        )
+                    ]
+                )
+            else:
+                time_now_6.bgcolor = '#ffcc66'
+                time_now_6.content = ft.Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        ft.Text(
+                            six,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
             page.update()
             print("Six found!")
         except:
@@ -340,22 +582,44 @@ def main(page: ft.Page):
                 six_check = page.client_storage.get("six")
                 start_time, end_time = six_check.split('-')
                 time_end = datetime.strptime(end_time, '%H:%M').time()
-                if time_end <= current_time:
-                    time_now_6.bgcolor = ft.colors.GREY_400
-                else:
-                    time_now_6.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six")
                 time_now_6.visible = True
-                time_now_6.content = ft.Text(
-                    six,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
+                if time_end <= current_time:
+                    time_now_6.bgcolor = ft.colors.GREY_400
+                    time_now_6.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                six,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_6.bgcolor = '#ffcc66'
+                    time_now_6.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                six,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
                 page.update()
             page.update()
             print("Six not found!")
@@ -437,22 +701,44 @@ def main(page: ft.Page):
                 one_check = page.client_storage.get("one")
                 start_time, end_time = one_check.split('-')
                 time_end = datetime.strptime(end_time, '%H:%M').time()
-                if time_end <= current_time:
-                    time_now_1.bgcolor = ft.colors.GREY_400
-                else:
-                    time_now_1.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     one = f'{start_time}-24:00'
                 else:
                     one = page.client_storage.get("one")
                 time_now_1.visible = True
-                time_now_1.content = ft.Text(
-                    one,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
+                if time_end <= current_time:
+                    time_now_1.bgcolor = ft.colors.GREY_400
+                    time_now_1.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_1.bgcolor = '#ffcc66'
+                    time_now_1.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
                 page.update()
                 print("One found!")
             except:
@@ -460,22 +746,44 @@ def main(page: ft.Page):
                     one_check = page.client_storage.get("one")
                     start_time, end_time = one_check.split('-')
                     time_end = datetime.strptime(end_time, '%H:%M').time()
-                    if time_end <= current_time:
-                        time_now_1.bgcolor = ft.colors.GREY_400
-                    else:
-                        time_now_1.bgcolor = '#ffcc66'
                     if end_time == '23:59':
                         one = f'{start_time}-24:00'
                     else:
                         one = page.client_storage.get("one")
                     time_now_1.visible = True
-                    time_now_1.content = ft.Text(
-                        one,
-                        size=21,
-                        weight='w500',
-                        color=ft.colors.BLACK,
-                        font_family="Golos Text"
-                    )
+                    if time_end <= current_time:
+                        time_now_1.bgcolor = ft.colors.GREY_400
+                        time_now_1.content = ft.Row(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            controls=[
+                                ft.Container(width=25),
+                                ft.Text(
+                                    one,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                ),
+                                ft.Icon(
+                                    name=ft.icons.DONE_ALL_ROUNDED
+                                )
+                            ]
+                        )
+                    else:
+                        time_now_1.bgcolor = '#ffcc66'
+                        time_now_1.content = ft.Row(
+                            alignment="center",
+                            vertical_alignment='center',
+                            controls=[
+                                ft.Text(
+                                    one,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                )
+                            ]
+                        )
                 page.update()
                 print("One not found!")
 
@@ -486,22 +794,44 @@ def main(page: ft.Page):
                 two_check = page.client_storage.get("two")
                 start_time, end_time = two_check.split('-')
                 time_end = datetime.strptime(end_time, '%H:%M').time()
-                if time_end <= current_time:
-                    time_now_2.bgcolor = ft.colors.GREY_400
-                else:
-                    time_now_2.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     two = f'{start_time}-24:00'
                 else:
                     two = page.client_storage.get("two")
                 time_now_2.visible = True
-                time_now_2.content = ft.Text(
-                    two,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
+                if time_end <= current_time:
+                    time_now_2.bgcolor = ft.colors.GREY_400
+                    time_now_2.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                two,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_2.bgcolor = '#ffcc66'
+                    time_now_2.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                two,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
                 page.update()
                 print("Two found!")
             except:
@@ -509,22 +839,44 @@ def main(page: ft.Page):
                     two_check = page.client_storage.get("two")
                     start_time, end_time = two_check.split('-')
                     time_end = datetime.strptime(end_time, '%H:%M').time()
-                    if time_end <= current_time:
-                        time_now_2.bgcolor = ft.colors.GREY_400
-                    else:
-                        time_now_2.bgcolor = '#ffcc66'
                     if end_time == '23:59':
                         two = f'{start_time}-24:00'
                     else:
                         two = page.client_storage.get("two")
                     time_now_2.visible = True
-                    time_now_2.content = ft.Text(
-                        two,
-                        size=21,
-                        weight='w500',
-                        color=ft.colors.BLACK,
-                        font_family="Golos Text"
-                    )
+                    if time_end <= current_time:
+                        time_now_2.bgcolor = ft.colors.GREY_400
+                        time_now_2.content = ft.Row(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            controls=[
+                                ft.Container(width=25),
+                                ft.Text(
+                                    two,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                ),
+                                ft.Icon(
+                                    name=ft.icons.DONE_ALL_ROUNDED
+                                )
+                            ]
+                        )
+                    else:
+                        time_now_2.bgcolor = '#ffcc66'
+                        time_now_2.content = ft.Row(
+                            alignment="center",
+                            vertical_alignment='center',
+                            controls=[
+                                ft.Text(
+                                    two,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                )
+                            ]
+                        )
                 page.update()
                 print("Two not found!")
 
@@ -535,22 +887,44 @@ def main(page: ft.Page):
                 three_check = page.client_storage.get("three")
                 start_time, end_time = three_check.split('-')
                 time_end = datetime.strptime(end_time, '%H:%M').time()
-                if time_end <= current_time:
-                    time_now_3.bgcolor = ft.colors.GREY_400
-                else:
-                    time_now_3.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     three = f'{start_time}-24:00'
                 else:
                     three = page.client_storage.get("three")
                 time_now_3.visible = True
-                time_now_3.content = ft.Text(
-                    three,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
+                if time_end <= current_time:
+                    time_now_3.bgcolor = ft.colors.GREY_400
+                    time_now_3.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                three,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_3.bgcolor = '#ffcc66'
+                    time_now_3.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                three,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
                 page.update()
                 print("Three found!")
             except:
@@ -558,22 +932,44 @@ def main(page: ft.Page):
                     three_check = page.client_storage.get("three")
                     start_time, end_time = three_check.split('-')
                     time_end = datetime.strptime(end_time, '%H:%M').time()
-                    if time_end <= current_time:
-                        time_now_3.bgcolor = ft.colors.GREY_400
-                    else:
-                        time_now_3.bgcolor = '#ffcc66'
                     if end_time == '23:59':
                         three = f'{start_time}-24:00'
                     else:
                         three = page.client_storage.get("three")
                     time_now_3.visible = True
-                    time_now_3.content = ft.Text(
-                        three,
-                        size=21,
-                        weight='w500',
-                        color=ft.colors.BLACK,
-                        font_family="Golos Text"
-                    )
+                    if time_end <= current_time:
+                        time_now_3.bgcolor = ft.colors.GREY_400
+                        time_now_3.content = ft.Row(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            controls=[
+                                ft.Container(width=25),
+                                ft.Text(
+                                    three,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                ),
+                                ft.Icon(
+                                    name=ft.icons.DONE_ALL_ROUNDED
+                                )
+                            ]
+                        )
+                    else:
+                        time_now_3.bgcolor = '#ffcc66'
+                        time_now_3.content = ft.Row(
+                            alignment="center",
+                            vertical_alignment='center',
+                            controls=[
+                                ft.Text(
+                                    three,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                )
+                            ]
+                        )
                 page.update()
                 print("Three not found!")
 
@@ -584,22 +980,44 @@ def main(page: ft.Page):
                 four_check = page.client_storage.get("four")
                 start_time, end_time = four_check.split('-')
                 time_end = datetime.strptime(end_time, '%H:%M').time()
-                if time_end <= current_time:
-                    time_now_4.bgcolor = ft.colors.GREY_400
-                else:
-                    time_now_4.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     four = f'{start_time}-24:00'
                 else:
                     four = page.client_storage.get("four")
                 time_now_4.visible = True
-                time_now_4.content = ft.Text(
-                    four,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
+                if time_end <= current_time:
+                    time_now_4.bgcolor = ft.colors.GREY_400
+                    time_now_4.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                four,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_4.bgcolor = '#ffcc66'
+                    time_now_4.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                four,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
                 page.update()
                 print("Four found!")
             except:
@@ -607,22 +1025,44 @@ def main(page: ft.Page):
                     four_check = page.client_storage.get("four")
                     start_time, end_time = four_check.split('-')
                     time_end = datetime.strptime(end_time, '%H:%M').time()
-                    if time_end <= current_time:
-                        time_now_4.bgcolor = ft.colors.GREY_400
-                    else:
-                        time_now_4.bgcolor = '#ffcc66'
                     if end_time == '23:59':
                         four = f'{start_time}-24:00'
                     else:
                         four = page.client_storage.get("four")
                     time_now_4.visible = True
-                    time_now_4.content = ft.Text(
-                        four,
-                        size=21,
-                        weight='w500',
-                        color=ft.colors.BLACK,
-                        font_family="Golos Text"
-                    )
+                    if time_end <= current_time:
+                        time_now_4.bgcolor = ft.colors.GREY_400
+                        time_now_4.content = ft.Row(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            controls=[
+                                ft.Container(width=25),
+                                ft.Text(
+                                    four,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                ),
+                                ft.Icon(
+                                    name=ft.icons.DONE_ALL_ROUNDED
+                                )
+                            ]
+                        )
+                    else:
+                        time_now_4.bgcolor = '#ffcc66'
+                        time_now_4.content = ft.Row(
+                            alignment="center",
+                            vertical_alignment='center',
+                            controls=[
+                                ft.Text(
+                                    four,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                )
+                            ]
+                        )
                 page.update()
                 print("Four not found!")
 
@@ -633,22 +1073,44 @@ def main(page: ft.Page):
                 five_check = page.client_storage.get("five")
                 start_time, end_time = five_check.split('-')
                 time_end = datetime.strptime(end_time, '%H:%M').time()
-                if time_end <= current_time:
-                    time_now_5.bgcolor = ft.colors.GREY_400
-                else:
-                    time_now_5.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     five = f'{start_time}-24:00'
                 else:
                     five = page.client_storage.get("five")
                 time_now_5.visible = True
-                time_now_5.content = ft.Text(
-                    five,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
+                if time_end <= current_time:
+                    time_now_5.bgcolor = ft.colors.GREY_400
+                    time_now_5.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                five,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_5.bgcolor = '#ffcc66'
+                    time_now_5.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                five,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
                 page.update()
                 print("Five found!")
             except:
@@ -656,22 +1118,44 @@ def main(page: ft.Page):
                     five_check = page.client_storage.get("five")
                     start_time, end_time = five_check.split('-')
                     time_end = datetime.strptime(end_time, '%H:%M').time()
-                    if time_end <= current_time:
-                        time_now_5.bgcolor = ft.colors.GREY_400
-                    else:
-                        time_now_5.bgcolor = '#ffcc66'
                     if end_time == '23:59':
                         five = f'{start_time}-24:00'
                     else:
                         five = page.client_storage.get("five")
                     time_now_5.visible = True
-                    time_now_5.content = ft.Text(
-                        five,
-                        size=21,
-                        weight='w500',
-                        color=ft.colors.BLACK,
-                        font_family="Golos Text"
-                    )
+                    if time_end <= current_time:
+                        time_now_5.bgcolor = ft.colors.GREY_400
+                        time_now_5.content = ft.Row(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            controls=[
+                                ft.Container(width=25),
+                                ft.Text(
+                                    five,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                ),
+                                ft.Icon(
+                                    name=ft.icons.DONE_ALL_ROUNDED
+                                )
+                            ]
+                        )
+                    else:
+                        time_now_5.bgcolor = '#ffcc66'
+                        time_now_5.content = ft.Row(
+                            alignment="center",
+                            vertical_alignment='center',
+                            controls=[
+                                ft.Text(
+                                    five,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                )
+                            ]
+                        )
                 page.update()
                 print("Five not found!")
 
@@ -682,22 +1166,44 @@ def main(page: ft.Page):
                 six_check = page.client_storage.get("six")
                 start_time, end_time = six_check.split('-')
                 time_end = datetime.strptime(end_time, '%H:%M').time()
-                if time_end <= current_time:
-                    time_now_6.bgcolor = ft.colors.GREY_400
-                else:
-                    time_now_6.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six")
                 time_now_6.visible = True
-                time_now_6.content = ft.Text(
-                    six,
-                    size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
+                if time_end <= current_time:
+                    time_now_6.bgcolor = ft.colors.GREY_400
+                    time_now_6.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                six,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_6.bgcolor = '#ffcc66'
+                    time_now_6.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                six,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
                 page.update()
                 print("Six found!")
             except:
@@ -705,22 +1211,44 @@ def main(page: ft.Page):
                     six_check = page.client_storage.get("six")
                     start_time, end_time = six_check.split('-')
                     time_end = datetime.strptime(end_time, '%H:%M').time()
-                    if time_end <= current_time:
-                        time_now_6.bgcolor = ft.colors.GREY_400
-                    else:
-                        time_now_6.bgcolor = '#ffcc66'
                     if end_time == '23:59':
                         six = f'{start_time}-24:00'
                     else:
                         six = page.client_storage.get("six")
                     time_now_6.visible = True
-                    time_now_6.content = ft.Text(
-                        six,
-                        size=21,
-                        weight='w500',
-                        color=ft.colors.BLACK,
-                        font_family="Golos Text"
-                    )
+                    if time_end <= current_time:
+                        time_now_6.bgcolor = ft.colors.GREY_400
+                        time_now_6.content = ft.Row(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            controls=[
+                                ft.Container(width=25),
+                                ft.Text(
+                                    six,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                ),
+                                ft.Icon(
+                                    name=ft.icons.DONE_ALL_ROUNDED
+                                )
+                            ]
+                        )
+                    else:
+                        time_now_6.bgcolor = '#ffcc66'
+                        time_now_6.content = ft.Row(
+                            alignment="center",
+                            vertical_alignment='center',
+                            controls=[
+                                ft.Text(
+                                    six,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                )
+                            ]
+                        )
                     page.update()
                 page.update()
                 print("Six not found!")
