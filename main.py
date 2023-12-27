@@ -73,6 +73,8 @@ def main(page: ft.Page):
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if time_end <= current_time:
                 time_now_1.bgcolor = ft.colors.GREY_400
+            else:
+                time_now_1.bgcolor = '#ffcc66'
             if end_time == '23:59':
                 one = f'{start_time}-24:00'
             else:
@@ -94,6 +96,8 @@ def main(page: ft.Page):
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if time_end <= current_time:
                     time_now_1.bgcolor = ft.colors.GREY_400
+                else:
+                    time_now_1.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     one = f'{start_time}-24:00'
                 else:
@@ -119,6 +123,8 @@ def main(page: ft.Page):
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if time_end <= current_time:
                 time_now_2.bgcolor = ft.colors.GREY_400
+            else:
+                time_now_2.bgcolor = '#ffcc66'
             if end_time == '23:59':
                 two = f'{start_time}-24:00'
             else:
@@ -140,6 +146,8 @@ def main(page: ft.Page):
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if time_end <= current_time:
                     time_now_2.bgcolor = ft.colors.GREY_400
+                else:
+                    time_now_2.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     two = f'{start_time}-24:00'
                 else:
@@ -164,6 +172,8 @@ def main(page: ft.Page):
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if time_end <= current_time:
                 time_now_3.bgcolor = ft.colors.GREY_400
+            else:
+                time_now_3.bgcolor = '#ffcc66'
             if end_time == '23:59':
                 three = f'{start_time}-24:00'
             else:
@@ -185,6 +195,8 @@ def main(page: ft.Page):
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if time_end <= current_time:
                     time_now_3.bgcolor = ft.colors.GREY_400
+                else:
+                    time_now_3.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     three = f'{start_time}-24:00'
                 else:
@@ -209,6 +221,8 @@ def main(page: ft.Page):
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if time_end <= current_time:
                 time_now_4.bgcolor = ft.colors.GREY_400
+            else:
+                time_now_4.bgcolor = '#ffcc66'
             if end_time == '23:59':
                 four = f'{start_time}-24:00'
             else:
@@ -230,6 +244,8 @@ def main(page: ft.Page):
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if time_end <= current_time:
                     time_now_4.bgcolor = ft.colors.GREY_400
+                else:
+                    time_now_4.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     four = f'{start_time}-24:00'
                 else:
@@ -254,6 +270,8 @@ def main(page: ft.Page):
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if time_end <= current_time:
                 time_now_5.bgcolor = ft.colors.GREY_400
+            else:
+                time_now_5.bgcolor = '#ffcc66'
             if end_time == '23:59':
                 five = f'{start_time}-24:00'
             else:
@@ -275,6 +293,8 @@ def main(page: ft.Page):
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if time_end <= current_time:
                     time_now_5.bgcolor = ft.colors.GREY_400
+                else:
+                    time_now_5.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     five = f'{start_time}-24:00'
                 else:
@@ -299,6 +319,8 @@ def main(page: ft.Page):
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if time_end <= current_time:
                 time_now_6.bgcolor = ft.colors.GREY_400
+            else:
+                time_now_6.bgcolor = '#ffcc66'
             if end_time == '23:59':
                 six = f'{start_time}-24:00'
             else:
@@ -320,6 +342,8 @@ def main(page: ft.Page):
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if time_end <= current_time:
                     time_now_6.bgcolor = ft.colors.GREY_400
+                else:
+                    time_now_6.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     six = f'{start_time}-24:00'
                 else:
@@ -415,6 +439,8 @@ def main(page: ft.Page):
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if time_end <= current_time:
                     time_now_1.bgcolor = ft.colors.GREY_400
+                else:
+                    time_now_1.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     one = f'{start_time}-24:00'
                 else:
@@ -436,6 +462,8 @@ def main(page: ft.Page):
                     time_end = datetime.strptime(end_time, '%H:%M').time()
                     if time_end <= current_time:
                         time_now_1.bgcolor = ft.colors.GREY_400
+                    else:
+                        time_now_1.bgcolor = '#ffcc66'
                     if end_time == '23:59':
                         one = f'{start_time}-24:00'
                     else:
@@ -460,6 +488,8 @@ def main(page: ft.Page):
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if time_end <= current_time:
                     time_now_2.bgcolor = ft.colors.GREY_400
+                else:
+                    time_now_2.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     two = f'{start_time}-24:00'
                 else:
@@ -481,6 +511,8 @@ def main(page: ft.Page):
                     time_end = datetime.strptime(end_time, '%H:%M').time()
                     if time_end <= current_time:
                         time_now_2.bgcolor = ft.colors.GREY_400
+                    else:
+                        time_now_2.bgcolor = '#ffcc66'
                     if end_time == '23:59':
                         two = f'{start_time}-24:00'
                     else:
@@ -505,6 +537,8 @@ def main(page: ft.Page):
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if time_end <= current_time:
                     time_now_3.bgcolor = ft.colors.GREY_400
+                else:
+                    time_now_3.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     three = f'{start_time}-24:00'
                 else:
@@ -526,6 +560,8 @@ def main(page: ft.Page):
                     time_end = datetime.strptime(end_time, '%H:%M').time()
                     if time_end <= current_time:
                         time_now_3.bgcolor = ft.colors.GREY_400
+                    else:
+                        time_now_3.bgcolor = '#ffcc66'
                     if end_time == '23:59':
                         three = f'{start_time}-24:00'
                     else:
@@ -550,6 +586,8 @@ def main(page: ft.Page):
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if time_end <= current_time:
                     time_now_4.bgcolor = ft.colors.GREY_400
+                else:
+                    time_now_4.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     four = f'{start_time}-24:00'
                 else:
@@ -571,6 +609,8 @@ def main(page: ft.Page):
                     time_end = datetime.strptime(end_time, '%H:%M').time()
                     if time_end <= current_time:
                         time_now_4.bgcolor = ft.colors.GREY_400
+                    else:
+                        time_now_4.bgcolor = '#ffcc66'
                     if end_time == '23:59':
                         four = f'{start_time}-24:00'
                     else:
@@ -595,6 +635,8 @@ def main(page: ft.Page):
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if time_end <= current_time:
                     time_now_5.bgcolor = ft.colors.GREY_400
+                else:
+                    time_now_5.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     five = f'{start_time}-24:00'
                 else:
@@ -616,6 +658,8 @@ def main(page: ft.Page):
                     time_end = datetime.strptime(end_time, '%H:%M').time()
                     if time_end <= current_time:
                         time_now_5.bgcolor = ft.colors.GREY_400
+                    else:
+                        time_now_5.bgcolor = '#ffcc66'
                     if end_time == '23:59':
                         five = f'{start_time}-24:00'
                     else:
@@ -640,6 +684,8 @@ def main(page: ft.Page):
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if time_end <= current_time:
                     time_now_6.bgcolor = ft.colors.GREY_400
+                else:
+                    time_now_6.bgcolor = '#ffcc66'
                 if end_time == '23:59':
                     six = f'{start_time}-24:00'
                 else:
@@ -661,6 +707,8 @@ def main(page: ft.Page):
                     time_end = datetime.strptime(end_time, '%H:%M').time()
                     if time_end <= current_time:
                         time_now_6.bgcolor = ft.colors.GREY_400
+                    else:
+                        time_now_6.bgcolor = '#ffcc66'
                     if end_time == '23:59':
                         six = f'{start_time}-24:00'
                     else:
