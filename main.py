@@ -1,5 +1,5 @@
 import flet as ft
-from functions import check_cherg, today, tomorrow, after_tomorrow
+from functions import check_cherg, day_of_week_today, day_of_week_tomorrow, day_of_week_after_tomorrow
 from functions import day_num_one, day_num_two, day_num_three, day_num_four, day_num_five, day_num_six
 from functions import day_tomorrow_one, day_tomorrow_two, day_tomorrow_three, day_tomorrow_four, day_tomorrow_five, day_tomorrow_six
 from functions import day_after_tomorrow_one, day_after_tomorrow_two, day_after_tomorrow_three, day_after_tomorrow_four, day_after_tomorrow_five, day_after_tomorrow_six
@@ -70,6 +70,7 @@ def main(page: ft.Page):
             page.client_storage.set("one", result_one)
             one_check = page.client_storage.get("one")
             start_time, end_time = one_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if end_time == '23:59':
                 one = f'{start_time}-24:00'
@@ -94,6 +95,24 @@ def main(page: ft.Page):
                         )
                     ]
                 )
+            elif time_start <= current_time <= time_end:
+                time_now_1.bgcolor = '#ffcc66'
+                time_now_1.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            one,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED
+                        )
+                    ]
+                )
             else:
                 time_now_1.bgcolor = '#ffcc66'
                 time_now_1.content = ft.Row(
@@ -115,6 +134,7 @@ def main(page: ft.Page):
             if page.client_storage.get("one") != None:
                 one_check = page.client_storage.get("one")
                 start_time, end_time = one_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if end_time == '23:59':
                     one = f'{start_time}-24:00'
@@ -136,6 +156,24 @@ def main(page: ft.Page):
                             ),
                             ft.Icon(
                                 name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_1.bgcolor = '#ffcc66'
+                    time_now_1.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
                             )
                         ]
                     )
@@ -164,6 +202,7 @@ def main(page: ft.Page):
             two_check = page.client_storage.get("two")
             two_check = page.client_storage.get("two")
             start_time, end_time = two_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if end_time == '23:59':
                 two = f'{start_time}-24:00'
@@ -188,6 +227,24 @@ def main(page: ft.Page):
                         )
                     ]
                 )
+            elif time_start <= current_time <= time_end:
+                time_now_2.bgcolor = '#ffcc66'
+                time_now_2.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            two,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED
+                        )
+                    ]
+                )
             else:
                 time_now_2.bgcolor = '#ffcc66'
                 time_now_2.content = ft.Row(
@@ -209,6 +266,7 @@ def main(page: ft.Page):
             if page.client_storage.get("two") != None:
                 two_check = page.client_storage.get("two")
                 start_time, end_time = two_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if end_time == '23:59':
                     two = f'{start_time}-24:00'
@@ -230,6 +288,24 @@ def main(page: ft.Page):
                             ),
                             ft.Icon(
                                 name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_2.bgcolor = '#ffcc66'
+                    time_now_2.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                two,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
                             )
                         ]
                     )
@@ -257,6 +333,7 @@ def main(page: ft.Page):
             page.client_storage.set("three", result_three)
             three_check = page.client_storage.get("three")
             start_time, end_time = three_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if end_time == '23:59':
                 three = f'{start_time}-24:00'
@@ -281,6 +358,24 @@ def main(page: ft.Page):
                         )
                     ]
                 )
+            elif time_start <= current_time <= time_end:
+                time_now_3.bgcolor = '#ffcc66'
+                time_now_3.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            three,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED
+                        )
+                    ]
+                )
             else:
                 time_now_3.bgcolor = '#ffcc66'
                 time_now_3.content = ft.Row(
@@ -302,6 +397,7 @@ def main(page: ft.Page):
             if page.client_storage.get("three") != None:
                 three_check = page.client_storage.get("three")
                 start_time, end_time = three_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if end_time == '23:59':
                     three = f'{start_time}-24:00'
@@ -323,6 +419,24 @@ def main(page: ft.Page):
                             ),
                             ft.Icon(
                                 name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_3.bgcolor = '#ffcc66'
+                    time_now_3.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                three,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
                             )
                         ]
                     )
@@ -350,6 +464,7 @@ def main(page: ft.Page):
             page.client_storage.set("four", result_four)
             four_check = page.client_storage.get("four")
             start_time, end_time = four_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if end_time == '23:59':
                 four = f'{start_time}-24:00'
@@ -374,6 +489,24 @@ def main(page: ft.Page):
                         )
                     ]
                 )
+            elif time_start <= current_time <= time_end:
+                time_now_4.bgcolor = '#ffcc66'
+                time_now_4.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            four,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED
+                        )
+                    ]
+                )
             else:
                 time_now_4.bgcolor = '#ffcc66'
                 time_now_4.content = ft.Row(
@@ -395,6 +528,7 @@ def main(page: ft.Page):
             if page.client_storage.get("four") != None:
                 four_check = page.client_storage.get("four")
                 start_time, end_time = four_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if end_time == '23:59':
                     four = f'{start_time}-24:00'
@@ -416,6 +550,24 @@ def main(page: ft.Page):
                             ),
                             ft.Icon(
                                 name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_4.bgcolor = '#ffcc66'
+                    time_now_4.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                four,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
                             )
                         ]
                     )
@@ -443,6 +595,7 @@ def main(page: ft.Page):
             page.client_storage.set("five", result_five)
             five_check = page.client_storage.get("five")
             start_time, end_time = five_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if end_time == '23:59':
                 five = f'{start_time}-24:00'
@@ -467,6 +620,24 @@ def main(page: ft.Page):
                         )
                     ]
                 )
+            elif time_start <= current_time <= time_end:
+                time_now_5.bgcolor = '#ffcc66'
+                time_now_5.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            five,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED
+                        )
+                    ]
+                )
             else:
                 time_now_5.bgcolor = '#ffcc66'
                 time_now_5.content = ft.Row(
@@ -488,6 +659,7 @@ def main(page: ft.Page):
             if page.client_storage.get("five") != None:
                 five_check = page.client_storage.get("five")
                 start_time, end_time = five_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if end_time == '23:59':
                     five = f'{start_time}-24:00'
@@ -509,6 +681,24 @@ def main(page: ft.Page):
                             ),
                             ft.Icon(
                                 name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_5.bgcolor = '#ffcc66'
+                    time_now_5.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                five,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
                             )
                         ]
                     )
@@ -536,6 +726,7 @@ def main(page: ft.Page):
             page.client_storage.set("six", result_six)
             six_check = page.client_storage.get("six")
             start_time, end_time = six_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if end_time == '23:59':
                 six = f'{start_time}-24:00'
@@ -560,6 +751,24 @@ def main(page: ft.Page):
                         )
                     ]
                 )
+            elif time_start <= current_time <= time_end:
+                time_now_6.bgcolor = '#ffcc66'
+                time_now_6.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            six,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED
+                        )
+                    ]
+                )
             else:
                 time_now_6.bgcolor = '#ffcc66'
                 time_now_6.content = ft.Row(
@@ -581,6 +790,7 @@ def main(page: ft.Page):
             if page.client_storage.get("six") != None:
                 six_check = page.client_storage.get("six")
                 start_time, end_time = six_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if end_time == '23:59':
                     six = f'{start_time}-24:00'
@@ -602,6 +812,24 @@ def main(page: ft.Page):
                             ),
                             ft.Icon(
                                 name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_6.bgcolor = '#ffcc66'
+                    time_now_6.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                six,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
                             )
                         ]
                     )
@@ -700,6 +928,7 @@ def main(page: ft.Page):
                 page.client_storage.set("one", result_one)
                 one_check = page.client_storage.get("one")
                 start_time, end_time = one_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if end_time == '23:59':
                     one = f'{start_time}-24:00'
@@ -724,6 +953,24 @@ def main(page: ft.Page):
                             )
                         ]
                     )
+                elif time_start <= current_time <= time_end:
+                    time_now_1.bgcolor = '#ffcc66'
+                    time_now_1.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
+                            )
+                        ]
+                    )
                 else:
                     time_now_1.bgcolor = '#ffcc66'
                     time_now_1.content = ft.Row(
@@ -745,6 +992,7 @@ def main(page: ft.Page):
                 if page.client_storage.get("one") != None:
                     one_check = page.client_storage.get("one")
                     start_time, end_time = one_check.split('-')
+                    time_start = datetime.strptime(start_time, '%H:%M').time()
                     time_end = datetime.strptime(end_time, '%H:%M').time()
                     if end_time == '23:59':
                         one = f'{start_time}-24:00'
@@ -766,6 +1014,24 @@ def main(page: ft.Page):
                                 ),
                                 ft.Icon(
                                     name=ft.icons.DONE_ALL_ROUNDED
+                                )
+                            ]
+                        )
+                    elif time_start <= current_time <= time_end:
+                        time_now_1.bgcolor = '#ffcc66'
+                        time_now_1.content = ft.Row(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            controls=[
+                                ft.Container(width=25),
+                                ft.Text(
+                                    one,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                ),
+                                ft.Icon(
+                                    name=ft.icons.BROWSE_GALLERY_OUTLINED
                                 )
                             ]
                         )
@@ -793,6 +1059,7 @@ def main(page: ft.Page):
                 page.client_storage.set("two", result_two)
                 two_check = page.client_storage.get("two")
                 start_time, end_time = two_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if end_time == '23:59':
                     two = f'{start_time}-24:00'
@@ -817,6 +1084,24 @@ def main(page: ft.Page):
                             )
                         ]
                     )
+                elif time_start <= current_time <= time_end:
+                    time_now_2.bgcolor = '#ffcc66'
+                    time_now_2.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                two,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
+                            )
+                        ]
+                    )
                 else:
                     time_now_2.bgcolor = '#ffcc66'
                     time_now_2.content = ft.Row(
@@ -838,6 +1123,7 @@ def main(page: ft.Page):
                 if page.client_storage.get("two") != None:
                     two_check = page.client_storage.get("two")
                     start_time, end_time = two_check.split('-')
+                    time_start = datetime.strptime(start_time, '%H:%M').time()
                     time_end = datetime.strptime(end_time, '%H:%M').time()
                     if end_time == '23:59':
                         two = f'{start_time}-24:00'
@@ -859,6 +1145,24 @@ def main(page: ft.Page):
                                 ),
                                 ft.Icon(
                                     name=ft.icons.DONE_ALL_ROUNDED
+                                )
+                            ]
+                        )
+                    elif time_start <= current_time <= time_end:
+                        time_now_2.bgcolor = '#ffcc66'
+                        time_now_2.content = ft.Row(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            controls=[
+                                ft.Container(width=25),
+                                ft.Text(
+                                    two,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                ),
+                                ft.Icon(
+                                    name=ft.icons.BROWSE_GALLERY_OUTLINED
                                 )
                             ]
                         )
@@ -886,6 +1190,7 @@ def main(page: ft.Page):
                 page.client_storage.set("three", result_three)
                 three_check = page.client_storage.get("three")
                 start_time, end_time = three_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if end_time == '23:59':
                     three = f'{start_time}-24:00'
@@ -910,6 +1215,24 @@ def main(page: ft.Page):
                             )
                         ]
                     )
+                elif time_start <= current_time <= time_end:
+                    time_now_3.bgcolor = '#ffcc66'
+                    time_now_3.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                three,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
+                            )
+                        ]
+                    )
                 else:
                     time_now_3.bgcolor = '#ffcc66'
                     time_now_3.content = ft.Row(
@@ -931,6 +1254,7 @@ def main(page: ft.Page):
                 if page.client_storage.get("three") != None:
                     three_check = page.client_storage.get("three")
                     start_time, end_time = three_check.split('-')
+                    time_start = datetime.strptime(start_time, '%H:%M').time()
                     time_end = datetime.strptime(end_time, '%H:%M').time()
                     if end_time == '23:59':
                         three = f'{start_time}-24:00'
@@ -952,6 +1276,24 @@ def main(page: ft.Page):
                                 ),
                                 ft.Icon(
                                     name=ft.icons.DONE_ALL_ROUNDED
+                                )
+                            ]
+                        )
+                    elif time_start <= current_time <= time_end:
+                        time_now_3.bgcolor = '#ffcc66'
+                        time_now_3.content = ft.Row(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            controls=[
+                                ft.Container(width=25),
+                                ft.Text(
+                                    three,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                ),
+                                ft.Icon(
+                                    name=ft.icons.BROWSE_GALLERY_OUTLINED
                                 )
                             ]
                         )
@@ -979,6 +1321,7 @@ def main(page: ft.Page):
                 page.client_storage.set("four", result_four)
                 four_check = page.client_storage.get("four")
                 start_time, end_time = four_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if end_time == '23:59':
                     four = f'{start_time}-24:00'
@@ -1003,6 +1346,24 @@ def main(page: ft.Page):
                             )
                         ]
                     )
+                elif time_start <= current_time <= time_end:
+                    time_now_4.bgcolor = '#ffcc66'
+                    time_now_4.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                four,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
+                            )
+                        ]
+                    )
                 else:
                     time_now_4.bgcolor = '#ffcc66'
                     time_now_4.content = ft.Row(
@@ -1024,6 +1385,7 @@ def main(page: ft.Page):
                 if page.client_storage.get("four") != None:
                     four_check = page.client_storage.get("four")
                     start_time, end_time = four_check.split('-')
+                    time_start = datetime.strptime(start_time, '%H:%M').time()
                     time_end = datetime.strptime(end_time, '%H:%M').time()
                     if end_time == '23:59':
                         four = f'{start_time}-24:00'
@@ -1045,6 +1407,24 @@ def main(page: ft.Page):
                                 ),
                                 ft.Icon(
                                     name=ft.icons.DONE_ALL_ROUNDED
+                                )
+                            ]
+                        )
+                    elif time_start <= current_time <= time_end:
+                        time_now_4.bgcolor = '#ffcc66'
+                        time_now_4.content = ft.Row(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            controls=[
+                                ft.Container(width=25),
+                                ft.Text(
+                                    four,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                ),
+                                ft.Icon(
+                                    name=ft.icons.BROWSE_GALLERY_OUTLINED
                                 )
                             ]
                         )
@@ -1072,6 +1452,7 @@ def main(page: ft.Page):
                 page.client_storage.set("five", result_five)
                 five_check = page.client_storage.get("five")
                 start_time, end_time = five_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if end_time == '23:59':
                     five = f'{start_time}-24:00'
@@ -1096,6 +1477,24 @@ def main(page: ft.Page):
                             )
                         ]
                     )
+                elif time_start <= current_time <= time_end:
+                    time_now_5.bgcolor = '#ffcc66'
+                    time_now_5.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                five,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
+                            )
+                        ]
+                    )
                 else:
                     time_now_5.bgcolor = '#ffcc66'
                     time_now_5.content = ft.Row(
@@ -1117,6 +1516,7 @@ def main(page: ft.Page):
                 if page.client_storage.get("five") != None:
                     five_check = page.client_storage.get("five")
                     start_time, end_time = five_check.split('-')
+                    time_start = datetime.strptime(start_time, '%H:%M').time()
                     time_end = datetime.strptime(end_time, '%H:%M').time()
                     if end_time == '23:59':
                         five = f'{start_time}-24:00'
@@ -1138,6 +1538,24 @@ def main(page: ft.Page):
                                 ),
                                 ft.Icon(
                                     name=ft.icons.DONE_ALL_ROUNDED
+                                )
+                            ]
+                        )
+                    elif time_start <= current_time <= time_end:
+                        time_now_5.bgcolor = '#ffcc66'
+                        time_now_5.content = ft.Row(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            controls=[
+                                ft.Container(width=25),
+                                ft.Text(
+                                    five,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                ),
+                                ft.Icon(
+                                    name=ft.icons.BROWSE_GALLERY_OUTLINED
                                 )
                             ]
                         )
@@ -1165,6 +1583,7 @@ def main(page: ft.Page):
                 page.client_storage.set("six", result_six)
                 six_check = page.client_storage.get("six")
                 start_time, end_time = six_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
                 time_end = datetime.strptime(end_time, '%H:%M').time()
                 if end_time == '23:59':
                     six = f'{start_time}-24:00'
@@ -1189,6 +1608,24 @@ def main(page: ft.Page):
                             )
                         ]
                     )
+                elif time_start <= current_time <= time_end:
+                    time_now_6.bgcolor = '#ffcc66'
+                    time_now_6.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                six,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
+                            )
+                        ]
+                    )
                 else:
                     time_now_6.bgcolor = '#ffcc66'
                     time_now_6.content = ft.Row(
@@ -1210,6 +1647,7 @@ def main(page: ft.Page):
                 if page.client_storage.get("six") != None:
                     six_check = page.client_storage.get("six")
                     start_time, end_time = six_check.split('-')
+                    time_start = datetime.strptime(start_time, '%H:%M').time()
                     time_end = datetime.strptime(end_time, '%H:%M').time()
                     if end_time == '23:59':
                         six = f'{start_time}-24:00'
@@ -1231,6 +1669,24 @@ def main(page: ft.Page):
                                 ),
                                 ft.Icon(
                                     name=ft.icons.DONE_ALL_ROUNDED
+                                )
+                            ]
+                        )
+                    elif time_start <= current_time <= time_end:
+                        time_now_6.bgcolor = '#ffcc66'
+                        time_now_6.content = ft.Row(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            controls=[
+                                ft.Container(width=25),
+                                ft.Text(
+                                    six,
+                                    size=21,
+                                    weight='w500',
+                                    color=ft.colors.BLACK,
+                                    font_family="Golos Text"
+                                ),
+                                ft.Icon(
+                                    name=ft.icons.BROWSE_GALLERY_OUTLINED
                                 )
                             ]
                         )
@@ -1973,95 +2429,32 @@ def main(page: ft.Page):
         tabs=[
             ft.Tab(
                 tab_content=ft.Text(
-                    "Сьогодні",
+                    day_of_week_today,
                     size=18,
                     text_align='center',
                     font_family="Golos Text",
                     weight="w500"
                 ),
-                # tab_content=ft.Column(
-                #     spacing=0,
-                #     horizontal_alignment='center',
-                #     alignment='start',
-                #     controls=[
-                #         ft.Text(
-                #             "Сьогодні",
-                #             size=18,
-                #             text_align='center',
-                #             font_family="Golos Text",
-                #             weight="w500"
-                #         ),
-                #         ft.Text(
-                #             today.strftime("(%d.%m)"),
-                #             size=16,
-                #             text_align='center',
-                #             font_family="Golos Text",
-                #             weight="w500"
-                #         )
-                #     ]
-                # ),
                 content=time_now
             ),
             ft.Tab(
                 tab_content=ft.Text(
-                    "Завтра",
+                    day_of_week_tomorrow,
                     size=18,
                     text_align='center',
                     font_family="Golos Text",
                     weight="w500"
                 ),
-                # tab_content=ft.Column(
-                #     spacing=0,
-                #     horizontal_alignment='center',
-                #     alignment='start',
-                #     controls=[
-                #         ft.Text(
-                #             "Завтра",
-                #             size=18,
-                #             text_align='center',
-                #             font_family="Golos Text",
-                #             weight="w500"
-                #         ),
-                #         ft.Text(
-                #             tomorrow.strftime("(%d.%m)"),
-                #             size=16,
-                #             text_align='center',
-                #             font_family="Golos Text",
-                #             weight="w500"
-                #         )
-                #     ]
-                # ),
                 content=time_tomorrow
             ),
             ft.Tab(
                 tab_content=ft.Text(
-                    "Післязавтра",
+                    day_of_week_after_tomorrow,
                     size=18,
                     text_align='center',
                     font_family="Golos Text",
                     weight="w500"
                 ),
-                # tab_content=ft.Column(
-                #     spacing=0,
-                #     horizontal_alignment='center',
-                #     alignment='start',
-                #     controls=[
-                #         ft.Text(
-                #             "Післязавтра",
-                #             size=18,
-                #             text_align='center',
-                #             font_family="Golos Text",
-                #             weight="w500"
-                #         ),
-                #         ft.Text(
-                #             after_tomorrow.strftime("(%d.%m)"),
-                #             size=16,
-                #             text_align='center',
-                #             font_family="Golos Text",
-                #             weight="w500"
-                #         )
-                #     ]
-                # ),
                 content=time_after_tomorrow
             )
         ],
