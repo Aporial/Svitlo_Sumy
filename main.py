@@ -11,6 +11,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 import requests
+import time
 
 
 def main(page: ft.Page):
@@ -1735,6 +1736,828 @@ def main(page: ft.Page):
         get_time_tomorrow()
         get_time_after_tomorrow()
 
+    def check_storage_timer():
+        current_time = datetime.now().time()
+        storage_info = storage()
+        cherg = check_cherg(storage_info)
+        one_check = page.client_storage.get("one")
+        two_check = page.client_storage.get("two")
+        three_check = page.client_storage.get("three")
+        four_check = page.client_storage.get("four")
+        five_check = page.client_storage.get("five")
+        six_check = page.client_storage.get("six")
+        try:
+            try_one = db.reference(f"/{cherg}/{day_num_one}")
+            result_one = try_one.get()
+            page.client_storage.set("one", result_one)
+            one_check = page.client_storage.get("one")
+            start_time, end_time = one_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if end_time == '23:59':
+                one = f'{start_time}-24:00'
+            else:
+                one = page.client_storage.get("one")
+            time_now_1.visible = True
+            if time_end <= current_time:
+                time_now_1.bgcolor = ft.colors.GREY_400
+                time_now_1.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            one,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED
+                        )
+                    ]
+                )
+            elif time_start <= current_time <= time_end:
+                time_now_1.bgcolor = '#ffcc66'
+                time_now_1.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            one,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED
+                        )
+                    ]
+                )
+            else:
+                time_now_1.bgcolor = '#ffcc66'
+                time_now_1.content = ft.Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        ft.Text(
+                            one,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+            page.update()
+            print("One found!")
+        except:
+            if page.client_storage.get("one") != None:
+                one_check = page.client_storage.get("one")
+                start_time, end_time = one_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    one = f'{start_time}-24:00'
+                else:
+                    one = page.client_storage.get("one")
+                time_now_1.visible = True
+                if time_end <= current_time:
+                    time_now_1.bgcolor = ft.colors.GREY_400
+                    time_now_1.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_1.bgcolor = '#ffcc66'
+                    time_now_1.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_1.bgcolor = '#ffcc66'
+                    time_now_1.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+            page.update()
+            print("One not found!")
+
+        try:
+            try_two = db.reference(f"/{cherg}/{day_num_two}")
+            result_two = try_two.get()
+            page.client_storage.set("two", result_two)
+            two_check = page.client_storage.get("two")
+            start_time, end_time = two_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if end_time == '23:59':
+                two = f'{start_time}-24:00'
+            else:
+                two = page.client_storage.get("two")
+            time_now_2.visible = True
+            if time_end <= current_time:
+                time_now_2.bgcolor = ft.colors.GREY_400
+                time_now_2.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            two,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED
+                        )
+                    ]
+                )
+            elif time_start <= current_time <= time_end:
+                time_now_2.bgcolor = '#ffcc66'
+                time_now_2.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            two,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED
+                        )
+                    ]
+                )
+            else:
+                time_now_2.bgcolor = '#ffcc66'
+                time_now_2.content = ft.Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        ft.Text(
+                            two,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+            page.update()
+            print("Two found!")
+        except:
+            if page.client_storage.get("two") != None:
+                two_check = page.client_storage.get("two")
+                start_time, end_time = two_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    two = f'{start_time}-24:00'
+                else:
+                    two = page.client_storage.get("two")
+                time_now_2.visible = True
+                if time_end <= current_time:
+                    time_now_2.bgcolor = ft.colors.GREY_400
+                    time_now_2.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                two,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_2.bgcolor = '#ffcc66'
+                    time_now_2.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                two,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_2.bgcolor = '#ffcc66'
+                    time_now_2.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                two,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+            page.update()
+            print("Two not found!")
+
+        try:
+            try_three = db.reference(f"/{cherg}/{day_num_three}")
+            result_three = try_three.get()
+            page.client_storage.set("three", result_three)
+            three_check = page.client_storage.get("three")
+            start_time, end_time = three_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if end_time == '23:59':
+                three = f'{start_time}-24:00'
+            else:
+                three = page.client_storage.get("three")
+            time_now_3.visible = True
+            if time_end <= current_time:
+                time_now_3.bgcolor = ft.colors.GREY_400
+                time_now_3.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            three,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED
+                        )
+                    ]
+                )
+            elif time_start <= current_time <= time_end:
+                time_now_3.bgcolor = '#ffcc66'
+                time_now_3.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            three,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED
+                        )
+                    ]
+                )
+            else:
+                time_now_3.bgcolor = '#ffcc66'
+                time_now_3.content = ft.Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        ft.Text(
+                            three,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+            page.update()
+            print("Three found!")
+        except:
+            if page.client_storage.get("three") != None:
+                three_check = page.client_storage.get("three")
+                start_time, end_time = three_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    three = f'{start_time}-24:00'
+                else:
+                    three = page.client_storage.get("three")
+                time_now_3.visible = True
+                if time_end <= current_time:
+                    time_now_3.bgcolor = ft.colors.GREY_400
+                    time_now_3.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                three,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_3.bgcolor = '#ffcc66'
+                    time_now_3.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                three,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_3.bgcolor = '#ffcc66'
+                    time_now_3.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                three,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+            page.update()
+            print("Three not found!")
+
+        try:
+            try_four = db.reference(f"/{cherg}/{day_num_four}")
+            result_four = try_four.get()
+            page.client_storage.set("four", result_four)
+            four_check = page.client_storage.get("four")
+            start_time, end_time = four_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if end_time == '23:59':
+                four = f'{start_time}-24:00'
+            else:
+                four = page.client_storage.get("four")
+            time_now_4.visible = True
+            if time_end <= current_time:
+                time_now_4.bgcolor = ft.colors.GREY_400
+                time_now_4.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            four,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED
+                        )
+                    ]
+                )
+            elif time_start <= current_time <= time_end:
+                time_now_4.bgcolor = '#ffcc66'
+                time_now_4.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            four,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED
+                        )
+                    ]
+                )
+            else:
+                time_now_4.bgcolor = '#ffcc66'
+                time_now_4.content = ft.Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        ft.Text(
+                            four,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+            page.update()
+            print("Four found!")
+        except:
+            if page.client_storage.get("four") != None:
+                four_check = page.client_storage.get("four")
+                start_time, end_time = four_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    four = f'{start_time}-24:00'
+                else:
+                    four = page.client_storage.get("four")
+                time_now_4.visible = True
+                if time_end <= current_time:
+                    time_now_4.bgcolor = ft.colors.GREY_400
+                    time_now_4.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                four,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_4.bgcolor = '#ffcc66'
+                    time_now_4.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                four,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_4.bgcolor = '#ffcc66'
+                    time_now_4.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                four,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+            page.update()
+            print("Four not found!")
+
+        try:
+            try_five = db.reference(f"/{cherg}/{day_num_five}")
+            result_five = try_five.get()
+            page.client_storage.set("five", result_five)
+            five_check = page.client_storage.get("five")
+            start_time, end_time = five_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if end_time == '23:59':
+                five = f'{start_time}-24:00'
+            else:
+                five = page.client_storage.get("five")
+            time_now_5.visible = True
+            if time_end <= current_time:
+                time_now_5.bgcolor = ft.colors.GREY_400
+                time_now_5.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            five,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED
+                        )
+                    ]
+                )
+            elif time_start <= current_time <= time_end:
+                time_now_5.bgcolor = '#ffcc66'
+                time_now_5.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            five,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED
+                        )
+                    ]
+                )
+            else:
+                time_now_5.bgcolor = '#ffcc66'
+                time_now_5.content = ft.Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        ft.Text(
+                            five,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+            page.update()
+            print("Five found!")
+        except:
+            if page.client_storage.get("five") != None:
+                five_check = page.client_storage.get("five")
+                start_time, end_time = five_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    five = f'{start_time}-24:00'
+                else:
+                    five = page.client_storage.get("five")
+                time_now_5.visible = True
+                if time_end <= current_time:
+                    time_now_5.bgcolor = ft.colors.GREY_400
+                    time_now_5.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                five,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_5.bgcolor = '#ffcc66'
+                    time_now_5.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                five,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_5.bgcolor = '#ffcc66'
+                    time_now_5.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                five,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+            page.update()
+            print("Five not found!")
+
+        try:
+            try_six = db.reference(f"/{cherg}/{day_num_six}")
+            result_six = try_six.get()
+            page.client_storage.set("six", result_six)
+            six_check = page.client_storage.get("six")
+            start_time, end_time = six_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if end_time == '23:59':
+                six = f'{start_time}-24:00'
+            else:
+                six = page.client_storage.get("six")
+            time_now_6.visible = True
+            if time_end <= current_time:
+                time_now_6.bgcolor = ft.colors.GREY_400
+                time_now_6.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            six,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED
+                        )
+                    ]
+                )
+            elif time_start <= current_time <= time_end:
+                time_now_6.bgcolor = '#ffcc66'
+                time_now_6.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        ft.Container(width=25),
+                        ft.Text(
+                            six,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED
+                        )
+                    ]
+                )
+            else:
+                time_now_6.bgcolor = '#ffcc66'
+                time_now_6.content = ft.Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        ft.Text(
+                            six,
+                            size=21,
+                            weight='w500',
+                            color=ft.colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+            page.update()
+            print("Six found!")
+        except:
+            if page.client_storage.get("six") != None:
+                six_check = page.client_storage.get("six")
+                start_time, end_time = six_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    six = f'{start_time}-24:00'
+                else:
+                    six = page.client_storage.get("six")
+                time_now_6.visible = True
+                if time_end <= current_time:
+                    time_now_6.bgcolor = ft.colors.GREY_400
+                    time_now_6.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                six,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_6.bgcolor = '#ffcc66'
+                    time_now_6.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            ft.Container(width=25),
+                            ft.Text(
+                                six,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED
+                            )
+                        ]
+                    )
+                else:
+                    time_now_6.bgcolor = '#ffcc66'
+                    time_now_6.content = ft.Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            ft.Text(
+                                six,
+                                size=21,
+                                weight='w500',
+                                color=ft.colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+                page.update()
+            page.update()
+            print("Six not found!")
+        progress_bar.visible = False
+        main_info.padding = 0
+        main_tab.visible = True
+        time_now.visible = True
+        time_tomorrow.visible = True
+        time_after_tomorrow.visible = True
+        main_tab_anim()
+        try:
+            if check_time_interval(one_check) == True:
+                print("One time check is True!")
+            elif check_time_interval(two_check) == True:
+                print("Two time check is True!")
+            elif check_time_interval(three_check) == True:
+                print("Three time check is True!")
+            elif check_time_interval(four_check) == True:
+                print("Four time check is True!")
+            elif check_time_interval(five_check) == True:
+                print("Five time check is True!")
+            elif check_time_interval(six_check) == True:
+                print("Six time check is True!")
+        except:
+            print("All time check is False!")
+        page.update()
+        get_time_tomorrow()
+        get_time_after_tomorrow()
+
     def storage():
         storage = page.client_storage.get("number")
         return storage
@@ -2615,6 +3438,11 @@ def main(page: ft.Page):
     page.overlay.append(alert_first_conn)
     page.update()
     check_storage()
+    while True:
+        time.sleep(60)
+        check_storage_timer()
+        page.update()
+        print("60 sec!")
 
 
 ft.app(
