@@ -852,6 +852,7 @@ def main(page: ft.Page):
             page.update()
             print("Six not found!")
         progress_bar.visible = False
+        main_info.padding = 0
         main_tab.visible = True
         time_now.visible = True
         time_tomorrow.visible = True
@@ -1709,6 +1710,7 @@ def main(page: ft.Page):
                 page.update()
                 print("Six not found!")
             progress_bar.visible = False
+            main_info.padding = 0
             main_tab.visible = True
             time_now.visible = True
             time_tomorrow.visible = True
