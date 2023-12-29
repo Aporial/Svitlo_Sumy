@@ -1801,9 +1801,11 @@ def main(page: ft.Page):
     check_storage()
     while True:
         time.sleep(60)
-        check_storage_main()
-        page.update()
-        print("Update!")
+        try:
+            check_storage_main()
+            print("Update Complete!")
+        except:
+            print("Update Not Complete!")
 
 
 ft.app(
