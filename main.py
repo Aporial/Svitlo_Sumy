@@ -3442,7 +3442,7 @@ def main(page: ft.Page):
         time.sleep(60)
         check_storage_timer()
         page.update()
-        print("60 sec!")
+        print("Update!")
 
 
 ft.app(
