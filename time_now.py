@@ -1,121 +1,121 @@
-import flet as ft
+from flet import *
 
-time_now_1 = ft.Container(
+time_now_1 = Container(
     visible=False,
-    shadow=ft.BoxShadow(
+    shadow=BoxShadow(
         blur_radius=2,
-        blur_style=ft.ShadowBlurStyle.NORMAL,
-        offset=ft.Offset(0, 2),
-        color=ft.colors.BLACK54
+        blur_style=ShadowBlurStyle.NORMAL,
+        offset=Offset(0, 2),
+        color=colors.BLACK54
     ),
     bgcolor='#ffcc66',
     border_radius=5,
     padding=10,
-    alignment=ft.alignment.center,
-    content=ft.Text(
+    alignment=alignment.center,
+    content=Text(
         size=21,
         weight='w500',
-        color=ft.colors.BLACK,
+        color=colors.BLACK,
         font_family="Golos Text"
     )
 )
 
-time_now_2 = ft.Container(
+time_now_2 = Container(
     visible=False,
-    shadow=ft.BoxShadow(
+    shadow=BoxShadow(
         blur_radius=2,
-        blur_style=ft.ShadowBlurStyle.NORMAL,
-        offset=ft.Offset(0, 2),
-        color=ft.colors.BLACK54
+        blur_style=ShadowBlurStyle.NORMAL,
+        offset=Offset(0, 2),
+        color=colors.BLACK54
     ),
     bgcolor='#ffcc66',
     border_radius=5,
     padding=10,
-    alignment=ft.alignment.center,
-    content=ft.Text(
+    alignment=alignment.center,
+    content=Text(
             size=21,
             weight='w500',
-            color=ft.colors.BLACK,
+            color=colors.BLACK,
             font_family="Golos Text"
     )
 )
 
-time_now_3 = ft.Container(
+time_now_3 = Container(
     visible=False,
-    shadow=ft.BoxShadow(
+    shadow=BoxShadow(
         blur_radius=2,
-        blur_style=ft.ShadowBlurStyle.NORMAL,
-        offset=ft.Offset(0, 2),
-        color=ft.colors.BLACK54
+        blur_style=ShadowBlurStyle.NORMAL,
+        offset=Offset(0, 2),
+        color=colors.BLACK54
     ),
     bgcolor='#ffcc66',
     border_radius=5,
     padding=10,
-    alignment=ft.alignment.center,
-    content=ft.Text(
+    alignment=alignment.center,
+    content=Text(
             size=21,
             weight='w500',
-            color=ft.colors.BLACK,
+            color=colors.BLACK,
             font_family="Golos Text"
     )
 )
 
-time_now_4 = ft.Container(
+time_now_4 = Container(
     visible=False,
-    shadow=ft.BoxShadow(
+    shadow=BoxShadow(
         blur_radius=2,
-        blur_style=ft.ShadowBlurStyle.NORMAL,
-        offset=ft.Offset(0, 2),
-        color=ft.colors.BLACK54
+        blur_style=ShadowBlurStyle.NORMAL,
+        offset=Offset(0, 2),
+        color=colors.BLACK54
     ),
     bgcolor='#ffcc66',
     border_radius=5,
     padding=10,
-    alignment=ft.alignment.center,
-    content=ft.Text(
+    alignment=alignment.center,
+    content=Text(
             size=21,
             weight='w500',
-            color=ft.colors.BLACK,
+            color=colors.BLACK,
             font_family="Golos Text"
     )
 )
 
-time_now_5 = ft.Container(
+time_now_5 = Container(
     visible=False,
-    shadow=ft.BoxShadow(
+    shadow=BoxShadow(
         blur_radius=2,
-        blur_style=ft.ShadowBlurStyle.NORMAL,
-        offset=ft.Offset(0, 2),
-        color=ft.colors.BLACK54
+        blur_style=ShadowBlurStyle.NORMAL,
+        offset=Offset(0, 2),
+        color=colors.BLACK54
     ),
     bgcolor='#ffcc66',
     border_radius=5,
     padding=10,
-    alignment=ft.alignment.center,
-    content=ft.Text(
+    alignment=alignment.center,
+    content=Text(
             size=21,
             weight='w500',
-            color=ft.colors.BLACK,
+            color=colors.BLACK,
             font_family="Golos Text"
     )
 )
 
-time_now_6 = ft.Container(
+time_now_6 = Container(
     visible=False,
-    shadow=ft.BoxShadow(
+    shadow=BoxShadow(
         blur_radius=2,
-        blur_style=ft.ShadowBlurStyle.NORMAL,
-        offset=ft.Offset(0, 2),
-        color=ft.colors.BLACK54
+        blur_style=ShadowBlurStyle.NORMAL,
+        offset=Offset(0, 2),
+        color=colors.BLACK54
     ),
     bgcolor='#ffcc66',
     border_radius=5,
     padding=10,
-    alignment=ft.alignment.center,
-    content=ft.Text(
+    alignment=alignment.center,
+    content=Text(
             size=21,
             weight='w500',
-            color=ft.colors.BLACK,
+            color=colors.BLACK,
             font_family="Golos Text"
     )
 )
