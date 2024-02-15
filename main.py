@@ -134,7 +134,8 @@ def main(page: Page):
                             font_family="Golos Text"
                         ),
                         Icon(
-                            name=icons.DONE_ALL_ROUNDED
+                            name=icons.DONE_ALL_ROUNDED,
+                            color=colors.BLACK
                         )
                     ]
                 )
@@ -152,7 +153,8 @@ def main(page: Page):
                             font_family="Golos Text"
                         ),
                         Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED
+                            name=icons.BROWSE_GALLERY_OUTLINED,
+                            color=colors.BLACK
                         )
                     ]
                 )
@@ -198,7 +200,8 @@ def main(page: Page):
                                 font_family="Golos Text"
                             ),
                             Icon(
-                                name=icons.DONE_ALL_ROUNDED
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
                             )
                         ]
                     )
@@ -216,7 +219,8 @@ def main(page: Page):
                                 font_family="Golos Text"
                             ),
                             Icon(
-                                name=icons.BROWSE_GALLERY_OUTLINED
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
                             )
                         ]
                     )
@@ -265,7 +269,8 @@ def main(page: Page):
                             font_family="Golos Text"
                         ),
                         Icon(
-                            name=icons.DONE_ALL_ROUNDED
+                            name=icons.DONE_ALL_ROUNDED,
+                            color=colors.BLACK
                         )
                     ]
                 )
@@ -283,7 +288,8 @@ def main(page: Page):
                             font_family="Golos Text"
                         ),
                         Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED
+                            name=icons.BROWSE_GALLERY_OUTLINED,
+                            color=colors.BLACK
                         )
                     ]
                 )
@@ -329,7 +335,8 @@ def main(page: Page):
                                 font_family="Golos Text"
                             ),
                             Icon(
-                                name=icons.DONE_ALL_ROUNDED
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
                             )
                         ]
                     )
@@ -347,7 +354,8 @@ def main(page: Page):
                                 font_family="Golos Text"
                             ),
                             Icon(
-                                name=icons.BROWSE_GALLERY_OUTLINED
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
                             )
                         ]
                     )
@@ -396,7 +404,8 @@ def main(page: Page):
                             font_family="Golos Text"
                         ),
                         Icon(
-                            name=icons.DONE_ALL_ROUNDED
+                            name=icons.DONE_ALL_ROUNDED,
+                            color=colors.BLACK
                         )
                     ]
                 )
@@ -414,7 +423,8 @@ def main(page: Page):
                             font_family="Golos Text"
                         ),
                         Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED
+                            name=icons.BROWSE_GALLERY_OUTLINED,
+                            color=colors.BLACK
                         )
                     ]
                 )
@@ -460,7 +470,8 @@ def main(page: Page):
                                 font_family="Golos Text"
                             ),
                             Icon(
-                                name=icons.DONE_ALL_ROUNDED
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
                             )
                         ]
                     )
@@ -478,7 +489,8 @@ def main(page: Page):
                                 font_family="Golos Text"
                             ),
                             Icon(
-                                name=icons.BROWSE_GALLERY_OUTLINED
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
                             )
                         ]
                     )
@@ -527,7 +539,8 @@ def main(page: Page):
                             font_family="Golos Text"
                         ),
                         Icon(
-                            name=icons.DONE_ALL_ROUNDED
+                            name=icons.DONE_ALL_ROUNDED,
+                            color=colors.BLACK
                         )
                     ]
                 )
@@ -545,7 +558,8 @@ def main(page: Page):
                             font_family="Golos Text"
                         ),
                         Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED
+                            name=icons.BROWSE_GALLERY_OUTLINED,
+                            color=colors.BLACK
                         )
                     ]
                 )
@@ -591,7 +605,8 @@ def main(page: Page):
                                 font_family="Golos Text"
                             ),
                             Icon(
-                                name=icons.DONE_ALL_ROUNDED
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
                             )
                         ]
                     )
@@ -609,7 +624,8 @@ def main(page: Page):
                                 font_family="Golos Text"
                             ),
                             Icon(
-                                name=icons.BROWSE_GALLERY_OUTLINED
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
                             )
                         ]
                     )
@@ -658,7 +674,8 @@ def main(page: Page):
                             font_family="Golos Text"
                         ),
                         Icon(
-                            name=icons.DONE_ALL_ROUNDED
+                            name=icons.DONE_ALL_ROUNDED,
+                            color=colors.BLACK
                         )
                     ]
                 )
@@ -676,7 +693,8 @@ def main(page: Page):
                             font_family="Golos Text"
                         ),
                         Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED
+                            name=icons.BROWSE_GALLERY_OUTLINED,
+                            color=colors.BLACK
                         )
                     ]
                 )
@@ -722,7 +740,8 @@ def main(page: Page):
                                 font_family="Golos Text"
                             ),
                             Icon(
-                                name=icons.DONE_ALL_ROUNDED
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
                             )
                         ]
                     )
@@ -740,7 +759,8 @@ def main(page: Page):
                                 font_family="Golos Text"
                             ),
                             Icon(
-                                name=icons.BROWSE_GALLERY_OUTLINED
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
                             )
                         ]
                     )
@@ -789,7 +809,8 @@ def main(page: Page):
                             font_family="Golos Text"
                         ),
                         Icon(
-                            name=icons.DONE_ALL_ROUNDED
+                            name=icons.DONE_ALL_ROUNDED,
+                            color=colors.BLACK
                         )
                     ]
                 )
@@ -807,7 +828,8 @@ def main(page: Page):
                             font_family="Golos Text"
                         ),
                         Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED
+                            name=icons.BROWSE_GALLERY_OUTLINED,
+                            color=colors.BLACK
                         )
                     ]
                 )
@@ -853,7 +875,8 @@ def main(page: Page):
                                 font_family="Golos Text"
                             ),
                             Icon(
-                                name=icons.DONE_ALL_ROUNDED
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
                             )
                         ]
                     )
@@ -871,7 +894,8 @@ def main(page: Page):
                                 font_family="Golos Text"
                             ),
                             Icon(
-                                name=icons.BROWSE_GALLERY_OUTLINED
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
                             )
                         ]
                     )
