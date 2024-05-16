@@ -185,7 +185,7 @@ def main(page: Page):
                     one = f'{start_time}-24:00'
                 else:
                     one = page.client_storage.get("one")
-                time_now_1.visible = True
+                time_now_1.visible = False
                 if time_end <= current_time:
                     time_now_1.bgcolor = colors.GREY_400
                     time_now_1.content = Row(
@@ -320,7 +320,7 @@ def main(page: Page):
                     two = f'{start_time}-24:00'
                 else:
                     two = page.client_storage.get("two")
-                time_now_2.visible = True
+                time_now_2.visible = False
                 if time_end <= current_time:
                     time_now_2.bgcolor = colors.GREY_400
                     time_now_2.content = Row(
@@ -455,7 +455,7 @@ def main(page: Page):
                     three = f'{start_time}-24:00'
                 else:
                     three = page.client_storage.get("three")
-                time_now_3.visible = True
+                time_now_3.visible = False
                 if time_end <= current_time:
                     time_now_3.bgcolor = colors.GREY_400
                     time_now_3.content = Row(
@@ -590,7 +590,7 @@ def main(page: Page):
                     four = f'{start_time}-24:00'
                 else:
                     four = page.client_storage.get("four")
-                time_now_4.visible = True
+                time_now_4.visible = False
                 if time_end <= current_time:
                     time_now_4.bgcolor = colors.GREY_400
                     time_now_4.content = Row(
@@ -725,7 +725,7 @@ def main(page: Page):
                     five = f'{start_time}-24:00'
                 else:
                     five = page.client_storage.get("five")
-                time_now_5.visible = True
+                time_now_5.visible = False
                 if time_end <= current_time:
                     time_now_5.bgcolor = colors.GREY_400
                     time_now_5.content = Row(
@@ -860,7 +860,7 @@ def main(page: Page):
                     six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six")
-                time_now_6.visible = True
+                time_now_6.visible = False
                 if time_end <= current_time:
                     time_now_6.bgcolor = colors.GREY_400
                     time_now_6.content = Row(
@@ -1009,7 +1009,7 @@ def main(page: Page):
                     one = f'{start_time}-24:00'
                 else:
                     one = page.client_storage.get("one_tomorrow")
-                time_tomorrow_1.visible = True
+                time_tomorrow_1.visible = False
                 time_tomorrow_1.content = Text(
                     one,
                     size=21,
@@ -1048,7 +1048,7 @@ def main(page: Page):
                     two = f'{start_time}-24:00'
                 else:
                     two = page.client_storage.get("two_tomorrow")
-                time_tomorrow_2.visible = True
+                time_tomorrow_2.visible = False
                 time_tomorrow_2.content = Text(
                     two,
                     size=21,
@@ -1087,7 +1087,7 @@ def main(page: Page):
                     three = f'{start_time}-24:00'
                 else:
                     three = page.client_storage.get("three_tomorrow")
-                time_tomorrow_3.visible = True
+                time_tomorrow_3.visible = False
                 time_tomorrow_3.content = Text(
                     three,
                     size=21,
@@ -1126,7 +1126,7 @@ def main(page: Page):
                     four = f'{start_time}-24:00'
                 else:
                     four = page.client_storage.get("four_tomorrow")
-                time_tomorrow_4.visible = True
+                time_tomorrow_4.visible = False
                 time_tomorrow_4.content = Text(
                     four,
                     size=21,
@@ -1165,7 +1165,7 @@ def main(page: Page):
                     five = f'{start_time}-24:00'
                 else:
                     five = page.client_storage.get("five_tomorrow")
-                time_tomorrow_5.visible = True
+                time_tomorrow_5.visible = False
                 time_tomorrow_5.content = Text(
                     five,
                     size=21,
@@ -1204,7 +1204,7 @@ def main(page: Page):
                     six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six_tomorrow")
-                time_tomorrow_6.visible = True
+                time_tomorrow_6.visible = False
                 time_tomorrow_6.content = Text(
                     six,
                     size=21,
@@ -1248,7 +1248,7 @@ def main(page: Page):
                     one = f'{start_time}-24:00'
                 else:
                     one = page.client_storage.get("one_after_tomorrow")
-                time_after_tomorrow_1.visible = True
+                time_after_tomorrow_1.visible = False
                 time_after_tomorrow_1.content = Text(
                     one,
                     size=21,
@@ -1287,7 +1287,7 @@ def main(page: Page):
                     two = f'{start_time}-24:00'
                 else:
                     two = page.client_storage.get("two_after_tomorrow")
-                time_after_tomorrow_2.visible = True
+                time_after_tomorrow_2.visible = False
                 time_after_tomorrow_2.content = Text(
                     two,
                     size=21,
@@ -1326,7 +1326,7 @@ def main(page: Page):
                     three = f'{start_time}-24:00'
                 else:
                     three = page.client_storage.get("three_after_tomorrow")
-                time_after_tomorrow_3.visible = True
+                time_after_tomorrow_3.visible = False
                 time_after_tomorrow_3.content = Text(
                     three,
                     size=21,
@@ -1365,7 +1365,7 @@ def main(page: Page):
                     four = f'{start_time}-24:00'
                 else:
                     four = page.client_storage.get("four_after_tomorrow")
-                time_after_tomorrow_4.visible = True
+                time_after_tomorrow_4.visible = False
                 time_after_tomorrow_4.content = Text(
                     four,
                     size=21,
@@ -1404,7 +1404,7 @@ def main(page: Page):
                     five = f'{start_time}-24:00'
                 else:
                     five = page.client_storage.get("five_after_tomorrow")
-                time_after_tomorrow_5.visible = True
+                time_after_tomorrow_5.visible = False
                 time_after_tomorrow_5.content = Text(
                     five,
                     size=21,
@@ -1443,7 +1443,7 @@ def main(page: Page):
                     six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six_after_tomorrow")
-                time_after_tomorrow_6.visible = True
+                time_after_tomorrow_6.visible = False
                 time_after_tomorrow_6.content = Text(
                     six,
                     size=21,
