@@ -6,3 +6,4 @@ Svitlo_Sumy.spec
 main.spec
 Svitlo Sumy.spec
 assets/firebase_init.json
+.venv
