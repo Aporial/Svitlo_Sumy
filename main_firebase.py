@@ -7,14 +7,14 @@ from time_now import time_now_1, time_now_2, time_now_3, time_now_4, time_now_5,
 from time_tomorrow import time_tomorrow_1, time_tomorrow_2, time_tomorrow_3, time_tomorrow_4, time_tomorrow_5, time_tomorrow_6
 from time_after_tomorrow import time_after_tomorrow_1, time_after_tomorrow_2, time_after_tomorrow_3, time_after_tomorrow_4, time_after_tomorrow_5, time_after_tomorrow_6
 from datetime import datetime
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import db
+from firebase import firebase
 import requests
 import time
 
 
 def main(page: Page):
+
+    base = firebase.FirebaseApplication('https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
 
     def open_list():
         bs.open = True
@@ -62,10 +62,6 @@ def main(page: Page):
         if page.client_storage.get("number") == None:
             try:
                 requests.get("http://google.com").ok
-                connect_firebase = credentials.Certificate(
-                    "./assets/firebase_init.json")
-                firebase_admin.initialize_app(
-                    connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
                 open_list()
                 print('Connected!')
             except:
@@ -79,12 +75,7 @@ def main(page: Page):
                 print("Fail connection!")
         else:
             try:
-                connect_firebase = credentials.Certificate(
-                    "./assets/firebase_init.json")
-                firebase_admin.initialize_app(
-                    connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
-                test_connect = db.reference()
-                test_connect.get()
+                requests.get("http://google.com").ok
                 print('Connected!')
             except:
                 one_button.disabled = True
@@ -108,8 +99,7 @@ def main(page: Page):
         five_check = page.client_storage.get("five")
         six_check = page.client_storage.get("six")
         try:
-            try_one = db.reference(f"/{cherg}/{day_num_one}")
-            result_one = try_one.get()
+            result_one = base.get(f"/{cherg}", f"/{day_num_one}")
             page.client_storage.set("one", result_one)
             one_check = page.client_storage.get("one")
             start_time, end_time = one_check.split('-')
@@ -243,8 +233,7 @@ def main(page: Page):
             print("One not found!")
 
         try:
-            try_two = db.reference(f"/{cherg}/{day_num_two}")
-            result_two = try_two.get()
+            result_two = base.get(f"/{cherg}", f"/{day_num_two}")
             page.client_storage.set("two", result_two)
             two_check = page.client_storage.get("two")
             start_time, end_time = two_check.split('-')
@@ -378,8 +367,7 @@ def main(page: Page):
             print("Two not found!")
 
         try:
-            try_three = db.reference(f"/{cherg}/{day_num_three}")
-            result_three = try_three.get()
+            result_three = base.get(f"/{cherg}", f"/{day_num_three}")
             page.client_storage.set("three", result_three)
             three_check = page.client_storage.get("three")
             start_time, end_time = three_check.split('-')
@@ -513,8 +501,7 @@ def main(page: Page):
             print("Three not found!")
 
         try:
-            try_four = db.reference(f"/{cherg}/{day_num_four}")
-            result_four = try_four.get()
+            result_four = base.get(f"/{cherg}", f"/{day_num_four}")
             page.client_storage.set("four", result_four)
             four_check = page.client_storage.get("four")
             start_time, end_time = four_check.split('-')
@@ -648,8 +635,7 @@ def main(page: Page):
             print("Four not found!")
 
         try:
-            try_five = db.reference(f"/{cherg}/{day_num_five}")
-            result_five = try_five.get()
+            result_five = base.get(f"/{cherg}", f"/{day_num_five}")
             page.client_storage.set("five", result_five)
             five_check = page.client_storage.get("five")
             start_time, end_time = five_check.split('-')
@@ -783,8 +769,7 @@ def main(page: Page):
             print("Five not found!")
 
         try:
-            try_six = db.reference(f"/{cherg}/{day_num_six}")
-            result_six = try_six.get()
+            result_six = base.get(f"/{cherg}", f"/{day_num_six}")
             page.client_storage.set("six", result_six)
             six_check = page.client_storage.get("six")
             start_time, end_time = six_check.split('-')
@@ -982,8 +967,7 @@ def main(page: Page):
         storage_info = storage()
         cherg = check_cherg(storage_info)
         try:
-            try_one = db.reference(f"/{cherg}/{day_tomorrow_one}")
-            result_one = try_one.get()
+            result_one = base.get(f"/{cherg}", f"/{day_tomorrow_one}")
             page.client_storage.set("one_tomorrow", result_one)
             one_check = page.client_storage.get("one_tomorrow")
             start_time, end_time = one_check.split('-')
@@ -1021,8 +1005,7 @@ def main(page: Page):
             print("One_Tomorrow not found!")
 
         try:
-            try_two = db.reference(f"/{cherg}/{day_tomorrow_two}")
-            result_two = try_two.get()
+            result_two = base.get(f"/{cherg}", f"/{day_tomorrow_two}")
             page.client_storage.set("two_tomorrow", result_two)
             two_check = page.client_storage.get("two_tomorrow")
             start_time, end_time = two_check.split('-')
@@ -1060,8 +1043,7 @@ def main(page: Page):
             print("Two_Tomorrow not found!")
 
         try:
-            try_three = db.reference(f"/{cherg}/{day_tomorrow_three}")
-            result_three = try_three.get()
+            result_three = base.get(f"/{cherg}", f"/{day_tomorrow_three}")
             page.client_storage.set("three_tomorrow", result_three)
             three_check = page.client_storage.get("three_tomorrow")
             start_time, end_time = three_check.split('-')
@@ -1099,8 +1081,7 @@ def main(page: Page):
             print("Three_Tomorrow not found!")
 
         try:
-            try_four = db.reference(f"/{cherg}/{day_tomorrow_four}")
-            result_four = try_four.get()
+            result_four = base.get(f"/{cherg}", f"/{day_tomorrow_four}")
             page.client_storage.set("four_tomorrow", result_four)
             four_check = page.client_storage.get("four_tomorrow")
             start_time, end_time = four_check.split('-')
@@ -1138,8 +1119,7 @@ def main(page: Page):
             print("Four_Tomorrow not found!")
 
         try:
-            try_five = db.reference(f"/{cherg}/{day_tomorrow_five}")
-            result_five = try_five.get()
+            result_five = base.get(f"/{cherg}", f"/{day_tomorrow_five}")
             page.client_storage.set("five_tomorrow", result_five)
             five_check = page.client_storage.get("five_tomorrow")
             start_time, end_time = five_check.split('-')
@@ -1177,8 +1157,7 @@ def main(page: Page):
             print("Five_Tomorrow not found!")
 
         try:
-            try_six = db.reference(f"/{cherg}/{day_tomorrow_six}")
-            result_six = try_six.get()
+            result_six = base.get(f"/{cherg}", f"/{day_tomorrow_six}")
             page.client_storage.set("six_tomorrow", result_six)
             six_check = page.client_storage.get("six_tomorrow")
             start_time, end_time = six_check.split('-')
@@ -1221,8 +1200,7 @@ def main(page: Page):
         storage_info = storage()
         cherg = check_cherg(storage_info)
         try:
-            try_one = db.reference(f"/{cherg}/{day_after_tomorrow_one}")
-            result_one = try_one.get()
+            result_one = base.get(f"/{cherg}", f"/{day_after_tomorrow_one}")
             page.client_storage.set("one_after_tomorrow", result_one)
             one_check = page.client_storage.get("one_after_tomorrow")
             start_time, end_time = one_check.split('-')
@@ -1260,8 +1238,7 @@ def main(page: Page):
             print("One_After_Tomorrow not found!")
 
         try:
-            try_two = db.reference(f"/{cherg}/{day_after_tomorrow_two}")
-            result_two = try_two.get()
+            result_two = base.get(f"/{cherg}", f"/{day_after_tomorrow_two}")
             page.client_storage.set("two_after_tomorrow", result_two)
             two_check = page.client_storage.get("two_after_tomorrow")
             start_time, end_time = two_check.split('-')
@@ -1299,8 +1276,7 @@ def main(page: Page):
             print("Two_After_Tomorrow not found!")
 
         try:
-            try_three = db.reference(f"/{cherg}/{day_after_tomorrow_three}")
-            result_three = try_three.get()
+            result_three = base.get(f"/{cherg}", f"/{day_after_tomorrow_three}")
             page.client_storage.set("three_after_tomorrow", result_three)
             three_check = page.client_storage.get("three_after_tomorrow")
             start_time, end_time = three_check.split('-')
@@ -1338,8 +1314,7 @@ def main(page: Page):
             print("Three_After_Tomorrow not found!")
 
         try:
-            try_four = db.reference(f"/{cherg}/{day_after_tomorrow_four}")
-            result_four = try_four.get()
+            result_four = base.get(f"/{cherg}", f"/{day_after_tomorrow_four}")
             page.client_storage.set("four_after_tomorrow", result_four)
             four_check = page.client_storage.get("four_after_tomorrow")
             start_time, end_time = four_check.split('-')
@@ -1377,8 +1352,7 @@ def main(page: Page):
             print("Four_After_Tomorrow not found!")
 
         try:
-            try_five = db.reference(f"/{cherg}/{day_after_tomorrow_five}")
-            result_five = try_five.get()
+            result_five = base.get(f"/{cherg}", f"/{day_after_tomorrow_five}")
             page.client_storage.set("five_after_tomorrow", result_five)
             five_check = page.client_storage.get("five_after_tomorrow")
             start_time, end_time = five_check.split('-')
@@ -1416,8 +1390,7 @@ def main(page: Page):
             print("Five_After_Tomorrow not found!")
 
         try:
-            try_six = db.reference(f"/{cherg}/{day_after_tomorrow_six}")
-            result_six = try_six.get()
+            result_six = base.get(f"/{cherg}", f"/{day_after_tomorrow_six}")
             page.client_storage.set("six_after_tomorrow", result_six)
             six_check = page.client_storage.get("six_after_tomorrow")
             start_time, end_time = six_check.split('-')
