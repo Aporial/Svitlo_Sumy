@@ -11,19 +11,18 @@ import requests
 import time
 
 try:
-    requests.get("http://google.com").ok
     connect_firebase = credentials.Certificate(
         "./assets/firebase_init.json")
     firebase_admin.initialize_app(
         connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
-    check_database = db.reference("/database")
-    print('DATABASE:', check_database.get())
-    if check_database.get() == 1:
+    database_storage = db.reference("/database").get()
+    print('DATABASE:', database_storage)
+    if database_storage == 1:
         from functions_1 import check_cherg, day_of_week_today, day_of_week_tomorrow, day_of_week_after_tomorrow
         from functions_1 import day_num_one, day_num_two, day_num_three, day_num_four, day_num_five, day_num_six
         from functions_1 import day_tomorrow_one, day_tomorrow_two, day_tomorrow_three, day_tomorrow_four, day_tomorrow_five, day_tomorrow_six
         from functions_1 import day_after_tomorrow_one, day_after_tomorrow_two, day_after_tomorrow_three, day_after_tomorrow_four, day_after_tomorrow_five, day_after_tomorrow_six
-    if check_database.get() == 2:
+    if database_storage == 2:
         from functions_2 import check_cherg, day_of_week_today, day_of_week_tomorrow, day_of_week_after_tomorrow
         from functions_2 import day_num_one, day_num_two, day_num_three, day_num_four, day_num_five, day_num_six
         from functions_2 import day_tomorrow_one, day_tomorrow_two, day_tomorrow_three, day_tomorrow_four, day_tomorrow_five, day_tomorrow_six
@@ -33,6 +32,8 @@ except:
     print("Fail connection!")
 
 def main(page: Page):
+
+    
 
     def open_list():
         bs.open = True
