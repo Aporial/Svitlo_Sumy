@@ -19,90 +19,6 @@ import time
 
 def main(page: Page):
 
-    def check_bd():
-        storage_info = storage()
-        cherg = check_cherg(storage_info)
-
-        if page.client_storage.get("database_storage") == 1:
-            day_num_one = db1_day_num_one
-            day_num_two = db1_day_num_two
-            day_num_three = db1_day_num_three
-            day_num_four = db1_day_num_four
-            day_num_five = db1_day_num_five
-            day_num_six = db1_day_num_six
-            day_tomorrow_one = db1_day_tomorrow_one
-            day_tomorrow_two = db1_day_tomorrow_two
-            day_tomorrow_three = db1_day_tomorrow_three
-            day_tomorrow_four = db1_day_tomorrow_four
-            day_tomorrow_five = db1_day_tomorrow_five
-            day_tomorrow_six = db1_day_tomorrow_six
-            day_after_tomorrow_one = db1_day_after_tomorrow_one
-            day_after_tomorrow_two = db1_day_after_tomorrow_two
-            day_after_tomorrow_three = db1_day_after_tomorrow_three
-            day_after_tomorrow_four = db1_day_after_tomorrow_four
-            day_after_tomorrow_five = db1_day_after_tomorrow_five
-            day_after_tomorrow_six = db1_day_after_tomorrow_six
-        if page.client_storage.get("database_storage") == 2:
-            day_num_one = db2_day_num_one
-            day_num_two = db2_day_num_two
-            day_num_three = db2_day_num_three
-            day_num_four = db2_day_num_four
-            day_num_five = db2_day_num_five
-            day_num_six = db2_day_num_six
-            day_tomorrow_one = db2_day_tomorrow_one
-            day_tomorrow_two = db2_day_tomorrow_two
-            day_tomorrow_three = db2_day_tomorrow_three
-            day_tomorrow_four = db2_day_tomorrow_four
-            day_tomorrow_five = db2_day_tomorrow_five
-            day_tomorrow_six = db2_day_tomorrow_six
-            day_after_tomorrow_one = db2_day_after_tomorrow_one
-            day_after_tomorrow_two = db2_day_after_tomorrow_two
-            day_after_tomorrow_three = db2_day_after_tomorrow_three
-            day_after_tomorrow_four = db2_day_after_tomorrow_four
-            day_after_tomorrow_five = db2_day_after_tomorrow_five
-            day_after_tomorrow_six = db2_day_after_tomorrow_six
-
-        if db.reference(f"/{cherg}/{day_num_one}").get() == None:
-            page.client_storage.remove("one")
-        if db.reference(f"/{cherg}/{day_num_two}").get() == None:
-            page.client_storage.remove("two")
-        if db.reference(f"/{cherg}/{day_num_three}").get() == None:
-            page.client_storage.remove("three")
-        if db.reference(f"/{cherg}/{day_num_four}").get() == None:
-            page.client_storage.remove("four")
-        if db.reference(f"/{cherg}/{day_num_five}").get() == None:
-            page.client_storage.remove("five")
-        if db.reference(f"/{cherg}/{day_num_six}").get() == None:
-            page.client_storage.remove("six")
-
-        if db.reference(f"/{cherg}/{day_tomorrow_one}").get() == None:
-            page.client_storage.remove("one_tomorrow")
-        if db.reference(f"/{cherg}/{day_tomorrow_two}").get() == None:
-            page.client_storage.remove("two_tomorrow")
-        if db.reference(f"/{cherg}/{day_tomorrow_three}").get() == None:
-            page.client_storage.remove("three_tomorrow")
-        if db.reference(f"/{cherg}/{day_tomorrow_four}").get() == None:
-            page.client_storage.remove("four_tomorrow")
-        if db.reference(f"/{cherg}/{day_tomorrow_five}").get() == None:
-            page.client_storage.remove("five_tomorrow")
-        if db.reference(f"/{cherg}/{day_tomorrow_six}").get() == None:
-            page.client_storage.remove("six_tomorrow")
-
-        if db.reference(f"/{cherg}/{day_after_tomorrow_one}").get() == None:
-            page.client_storage.remove("one_after_tomorrow")
-        if db.reference(f"/{cherg}/{day_after_tomorrow_two}").get() == None:
-            page.client_storage.remove("two_after_tomorrow")
-        if db.reference(f"/{cherg}/{day_after_tomorrow_three}").get() == None:
-            page.client_storage.remove("three_after_tomorrow")
-        if db.reference(f"/{cherg}/{day_after_tomorrow_four}").get() == None:
-            page.client_storage.remove("four_after_tomorrow")
-        if db.reference(f"/{cherg}/{day_after_tomorrow_five}").get() == None:
-            page.client_storage.remove("five_after_tomorrow")
-        if db.reference(f"/{cherg}/{day_after_tomorrow_six}").get() == None:
-            page.client_storage.remove("six_after_tomorrow")
-
-        print("DATABASE is checked!")
-
     def open_list():
         bs.open = True
         page.navigation_bar.selected_index = 1
@@ -177,7 +93,6 @@ def main(page: Page):
                 print('DATABASE:', database)
                 page.client_storage.set("database_storage", database)
                 print('Connected!')
-                check_bd()
             except:
                 one_button.disabled = True
                 two_button.disabled = True
@@ -217,71 +132,76 @@ def main(page: Page):
         try:
             try_one = db.reference(f"/{cherg}/{day_num_one}")
             result_one = try_one.get()
-            page.client_storage.set("one", result_one)
-            one_check = page.client_storage.get("one")
-            start_time, end_time = one_check.split('-')
-            time_start = datetime.strptime(start_time, '%H:%M').time()
-            time_end = datetime.strptime(end_time, '%H:%M').time()
-            if end_time == '23:59':
-                one = f'{start_time}-24:00'
+            if result_one == None:
+                page.client_storage.remove("one")
+                time_now_1.visible = False
+                print("One not found!")
             else:
-                one = page.client_storage.get("one")
-            time_now_1.visible = True
-            if time_end <= current_time:
-                time_now_1.bgcolor = colors.GREY_400
-                time_now_1.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            one,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            elif time_start <= current_time <= time_end:
-                time_now_1.bgcolor = '#ffcc66'
-                time_now_1.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            one,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            else:
-                time_now_1.bgcolor = '#ffcc66'
-                time_now_1.content = Row(
-                    alignment="center",
-                    vertical_alignment='center',
-                    controls=[
-                        Text(
-                            one,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        )
-                    ]
-                )
-            page.update()
-            print("One found!")
+                page.client_storage.set("one", result_one)
+                one_check = page.client_storage.get("one")
+                start_time, end_time = one_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    one = f'{start_time}-24:00'
+                else:
+                    one = page.client_storage.get("one")
+                time_now_1.visible = True
+                if time_end <= current_time:
+                    time_now_1.bgcolor = colors.GREY_400
+                    time_now_1.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_1.bgcolor = '#ffcc66'
+                    time_now_1.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                else:
+                    time_now_1.bgcolor = '#ffcc66'
+                    time_now_1.content = Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+                page.update()
+                print("One found!")
         except:
             if page.client_storage.get("one") != None:
                 one_check = page.client_storage.get("one")
@@ -347,76 +267,81 @@ def main(page: Page):
                         ]
                     )
             page.update()
-            print("One not found!")
+            print("One not connected!")
 
         try:
             try_two = db.reference(f"/{cherg}/{day_num_two}")
             result_two = try_two.get()
-            page.client_storage.set("two", result_two)
-            two_check = page.client_storage.get("two")
-            start_time, end_time = two_check.split('-')
-            time_start = datetime.strptime(start_time, '%H:%M').time()
-            time_end = datetime.strptime(end_time, '%H:%M').time()
-            if end_time == '23:59':
-                two = f'{start_time}-24:00'
+            if result_two == None:
+                page.client_storage.remove("two")
+                time_now_2.visible = False
+                print("Two not found!")
             else:
-                two = page.client_storage.get("two")
-            time_now_2.visible = True
-            if time_end <= current_time:
-                time_now_2.bgcolor = colors.GREY_400
-                time_now_2.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            two,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            elif time_start <= current_time <= time_end:
-                time_now_2.bgcolor = '#ffcc66'
-                time_now_2.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            two,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            else:
-                time_now_2.bgcolor = '#ffcc66'
-                time_now_2.content = Row(
-                    alignment="center",
-                    vertical_alignment='center',
-                    controls=[
-                        Text(
-                            two,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        )
-                    ]
-                )
-            page.update()
-            print("Two found!")
+                page.client_storage.set("two", result_two)
+                two_check = page.client_storage.get("two")
+                start_time, end_time = two_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    two = f'{start_time}-24:00'
+                else:
+                    two = page.client_storage.get("two")
+                time_now_2.visible = True
+                if time_end <= current_time:
+                    time_now_2.bgcolor = colors.GREY_400
+                    time_now_2.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                two,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_2.bgcolor = '#ffcc66'
+                    time_now_2.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                two,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                else:
+                    time_now_2.bgcolor = '#ffcc66'
+                    time_now_2.content = Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            Text(
+                                two,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+                page.update()
+                print("Two found!")
         except:
             if page.client_storage.get("two") != None:
                 two_check = page.client_storage.get("two")
@@ -482,76 +407,81 @@ def main(page: Page):
                         ]
                     )
             page.update()
-            print("Two not found!")
+            print("Two not connected!")
 
         try:
             try_three = db.reference(f"/{cherg}/{day_num_three}")
             result_three = try_three.get()
-            page.client_storage.set("three", result_three)
-            three_check = page.client_storage.get("three")
-            start_time, end_time = three_check.split('-')
-            time_start = datetime.strptime(start_time, '%H:%M').time()
-            time_end = datetime.strptime(end_time, '%H:%M').time()
-            if end_time == '23:59':
-                three = f'{start_time}-24:00'
+            if result_three == None:
+                page.client_storage.remove("three")
+                time_now_3.visible = False
+                print("Three not found!")
             else:
-                three = page.client_storage.get("three")
-            time_now_3.visible = True
-            if time_end <= current_time:
-                time_now_3.bgcolor = colors.GREY_400
-                time_now_3.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            three,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            elif time_start <= current_time <= time_end:
-                time_now_3.bgcolor = '#ffcc66'
-                time_now_3.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            three,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            else:
-                time_now_3.bgcolor = '#ffcc66'
-                time_now_3.content = Row(
-                    alignment="center",
-                    vertical_alignment='center',
-                    controls=[
-                        Text(
-                            three,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        )
-                    ]
-                )
-            page.update()
-            print("Three found!")
+                page.client_storage.set("three", result_three)
+                three_check = page.client_storage.get("three")
+                start_time, end_time = three_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    three = f'{start_time}-24:00'
+                else:
+                    three = page.client_storage.get("three")
+                time_now_3.visible = True
+                if time_end <= current_time:
+                    time_now_3.bgcolor = colors.GREY_400
+                    time_now_3.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                three,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_3.bgcolor = '#ffcc66'
+                    time_now_3.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                three,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                else:
+                    time_now_3.bgcolor = '#ffcc66'
+                    time_now_3.content = Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            Text(
+                                three,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+                page.update()
+                print("Three found!")
         except:
             if page.client_storage.get("three") != None:
                 three_check = page.client_storage.get("three")
@@ -617,76 +547,81 @@ def main(page: Page):
                         ]
                     )
             page.update()
-            print("Three not found!")
+            print("Three not connected!")
 
         try:
             try_four = db.reference(f"/{cherg}/{day_num_four}")
             result_four = try_four.get()
-            page.client_storage.set("four", result_four)
-            four_check = page.client_storage.get("four")
-            start_time, end_time = four_check.split('-')
-            time_start = datetime.strptime(start_time, '%H:%M').time()
-            time_end = datetime.strptime(end_time, '%H:%M').time()
-            if end_time == '23:59':
-                four = f'{start_time}-24:00'
+            if result_four == None:
+                page.client_storage.remove("four")
+                time_now_4.visible = False
+                print("Four not found!")
             else:
-                four = page.client_storage.get("four")
-            time_now_4.visible = True
-            if time_end <= current_time:
-                time_now_4.bgcolor = colors.GREY_400
-                time_now_4.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            four,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            elif time_start <= current_time <= time_end:
-                time_now_4.bgcolor = '#ffcc66'
-                time_now_4.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            four,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            else:
-                time_now_4.bgcolor = '#ffcc66'
-                time_now_4.content = Row(
-                    alignment="center",
-                    vertical_alignment='center',
-                    controls=[
-                        Text(
-                            four,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        )
-                    ]
-                )
-            page.update()
-            print("Four found!")
+                page.client_storage.set("four", result_four)
+                four_check = page.client_storage.get("four")
+                start_time, end_time = four_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    four = f'{start_time}-24:00'
+                else:
+                    four = page.client_storage.get("four")
+                time_now_4.visible = True
+                if time_end <= current_time:
+                    time_now_4.bgcolor = colors.GREY_400
+                    time_now_4.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                four,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_4.bgcolor = '#ffcc66'
+                    time_now_4.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                four,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                else:
+                    time_now_4.bgcolor = '#ffcc66'
+                    time_now_4.content = Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            Text(
+                                four,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+                page.update()
+                print("Four found!")
         except:
             if page.client_storage.get("four") != None:
                 four_check = page.client_storage.get("four")
@@ -752,76 +687,81 @@ def main(page: Page):
                         ]
                     )
             page.update()
-            print("Four not found!")
+            print("Four not connected!")
 
         try:
             try_five = db.reference(f"/{cherg}/{day_num_five}")
             result_five = try_five.get()
-            page.client_storage.set("five", result_five)
-            five_check = page.client_storage.get("five")
-            start_time, end_time = five_check.split('-')
-            time_start = datetime.strptime(start_time, '%H:%M').time()
-            time_end = datetime.strptime(end_time, '%H:%M').time()
-            if end_time == '23:59':
-                five = f'{start_time}-24:00'
+            if result_five == None:
+                page.client_storage.remove("five")
+                time_now_5.visible = False
+                print("Five not found!")
             else:
-                five = page.client_storage.get("five")
-            time_now_5.visible = True
-            if time_end <= current_time:
-                time_now_5.bgcolor = colors.GREY_400
-                time_now_5.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            five,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            elif time_start <= current_time <= time_end:
-                time_now_5.bgcolor = '#ffcc66'
-                time_now_5.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            five,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            else:
-                time_now_5.bgcolor = '#ffcc66'
-                time_now_5.content = Row(
-                    alignment="center",
-                    vertical_alignment='center',
-                    controls=[
-                        Text(
-                            five,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        )
-                    ]
-                )
-            page.update()
-            print("Five found!")
+                page.client_storage.set("five", result_five)
+                five_check = page.client_storage.get("five")
+                start_time, end_time = five_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    five = f'{start_time}-24:00'
+                else:
+                    five = page.client_storage.get("five")
+                time_now_5.visible = True
+                if time_end <= current_time:
+                    time_now_5.bgcolor = colors.GREY_400
+                    time_now_5.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                five,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_5.bgcolor = '#ffcc66'
+                    time_now_5.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                five,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                else:
+                    time_now_5.bgcolor = '#ffcc66'
+                    time_now_5.content = Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            Text(
+                                five,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+                page.update()
+                print("Five found!")
         except:
             if page.client_storage.get("five") != None:
                 five_check = page.client_storage.get("five")
@@ -887,76 +827,81 @@ def main(page: Page):
                         ]
                     )
             page.update()
-            print("Five not found!")
+            print("Five not connected!")
 
         try:
             try_six = db.reference(f"/{cherg}/{day_num_six}")
             result_six = try_six.get()
-            page.client_storage.set("six", result_six)
-            six_check = page.client_storage.get("six")
-            start_time, end_time = six_check.split('-')
-            time_start = datetime.strptime(start_time, '%H:%M').time()
-            time_end = datetime.strptime(end_time, '%H:%M').time()
-            if end_time == '23:59':
-                six = f'{start_time}-24:00'
+            if result_six == None:
+                page.client_storage.remove("six")
+                time_now_6.visible = False
+                print("Six not found!")
             else:
-                six = page.client_storage.get("six")
-            time_now_6.visible = True
-            if time_end <= current_time:
-                time_now_6.bgcolor = colors.GREY_400
-                time_now_6.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            six,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            elif time_start <= current_time <= time_end:
-                time_now_6.bgcolor = '#ffcc66'
-                time_now_6.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            six,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            else:
-                time_now_6.bgcolor = '#ffcc66'
-                time_now_6.content = Row(
-                    alignment="center",
-                    vertical_alignment='center',
-                    controls=[
-                        Text(
-                            six,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        )
-                    ]
-                )
-            page.update()
-            print("Six found!")
+                page.client_storage.set("six", result_six)
+                six_check = page.client_storage.get("six")
+                start_time, end_time = six_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    six = f'{start_time}-24:00'
+                else:
+                    six = page.client_storage.get("six")
+                time_now_6.visible = True
+                if time_end <= current_time:
+                    time_now_6.bgcolor = colors.GREY_400
+                    time_now_6.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                six,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_6.bgcolor = '#ffcc66'
+                    time_now_6.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                six,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                else:
+                    time_now_6.bgcolor = '#ffcc66'
+                    time_now_6.content = Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            Text(
+                                six,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+                page.update()
+                print("Six found!")
         except:
             if page.client_storage.get("six") != None:
                 six_check = page.client_storage.get("six")
@@ -1023,7 +968,7 @@ def main(page: Page):
                     )
                 page.update()
             page.update()
-            print("Six not found!")
+            print("Six not connected!")
         progress_bar.visible = False
         main_info.padding = 0
         main_info.expand = True
@@ -1106,23 +1051,28 @@ def main(page: Page):
         try:
             try_one = db.reference(f"/{cherg}/{day_tomorrow_one}")
             result_one = try_one.get()
-            page.client_storage.set("one_tomorrow", result_one)
-            one_check = page.client_storage.get("one_tomorrow")
-            start_time, end_time = one_check.split('-')
-            if end_time == '23:59':
-                one = f'{start_time}-24:00'
+            if result_one == None:
+                page.client_storage.remove("one_tomorrow")
+                time_tomorrow_1.visible = False
+                print("One_Tomorrow not found!")
             else:
-                one = page.client_storage.get("one_tomorrow")
-            time_tomorrow_1.visible = True
-            time_tomorrow_1.content = Text(
-                one,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("One_Tomorrow found!")
+                page.client_storage.set("one_tomorrow", result_one)
+                one_check = page.client_storage.get("one_tomorrow")
+                start_time, end_time = one_check.split('-')
+                if end_time == '23:59':
+                    one = f'{start_time}-24:00'
+                else:
+                    one = page.client_storage.get("one_tomorrow")
+                time_tomorrow_1.visible = True
+                time_tomorrow_1.content = Text(
+                    one,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("One_Tomorrow found!")
         except:
             if page.client_storage.get("one_tomorrow") != None:
                 one_check = page.client_storage.get("one_tomorrow")
@@ -1140,28 +1090,33 @@ def main(page: Page):
                     font_family="Golos Text"
                 )
             page.update()
-            print("One_Tomorrow not found!")
+            print("One_Tomorrow not connected!")
 
         try:
             try_two = db.reference(f"/{cherg}/{day_tomorrow_two}")
             result_two = try_two.get()
-            page.client_storage.set("two_tomorrow", result_two)
-            two_check = page.client_storage.get("two_tomorrow")
-            start_time, end_time = two_check.split('-')
-            if end_time == '23:59':
-                two = f'{start_time}-24:00'
+            if result_two == None:
+                page.client_storage.remove("two_tomorrow")
+                time_tomorrow_2.visible = False
+                print("Two_Tomorrow not found!")
             else:
-                two = page.client_storage.get("two_tomorrow")
-            time_tomorrow_2.visible = True
-            time_tomorrow_2.content = Text(
-                two,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("Two_Tomorrow found!")
+                page.client_storage.set("two_tomorrow", result_two)
+                two_check = page.client_storage.get("two_tomorrow")
+                start_time, end_time = two_check.split('-')
+                if end_time == '23:59':
+                    two = f'{start_time}-24:00'
+                else:
+                    two = page.client_storage.get("two_tomorrow")
+                time_tomorrow_2.visible = True
+                time_tomorrow_2.content = Text(
+                    two,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("Two_Tomorrow found!")
         except:
             if page.client_storage.get("two_tomorrow") != None:
                 two_check = page.client_storage.get("two_tomorrow")
@@ -1179,28 +1134,33 @@ def main(page: Page):
                     font_family="Golos Text"
                 )
             page.update()
-            print("Two_Tomorrow not found!")
+            print("Two_Tomorrow not connected!")
 
         try:
             try_three = db.reference(f"/{cherg}/{day_tomorrow_three}")
             result_three = try_three.get()
-            page.client_storage.set("three_tomorrow", result_three)
-            three_check = page.client_storage.get("three_tomorrow")
-            start_time, end_time = three_check.split('-')
-            if end_time == '23:59':
-                three = f'{start_time}-24:00'
+            if result_three == None:
+                page.client_storage.remove("three_tomorrow")
+                time_tomorrow_3.visible = False
+                print("Three_Tomorrow not found!")
             else:
-                three = page.client_storage.get("three_tomorrow")
-            time_tomorrow_3.visible = True
-            time_tomorrow_3.content = Text(
-                three,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("Three_Tomorrow found!")
+                page.client_storage.set("three_tomorrow", result_three)
+                three_check = page.client_storage.get("three_tomorrow")
+                start_time, end_time = three_check.split('-')
+                if end_time == '23:59':
+                    three = f'{start_time}-24:00'
+                else:
+                    three = page.client_storage.get("three_tomorrow")
+                time_tomorrow_3.visible = True
+                time_tomorrow_3.content = Text(
+                    three,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("Three_Tomorrow found!")
         except:
             if page.client_storage.get("three_tomorrow") != None:
                 three_check = page.client_storage.get("three_tomorrow")
@@ -1218,28 +1178,33 @@ def main(page: Page):
                     font_family="Golos Text"
                 )
             page.update()
-            print("Three_Tomorrow not found!")
+            print("Three_Tomorrow not connected!")
 
         try:
             try_four = db.reference(f"/{cherg}/{day_tomorrow_four}")
             result_four = try_four.get()
-            page.client_storage.set("four_tomorrow", result_four)
-            four_check = page.client_storage.get("four_tomorrow")
-            start_time, end_time = four_check.split('-')
-            if end_time == '23:59':
-                four = f'{start_time}-24:00'
+            if result_four == None:
+                page.client_storage.remove("four_tomorrow")
+                time_tomorrow_4.visible = False
+                print("Four_Tomorrow not found!")
             else:
-                four = page.client_storage.get("four_tomorrow")
-            time_tomorrow_4.visible = True
-            time_tomorrow_4.content = Text(
-                four,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("Four_Tomorrow found!")
+                page.client_storage.set("four_tomorrow", result_four)
+                four_check = page.client_storage.get("four_tomorrow")
+                start_time, end_time = four_check.split('-')
+                if end_time == '23:59':
+                    four = f'{start_time}-24:00'
+                else:
+                    four = page.client_storage.get("four_tomorrow")
+                time_tomorrow_4.visible = True
+                time_tomorrow_4.content = Text(
+                    four,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("Four_Tomorrow found!")
         except:
             if page.client_storage.get("four_tomorrow") != None:
                 four_check = page.client_storage.get("four_tomorrow")
@@ -1257,28 +1222,33 @@ def main(page: Page):
                     font_family="Golos Text"
                 )
             page.update()
-            print("Four_Tomorrow not found!")
+            print("Four_Tomorrow not connected!")
 
         try:
             try_five = db.reference(f"/{cherg}/{day_tomorrow_five}")
             result_five = try_five.get()
-            page.client_storage.set("five_tomorrow", result_five)
-            five_check = page.client_storage.get("five_tomorrow")
-            start_time, end_time = five_check.split('-')
-            if end_time == '23:59':
-                five = f'{start_time}-24:00'
+            if result_five == None:
+                page.client_storage.remove("five_tomorrow")
+                time_tomorrow_5.visible = False
+                print("Five_Tomorrow not found!")
             else:
-                five = page.client_storage.get("five_tomorrow")
-            time_tomorrow_5.visible = True
-            time_tomorrow_5.content = Text(
-                five,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("Five_Tomorrow found!")
+                page.client_storage.set("five_tomorrow", result_five)
+                five_check = page.client_storage.get("five_tomorrow")
+                start_time, end_time = five_check.split('-')
+                if end_time == '23:59':
+                    five = f'{start_time}-24:00'
+                else:
+                    five = page.client_storage.get("five_tomorrow")
+                time_tomorrow_5.visible = True
+                time_tomorrow_5.content = Text(
+                    five,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("Five_Tomorrow found!")
         except:
             if page.client_storage.get("five_tomorrow") != None:
                 five_check = page.client_storage.get("five_tomorrow")
@@ -1296,28 +1266,33 @@ def main(page: Page):
                     font_family="Golos Text"
                 )
             page.update()
-            print("Five_Tomorrow not found!")
+            print("Five_Tomorrow not connected!")
 
         try:
             try_six = db.reference(f"/{cherg}/{day_tomorrow_six}")
             result_six = try_six.get()
-            page.client_storage.set("six_tomorrow", result_six)
-            six_check = page.client_storage.get("six_tomorrow")
-            start_time, end_time = six_check.split('-')
-            if end_time == '23:59':
-                six = f'{start_time}-24:00'
+            if result_six == None:
+                page.client_storage.remove("six_tomorrow")
+                time_tomorrow_6.visible = False
+                print("Six_Tomorrow not found!")
             else:
-                six = page.client_storage.get("six_tomorrow")
-            time_tomorrow_6.visible = True
-            time_tomorrow_6.content = Text(
-                six,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("Six_Tomorrow found!")
+                page.client_storage.set("six_tomorrow", result_six)
+                six_check = page.client_storage.get("six_tomorrow")
+                start_time, end_time = six_check.split('-')
+                if end_time == '23:59':
+                    six = f'{start_time}-24:00'
+                else:
+                    six = page.client_storage.get("six_tomorrow")
+                time_tomorrow_6.visible = True
+                time_tomorrow_6.content = Text(
+                    six,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("Six_Tomorrow found!")
         except:
             if page.client_storage.get("six_tomorrow") != None:
                 six_check = page.client_storage.get("six_tomorrow")
@@ -1336,7 +1311,7 @@ def main(page: Page):
                 )
                 page.update()
             page.update()
-            print("Six_Tomorrow not found!")
+            print("Six_Tomorrow not connected!")
         page.update()
 
     def get_time_after_tomorrow():
@@ -1360,23 +1335,28 @@ def main(page: Page):
         try:
             try_one = db.reference(f"/{cherg}/{day_after_tomorrow_one}")
             result_one = try_one.get()
-            page.client_storage.set("one_after_tomorrow", result_one)
-            one_check = page.client_storage.get("one_after_tomorrow")
-            start_time, end_time = one_check.split('-')
-            if end_time == '23:59':
-                one = f'{start_time}-24:00'
+            if result_one == None:
+                page.client_storage.remove("one_after_tomorrow")
+                time_after_tomorrow_1.visible = False
+                print("One_After_Tomorrow not found!")
             else:
-                one = page.client_storage.get("one_after_tomorrow")
-            time_after_tomorrow_1.visible = True
-            time_after_tomorrow_1.content = Text(
-                one,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("One_After_Tomorrow found!")
+                page.client_storage.set("one_after_tomorrow", result_one)
+                one_check = page.client_storage.get("one_after_tomorrow")
+                start_time, end_time = one_check.split('-')
+                if end_time == '23:59':
+                    one = f'{start_time}-24:00'
+                else:
+                    one = page.client_storage.get("one_after_tomorrow")
+                time_after_tomorrow_1.visible = True
+                time_after_tomorrow_1.content = Text(
+                    one,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("One_After_Tomorrow found!")
         except:
             if page.client_storage.get("one_after_tomorrow") != None:
                 one_check = page.client_storage.get("one_after_tomorrow")
@@ -1394,28 +1374,33 @@ def main(page: Page):
                     font_family="Golos Text"
                 )
             page.update()
-            print("One_After_Tomorrow not found!")
+            print("One_After_Tomorrow not connected!")
 
         try:
             try_two = db.reference(f"/{cherg}/{day_after_tomorrow_two}")
             result_two = try_two.get()
-            page.client_storage.set("two_after_tomorrow", result_two)
-            two_check = page.client_storage.get("two_after_tomorrow")
-            start_time, end_time = two_check.split('-')
-            if end_time == '23:59':
-                two = f'{start_time}-24:00'
+            if result_two == None:
+                page.client_storage.remove("two_after_tomorrow")
+                time_after_tomorrow_2.visible = False
+                print("Two_After_Tomorrow not found!")
             else:
-                two = page.client_storage.get("two_after_tomorrow")
-            time_after_tomorrow_2.visible = True
-            time_after_tomorrow_2.content = Text(
-                two,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("Two_After_Tomorrow found!")
+                page.client_storage.set("two_after_tomorrow", result_two)
+                two_check = page.client_storage.get("two_after_tomorrow")
+                start_time, end_time = two_check.split('-')
+                if end_time == '23:59':
+                    two = f'{start_time}-24:00'
+                else:
+                    two = page.client_storage.get("two_after_tomorrow")
+                time_after_tomorrow_2.visible = True
+                time_after_tomorrow_2.content = Text(
+                    two,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("Two_After_Tomorrow found!")
         except:
             if page.client_storage.get("two_after_tomorrow") != None:
                 two_check = page.client_storage.get("two_after_tomorrow")
@@ -1433,28 +1418,33 @@ def main(page: Page):
                     font_family="Golos Text"
                 )
             page.update()
-            print("Two_After_Tomorrow not found!")
+            print("Two_After_Tomorrow not connected!")
 
         try:
             try_three = db.reference(f"/{cherg}/{day_after_tomorrow_three}")
             result_three = try_three.get()
-            page.client_storage.set("three_after_tomorrow", result_three)
-            three_check = page.client_storage.get("three_after_tomorrow")
-            start_time, end_time = three_check.split('-')
-            if end_time == '23:59':
-                three = f'{start_time}-24:00'
+            if result_three == None:
+                page.client_storage.remove("three_after_tomorrow")
+                time_after_tomorrow_3.visible = False
+                print("Three_After_Tomorrow not found!")
             else:
-                three = page.client_storage.get("three_after_tomorrow")
-            time_after_tomorrow_3.visible = True
-            time_after_tomorrow_3.content = Text(
-                three,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("Three_After_Tomorrow found!")
+                page.client_storage.set("three_after_tomorrow", result_three)
+                three_check = page.client_storage.get("three_after_tomorrow")
+                start_time, end_time = three_check.split('-')
+                if end_time == '23:59':
+                    three = f'{start_time}-24:00'
+                else:
+                    three = page.client_storage.get("three_after_tomorrow")
+                time_after_tomorrow_3.visible = True
+                time_after_tomorrow_3.content = Text(
+                    three,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("Three_After_Tomorrow found!")
         except:
             if page.client_storage.get("three_after_tomorrow") != None:
                 three_check = page.client_storage.get("three_after_tomorrow")
@@ -1472,28 +1462,33 @@ def main(page: Page):
                     font_family="Golos Text"
                 )
             page.update()
-            print("Three_After_Tomorrow not found!")
+            print("Three_After_Tomorrow not connected!")
 
         try:
             try_four = db.reference(f"/{cherg}/{day_after_tomorrow_four}")
             result_four = try_four.get()
-            page.client_storage.set("four_after_tomorrow", result_four)
-            four_check = page.client_storage.get("four_after_tomorrow")
-            start_time, end_time = four_check.split('-')
-            if end_time == '23:59':
-                four = f'{start_time}-24:00'
+            if result_four == None:
+                page.client_storage.remove("four_after_tomorrow")
+                time_after_tomorrow_4.visible = False
+                print("Four_After_Tomorrow not found!")
             else:
-                four = page.client_storage.get("four_after_tomorrow")
-            time_after_tomorrow_4.visible = True
-            time_after_tomorrow_4.content = Text(
-                four,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("Four_After_Tomorrow found!")
+                page.client_storage.set("four_after_tomorrow", result_four)
+                four_check = page.client_storage.get("four_after_tomorrow")
+                start_time, end_time = four_check.split('-')
+                if end_time == '23:59':
+                    four = f'{start_time}-24:00'
+                else:
+                    four = page.client_storage.get("four_after_tomorrow")
+                time_after_tomorrow_4.visible = True
+                time_after_tomorrow_4.content = Text(
+                    four,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("Four_After_Tomorrow found!")
         except:
             if page.client_storage.get("four_after_tomorrow") != None:
                 four_check = page.client_storage.get("four_after_tomorrow")
@@ -1511,28 +1506,33 @@ def main(page: Page):
                     font_family="Golos Text"
                 )
             page.update()
-            print("Four_After_Tomorrow not found!")
+            print("Four_After_Tomorrow not connected!")
 
         try:
             try_five = db.reference(f"/{cherg}/{day_after_tomorrow_five}")
             result_five = try_five.get()
-            page.client_storage.set("five_after_tomorrow", result_five)
-            five_check = page.client_storage.get("five_after_tomorrow")
-            start_time, end_time = five_check.split('-')
-            if end_time == '23:59':
-                five = f'{start_time}-24:00'
+            if result_five == None:
+                page.client_storage.remove("five_after_tomorrow")
+                time_after_tomorrow_5.visible = False
+                print("Five_After_Tomorrow not found!")
             else:
-                five = page.client_storage.get("five_after_tomorrow")
-            time_after_tomorrow_5.visible = True
-            time_after_tomorrow_5.content = Text(
-                five,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("Five_After_Tomorrow found!")
+                page.client_storage.set("five_after_tomorrow", result_five)
+                five_check = page.client_storage.get("five_after_tomorrow")
+                start_time, end_time = five_check.split('-')
+                if end_time == '23:59':
+                    five = f'{start_time}-24:00'
+                else:
+                    five = page.client_storage.get("five_after_tomorrow")
+                time_after_tomorrow_5.visible = True
+                time_after_tomorrow_5.content = Text(
+                    five,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("Five_After_Tomorrow found!")
         except:
             if page.client_storage.get("five_after_tomorrow") != None:
                 five_check = page.client_storage.get("five_after_tomorrow")
@@ -1550,28 +1550,33 @@ def main(page: Page):
                     font_family="Golos Text"
                 )
             page.update()
-            print("Five_After_Tomorrow not found!")
+            print("Five_After_Tomorrow not connected!")
 
         try:
             try_six = db.reference(f"/{cherg}/{day_after_tomorrow_six}")
             result_six = try_six.get()
-            page.client_storage.set("six_after_tomorrow", result_six)
-            six_check = page.client_storage.get("six_after_tomorrow")
-            start_time, end_time = six_check.split('-')
-            if end_time == '23:59':
-                six = f'{start_time}-24:00'
+            if result_six == None:
+                page.client_storage.remove("six_after_tomorrow")
+                time_after_tomorrow_6.visible = False
+                print("Six_After_Tomorrow not found!")
             else:
-                six = page.client_storage.get("six_after_tomorrow")
-            time_after_tomorrow_6.visible = True
-            time_after_tomorrow_6.content = Text(
-                six,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("Six_After_Tomorrow found!")
+                page.client_storage.set("six_after_tomorrow", result_six)
+                six_check = page.client_storage.get("six_after_tomorrow")
+                start_time, end_time = six_check.split('-')
+                if end_time == '23:59':
+                    six = f'{start_time}-24:00'
+                else:
+                    six = page.client_storage.get("six_after_tomorrow")
+                time_after_tomorrow_6.visible = True
+                time_after_tomorrow_6.content = Text(
+                    six,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("Six_After_Tomorrow found!")
         except:
             if page.client_storage.get("six_after_tomorrow") != None:
                 six_check = page.client_storage.get("six_after_tomorrow")
@@ -1590,7 +1595,7 @@ def main(page: Page):
                 )
                 page.update()
             page.update()
-            print("Six_After_Tomorrow not found!")
+            print("Six_After_Tomorrow not connected!")
         page.update()
 
     def main_tab_anim():
