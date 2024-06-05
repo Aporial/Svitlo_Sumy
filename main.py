@@ -19,6 +19,26 @@ import time
 
 def main(page: Page):
 
+    def check_cherg_main():
+        if storage() == None:
+            text_after_img.content = Text(
+                "Виберіть чергу",
+                size=24,
+                weight='w500',
+                color='#ffcc66',
+                font_family="Golos Text",
+                text_align='center'
+            )
+        else:
+            text_after_img.content = Text(
+                f"{storage()} черга",
+                size=24,
+                weight='w500',
+                color='#ffcc66',
+                font_family="Golos Text",
+                text_align='center'
+            )
+
     def open_list():
         bs.open = True
         page.navigation_bar.selected_index = 1
@@ -105,6 +125,7 @@ def main(page: Page):
             check_storage_main()
 
     def check_storage_main():
+        check_cherg_main()
         current_time = datetime.now().time()
         storage_info = storage()
         cherg = check_cherg(storage_info)
@@ -1760,14 +1781,30 @@ def main(page: Page):
         )
     )
 
-    text_after_img = Text(
-        "Графік відключень",
-        size=24,
-        weight='w500',
-        color=colors.BLACK87,
-        font_family="Golos Text",
-        text_align='center'
+    text_after_img = Container(
+        blur=10,
+        padding=5,
+        bgcolor=colors.BLACK26,
+        border_radius=15,
+        width=250,
+        content=Text(
+            f"{storage()} черга",
+            size=24,
+            weight='w500',
+            color='#ffcc66',
+            font_family="Golos Text",
+            text_align='center'
+        )
     )
+
+    # text_after_img = Text(
+    #     "Графік відключень",
+    #     size=24,
+    #     weight='w500',
+    #     color=colors.BLACK87,
+    #     font_family="Golos Text",
+    #     text_align='center'
+    # )
 
     main_tab = Tabs(
         visible=False,
