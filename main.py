@@ -29,6 +29,7 @@ def main(page: Page):
                 font_family="Golos Text",
                 text_align='center'
             )
+            text_after_img.update()
         else:
             text_after_img.content = Text(
                 f"{storage()} черга",
@@ -38,6 +39,7 @@ def main(page: Page):
                 font_family="Golos Text",
                 text_align='center'
             )
+            text_after_img.update()
 
     def open_list():
         bs.open = True
@@ -84,6 +86,7 @@ def main(page: Page):
     def check_storage():
         if page.client_storage.get("number") == None:
             try:
+                check_cherg_main()
                 requests.get("http://google.com").ok
                 connect_firebase = credentials.Certificate(
                     "./assets/firebase_init.json")
@@ -105,6 +108,7 @@ def main(page: Page):
                 print("Fail connection!")
         else:
             try:
+                check_cherg_main()
                 connect_firebase = credentials.Certificate(
                     "./assets/firebase_init.json")
                 firebase_admin.initialize_app(
@@ -1793,7 +1797,7 @@ def main(page: Page):
         border_radius=15,
         width=250,
         content=Text(
-            f"{storage()} черга",
+            # f"{storage()} черга",
             size=24,
             weight='w500',
             color='#ffcc66',
