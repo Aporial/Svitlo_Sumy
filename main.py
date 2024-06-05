@@ -1031,16 +1031,20 @@ def main(page: Page):
         if start_time <= current_time <= end_time:
             lamp_img.content = Image(
                 src=f"/Images/lamp_off.png",
+                gapless_playback=True,
                 height=280,
                 width=280,
             )
+            lamp_img.update()
             return True
         else:
             lamp_img.content = Image(
                 src=f"/Images/lamp_on.png",
+                gapless_playback=True,
                 height=280,
                 width=280,
             )
+            lamp_img.update()
             return False
 
     def alert_conn_start():
@@ -1775,6 +1779,7 @@ def main(page: Page):
         Container(
             content=Image(
                 src=f"/Images/lamp_on.png",
+                gapless_playback=True,
                 height=280,
                 width=280,
             )
@@ -1796,15 +1801,6 @@ def main(page: Page):
             text_align='center'
         )
     )
-
-    # text_after_img = Text(
-    #     "Графік відключень",
-    #     size=24,
-    #     weight='w500',
-    #     color=colors.BLACK87,
-    #     font_family="Golos Text",
-    #     text_align='center'
-    # )
 
     main_tab = Tabs(
         visible=False,
