@@ -1,8 +1,8 @@
 from flet import *
-from functions_1 import check_cherg, day_of_week_today, day_of_week_tomorrow, day_of_week_after_tomorrow
-from functions_1 import day_num_one, day_num_two, day_num_three, day_num_four, day_num_five, day_num_six
-from functions_1 import day_tomorrow_one, day_tomorrow_two, day_tomorrow_three, day_tomorrow_four, day_tomorrow_five, day_tomorrow_six
-from functions_1 import day_after_tomorrow_one, day_after_tomorrow_two, day_after_tomorrow_three, day_after_tomorrow_four, day_after_tomorrow_five, day_after_tomorrow_six
+from functions import check_cherg, day_of_week_today, day_of_week_tomorrow, day_of_week_after_tomorrow
+from database_1 import db1_day_num_one, db1_day_num_two, db1_day_num_three, db1_day_num_four, db1_day_num_five, db1_day_num_six
+from database_1 import db1_day_tomorrow_one, db1_day_tomorrow_two, db1_day_tomorrow_three, db1_day_tomorrow_four, db1_day_tomorrow_five, db1_day_tomorrow_six
+from database_1 import db1_day_after_tomorrow_one, db1_day_after_tomorrow_two, db1_day_after_tomorrow_three, db1_day_after_tomorrow_four, db1_day_after_tomorrow_five, db1_day_after_tomorrow_six
 from time_now import time_now_1, time_now_2, time_now_3, time_now_4, time_now_5, time_now_6
 from time_tomorrow import time_tomorrow_1, time_tomorrow_2, time_tomorrow_3, time_tomorrow_4, time_tomorrow_5, time_tomorrow_6
 from time_after_tomorrow import time_after_tomorrow_1, time_after_tomorrow_2, time_after_tomorrow_3, time_after_tomorrow_4, time_after_tomorrow_5, time_after_tomorrow_6
@@ -11,6 +11,12 @@ from firebase import firebase
 import requests
 import time
 
+day_num_one = db1_day_num_one
+day_num_two = db1_day_num_two
+day_num_three = db1_day_num_three
+day_num_four = db1_day_num_four
+day_num_five = db1_day_num_five
+day_num_six = db1_day_num_six
 
 def main(page: Page):
 

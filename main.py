@@ -1,5 +1,11 @@
 from flet import *
-
+from database_1 import db1_day_num_one, db1_day_num_two, db1_day_num_three, db1_day_num_four, db1_day_num_five, db1_day_num_six
+from database_1 import db1_day_tomorrow_one, db1_day_tomorrow_two, db1_day_tomorrow_three, db1_day_tomorrow_four, db1_day_tomorrow_five, db1_day_tomorrow_six
+from database_1 import db1_day_after_tomorrow_one, db1_day_after_tomorrow_two, db1_day_after_tomorrow_three, db1_day_after_tomorrow_four, db1_day_after_tomorrow_five, db1_day_after_tomorrow_six
+from database_2 import db2_day_num_one, db2_day_num_two, db2_day_num_three, db2_day_num_four, db2_day_num_five, db2_day_num_six
+from database_2 import db2_day_tomorrow_one, db2_day_tomorrow_two, db2_day_tomorrow_three, db2_day_tomorrow_four, db2_day_tomorrow_five, db2_day_tomorrow_six
+from database_2 import db2_day_after_tomorrow_one, db2_day_after_tomorrow_two, db2_day_after_tomorrow_three, db2_day_after_tomorrow_four, db2_day_after_tomorrow_five, db2_day_after_tomorrow_six
+from functions import check_cherg, day_of_week_today, day_of_week_tomorrow, day_of_week_after_tomorrow
 from time_now import time_now_1, time_now_2, time_now_3, time_now_4, time_now_5, time_now_6
 from time_tomorrow import time_tomorrow_1, time_tomorrow_2, time_tomorrow_3, time_tomorrow_4, time_tomorrow_5, time_tomorrow_6
 from time_after_tomorrow import time_after_tomorrow_1, time_after_tomorrow_2, time_after_tomorrow_3, time_after_tomorrow_4, time_after_tomorrow_5, time_after_tomorrow_6
@@ -10,30 +16,92 @@ from firebase_admin import db
 import requests
 import time
 
-try:
-    connect_firebase = credentials.Certificate(
-        "./assets/firebase_init.json")
-    firebase_admin.initialize_app(
-        connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
-    database_storage = db.reference("/database").get()
-    print('DATABASE:', database_storage)
-    if database_storage == 1:
-        from functions_1 import check_cherg, day_of_week_today, day_of_week_tomorrow, day_of_week_after_tomorrow
-        from functions_1 import day_num_one, day_num_two, day_num_three, day_num_four, day_num_five, day_num_six
-        from functions_1 import day_tomorrow_one, day_tomorrow_two, day_tomorrow_three, day_tomorrow_four, day_tomorrow_five, day_tomorrow_six
-        from functions_1 import day_after_tomorrow_one, day_after_tomorrow_two, day_after_tomorrow_three, day_after_tomorrow_four, day_after_tomorrow_five, day_after_tomorrow_six
-    if database_storage == 2:
-        from functions_2 import check_cherg, day_of_week_today, day_of_week_tomorrow, day_of_week_after_tomorrow
-        from functions_2 import day_num_one, day_num_two, day_num_three, day_num_four, day_num_five, day_num_six
-        from functions_2 import day_tomorrow_one, day_tomorrow_two, day_tomorrow_three, day_tomorrow_four, day_tomorrow_five, day_tomorrow_six
-        from functions_2 import day_after_tomorrow_one, day_after_tomorrow_two, day_after_tomorrow_three, day_after_tomorrow_four, day_after_tomorrow_five, day_after_tomorrow_six
-    print('Connected!')
-except:
-    print("Fail connection!")
 
 def main(page: Page):
 
-    
+    def check_bd():
+        storage_info = storage()
+        cherg = check_cherg(storage_info)
+
+        if page.client_storage.get("database_storage") == 1:
+            day_num_one = db1_day_num_one
+            day_num_two = db1_day_num_two
+            day_num_three = db1_day_num_three
+            day_num_four = db1_day_num_four
+            day_num_five = db1_day_num_five
+            day_num_six = db1_day_num_six
+            day_tomorrow_one = db1_day_tomorrow_one
+            day_tomorrow_two = db1_day_tomorrow_two
+            day_tomorrow_three = db1_day_tomorrow_three
+            day_tomorrow_four = db1_day_tomorrow_four
+            day_tomorrow_five = db1_day_tomorrow_five
+            day_tomorrow_six = db1_day_tomorrow_six
+            day_after_tomorrow_one = db1_day_after_tomorrow_one
+            day_after_tomorrow_two = db1_day_after_tomorrow_two
+            day_after_tomorrow_three = db1_day_after_tomorrow_three
+            day_after_tomorrow_four = db1_day_after_tomorrow_four
+            day_after_tomorrow_five = db1_day_after_tomorrow_five
+            day_after_tomorrow_six = db1_day_after_tomorrow_six
+        if page.client_storage.get("database_storage") == 2:
+            day_num_one = db2_day_num_one
+            day_num_two = db2_day_num_two
+            day_num_three = db2_day_num_three
+            day_num_four = db2_day_num_four
+            day_num_five = db2_day_num_five
+            day_num_six = db2_day_num_six
+            day_tomorrow_one = db2_day_tomorrow_one
+            day_tomorrow_two = db2_day_tomorrow_two
+            day_tomorrow_three = db2_day_tomorrow_three
+            day_tomorrow_four = db2_day_tomorrow_four
+            day_tomorrow_five = db2_day_tomorrow_five
+            day_tomorrow_six = db2_day_tomorrow_six
+            day_after_tomorrow_one = db2_day_after_tomorrow_one
+            day_after_tomorrow_two = db2_day_after_tomorrow_two
+            day_after_tomorrow_three = db2_day_after_tomorrow_three
+            day_after_tomorrow_four = db2_day_after_tomorrow_four
+            day_after_tomorrow_five = db2_day_after_tomorrow_five
+            day_after_tomorrow_six = db2_day_after_tomorrow_six
+
+        if db.reference(f"/{cherg}/{day_num_one}").get() == None:
+            page.client_storage.remove("one")
+        if db.reference(f"/{cherg}/{day_num_two}").get() == None:
+            page.client_storage.remove("two")
+        if db.reference(f"/{cherg}/{day_num_three}").get() == None:
+            page.client_storage.remove("three")
+        if db.reference(f"/{cherg}/{day_num_four}").get() == None:
+            page.client_storage.remove("four")
+        if db.reference(f"/{cherg}/{day_num_five}").get() == None:
+            page.client_storage.remove("five")
+        if db.reference(f"/{cherg}/{day_num_six}").get() == None:
+            page.client_storage.remove("six")
+
+        if db.reference(f"/{cherg}/{day_tomorrow_one}").get() == None:
+            page.client_storage.remove("one_tomorrow")
+        if db.reference(f"/{cherg}/{day_tomorrow_two}").get() == None:
+            page.client_storage.remove("two_tomorrow")
+        if db.reference(f"/{cherg}/{day_tomorrow_three}").get() == None:
+            page.client_storage.remove("three_tomorrow")
+        if db.reference(f"/{cherg}/{day_tomorrow_four}").get() == None:
+            page.client_storage.remove("four_tomorrow")
+        if db.reference(f"/{cherg}/{day_tomorrow_five}").get() == None:
+            page.client_storage.remove("five_tomorrow")
+        if db.reference(f"/{cherg}/{day_tomorrow_six}").get() == None:
+            page.client_storage.remove("six_tomorrow")
+
+        if db.reference(f"/{cherg}/{day_after_tomorrow_one}").get() == None:
+            page.client_storage.remove("one_after_tomorrow")
+        if db.reference(f"/{cherg}/{day_after_tomorrow_two}").get() == None:
+            page.client_storage.remove("two_after_tomorrow")
+        if db.reference(f"/{cherg}/{day_after_tomorrow_three}").get() == None:
+            page.client_storage.remove("three_after_tomorrow")
+        if db.reference(f"/{cherg}/{day_after_tomorrow_four}").get() == None:
+            page.client_storage.remove("four_after_tomorrow")
+        if db.reference(f"/{cherg}/{day_after_tomorrow_five}").get() == None:
+            page.client_storage.remove("five_after_tomorrow")
+        if db.reference(f"/{cherg}/{day_after_tomorrow_six}").get() == None:
+            page.client_storage.remove("six_after_tomorrow")
+
+        print("DATABASE is checked!")
 
     def open_list():
         bs.open = True
@@ -81,10 +149,13 @@ def main(page: Page):
         if page.client_storage.get("number") == None:
             try:
                 requests.get("http://google.com").ok
-                # connect_firebase = credentials.Certificate(
-                #     "./assets/firebase_init.json")
-                # firebase_admin.initialize_app(
-                #     connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
+                connect_firebase = credentials.Certificate(
+                    "./assets/firebase_init.json")
+                firebase_admin.initialize_app(
+                    connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
+                database = db.reference("/database").get()
+                print('DATABASE:', database)
+                page.client_storage.set("database_storage", database)
                 open_list()
                 print('Connected!')
             except:
@@ -98,13 +169,15 @@ def main(page: Page):
                 print("Fail connection!")
         else:
             try:
-                # connect_firebase = credentials.Certificate(
-                #     "./assets/firebase_init.json")
-                # firebase_admin.initialize_app(
-                #     connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
-                test_connect = db.reference()
-                test_connect.get()
-                print(test_connect)
+                connect_firebase = credentials.Certificate(
+                    "./assets/firebase_init.json")
+                firebase_admin.initialize_app(
+                    connect_firebase, {"databaseURL": "https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app"})
+                database = db.reference("/database").get()
+                print('DATABASE:', database)
+                page.client_storage.set("database_storage", database)
+                print('Connected!')
+                check_bd()
             except:
                 one_button.disabled = True
                 two_button.disabled = True
@@ -126,6 +199,21 @@ def main(page: Page):
         four_check = page.client_storage.get("four")
         five_check = page.client_storage.get("five")
         six_check = page.client_storage.get("six")
+        if page.client_storage.get("database_storage") == 1:
+            day_num_one = db1_day_num_one
+            day_num_two = db1_day_num_two
+            day_num_three = db1_day_num_three
+            day_num_four = db1_day_num_four
+            day_num_five = db1_day_num_five
+            day_num_six = db1_day_num_six
+        if page.client_storage.get("database_storage") == 2:
+            day_num_one = db2_day_num_one
+            day_num_two = db2_day_num_two
+            day_num_three = db2_day_num_three
+            day_num_four = db2_day_num_four
+            day_num_five = db2_day_num_five
+            day_num_six = db2_day_num_six
+
         try:
             try_one = db.reference(f"/{cherg}/{day_num_one}")
             result_one = try_one.get()
@@ -204,7 +292,7 @@ def main(page: Page):
                     one = f'{start_time}-24:00'
                 else:
                     one = page.client_storage.get("one")
-                time_now_1.visible = False
+                time_now_1.visible = True
                 if time_end <= current_time:
                     time_now_1.bgcolor = colors.GREY_400
                     time_now_1.content = Row(
@@ -339,7 +427,7 @@ def main(page: Page):
                     two = f'{start_time}-24:00'
                 else:
                     two = page.client_storage.get("two")
-                time_now_2.visible = False
+                time_now_2.visible = True
                 if time_end <= current_time:
                     time_now_2.bgcolor = colors.GREY_400
                     time_now_2.content = Row(
@@ -474,7 +562,7 @@ def main(page: Page):
                     three = f'{start_time}-24:00'
                 else:
                     three = page.client_storage.get("three")
-                time_now_3.visible = False
+                time_now_3.visible = True
                 if time_end <= current_time:
                     time_now_3.bgcolor = colors.GREY_400
                     time_now_3.content = Row(
@@ -609,7 +697,7 @@ def main(page: Page):
                     four = f'{start_time}-24:00'
                 else:
                     four = page.client_storage.get("four")
-                time_now_4.visible = False
+                time_now_4.visible = True
                 if time_end <= current_time:
                     time_now_4.bgcolor = colors.GREY_400
                     time_now_4.content = Row(
@@ -744,7 +832,7 @@ def main(page: Page):
                     five = f'{start_time}-24:00'
                 else:
                     five = page.client_storage.get("five")
-                time_now_5.visible = False
+                time_now_5.visible = True
                 if time_end <= current_time:
                     time_now_5.bgcolor = colors.GREY_400
                     time_now_5.content = Row(
@@ -879,7 +967,7 @@ def main(page: Page):
                     six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six")
-                time_now_6.visible = False
+                time_now_6.visible = True
                 if time_end <= current_time:
                     time_now_6.bgcolor = colors.GREY_400
                     time_now_6.content = Row(
@@ -1000,6 +1088,21 @@ def main(page: Page):
     def get_time_tomorrow():
         storage_info = storage()
         cherg = check_cherg(storage_info)
+        if page.client_storage.get("database_storage") == 1:
+            day_tomorrow_one = db1_day_tomorrow_one
+            day_tomorrow_two = db1_day_tomorrow_two
+            day_tomorrow_three = db1_day_tomorrow_three
+            day_tomorrow_four = db1_day_tomorrow_four
+            day_tomorrow_five = db1_day_tomorrow_five
+            day_tomorrow_six = db1_day_tomorrow_six
+        if page.client_storage.get("database_storage") == 2:
+            day_tomorrow_one = db2_day_tomorrow_one
+            day_tomorrow_two = db2_day_tomorrow_two
+            day_tomorrow_three = db2_day_tomorrow_three
+            day_tomorrow_four = db2_day_tomorrow_four
+            day_tomorrow_five = db2_day_tomorrow_five
+            day_tomorrow_six = db2_day_tomorrow_six
+
         try:
             try_one = db.reference(f"/{cherg}/{day_tomorrow_one}")
             result_one = try_one.get()
@@ -1028,7 +1131,7 @@ def main(page: Page):
                     one = f'{start_time}-24:00'
                 else:
                     one = page.client_storage.get("one_tomorrow")
-                time_tomorrow_1.visible = False
+                time_tomorrow_1.visible = True
                 time_tomorrow_1.content = Text(
                     one,
                     size=21,
@@ -1067,7 +1170,7 @@ def main(page: Page):
                     two = f'{start_time}-24:00'
                 else:
                     two = page.client_storage.get("two_tomorrow")
-                time_tomorrow_2.visible = False
+                time_tomorrow_2.visible = True
                 time_tomorrow_2.content = Text(
                     two,
                     size=21,
@@ -1106,7 +1209,7 @@ def main(page: Page):
                     three = f'{start_time}-24:00'
                 else:
                     three = page.client_storage.get("three_tomorrow")
-                time_tomorrow_3.visible = False
+                time_tomorrow_3.visible = True
                 time_tomorrow_3.content = Text(
                     three,
                     size=21,
@@ -1145,7 +1248,7 @@ def main(page: Page):
                     four = f'{start_time}-24:00'
                 else:
                     four = page.client_storage.get("four_tomorrow")
-                time_tomorrow_4.visible = False
+                time_tomorrow_4.visible = True
                 time_tomorrow_4.content = Text(
                     four,
                     size=21,
@@ -1184,7 +1287,7 @@ def main(page: Page):
                     five = f'{start_time}-24:00'
                 else:
                     five = page.client_storage.get("five_tomorrow")
-                time_tomorrow_5.visible = False
+                time_tomorrow_5.visible = True
                 time_tomorrow_5.content = Text(
                     five,
                     size=21,
@@ -1223,7 +1326,7 @@ def main(page: Page):
                     six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six_tomorrow")
-                time_tomorrow_6.visible = False
+                time_tomorrow_6.visible = True
                 time_tomorrow_6.content = Text(
                     six,
                     size=21,
@@ -1239,6 +1342,21 @@ def main(page: Page):
     def get_time_after_tomorrow():
         storage_info = storage()
         cherg = check_cherg(storage_info)
+        if page.client_storage.get("database_storage") == 1:
+            day_after_tomorrow_one = db1_day_after_tomorrow_one
+            day_after_tomorrow_two = db1_day_after_tomorrow_two
+            day_after_tomorrow_three = db1_day_after_tomorrow_three
+            day_after_tomorrow_four = db1_day_after_tomorrow_four
+            day_after_tomorrow_five = db1_day_after_tomorrow_five
+            day_after_tomorrow_six = db1_day_after_tomorrow_six
+        if page.client_storage.get("database_storage") == 2:
+            day_after_tomorrow_one = db2_day_after_tomorrow_one
+            day_after_tomorrow_two = db2_day_after_tomorrow_two
+            day_after_tomorrow_three = db2_day_after_tomorrow_three
+            day_after_tomorrow_four = db2_day_after_tomorrow_four
+            day_after_tomorrow_five = db2_day_after_tomorrow_five
+            day_after_tomorrow_six = db2_day_after_tomorrow_six
+
         try:
             try_one = db.reference(f"/{cherg}/{day_after_tomorrow_one}")
             result_one = try_one.get()
@@ -1267,7 +1385,7 @@ def main(page: Page):
                     one = f'{start_time}-24:00'
                 else:
                     one = page.client_storage.get("one_after_tomorrow")
-                time_after_tomorrow_1.visible = False
+                time_after_tomorrow_1.visible = True
                 time_after_tomorrow_1.content = Text(
                     one,
                     size=21,
@@ -1306,7 +1424,7 @@ def main(page: Page):
                     two = f'{start_time}-24:00'
                 else:
                     two = page.client_storage.get("two_after_tomorrow")
-                time_after_tomorrow_2.visible = False
+                time_after_tomorrow_2.visible = True
                 time_after_tomorrow_2.content = Text(
                     two,
                     size=21,
@@ -1345,7 +1463,7 @@ def main(page: Page):
                     three = f'{start_time}-24:00'
                 else:
                     three = page.client_storage.get("three_after_tomorrow")
-                time_after_tomorrow_3.visible = False
+                time_after_tomorrow_3.visible = True
                 time_after_tomorrow_3.content = Text(
                     three,
                     size=21,
@@ -1384,7 +1502,7 @@ def main(page: Page):
                     four = f'{start_time}-24:00'
                 else:
                     four = page.client_storage.get("four_after_tomorrow")
-                time_after_tomorrow_4.visible = False
+                time_after_tomorrow_4.visible = True
                 time_after_tomorrow_4.content = Text(
                     four,
                     size=21,
@@ -1423,7 +1541,7 @@ def main(page: Page):
                     five = f'{start_time}-24:00'
                 else:
                     five = page.client_storage.get("five_after_tomorrow")
-                time_after_tomorrow_5.visible = False
+                time_after_tomorrow_5.visible = True
                 time_after_tomorrow_5.content = Text(
                     five,
                     size=21,
@@ -1462,7 +1580,7 @@ def main(page: Page):
                     six = f'{start_time}-24:00'
                 else:
                     six = page.client_storage.get("six_after_tomorrow")
-                time_after_tomorrow_6.visible = False
+                time_after_tomorrow_6.visible = True
                 time_after_tomorrow_6.content = Text(
                     six,
                     size=21,
