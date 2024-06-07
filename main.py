@@ -1324,7 +1324,7 @@ def main(page: Page):
                             wrap=True,
                             controls=[
                                 Image(
-                                    src=f"/Images/telegram.png",
+                                    src=f"/Images/telegram.svg",
                                     height=50,
                                     width=50,
                                 ),
@@ -1401,13 +1401,13 @@ def main(page: Page):
     page.overlay.append(alert_first_conn)
     page.update()
     check_storage()
-    # while True:
-    #     time.sleep(60)
-    #     try:
-    #         check_storage_main()
-    #         print("Update Complete!")
-    #     except:
-    #         print("Update Not Complete!")
+    while True:
+        time.sleep(60)
+        try:
+            check_storage_main()
+            print("Update Complete!")
+        except:
+            print("Update Not Complete!")
 
 
 app(
