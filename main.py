@@ -87,7 +87,6 @@ def main(page: Page):
         if page.client_storage.get("number") == None:
             try:
                 check_cherg_main()
-                requests.get("http://google.com").ok
                 connect_firebase = credentials.Certificate(
                     "./assets/firebase_init.json")
                 firebase_admin.initialize_app(
