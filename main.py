@@ -70,6 +70,10 @@ def main(page: Page):
         page.launch_url('https://send.monobank.ua/jar/7rkGHNfQpV',
                         web_window_name='Monobank')
 
+    def telegram_click(e):
+        page.launch_url('https://t.me/never_find_myself',
+                        web_window_name='Telegram')
+
     def open_pdf(e):
         page.launch_url('https://www.soe.com.ua/images/gr23-24-adr.pdf')
 
@@ -1267,18 +1271,21 @@ def main(page: Page):
                     ),
                     Divider(height=0.1, color=colors.BLACK26),
                     ElevatedButton(
-                        content=Text(
-                            "Дізнатися свою чергу",
-                            size=18,
-                            color='black',
-                            text_align='center',
-                            font_family="Golos Text",
-                            weight="w500"
+                        content=Container(
+                            padding=10,
+                            content=Text(
+                                "Дізнатися свою чергу",
+                                size=18,
+                                color='black',
+                                text_align='center',
+                                font_family="Golos Text",
+                                weight="w500"
+                            )
                         ),
                         style=ButtonStyle(
                             shape=RoundedRectangleBorder(radius=15),
                             overlay_color=colors.AMBER_200),
-                        height=50,
+                        # height=50,
                         color=colors.BLACK,
                         bgcolor='#ffcc66',
                         on_click=open_pdf
@@ -1301,6 +1308,36 @@ def main(page: Page):
                         text_align='center',
                         font_family="Golos Text",
                         weight="w500"
+                    ),
+                    Divider(height=0.1, color=colors.BLACK26),
+                    ElevatedButton(
+                        style=ButtonStyle(
+                            shape=RoundedRectangleBorder(radius=15),
+                            overlay_color=colors.AMBER_200),
+                        color=colors.BLACK,
+                        bgcolor='#ffcc66',
+                        on_click=telegram_click,
+                        content=Row(
+                            alignment='center',
+                            vertical_alignment='center',
+                            spacing=3,
+                            wrap=True,
+                            controls=[
+                                Image(
+                                    src=f"/Images/telegram.png",
+                                    height=50,
+                                    width=50,
+                                ),
+                                Text(
+                                    "Зв'язатися з розробником",
+                                    size=18,
+                                    color='black',
+                                    text_align='center',
+                                    font_family="Golos Text",
+                                    weight="w500"
+                                )
+                            ]
+                        )
                     )
                 ]
             )
@@ -1364,13 +1401,13 @@ def main(page: Page):
     page.overlay.append(alert_first_conn)
     page.update()
     check_storage()
-    while True:
-        time.sleep(60)
-        try:
-            check_storage_main()
-            print("Update Complete!")
-        except:
-            print("Update Not Complete!")
+    # while True:
+    #     time.sleep(60)
+    #     try:
+    #         check_storage_main()
+    #         print("Update Complete!")
+    #     except:
+    #         print("Update Not Complete!")
 
 
 app(
