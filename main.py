@@ -22,7 +22,7 @@ def main(page: Page):
     def check_cherg_main():
         if storage() == None:
             text_after_img.content = Text(
-                "Виберіть чергу",
+                "Оберіть чергу",
                 size=24,
                 weight='w500',
                 color='#ffcc66',

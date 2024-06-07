@@ -19,7 +19,7 @@ def main(page: Page):
     def check_cherg_main():
         if storage() == None:
             text_after_img.content = Text(
-                "Виберіть чергу",
+                "Оберіть чергу",
                 size=24,
                 weight='w500',
                 color='#ffcc66',
@@ -85,11 +85,11 @@ def main(page: Page):
             try:
                 check_cherg_main()
                 database_connection = firebase.FirebaseApplication(
-                    'https://test-svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
-                database = database_connection.get("/database", None)
+                    'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
+                database = database_connection.get("database", None)
                 print('DATABASE:', database)
                 page.client_storage.set("database_storage", database)
-                main_database = database_connection.get("/main", None)
+                main_database = database_connection.get("/", None)
                 page.client_storage.set("main_database", main_database)
                 open_list()
                 print('Connected!')
@@ -106,11 +106,11 @@ def main(page: Page):
             try:
                 check_cherg_main()
                 database_connection = firebase.FirebaseApplication(
-                    'https://test-svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
-                database = database_connection.get("/database", None)
+                    'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
+                database = database_connection.get("database", None)
                 print('DATABASE:', database)
                 page.client_storage.set("database_storage", database)
-                main_database = database_connection.get("/main", None)
+                main_database = database_connection.get("/", None)
                 page.client_storage.set("main_database", main_database)
                 print('Connected!')
             except:
