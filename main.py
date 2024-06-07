@@ -1296,7 +1296,7 @@ def main(page: Page):
                     ),
                     Text(
                         "Підтримати розробника",
-                        size=16,
+                        size=20,
                         color='black',
                         text_align='center',
                         font_family="Golos Text",
