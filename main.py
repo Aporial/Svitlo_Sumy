@@ -1317,20 +1317,22 @@ def main(page: Page):
                         color=colors.BLACK,
                         bgcolor='#ffcc66',
                         on_click=telegram_click,
+                        # width=300,
                         content=Row(
                             alignment='center',
                             vertical_alignment='center',
                             spacing=3,
                             wrap=True,
+                            expand=True,
                             controls=[
                                 Image(
                                     src=f"/Images/telegram.svg",
-                                    height=50,
-                                    width=50,
+                                    height=40,
+                                    width=40,
                                 ),
                                 Text(
-                                    "Зв'язатися з розробником",
-                                    size=18,
+                                    "Написати розробнику",
+                                    size=17,
                                     color='black',
                                     text_align='center',
                                     font_family="Golos Text",
@@ -1399,6 +1401,8 @@ def main(page: Page):
     page.overlay.append(bs)
     page.overlay.append(alert_conn)
     page.overlay.append(alert_first_conn)
+    # page.window_title_bar_hidden = True
+    # page.window_title_bar_buttons_hidden = True
     page.update()
     check_storage()
     while True:
