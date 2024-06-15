@@ -16,8 +16,9 @@ import asyncio
 
 async def main(page: Page):
 
-    async def check_cherg_main():
-        storage = await page.client_storage.get_async("number")
+    storage = await page.client_storage.get_async("number")
+
+    def check_cherg_main():
         if storage == None:
             text_after_img.content = Text(
                 "Оберіть чергу",
@@ -88,7 +89,7 @@ async def main(page: Page):
     async def check_storage():
         if await page.client_storage.get_async("number") == None:
             try:
-                page.run_task(check_cherg_main)
+                check_cherg_main()
                 database_connection = firebase.FirebaseApplication(
                     'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
                 database = database_connection.get("database", None)
@@ -109,9 +110,9 @@ async def main(page: Page):
                 print("Fail connection!")
         else:
             try:
-                page.run_task(check_cherg_main)
+                check_cherg_main()
                 database_connection = firebase.FirebaseApplication(
-                    'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
+                    'https://test-svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
                 database = database_connection.get("database", None)
                 print('DATABASE:', database)
                 await page.client_storage.set_async("database_storage", database)
@@ -124,7 +125,7 @@ async def main(page: Page):
             page.run_task(check_storage_main)
 
     async def check_storage_main():
-        page.run_task(check_cherg_main)
+        check_cherg_main()
         current_time = datetime.now().time()
         storage_info = await page.client_storage.get_async("number")
         cherg = check_cherg(storage_info)
@@ -227,11 +228,13 @@ async def main(page: Page):
                 time_now_1.visible = True
                 time_now_1.bgcolor = '#ffcc66'
                 time_now_1.content = Row(
+                    wrap=True,
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
                         Text(
                             one,
+                            text_align='center',
                             size=18,
                             weight='w500',
                             color=colors.BLACK,
@@ -709,11 +712,13 @@ async def main(page: Page):
                 one = await page.client_storage.get_async("one_tomorrow")
                 time_tomorrow_1.visible = True
                 time_tomorrow_1.content = Row(
+                    wrap=True,
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
                         Text(
                             one,
+                            text_align='center',
                             size=18,
                             weight='w500',
                             color=colors.BLACK,
@@ -896,11 +901,13 @@ async def main(page: Page):
                 one = await page.client_storage.get_async("one_after_tomorrow")
                 time_after_tomorrow_1.visible = True
                 time_after_tomorrow_1.content = Row(
+                    wrap=True,
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
                         Text(
                             one,
+                            text_align='center',
                             size=18,
                             weight='w500',
                             color=colors.BLACK,
@@ -1457,6 +1464,7 @@ async def main(page: Page):
     page.overlay.append(alert_first_conn)
     # page.window_title_bar_hidden = True
     # page.window_title_bar_buttons_hidden = True
+    check_cherg_main()
     page.update()
     page.run_task(check_storage)
     while True:
