@@ -158,53 +158,73 @@ async def main(page: Page):
         else:
             await page.client_storage.set_async("one", result_one)
             one_check = await page.client_storage.get_async("one")
-            start_time, end_time = one_check.split('-')
-            time_start = datetime.strptime(start_time, '%H:%M').time()
-            time_end = datetime.strptime(end_time, '%H:%M').time()
-            if end_time == '23:59':
-                one = f'{start_time}-24:00'
-            else:
+            try:
+                start_time, end_time = one_check.split('-')
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if end_time == '23:59':
+                    one = f'{start_time}-24:00'
+                else:
+                    one = await page.client_storage.get_async("one")
+                time_now_1.visible = True
+                if time_end <= current_time:
+                    time_now_1.bgcolor = colors.GREY_400
+                    time_now_1.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.DONE_ALL_ROUNDED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                elif time_start <= current_time <= time_end:
+                    time_now_1.bgcolor = '#ffcc66'
+                    time_now_1.content = Row(
+                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                        controls=[
+                            Container(width=25),
+                            Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            ),
+                            Icon(
+                                name=icons.BROWSE_GALLERY_OUTLINED,
+                                color=colors.BLACK
+                            )
+                        ]
+                    )
+                else:
+                    time_now_1.bgcolor = '#ffcc66'
+                    time_now_1.content = Row(
+                        alignment="center",
+                        vertical_alignment='center',
+                        controls=[
+                            Text(
+                                one,
+                                size=21,
+                                weight='w500',
+                                color=colors.BLACK,
+                                font_family="Golos Text"
+                            )
+                        ]
+                    )
+                page.update()
+                print("One found!")
+            except:
                 one = await page.client_storage.get_async("one")
-            time_now_1.visible = True
-            if time_end <= current_time:
-                time_now_1.bgcolor = colors.GREY_400
-                time_now_1.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            one,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            elif time_start <= current_time <= time_end:
-                time_now_1.bgcolor = '#ffcc66'
-                time_now_1.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        Container(width=25),
-                        Text(
-                            one,
-                            size=21,
-                            weight='w500',
-                            color=colors.BLACK,
-                            font_family="Golos Text"
-                        ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
-                        )
-                    ]
-                )
-            else:
+                time_now_1.visible = True
                 time_now_1.bgcolor = '#ffcc66'
                 time_now_1.content = Row(
                     alignment="center",
@@ -212,16 +232,15 @@ async def main(page: Page):
                     controls=[
                         Text(
                             one,
-                            size=21,
+                            size=18,
                             weight='w500',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
                 )
-            page.update()
-            print("One found!")
-
+                page.update()
+                print("Connection is not forecast!")
         result_two = main_database.get(f"{cherg}").get(f"{day_num_two}")
         if result_two == None:
             await page.client_storage.remove_async("two")
@@ -670,21 +689,40 @@ async def main(page: Page):
         else:
             await page.client_storage.set_async("one_tomorrow", result_one)
             one_check = await page.client_storage.get_async("one_tomorrow")
-            start_time, end_time = one_check.split('-')
-            if end_time == '23:59':
-                one = f'{start_time}-24:00'
-            else:
+            try:
+                start_time, end_time = one_check.split('-')
+                if end_time == '23:59':
+                    one = f'{start_time}-24:00'
+                else:
+                    one = await page.client_storage.get_async("one_tomorrow")
+                time_tomorrow_1.visible = True
+                time_tomorrow_1.content = Text(
+                    one,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("One_Tomorrow found!")
+            except:
                 one = await page.client_storage.get_async("one_tomorrow")
-            time_tomorrow_1.visible = True
-            time_tomorrow_1.content = Text(
-                one,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("One_Tomorrow found!")
+                time_tomorrow_1.visible = True
+                time_tomorrow_1.content = Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        Text(
+                            one,
+                            size=18,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+                page.update()
+                print("Connection is not forecast!")
 
         result_two = main_database.get(f"{cherg}").get(f"{day_tomorrow_two}")
         if result_two == None:
@@ -838,21 +876,40 @@ async def main(page: Page):
         else:
             await page.client_storage.set_async("one_after_tomorrow", result_one)
             one_check = await page.client_storage.get_async("one_after_tomorrow")
-            start_time, end_time = one_check.split('-')
-            if end_time == '23:59':
-                one = f'{start_time}-24:00'
-            else:
+            try:
+                start_time, end_time = one_check.split('-')
+                if end_time == '23:59':
+                    one = f'{start_time}-24:00'
+                else:
+                    one = await page.client_storage.get_async("one_after_tomorrow")
+                time_after_tomorrow_1.visible = True
+                time_after_tomorrow_1.content = Text(
+                    one,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("One_After_Tomorrow found!")
+            except:
                 one = await page.client_storage.get_async("one_after_tomorrow")
-            time_after_tomorrow_1.visible = True
-            time_after_tomorrow_1.content = Text(
-                one,
-                size=21,
-                weight='w500',
-                color=colors.BLACK,
-                font_family="Golos Text"
-            )
-            page.update()
-            print("One_After_Tomorrow found!")
+                time_after_tomorrow_1.visible = True
+                time_after_tomorrow_1.content = Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        Text(
+                            one,
+                            size=18,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+                page.update()
+                print("Connection is not forecast!")
 
         result_two = main_database.get(f"{cherg}").get(
             f"{day_after_tomorrow_two}")
