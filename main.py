@@ -1464,7 +1464,7 @@ async def main(page: Page):
     # page.window_title_bar_hidden = True
     # page.window_title_bar_buttons_hidden = True
     await check_cherg_main()
-    await check_storage()
+    page.run_task(check_storage)
     page.update()
 
     while True:
