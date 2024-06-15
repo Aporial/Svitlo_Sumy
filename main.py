@@ -112,7 +112,7 @@ async def main(page: Page):
             try:
                 check_cherg_main()
                 database_connection = firebase.FirebaseApplication(
-                    'https://test-svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
+                    'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
                 database = database_connection.get("database", None)
                 print('DATABASE:', database)
                 await page.client_storage.set_async("database_storage", database)
