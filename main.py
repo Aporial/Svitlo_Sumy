@@ -1470,7 +1470,7 @@ async def main(page: Page):
     while True:
         await asyncio.sleep(60)
         try:
-            await check_cherg_main()
+            await check_storage()
             print("Update Complete!")
         except:
             print("Update Not Complete!")
