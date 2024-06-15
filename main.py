@@ -16,9 +16,8 @@ import asyncio
 
 async def main(page: Page):
 
-    storage = await page.client_storage.get_async("number")
-
-    def check_cherg_main():
+    async def check_cherg_main():
+        storage = await page.client_storage.get_async("number")
         if storage == None:
             text_after_img.content = Text(
                 "Оберіть чергу",
@@ -84,12 +83,12 @@ async def main(page: Page):
         await page.client_storage.set_async("number", numb_cherg)
         bs.open = False
         bs.update()
-        page.run_task(check_storage_main)
+        await check_storage_main()
 
     async def check_storage():
         if await page.client_storage.get_async("number") == None:
             try:
-                check_cherg_main()
+                await check_cherg_main()
                 database_connection = firebase.FirebaseApplication(
                     'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
                 database = database_connection.get("database", None)
@@ -110,7 +109,7 @@ async def main(page: Page):
                 print("Fail connection!")
         else:
             try:
-                check_cherg_main()
+                await check_cherg_main()
                 database_connection = firebase.FirebaseApplication(
                     'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
                 database = database_connection.get("database", None)
@@ -122,10 +121,10 @@ async def main(page: Page):
             except:
                 alert_conn_start()
                 print("Fail connection!")
-            page.run_task(check_storage_main)
+            await check_storage_main()
 
     async def check_storage_main():
-        check_cherg_main()
+        await check_cherg_main()
         current_time = datetime.now().time()
         storage_info = await page.client_storage.get_async("number")
         cherg = check_cherg(storage_info)
@@ -628,8 +627,8 @@ async def main(page: Page):
         except:
             print("All time check is False!")
         page.update()
-        page.run_task(get_time_tomorrow)
-        page.run_task(get_time_after_tomorrow)
+        await get_time_tomorrow()
+        await get_time_after_tomorrow()
 
     def check_time_interval(time_interval):
         current_time = datetime.now().time()
@@ -1464,13 +1463,14 @@ async def main(page: Page):
     page.overlay.append(alert_first_conn)
     # page.window_title_bar_hidden = True
     # page.window_title_bar_buttons_hidden = True
-    check_cherg_main()
+    await check_cherg_main()
+    await check_storage()
     page.update()
-    page.run_task(check_storage)
+
     while True:
         await asyncio.sleep(60)
         try:
-            page.run_task(check_storage_main)
+            await check_cherg_main()
             print("Update Complete!")
         except:
             print("Update Not Complete!")
