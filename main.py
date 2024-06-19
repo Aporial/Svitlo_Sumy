@@ -1433,11 +1433,11 @@ async def main(page: Page):
     }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ThemeMode.LIGHT
-    page.window_height = 700
-    page.window_width = 400
+    page.window.height = 700
+    page.window.width = 400
     page.padding = 0
     # page.window_center()
-    page.window_resizable = True
+    page.window.resizable = True
     page.navigation_bar = NavigationBar(
         surface_tint_color='#ff6666',
         indicator_color='#ffcc66',
@@ -1446,11 +1446,11 @@ async def main(page: Page):
         on_change=on_tab,
         selected_index=1,
         destinations=[
-            NavigationDestination(
+            NavigationBarDestination(
                 icon=icons.LIST_ROUNDED, label='Черги',),
-            NavigationDestination(
+            NavigationBarDestination(
                 icon=icons.HOME_ROUNDED, label='Головна'),
-            NavigationDestination(
+            NavigationBarDestination(
                 icon=icons.INFO, selected_icon=icons.INFO_OUTLINE, label='Інформація')
         ]
     )
