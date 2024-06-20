@@ -1529,7 +1529,7 @@ def main(page: Page):
     page.update()
     check_storage()
     while True:
-        time.sleep(5)
+        time.sleep(30)
         try:
             check_storage_refresh()
             print("Update Complete!")
