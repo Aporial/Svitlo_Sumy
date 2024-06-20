@@ -10,10 +10,10 @@ from time_now import time_now_1, time_now_2, time_now_3, time_now_4, time_now_5,
 from time_tomorrow import time_tomorrow_1, time_tomorrow_2, time_tomorrow_3, time_tomorrow_4, time_tomorrow_5, time_tomorrow_6
 from time_after_tomorrow import time_after_tomorrow_1, time_after_tomorrow_2, time_after_tomorrow_3, time_after_tomorrow_4, time_after_tomorrow_5, time_after_tomorrow_6
 from datetime import datetime
-# from firebase import firebase
 import time
 import urllib.request
 import json
+
 
 def main(page: Page):
 
@@ -89,7 +89,7 @@ def main(page: Page):
         if page.client_storage.get("number") == None:
             try:
                 check_cherg_main()
-                with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database.json") as url:
+                with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
                     main_database = json.load(url)
                 database = main_database.get("database")
                 print('DATABASE:', database)
@@ -111,7 +111,7 @@ def main(page: Page):
         else:
             try:
                 check_cherg_main()
-                with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database.json") as url:
+                with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
                     main_database = json.load(url)
                 database = main_database.get("database")
                 print('DATABASE:', database)
@@ -1510,14 +1510,14 @@ def main(page: Page):
     # page.window_title_bar_buttons_hidden = True
     page.update()
     check_storage()
-    # while True:
-    #     time.sleep(30)
-    #     try:
-    #         check_storage()
-    #         refresh()
-    #         print("Update Complete!")
-    #     except:
-    #         print("Update Not Complete!")
+    while True:
+        time.sleep(30)
+        try:
+            check_storage()
+            refresh()
+            print("Update Complete!")
+        except:
+            print("Update Not Complete!")
 
 
 app(
