@@ -665,6 +665,15 @@ def main(page: Page):
             return False
 
     def alert_conn_start():
+        time = page.client_storage.get('time')
+        alert_conn.content = Text(
+            f"Немає доступу до Інтернету. Останнє оновлення {time}",
+            size=16,
+            color='black',
+            text_align='center',
+            font_family="Golos Text",
+            weight="w500",
+        )
         alert_conn.open = True
         page.update()
 
@@ -1080,8 +1089,6 @@ def main(page: Page):
         duration=5000,
         bgcolor='#ffcc66',
         content=Text(
-            f"Немає доступу до Інтернету. Останнє оновлення {
-                page.client_storage.get('time')}",
             size=16,
             color='black',
             text_align='center',

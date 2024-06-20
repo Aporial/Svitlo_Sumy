@@ -1,3 +1,2 @@
 flet
 firebase
-typing_extensions
