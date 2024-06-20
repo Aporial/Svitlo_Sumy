@@ -12,7 +12,6 @@ from time_after_tomorrow import time_after_tomorrow_1, time_after_tomorrow_2, ti
 from datetime import datetime
 from firebase import firebase
 import time
-from functions import today
 
 
 def main(page: Page):
