@@ -95,7 +95,7 @@ def main(page: Page):
                 print('DATABASE:', database)
                 page.client_storage.set("database_storage", database)
                 page.client_storage.set("main_database", main_database)
-                time = datetime.now().strftime("%d.%m.%Y о %H:%M")
+                time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
                 page.client_storage.set('time', time)
                 open_list()
                 print('Connected!')
@@ -117,13 +117,31 @@ def main(page: Page):
                 print('DATABASE:', database)
                 page.client_storage.set("database_storage", database)
                 page.client_storage.set("main_database", main_database)
-                time = datetime.now().strftime("%d.%m.%Y о %H:%M")
+                time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
                 page.client_storage.set('time', time)
                 print('Connected!')
             except:
                 alert_conn_start()
                 print("Fail connection!")
             check_storage_main()
+
+    def check_storage_refresh():
+        try:
+            check_cherg_main()
+            with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
+                main_database = json.load(url)
+            database = main_database.get("database")
+            print('DATABASE:', database)
+            page.client_storage.set("database_storage", database)
+            page.client_storage.set("main_database", main_database)
+            time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
+            page.client_storage.set('time', time)
+            refresh()
+            print('Connected!')
+        except:
+            alert_conn_start()
+            print("Fail connection!")
+        check_storage_main()
 
     def check_storage_main():
         check_cherg_main()
@@ -1511,10 +1529,9 @@ def main(page: Page):
     page.update()
     check_storage()
     while True:
-        time.sleep(30)
+        time.sleep(5)
         try:
-            check_storage()
-            refresh()
+            check_storage_refresh()
             print("Update Complete!")
         except:
             print("Update Not Complete!")
