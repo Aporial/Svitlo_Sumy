@@ -11,13 +11,14 @@ from time_tomorrow import time_tomorrow_1, time_tomorrow_2, time_tomorrow_3, tim
 from time_after_tomorrow import time_after_tomorrow_1, time_after_tomorrow_2, time_after_tomorrow_3, time_after_tomorrow_4, time_after_tomorrow_5, time_after_tomorrow_6
 from datetime import datetime
 from firebase import firebase
-import time
+import asyncio
 
 
-def main(page: Page):
+async def main(page: Page):
 
-    def check_cherg_main():
-        if storage() == None:
+    async def check_cherg_main():
+        storage = await page.client_storage.get_async("number")
+        if storage == None:
             text_after_img.content = Text(
                 "Оберіть чергу",
                 size=24,
@@ -29,7 +30,7 @@ def main(page: Page):
             text_after_img.update()
         else:
             text_after_img.content = Text(
-                f"{storage()} черга",
+                f"{storage} черга",
                 size=24,
                 weight='w500',
                 color='#ffcc66',
@@ -77,24 +78,24 @@ def main(page: Page):
     def open_pdf(e):
         page.launch_url('https://www.soe.com.ua/images/gr23-24-adr.pdf')
 
-    def cherg_choise(e):
+    async def cherg_choise(e):
         numb_cherg = e.control.data
-        page.client_storage.set("number", numb_cherg)
+        await page.client_storage.set_async("number", numb_cherg)
         bs.open = False
         bs.update()
-        check_storage_main()
+        await check_storage_main()
 
-    def check_storage():
-        if page.client_storage.get("number") == None:
+    async def check_storage():
+        if await page.client_storage.get_async("number") == None:
             try:
-                check_cherg_main()
+                await check_cherg_main()
                 database_connection = firebase.FirebaseApplication(
                     'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
                 database = database_connection.get("database", None)
                 print('DATABASE:', database)
-                page.client_storage.set("database_storage", database)
+                await page.client_storage.set_async("database_storage", database)
                 main_database = database_connection.get("/", None)
-                page.client_storage.set("main_database", main_database)
+                await page.client_storage.set_async("main_database", main_database)
                 open_list()
                 print('Connected!')
             except:
@@ -108,40 +109,40 @@ def main(page: Page):
                 print("Fail connection!")
         else:
             try:
-                check_cherg_main()
+                await check_cherg_main()
                 database_connection = firebase.FirebaseApplication(
                     'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
                 database = database_connection.get("database", None)
                 print('DATABASE:', database)
-                page.client_storage.set("database_storage", database)
+                await page.client_storage.set_async("database_storage", database)
                 main_database = database_connection.get("/", None)
-                page.client_storage.set("main_database", main_database)
+                await page.client_storage.set_async("main_database", main_database)
                 print('Connected!')
             except:
                 alert_conn_start()
                 print("Fail connection!")
-            check_storage_main()
+            await check_storage_main()
 
-    def check_storage_main():
-        check_cherg_main()
+    async def check_storage_main():
+        await check_cherg_main()
         current_time = datetime.now().time()
-        storage_info = storage()
+        storage_info = await page.client_storage.get_async("number")
         cherg = check_cherg(storage_info)
-        main_database = page.client_storage.get("main_database")
-        one_check = page.client_storage.get("one")
-        two_check = page.client_storage.get("two")
-        three_check = page.client_storage.get("three")
-        four_check = page.client_storage.get("four")
-        five_check = page.client_storage.get("five")
-        six_check = page.client_storage.get("six")
-        if page.client_storage.get("database_storage") == 1:
+        main_database = await page.client_storage.get_async("main_database")
+        one_check = await page.client_storage.get_async("one")
+        two_check = await page.client_storage.get_async("two")
+        three_check = await page.client_storage.get_async("three")
+        four_check = await page.client_storage.get_async("four")
+        five_check = await page.client_storage.get_async("five")
+        six_check = await page.client_storage.get_async("six")
+        if await page.client_storage.get_async("database_storage") == 1:
             day_num_one = db1_day_num_one
             day_num_two = db1_day_num_two
             day_num_three = db1_day_num_three
             day_num_four = db1_day_num_four
             day_num_five = db1_day_num_five
             day_num_six = db1_day_num_six
-        if page.client_storage.get("database_storage") == 2:
+        if await page.client_storage.get_async("database_storage") == 2:
             day_num_one = db2_day_num_one
             day_num_two = db2_day_num_two
             day_num_three = db2_day_num_three
@@ -151,12 +152,12 @@ def main(page: Page):
 
         result_one = main_database.get(f"{cherg}").get(f"{day_num_one}")
         if result_one == None:
-            page.client_storage.remove("one")
+            await page.client_storage.remove_async("one")
             time_now_1.visible = False
             print("One not found!")
         else:
-            page.client_storage.set("one", result_one)
-            one_check = page.client_storage.get("one")
+            await page.client_storage.set_async("one", result_one)
+            one_check = await page.client_storage.get_async("one")
             try:
                 start_time, end_time = one_check.split('-')
                 time_start = datetime.strptime(start_time, '%H:%M').time()
@@ -164,7 +165,7 @@ def main(page: Page):
                 if end_time == '23:59':
                     one = f'{start_time}-24:00'
                 else:
-                    one = page.client_storage.get("one")
+                    one = await page.client_storage.get_async("one")
                 time_now_1.visible = True
                 if time_end <= current_time:
                     time_now_1.bgcolor = colors.GREY_400
@@ -222,7 +223,7 @@ def main(page: Page):
                 page.update()
                 print("One found!")
             except:
-                one = page.client_storage.get("one")
+                one = await page.client_storage.get_async("one")
                 time_now_1.visible = True
                 time_now_1.bgcolor = '#ffcc66'
                 time_now_1.content = Row(
@@ -244,19 +245,19 @@ def main(page: Page):
                 print("Connection is not forecast!")
         result_two = main_database.get(f"{cherg}").get(f"{day_num_two}")
         if result_two == None:
-            page.client_storage.remove("two")
+            await page.client_storage.remove_async("two")
             time_now_2.visible = False
             print("Two not found!")
         else:
-            page.client_storage.set("two", result_two)
-            two_check = page.client_storage.get("two")
+            await page.client_storage.set_async("two", result_two)
+            two_check = await page.client_storage.get_async("two")
             start_time, end_time = two_check.split('-')
             time_start = datetime.strptime(start_time, '%H:%M').time()
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if end_time == '23:59':
                 two = f'{start_time}-24:00'
             else:
-                two = page.client_storage.get("two")
+                two = await page.client_storage.get_async("two")
             time_now_2.visible = True
             if time_end <= current_time:
                 time_now_2.bgcolor = colors.GREY_400
@@ -316,19 +317,19 @@ def main(page: Page):
 
         result_three = main_database.get(f"{cherg}").get(f"{day_num_three}")
         if result_three == None:
-            page.client_storage.remove("three")
+            await page.client_storage.remove_async("three")
             time_now_3.visible = False
             print("Three not found!")
         else:
-            page.client_storage.set("three", result_three)
-            three_check = page.client_storage.get("three")
+            await page.client_storage.set_async("three", result_three)
+            three_check = await page.client_storage.get_async("three")
             start_time, end_time = three_check.split('-')
             time_start = datetime.strptime(start_time, '%H:%M').time()
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if end_time == '23:59':
                 three = f'{start_time}-24:00'
             else:
-                three = page.client_storage.get("three")
+                three = await page.client_storage.get_async("three")
             time_now_3.visible = True
             if time_end <= current_time:
                 time_now_3.bgcolor = colors.GREY_400
@@ -388,19 +389,19 @@ def main(page: Page):
 
         result_four = main_database.get(f"{cherg}").get(f"{day_num_four}")
         if result_four == None:
-            page.client_storage.remove("four")
+            await page.client_storage.remove_async("four")
             time_now_4.visible = False
             print("Four not found!")
         else:
-            page.client_storage.set("four", result_four)
-            four_check = page.client_storage.get("four")
+            await page.client_storage.set_async("four", result_four)
+            four_check = await page.client_storage.get_async("four")
             start_time, end_time = four_check.split('-')
             time_start = datetime.strptime(start_time, '%H:%M').time()
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if end_time == '23:59':
                 four = f'{start_time}-24:00'
             else:
-                four = page.client_storage.get("four")
+                four = await page.client_storage.get_async("four")
             time_now_4.visible = True
             if time_end <= current_time:
                 time_now_4.bgcolor = colors.GREY_400
@@ -460,19 +461,19 @@ def main(page: Page):
 
         result_five = main_database.get(f"{cherg}").get(f"{day_num_five}")
         if result_five == None:
-            page.client_storage.remove("five")
+            await page.client_storage.remove_async("five")
             time_now_5.visible = False
             print("Five not found!")
         else:
-            page.client_storage.set("five", result_five)
-            five_check = page.client_storage.get("five")
+            await page.client_storage.set_async("five", result_five)
+            five_check = await page.client_storage.get_async("five")
             start_time, end_time = five_check.split('-')
             time_start = datetime.strptime(start_time, '%H:%M').time()
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if end_time == '23:59':
                 five = f'{start_time}-24:00'
             else:
-                five = page.client_storage.get("five")
+                five = await page.client_storage.get_async("five")
             time_now_5.visible = True
             if time_end <= current_time:
                 time_now_5.bgcolor = colors.GREY_400
@@ -532,19 +533,19 @@ def main(page: Page):
 
         result_six = main_database.get(f"{cherg}").get(f"{day_num_six}")
         if result_six == None:
-            page.client_storage.remove("six")
+            await page.client_storage.remove_async("six")
             time_now_6.visible = False
             print("Six not found!")
         else:
-            page.client_storage.set("six", result_six)
-            six_check = page.client_storage.get("six")
+            await page.client_storage.set_async("six", result_six)
+            six_check = await page.client_storage.get_async("six")
             start_time, end_time = six_check.split('-')
             time_start = datetime.strptime(start_time, '%H:%M').time()
             time_end = datetime.strptime(end_time, '%H:%M').time()
             if end_time == '23:59':
                 six = f'{start_time}-24:00'
             else:
-                six = page.client_storage.get("six")
+                six = await page.client_storage.get_async("six")
             time_now_6.visible = True
             if time_end <= current_time:
                 time_now_6.bgcolor = colors.GREY_400
@@ -626,12 +627,8 @@ def main(page: Page):
         except:
             print("All time check is False!")
         page.update()
-        get_time_tomorrow()
-        get_time_after_tomorrow()
-
-    def storage():
-        storage = page.client_storage.get("number")
-        return storage
+        await get_time_tomorrow()
+        await get_time_after_tomorrow()
 
     def check_time_interval(time_interval):
         current_time = datetime.now().time()
@@ -667,18 +664,18 @@ def main(page: Page):
         alert_first_conn.open = True
         page.update()
 
-    def get_time_tomorrow():
-        storage_info = storage()
+    async def get_time_tomorrow():
+        storage_info = await page.client_storage.get_async("number")
         cherg = check_cherg(storage_info)
-        main_database = page.client_storage.get("main_database")
-        if page.client_storage.get("database_storage") == 1:
+        main_database = await page.client_storage.get_async("main_database")
+        if await page.client_storage.get_async("database_storage") == 1:
             day_tomorrow_one = db1_day_tomorrow_one
             day_tomorrow_two = db1_day_tomorrow_two
             day_tomorrow_three = db1_day_tomorrow_three
             day_tomorrow_four = db1_day_tomorrow_four
             day_tomorrow_five = db1_day_tomorrow_five
             day_tomorrow_six = db1_day_tomorrow_six
-        if page.client_storage.get("database_storage") == 2:
+        if await page.client_storage.get_async("database_storage") == 2:
             day_tomorrow_one = db2_day_tomorrow_one
             day_tomorrow_two = db2_day_tomorrow_two
             day_tomorrow_three = db2_day_tomorrow_three
@@ -688,18 +685,18 @@ def main(page: Page):
 
         result_one = main_database.get(f"{cherg}").get(f"{day_tomorrow_one}")
         if result_one == None:
-            page.client_storage.remove("one_tomorrow")
+            await page.client_storage.remove_async("one_tomorrow")
             time_tomorrow_1.visible = False
             print("One_Tomorrow not found!")
         else:
-            page.client_storage.set("one_tomorrow", result_one)
-            one_check = page.client_storage.get("one_tomorrow")
+            await page.client_storage.set_async("one_tomorrow", result_one)
+            one_check = await page.client_storage.get_async("one_tomorrow")
             try:
                 start_time, end_time = one_check.split('-')
                 if end_time == '23:59':
                     one = f'{start_time}-24:00'
                 else:
-                    one = page.client_storage.get("one_tomorrow")
+                    one = await page.client_storage.get_async("one_tomorrow")
                 time_tomorrow_1.visible = True
                 time_tomorrow_1.content = Text(
                     one,
@@ -711,7 +708,7 @@ def main(page: Page):
                 page.update()
                 print("One_Tomorrow found!")
             except:
-                one = page.client_storage.get("one_tomorrow")
+                one = await page.client_storage.get_async("one_tomorrow")
                 time_tomorrow_1.visible = True
                 time_tomorrow_1.content = Row(
                     wrap=True,
@@ -733,17 +730,17 @@ def main(page: Page):
 
         result_two = main_database.get(f"{cherg}").get(f"{day_tomorrow_two}")
         if result_two == None:
-            page.client_storage.remove("two_tomorrow")
+            await page.client_storage.remove_async("two_tomorrow")
             time_tomorrow_2.visible = False
             print("Two_Tomorrow not found!")
         else:
-            page.client_storage.set("two_tomorrow", result_two)
-            two_check = page.client_storage.get("two_tomorrow")
+            await page.client_storage.set_async("two_tomorrow", result_two)
+            two_check = await page.client_storage.get_async("two_tomorrow")
             start_time, end_time = two_check.split('-')
             if end_time == '23:59':
                 two = f'{start_time}-24:00'
             else:
-                two = page.client_storage.get("two_tomorrow")
+                two = await page.client_storage.get_async("two_tomorrow")
             time_tomorrow_2.visible = True
             time_tomorrow_2.content = Text(
                 two,
@@ -758,17 +755,17 @@ def main(page: Page):
         result_three = main_database.get(
             f"{cherg}").get(f"{day_tomorrow_three}")
         if result_three == None:
-            page.client_storage.remove("three_tomorrow")
+            await page.client_storage.remove_async("three_tomorrow")
             time_tomorrow_3.visible = False
             print("Three_Tomorrow not found!")
         else:
-            page.client_storage.set("three_tomorrow", result_three)
-            three_check = page.client_storage.get("three_tomorrow")
+            await page.client_storage.set_async("three_tomorrow", result_three)
+            three_check = await page.client_storage.get_async("three_tomorrow")
             start_time, end_time = three_check.split('-')
             if end_time == '23:59':
                 three = f'{start_time}-24:00'
             else:
-                three = page.client_storage.get("three_tomorrow")
+                three = await page.client_storage.get_async("three_tomorrow")
             time_tomorrow_3.visible = True
             time_tomorrow_3.content = Text(
                 three,
@@ -782,17 +779,17 @@ def main(page: Page):
 
         result_four = main_database.get(f"{cherg}").get(f"{day_tomorrow_four}")
         if result_four == None:
-            page.client_storage.remove("four_tomorrow")
+            await page.client_storage.remove_async("four_tomorrow")
             time_tomorrow_4.visible = False
             print("Four_Tomorrow not found!")
         else:
-            page.client_storage.set("four_tomorrow", result_four)
-            four_check = page.client_storage.get("four_tomorrow")
+            await page.client_storage.set_async("four_tomorrow", result_four)
+            four_check = await page.client_storage.get_async("four_tomorrow")
             start_time, end_time = four_check.split('-')
             if end_time == '23:59':
                 four = f'{start_time}-24:00'
             else:
-                four = page.client_storage.get("four_tomorrow")
+                four = await page.client_storage.get_async("four_tomorrow")
             time_tomorrow_4.visible = True
             time_tomorrow_4.content = Text(
                 four,
@@ -806,17 +803,17 @@ def main(page: Page):
 
         result_five = main_database.get(f"{cherg}").get(f"{day_tomorrow_five}")
         if result_five == None:
-            page.client_storage.remove("five_tomorrow")
+            await page.client_storage.remove_async("five_tomorrow")
             time_tomorrow_5.visible = False
             print("Five_Tomorrow not found!")
         else:
-            page.client_storage.set("five_tomorrow", result_five)
-            five_check = page.client_storage.get("five_tomorrow")
+            await page.client_storage.set_async("five_tomorrow", result_five)
+            five_check = await page.client_storage.get_async("five_tomorrow")
             start_time, end_time = five_check.split('-')
             if end_time == '23:59':
                 five = f'{start_time}-24:00'
             else:
-                five = page.client_storage.get("five_tomorrow")
+                five = await page.client_storage.get_async("five_tomorrow")
             time_tomorrow_5.visible = True
             time_tomorrow_5.content = Text(
                 five,
@@ -831,17 +828,17 @@ def main(page: Page):
             result_six = main_database.get(
                 f"{cherg}").get(f"{day_tomorrow_six}")
             if result_six == None:
-                page.client_storage.remove("six_tomorrow")
+                await page.client_storage.remove_async("six_tomorrow")
                 time_tomorrow_6.visible = False
                 print("Six_Tomorrow not found!")
             else:
-                page.client_storage.set("six_tomorrow", result_six)
-                six_check = page.client_storage.get("six_tomorrow")
+                await page.client_storage.set_async("six_tomorrow", result_six)
+                six_check = await page.client_storage.get_async("six_tomorrow")
                 start_time, end_time = six_check.split('-')
                 if end_time == '23:59':
                     six = f'{start_time}-24:00'
                 else:
-                    six = page.client_storage.get("six_tomorrow")
+                    six = await page.client_storage.get_async("six_tomorrow")
                 time_tomorrow_6.visible = True
                 time_tomorrow_6.content = Text(
                     six,
@@ -855,18 +852,18 @@ def main(page: Page):
 
         page.update()
 
-    def get_time_after_tomorrow():
-        storage_info = storage()
+    async def get_time_after_tomorrow():
+        storage_info = await page.client_storage.get_async("number")
         cherg = check_cherg(storage_info)
-        main_database = page.client_storage.get("main_database")
-        if page.client_storage.get("database_storage") == 1:
+        main_database = await page.client_storage.get_async("main_database")
+        if await page.client_storage.get_async("database_storage") == 1:
             day_after_tomorrow_one = db1_day_after_tomorrow_one
             day_after_tomorrow_two = db1_day_after_tomorrow_two
             day_after_tomorrow_three = db1_day_after_tomorrow_three
             day_after_tomorrow_four = db1_day_after_tomorrow_four
             day_after_tomorrow_five = db1_day_after_tomorrow_five
             day_after_tomorrow_six = db1_day_after_tomorrow_six
-        if page.client_storage.get("database_storage") == 2:
+        if await page.client_storage.get_async("database_storage") == 2:
             day_after_tomorrow_one = db2_day_after_tomorrow_one
             day_after_tomorrow_two = db2_day_after_tomorrow_two
             day_after_tomorrow_three = db2_day_after_tomorrow_three
@@ -877,18 +874,18 @@ def main(page: Page):
         result_one = main_database.get(f"{cherg}").get(
             f"{day_after_tomorrow_one}")
         if result_one == None:
-            page.client_storage.remove("one_after_tomorrow")
+            await page.client_storage.remove_async("one_after_tomorrow")
             time_after_tomorrow_1.visible = False
             print("One_After_Tomorrow not found!")
         else:
-            page.client_storage.set("one_after_tomorrow", result_one)
-            one_check = page.client_storage.get("one_after_tomorrow")
+            await page.client_storage.set_async("one_after_tomorrow", result_one)
+            one_check = await page.client_storage.get_async("one_after_tomorrow")
             try:
                 start_time, end_time = one_check.split('-')
                 if end_time == '23:59':
                     one = f'{start_time}-24:00'
                 else:
-                    one = page.client_storage.get("one_after_tomorrow")
+                    one = await page.client_storage.get_async("one_after_tomorrow")
                 time_after_tomorrow_1.visible = True
                 time_after_tomorrow_1.content = Text(
                     one,
@@ -900,7 +897,7 @@ def main(page: Page):
                 page.update()
                 print("One_After_Tomorrow found!")
             except:
-                one = page.client_storage.get("one_after_tomorrow")
+                one = await page.client_storage.get_async("one_after_tomorrow")
                 time_after_tomorrow_1.visible = True
                 time_after_tomorrow_1.content = Row(
                     wrap=True,
@@ -923,17 +920,17 @@ def main(page: Page):
         result_two = main_database.get(f"{cherg}").get(
             f"{day_after_tomorrow_two}")
         if result_two == None:
-            page.client_storage.remove("two_after_tomorrow")
+            await page.client_storage.remove_async("two_after_tomorrow")
             time_after_tomorrow_2.visible = False
             print("Two_After_Tomorrow not found!")
         else:
-            page.client_storage.set("two_after_tomorrow", result_two)
-            two_check = page.client_storage.get("two_after_tomorrow")
+            await page.client_storage.set_async("two_after_tomorrow", result_two)
+            two_check = await page.client_storage.get_async("two_after_tomorrow")
             start_time, end_time = two_check.split('-')
             if end_time == '23:59':
                 two = f'{start_time}-24:00'
             else:
-                two = page.client_storage.get("two_after_tomorrow")
+                two = await page.client_storage.get_async("two_after_tomorrow")
             time_after_tomorrow_2.visible = True
             time_after_tomorrow_2.content = Text(
                 two,
@@ -948,17 +945,17 @@ def main(page: Page):
         result_three = main_database.get(f"{cherg}").get(
             f"{day_after_tomorrow_three}")
         if result_three == None:
-            page.client_storage.remove("three_after_tomorrow")
+            await page.client_storage.remove_async("three_after_tomorrow")
             time_after_tomorrow_3.visible = False
             print("Three_After_Tomorrow not found!")
         else:
-            page.client_storage.set("three_after_tomorrow", result_three)
-            three_check = page.client_storage.get("three_after_tomorrow")
+            await page.client_storage.set_async("three_after_tomorrow", result_three)
+            three_check = await page.client_storage.get_async("three_after_tomorrow")
             start_time, end_time = three_check.split('-')
             if end_time == '23:59':
                 three = f'{start_time}-24:00'
             else:
-                three = page.client_storage.get("three_after_tomorrow")
+                three = await page.client_storage.get_async("three_after_tomorrow")
             time_after_tomorrow_3.visible = True
             time_after_tomorrow_3.content = Text(
                 three,
@@ -973,17 +970,17 @@ def main(page: Page):
         result_four = main_database.get(f"{cherg}").get(
             f"{day_after_tomorrow_four}")
         if result_four == None:
-            page.client_storage.remove("four_after_tomorrow")
+            await page.client_storage.remove_async("four_after_tomorrow")
             time_after_tomorrow_4.visible = False
             print("Four_After_Tomorrow not found!")
         else:
-            page.client_storage.set("four_after_tomorrow", result_four)
-            four_check = page.client_storage.get("four_after_tomorrow")
+            await page.client_storage.set_async("four_after_tomorrow", result_four)
+            four_check = await page.client_storage.get_async("four_after_tomorrow")
             start_time, end_time = four_check.split('-')
             if end_time == '23:59':
                 four = f'{start_time}-24:00'
             else:
-                four = page.client_storage.get("four_after_tomorrow")
+                four = await page.client_storage.get_async("four_after_tomorrow")
             time_after_tomorrow_4.visible = True
             time_after_tomorrow_4.content = Text(
                 four,
@@ -998,17 +995,17 @@ def main(page: Page):
         result_five = main_database.get(f"{cherg}").get(
             f"{day_after_tomorrow_five}")
         if result_five == None:
-            page.client_storage.remove("five_after_tomorrow")
+            await page.client_storage.remove_async("five_after_tomorrow")
             time_after_tomorrow_5.visible = False
             print("Five_After_Tomorrow not found!")
         else:
-            page.client_storage.set("five_after_tomorrow", result_five)
-            five_check = page.client_storage.get("five_after_tomorrow")
+            await page.client_storage.set_async("five_after_tomorrow", result_five)
+            five_check = await page.client_storage.get_async("five_after_tomorrow")
             start_time, end_time = five_check.split('-')
             if end_time == '23:59':
                 five = f'{start_time}-24:00'
             else:
-                five = page.client_storage.get("five_after_tomorrow")
+                five = await page.client_storage.get_async("five_after_tomorrow")
             time_after_tomorrow_5.visible = True
             time_after_tomorrow_5.content = Text(
                 five,
@@ -1023,17 +1020,17 @@ def main(page: Page):
         result_six = main_database.get(f"{cherg}").get(
             f"{day_after_tomorrow_six}")
         if result_six == None:
-            page.client_storage.remove("six_after_tomorrow")
+            await page.client_storage.remove_async("six_after_tomorrow")
             time_after_tomorrow_6.visible = False
             print("Six_After_Tomorrow not found!")
         else:
-            page.client_storage.set("six_after_tomorrow", result_six)
-            six_check = page.client_storage.get("six_after_tomorrow")
+            await page.client_storage.set_async("six_after_tomorrow", result_six)
+            six_check = await page.client_storage.get_async("six_after_tomorrow")
             start_time, end_time = six_check.split('-')
             if end_time == '23:59':
                 six = f'{start_time}-24:00'
             else:
-                six = page.client_storage.get("six_after_tomorrow")
+                six = await page.client_storage.get_async("six_after_tomorrow")
             time_after_tomorrow_6.visible = True
             time_after_tomorrow_6.content = Text(
                 six,
@@ -1436,11 +1433,11 @@ def main(page: Page):
     }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ThemeMode.LIGHT
-    page.window_height = 700
-    page.window_width = 400
+    page.window.height = 700
+    page.window.width = 400
     page.padding = 0
     # page.window_center()
-    page.window_resizable = True
+    page.window.resizable = True
     page.navigation_bar = NavigationBar(
         surface_tint_color='#ff6666',
         indicator_color='#ffcc66',
@@ -1449,11 +1446,11 @@ def main(page: Page):
         on_change=on_tab,
         selected_index=1,
         destinations=[
-            NavigationDestination(
+            NavigationBarDestination(
                 icon=icons.LIST_ROUNDED, label='Черги',),
-            NavigationDestination(
+            NavigationBarDestination(
                 icon=icons.HOME_ROUNDED, label='Головна'),
-            NavigationDestination(
+            NavigationBarDestination(
                 icon=icons.INFO, selected_icon=icons.INFO_OUTLINE, label='Інформація')
         ]
     )
@@ -1464,14 +1461,16 @@ def main(page: Page):
     page.overlay.append(bs)
     page.overlay.append(alert_conn)
     page.overlay.append(alert_first_conn)
-    # page.window_title_bar_hidden = True
-    # page.window_title_bar_buttons_hidden = True
+    # page.window.title_bar_hidden = True
+    # page.window.title_bar_buttons_hidden = True
+    await check_cherg_main()
+    page.run_task(check_storage)
     page.update()
-    check_storage()
+
     while True:
-        time.sleep(60)
+        await asyncio.sleep(60)
         try:
-            check_storage_main()
+            await check_storage()
             print("Update Complete!")
         except:
             print("Update Not Complete!")
