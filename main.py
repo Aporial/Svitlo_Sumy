@@ -12,6 +12,7 @@ from time_after_tomorrow import time_after_tomorrow_1, time_after_tomorrow_2, ti
 from datetime import datetime
 from firebase import firebase
 import time
+from functions import today
 
 
 def main(page: Page):
@@ -95,6 +96,8 @@ def main(page: Page):
                 page.client_storage.set("database_storage", database)
                 main_database = database_connection.get("/", None)
                 page.client_storage.set("main_database", main_database)
+                time = datetime.now().strftime("%d.%m.%Y о %H:%M")
+                page.client_storage.set('time', time)
                 open_list()
                 print('Connected!')
             except:
@@ -116,6 +119,8 @@ def main(page: Page):
                 page.client_storage.set("database_storage", database)
                 main_database = database_connection.get("/", None)
                 page.client_storage.set("main_database", main_database)
+                time = datetime.now().strftime("%d.%m.%Y о %H:%M")
+                page.client_storage.set('time', time)
                 print('Connected!')
             except:
                 alert_conn_start()
@@ -1056,13 +1061,28 @@ def main(page: Page):
         )
         page.update()
 
+    def refresh():
+        current_time = datetime.now().strftime("%H:%M")
+        refresh_bar.content = Text(
+            f"Оновлено о {current_time}",
+            size=18,
+            color='black',
+            text_align='center',
+            font_family="Golos Text",
+            weight="w500",
+        )
+        refresh_bar.open = True
+        page.update()
+
     alert_conn = SnackBar(
         behavior=SnackBarBehavior.FLOATING,
         elevation=15,
         duration=5000,
         bgcolor='#ffcc66',
         content=Text(
-            "Немає доступу до інтернету або слабке з'єднання. Використовується інформація, яка була завантажена в минуле відкриття застосунку!",
+            f"Немає доступу до Інтернету. Останнє оновлення {
+                page.client_storage.get('time')}",
+            size=16,
             color='black',
             text_align='center',
             font_family="Golos Text",
@@ -1076,7 +1096,23 @@ def main(page: Page):
         duration=5000,
         bgcolor='#ffcc66',
         content=Text(
-            "Немає доступу до інтернету або слабке з'єднання. Для оновлення інформації потрібне підключення до інтернету!",
+            "Немає доступу до Інтернету. Для оновлення інформації потрібне підключення до Інтернету!",
+            size=16,
+            color='black',
+            text_align='center',
+            font_family="Golos Text",
+            weight="w500",
+        )
+    )
+
+    refresh_bar = SnackBar(
+        behavior=SnackBarBehavior.FLOATING,
+        elevation=15,
+        duration=3000,
+        bgcolor='#ffcc66',
+        content=Text(
+            # f"Оновлено о ",
+            size=18,
             color='black',
             text_align='center',
             font_family="Golos Text",
@@ -1464,14 +1500,16 @@ def main(page: Page):
     page.overlay.append(bs)
     page.overlay.append(alert_conn)
     page.overlay.append(alert_first_conn)
+    page.overlay.append(refresh_bar)
     # page.window_title_bar_hidden = True
     # page.window_title_bar_buttons_hidden = True
     page.update()
     check_storage()
     while True:
-        time.sleep(60)
+        time.sleep(30)
         try:
-            check_storage_main()
+            check_storage()
+            refresh()
             print("Update Complete!")
         except:
             print("Update Not Complete!")
