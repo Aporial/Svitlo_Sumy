@@ -666,7 +666,7 @@ def main(page: Page):
     def alert_conn_start():
         time = page.client_storage.get('time')
         alert_conn.content = Text(
-            f"Немає доступу до Інтернету. Останнє оновлення {time}",
+            f"Немає доступу до Інтернету. Останнє оновлення: {time}",
             size=16,
             color='black',
             text_align='center',
