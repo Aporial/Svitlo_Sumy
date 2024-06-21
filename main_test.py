@@ -13,9 +13,39 @@ from datetime import datetime
 import time
 import urllib.request
 import json
+from firebase import firebase
 
 
 def main(page: Page):
+
+    def source_github():
+        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
+            main_database = json.load(url)
+            source_check = main_database.get("source")
+            if source_check == 'github':
+                print('Source:', source_check)
+                page.client_storage.set("source", source_check)
+                database = main_database.get("database")
+                print('DATABASE:', database)
+                page.client_storage.set("database_storage", database)
+                page.client_storage.set("main_database", main_database)
+            if source_check == 'firebase':
+                source_firebase()
+
+    def source_firebase():
+        database_connection = firebase.FirebaseApplication(
+            'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
+        main_database = database_connection.get("/", None)
+        source_check = main_database.get("source")
+        if source_check == 'firebase':
+            print('Source:', source_check)
+            page.client_storage.set("source", source_check)
+            database = main_database.get("database")
+            print('DATABASE:', database)
+            page.client_storage.set("database_storage", database)
+            page.client_storage.set("main_database", main_database)
+        if source_check == 'github':
+            source_github()
 
     def check_cherg_main():
         if storage() == None:
@@ -89,12 +119,15 @@ def main(page: Page):
         if page.client_storage.get("number") == None:
             try:
                 check_cherg_main()
-                with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
-                    main_database = json.load(url)
-                database = main_database.get("database")
-                print('DATABASE:', database)
-                page.client_storage.set("database_storage", database)
-                page.client_storage.set("main_database", main_database)
+                if page.client_storage.get("source") == None:
+                    try:
+                        source_github()
+                    except:
+                        source_firebase()
+                if page.client_storage.get("source") == "github":
+                    source_github()
+                if page.client_storage.get("source") == "firebase":
+                    source_firebase()
                 time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
                 page.client_storage.set('time', time)
                 open_list()
@@ -111,12 +144,15 @@ def main(page: Page):
         else:
             try:
                 check_cherg_main()
-                with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
-                    main_database = json.load(url)
-                database = main_database.get("database")
-                print('DATABASE:', database)
-                page.client_storage.set("database_storage", database)
-                page.client_storage.set("main_database", main_database)
+                if page.client_storage.get("source") == None:
+                    try:
+                        source_github()
+                    except:
+                        source_firebase()
+                if page.client_storage.get("source") == "github":
+                    source_github()
+                if page.client_storage.get("source") == "firebase":
+                    source_firebase()
                 time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
                 page.client_storage.set('time', time)
                 print('Connected!')
@@ -128,12 +164,15 @@ def main(page: Page):
     def check_storage_refresh():
         try:
             check_cherg_main()
-            with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
-                main_database = json.load(url)
-            database = main_database.get("database")
-            print('DATABASE:', database)
-            page.client_storage.set("database_storage", database)
-            page.client_storage.set("main_database", main_database)
+            if page.client_storage.get("source") == None:
+                try:
+                    source_github()
+                except:
+                    source_firebase()
+            if page.client_storage.get("source") == "github":
+                source_github()
+            if page.client_storage.get("source") == "firebase":
+                source_firebase()
             time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
             page.client_storage.set('time', time)
             refresh()

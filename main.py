@@ -90,9 +90,6 @@ def main(page: Page):
                 check_cherg_main()
                 database_connection = firebase.FirebaseApplication(
                     'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
-                # database = database_connection.get("database", None)
-                # print('DATABASE:', database)
-                # page.client_storage.set("database_storage", database)
                 main_database = database_connection.get("/", None)
                 database = main_database.get("database")
                 print('DATABASE:', database)
@@ -116,9 +113,6 @@ def main(page: Page):
                 check_cherg_main()
                 database_connection = firebase.FirebaseApplication(
                     'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
-                # database = database_connection.get("database", None)
-                # print('DATABASE:', database)
-                # page.client_storage.set("database_storage", database)
                 main_database = database_connection.get("/", None)
                 database = main_database.get("database")
                 print('DATABASE:', database)
