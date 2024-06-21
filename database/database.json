@@ -84,5 +84,5 @@
     "two_4": "20:00-22:00"
   },
   "database": 2,
-  "source": "firebase"
+  "source": "github"
 }
