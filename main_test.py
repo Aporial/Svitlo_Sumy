@@ -121,9 +121,9 @@ def main(page: Page):
                 check_cherg_main()
                 if page.client_storage.get("source") == None:
                     try:
-                        source_github()
-                    except:
                         source_firebase()
+                    except:
+                        source_github()
                 if page.client_storage.get("source") == "github":
                     source_github()
                 if page.client_storage.get("source") == "firebase":
@@ -146,9 +146,9 @@ def main(page: Page):
                 check_cherg_main()
                 if page.client_storage.get("source") == None:
                     try:
-                        source_github()
-                    except:
                         source_firebase()
+                    except:
+                        source_github()
                 if page.client_storage.get("source") == "github":
                     source_github()
                 if page.client_storage.get("source") == "firebase":
