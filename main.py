@@ -10,11 +10,42 @@ from time_now import time_now_1, time_now_2, time_now_3, time_now_4, time_now_5,
 from time_tomorrow import time_tomorrow_1, time_tomorrow_2, time_tomorrow_3, time_tomorrow_4, time_tomorrow_5, time_tomorrow_6
 from time_after_tomorrow import time_after_tomorrow_1, time_after_tomorrow_2, time_after_tomorrow_3, time_after_tomorrow_4, time_after_tomorrow_5, time_after_tomorrow_6
 from datetime import datetime
-from firebase import firebase
 import time
+import urllib.request
+import json
+from firebase import firebase
 
 
 def main(page: Page):
+
+    def source_github():
+        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
+            main_database = json.load(url)
+            source_check = main_database.get("source")
+            if source_check == 'github':
+                print('Source:', source_check)
+                page.client_storage.set("source", source_check)
+                database = main_database.get("database")
+                print('DATABASE:', database)
+                page.client_storage.set("database_storage", database)
+                page.client_storage.set("main_database", main_database)
+            if source_check == 'firebase':
+                source_firebase()
+
+    def source_firebase():
+        database_connection = firebase.FirebaseApplication(
+            'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
+        main_database = database_connection.get("/", None)
+        source_check = main_database.get("source")
+        if source_check == 'firebase':
+            print('Source:', source_check)
+            page.client_storage.set("source", source_check)
+            database = main_database.get("database")
+            print('DATABASE:', database)
+            page.client_storage.set("database_storage", database)
+            page.client_storage.set("main_database", main_database)
+        if source_check == 'github':
+            source_github()
 
     def check_cherg_main():
         if storage() == None:
@@ -88,14 +119,16 @@ def main(page: Page):
         if page.client_storage.get("number") == None:
             try:
                 check_cherg_main()
-                database_connection = firebase.FirebaseApplication(
-                    'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
-                main_database = database_connection.get("/", None)
-                database = main_database.get("database")
-                print('DATABASE:', database)
-                page.client_storage.set("database_storage", database)
-                page.client_storage.set("main_database", main_database)
-                time = datetime.now().strftime("%d.%m.%Y о %H:%M")
+                if page.client_storage.get("source") == None:
+                    try:
+                        source_firebase()
+                    except:
+                        source_github()
+                if page.client_storage.get("source") == "github":
+                    source_github()
+                if page.client_storage.get("source") == "firebase":
+                    source_firebase()
+                time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
                 page.client_storage.set('time', time)
                 open_list()
                 print('Connected!')
@@ -111,20 +144,43 @@ def main(page: Page):
         else:
             try:
                 check_cherg_main()
-                database_connection = firebase.FirebaseApplication(
-                    'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
-                main_database = database_connection.get("/", None)
-                database = main_database.get("database")
-                print('DATABASE:', database)
-                page.client_storage.set("database_storage", database)
-                page.client_storage.set("main_database", main_database)
-                time = datetime.now().strftime("%d.%m.%Y о %H:%M")
+                if page.client_storage.get("source") == None:
+                    try:
+                        source_firebase()
+                    except:
+                        source_github()
+                if page.client_storage.get("source") == "github":
+                    source_github()
+                if page.client_storage.get("source") == "firebase":
+                    source_firebase()
+                time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
                 page.client_storage.set('time', time)
                 print('Connected!')
             except:
                 alert_conn_start()
                 print("Fail connection!")
             check_storage_main()
+
+    def check_storage_refresh():
+        try:
+            check_cherg_main()
+            if page.client_storage.get("source") == None:
+                try:
+                    source_github()
+                except:
+                    source_firebase()
+            if page.client_storage.get("source") == "github":
+                source_github()
+            if page.client_storage.get("source") == "firebase":
+                source_firebase()
+            time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
+            page.client_storage.set('time', time)
+            refresh()
+            print('Connected!')
+        except:
+            alert_conn_start()
+            print("Fail connection!")
+        check_storage_main()
 
     def check_storage_main():
         check_cherg_main()
@@ -1514,8 +1570,7 @@ def main(page: Page):
     while True:
         time.sleep(30)
         try:
-            check_storage()
-            refresh()
+            check_storage_refresh()
             print("Update Complete!")
         except:
             print("Update Not Complete!")
