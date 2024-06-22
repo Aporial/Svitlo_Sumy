@@ -2,6 +2,7 @@
 /dist
 /.vscode
 /__pycache__
+for_telegram/__pycache__
 Svitlo_Sumy.spec
 main.spec
 Svitlo Sumy.spec
