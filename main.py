@@ -48,17 +48,18 @@ def main(page: Page):
             source_github()
 
     def check_telegram():
-        if page.client_storage.get('telegram_open') == None:
+        if page.client_storage.get('telegram_check') == None:
             time.sleep(2)
             telegram_banner.open = True
             print("Telegram was not opened!")
-        if page.client_storage.get('telegram_open') == True:
+        if page.client_storage.get('telegram_check') == True:
             print("Telegram was opened!")
-        if page.client_storage.get('telegram_open') == False:
+        if page.client_storage.get('telegram_check') == False:
             if str(today) == page.client_storage.get('day_close'):
                 time.sleep(2)
                 telegram_banner.open = True
                 print('7 days have passed!')
+        page.update()
 
     def check_cherg_main():
         if storage() == None:
@@ -1156,12 +1157,12 @@ def main(page: Page):
         page.launch_url('https://t.me/sumy_svitlo',
                         web_window_name='Telegram')
         telegram_banner.open = False
-        page.client_storage.set('telegram_open', True)
+        page.client_storage.set('telegram_check', True)
         page.update()
 
     def close_bunner(e):
         telegram_banner.open = False
-        page.client_storage.set('telegram_open', False)
+        page.client_storage.set('telegram_check', False)
         day_close = str(seven_days)
         print(day_close)
         page.client_storage.set('day_close', day_close)
