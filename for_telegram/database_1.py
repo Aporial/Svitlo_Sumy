@@ -1,6 +1,4 @@
-
-today = 23
-
+from day import today
 
 one = [1, 7, 13, 19, 25, 31]
 two = (2, 8, 14, 20, 26)

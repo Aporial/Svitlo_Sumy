@@ -3,6 +3,8 @@ import copy
 
 cherg_container = Container(
     visible=False,
+    width=145,
+    height=60,
     shadow=BoxShadow(
         blur_radius=2,
         blur_style=ShadowBlurStyle.NORMAL,
