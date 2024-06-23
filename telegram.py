@@ -1,7 +1,8 @@
 from flet import *
 from for_telegram.chergs import *
-from database_1 import db1_day_num_one, db1_day_num_two, db1_day_num_three, db1_day_num_four, db1_day_num_five, db1_day_num_six
-from database_2 import db2_day_num_one, db2_day_num_two, db2_day_num_three, db2_day_num_four, db2_day_num_five, db2_day_num_six
+from for_telegram.day import today
+from for_telegram.database_1 import db1_day_num_one, db1_day_num_two, db1_day_num_three, db1_day_num_four, db1_day_num_five, db1_day_num_six
+from for_telegram.database_2 import db2_day_num_one, db2_day_num_two, db2_day_num_three, db2_day_num_four, db2_day_num_five, db2_day_num_six
 from firebase import firebase
 from datetime import datetime
 
@@ -16,7 +17,7 @@ def main(page: Page):
     page.client_storage.set("database_storage", database)
     page.client_storage.set("main_database", main_database)
 
-    day = datetime.now().strftime("%d.%m.%Y")
+    day = datetime.now().strftime(f"{today}.%m.%Y")
 
     def one_cherg():
         if page.client_storage.get("database_storage") == 1:
@@ -1840,6 +1841,7 @@ def main(page: Page):
         ),
         padding=15,
         content=Column(
+            alignment='center',
             controls=[
                 head,
                 Container(
