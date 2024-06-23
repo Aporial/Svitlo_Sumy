@@ -2074,8 +2074,8 @@ def main(page: Page):
             rows=[
                 line_1,
                 line_2,
-                # line_3,
-                # line_4,
+                line_3,
+                line_4,
                 # line_5,
                 # line_6
             ]
@@ -2113,6 +2113,7 @@ def main(page: Page):
     page.window_center()
     # page.window_resizable = False
     page.window_title_bar_hidden = True
+    page.window_title_bar_buttons_hidden = True
     page.add(main_container)
     one_line()
     two_line()
