@@ -4,6 +4,8 @@ today = datetime.date.today()
 tomorrow = today + datetime.timedelta(days=1)
 after_tomorrow = today + datetime.timedelta(days=2)
 
+seven_days = today + datetime.timedelta(days=7)
+
 if today.strftime('%w') == '1':
     day_of_week_today = f"Пн, {today.strftime('%d.%m')}"
 elif today.strftime('%w') == '2':
@@ -48,6 +50,7 @@ elif after_tomorrow.strftime('%w') == '6':
     day_of_week_after_tomorrow = f"Сб, {after_tomorrow.strftime('%d.%m')}"
 elif after_tomorrow.strftime('%w') == '0':
     day_of_week_after_tomorrow = f"Нд, {after_tomorrow.strftime('%d.%m')}"
+
 
 def check_cherg(e):
     if e == 1:

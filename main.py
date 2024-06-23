@@ -5,7 +5,7 @@ from database_1 import db1_day_after_tomorrow_one, db1_day_after_tomorrow_two, d
 from database_2 import db2_day_num_one, db2_day_num_two, db2_day_num_three, db2_day_num_four, db2_day_num_five, db2_day_num_six
 from database_2 import db2_day_tomorrow_one, db2_day_tomorrow_two, db2_day_tomorrow_three, db2_day_tomorrow_four, db2_day_tomorrow_five, db2_day_tomorrow_six
 from database_2 import db2_day_after_tomorrow_one, db2_day_after_tomorrow_two, db2_day_after_tomorrow_three, db2_day_after_tomorrow_four, db2_day_after_tomorrow_five, db2_day_after_tomorrow_six
-from functions import check_cherg, day_of_week_today, day_of_week_tomorrow, day_of_week_after_tomorrow
+from functions import check_cherg, day_of_week_today, day_of_week_tomorrow, day_of_week_after_tomorrow, seven_days, today
 from time_now import time_now_1, time_now_2, time_now_3, time_now_4, time_now_5, time_now_6
 from time_tomorrow import time_tomorrow_1, time_tomorrow_2, time_tomorrow_3, time_tomorrow_4, time_tomorrow_5, time_tomorrow_6
 from time_after_tomorrow import time_after_tomorrow_1, time_after_tomorrow_2, time_after_tomorrow_3, time_after_tomorrow_4, time_after_tomorrow_5, time_after_tomorrow_6
@@ -46,6 +46,19 @@ def main(page: Page):
             page.client_storage.set("main_database", main_database)
         if source_check == 'github':
             source_github()
+
+    def check_telegram():
+        if page.client_storage.get('telegram_open') == None:
+            time.sleep(2)
+            telegram_banner.open = True
+            print("Telegram was not opened!")
+        if page.client_storage.get('telegram_open') == True:
+            print("Telegram was opened!")
+        if page.client_storage.get('telegram_open') == False:
+            if str(today) == page.client_storage.get('day_close'):
+                time.sleep(2)
+                telegram_banner.open = True
+                print('7 days have passed!')
 
     def check_cherg_main():
         if storage() == None:
@@ -105,8 +118,9 @@ def main(page: Page):
         page.launch_url('https://t.me/never_find_myself',
                         web_window_name='Telegram')
 
-    def open_pdf(e):
-        page.launch_url('https://www.soe.com.ua/images/gr23-24-adr.pdf')
+    def open_telegram_channel(e):
+        page.launch_url('https://t.me/sumy_svitlo',
+                        web_window_name='Telegram')
 
     def cherg_choise(e):
         numb_cherg = e.control.data
@@ -1138,6 +1152,44 @@ def main(page: Page):
         refresh_bar.open = True
         page.update()
 
+    def open_telegram(e):
+        page.launch_url('https://t.me/sumy_svitlo',
+                        web_window_name='Telegram')
+        telegram_banner.open = False
+        page.client_storage.set('telegram_open', True)
+        page.update()
+
+    def close_bunner(e):
+        telegram_banner.open = False
+        page.client_storage.set('telegram_open', False)
+        day_close = str(seven_days)
+        print(day_close)
+        page.client_storage.set('day_close', day_close)
+        page.update()
+
+    telegram_banner = Banner(
+        elevation=5,
+        bgcolor='#ffcc66',
+        surface_tint_color=colors.BACKGROUND,
+        leading=Image(
+            src=f"/Images/telegram.svg",
+            height=40,
+            width=40,),
+        content=Text(
+            value="Запрошуємо в наш телеграм канал - Світло Суми!",
+            size=18,
+            weight='w500',
+            color=colors.BLACK,
+            font_family="Golos Text",
+        ),
+        actions=[
+            TextButton(text="Перейти", style=ButtonStyle(
+                color=colors.BLACK), on_click=open_telegram),
+            TextButton(text="Закрити", style=ButtonStyle(
+                color=colors.BLACK), on_click=close_bunner)
+        ]
+    )
+
     alert_conn = SnackBar(
         behavior=SnackBarBehavior.FLOATING,
         elevation=15,
@@ -1433,14 +1485,28 @@ def main(page: Page):
                     Divider(height=0.1, color=colors.BLACK26),
                     ElevatedButton(
                         content=Container(
-                            padding=10,
-                            content=Text(
-                                "Дізнатися свою чергу",
-                                size=18,
-                                color='black',
-                                text_align='center',
-                                font_family="Golos Text",
-                                weight="w500"
+                            # padding=10,
+                            content=Row(
+                                alignment='center',
+                                vertical_alignment='center',
+                                spacing=3,
+                                wrap=True,
+                                expand=True,
+                                controls=[
+                                    Image(
+                                        src=f"/Images/telegram.svg",
+                                        height=40,
+                                        width=40,
+                                    ),
+                                    Text(
+                                        "Світло Суми",
+                                        size=18,
+                                        color='black',
+                                        text_align='center',
+                                        font_family="Golos Text",
+                                        weight="w500"
+                                    )
+                                ]
                             )
                         ),
                         style=ButtonStyle(
@@ -1449,7 +1515,7 @@ def main(page: Page):
                         # height=50,
                         color=colors.BLACK,
                         bgcolor='#ffcc66',
-                        on_click=open_pdf
+                        on_click=open_telegram_channel
                     ),
                     Divider(height=0.1, color=colors.BLACK26),
                     TextButton(
@@ -1563,10 +1629,12 @@ def main(page: Page):
     page.overlay.append(alert_conn)
     page.overlay.append(alert_first_conn)
     page.overlay.append(refresh_bar)
+    page.overlay.append(telegram_banner)
     # page.window_title_bar_hidden = True
     # page.window_title_bar_buttons_hidden = True
     page.update()
     check_storage()
+    check_telegram()
     while True:
         time.sleep(30)
         try:
