@@ -1832,6 +1832,354 @@ def main(page: Page):
         ]
     )
 
+    chergs_table = DataTable(
+        columns=[
+            DataColumn(
+                Text(
+                    '1 черга',
+                    size=24,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+            ),
+            DataColumn(
+                Text(
+                    '2 черга',
+                    size=24,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+            ),
+            DataColumn(
+                Text(
+                    '3 черга',
+                    size=24,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+            ),
+            DataColumn(
+                Text(
+                    '4 черга',
+                    size=24,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+            ),
+            DataColumn(
+                Text(
+                    '5 черга',
+                    size=24,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+            ),
+            DataColumn(
+                Text(
+                    '6 черга',
+                    size=24,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+            )
+        ],
+        rows=[
+            DataRow(
+                cells=[
+                    DataCell(one_cherg_1),
+                    DataCell(two_cherg_1),
+                    DataCell(three_cherg_1),
+                    DataCell(four_cherg_1),
+                    DataCell(five_cherg_1),
+                    DataCell(six_cherg_1)
+                ]
+            ),
+            DataRow(
+                cells=[
+                    DataCell(one_cherg_2),
+                    DataCell(two_cherg_2),
+                    DataCell(three_cherg_2),
+                    DataCell(four_cherg_2),
+                    DataCell(five_cherg_2),
+                    DataCell(six_cherg_2)
+                ]
+            ),
+            DataRow(
+                cells=[
+                    DataCell(one_cherg_3),
+                    DataCell(two_cherg_3),
+                    DataCell(three_cherg_3),
+                    DataCell(four_cherg_3),
+                    DataCell(five_cherg_3),
+                    DataCell(six_cherg_3)
+                ]
+            ),
+            DataRow(
+                cells=[
+                    DataCell(one_cherg_4),
+                    DataCell(two_cherg_4),
+                    DataCell(three_cherg_4),
+                    DataCell(four_cherg_4),
+                    DataCell(five_cherg_4),
+                    DataCell(six_cherg_4)
+                ]
+            ),
+            DataRow(
+                cells=[
+                    DataCell(one_cherg_5),
+                    DataCell(two_cherg_5),
+                    DataCell(three_cherg_5),
+                    DataCell(four_cherg_5),
+                    DataCell(five_cherg_5),
+                    DataCell(six_cherg_5)
+                ]
+            ),
+            DataRow(
+                cells=[
+                    DataCell(one_cherg_6),
+                    DataCell(two_cherg_6),
+                    DataCell(three_cherg_6),
+                    DataCell(four_cherg_6),
+                    DataCell(five_cherg_6),
+                    DataCell(six_cherg_6)
+                ]
+            )
+        ]
+    )
+
+    chergs = Container(
+        blur=10,
+        padding=5,
+        bgcolor=colors.BLACK26,
+        border_radius=15,
+        content=Row(
+            spacing=1,
+            vertical_alignment='center',
+            alignment='center',
+            controls=[
+                Column(
+                    spacing=1,
+                    horizontal_alignment='center',
+                    # alignment='center',
+                    controls=[
+                        Text(
+                            '1 черга',
+                            size=24,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Container(
+                            alignment=alignment.center,
+                            padding=10,
+                            content=Column(
+                                scroll=ScrollMode.ADAPTIVE,
+                                alignment='center',
+                                horizontal_alignment='center',
+                                spacing=9,
+                                controls=[
+                                    one_cherg_1,
+                                    one_cherg_2,
+                                    one_cherg_3,
+                                    one_cherg_4,
+                                    one_cherg_5,
+                                    one_cherg_6,
+                                ]
+                            )
+                        )
+                    ]
+                ),
+                VerticalDivider(
+                    color=colors.BLACK,
+                    width=10,
+                ),
+                Column(
+                    spacing=1,
+                    horizontal_alignment='center',
+                    # alignment='center',
+                    controls=[
+                        Text(
+                            '2 черга',
+                            size=24,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Container(
+                            alignment=alignment.center,
+                            padding=10,
+                            content=Column(
+                                scroll=ScrollMode.ADAPTIVE,
+                                alignment='center',
+                                horizontal_alignment='center',
+                                spacing=9,
+                                controls=[
+                                    two_cherg_1,
+                                    two_cherg_2,
+                                    two_cherg_3,
+                                    two_cherg_4,
+                                    two_cherg_5,
+                                    two_cherg_6,
+                                ]
+                            )
+                        )
+                    ]
+                ),
+                VerticalDivider(
+                    color=colors.BLACK,
+                    width=10,
+                ),
+                Column(
+                    spacing=1,
+                    horizontal_alignment='center',
+                    # alignment='center',
+                    controls=[
+                        Text(
+                            '3 черга',
+                            size=24,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Container(
+                            alignment=alignment.center,
+                            padding=10,
+                            content=Column(
+                                scroll=ScrollMode.ADAPTIVE,
+                                alignment='center',
+                                horizontal_alignment='center',
+                                spacing=9,
+                                controls=[
+                                    three_cherg_1,
+                                    three_cherg_2,
+                                    three_cherg_3,
+                                    three_cherg_4,
+                                    three_cherg_5,
+                                    three_cherg_6,
+                                ]
+                            )
+                        )
+                    ]
+                ),
+                VerticalDivider(
+                    color=colors.BLACK,
+                    width=10,
+                ),
+                Column(
+                    spacing=1,
+                    horizontal_alignment='center',
+                    # alignment='center',
+                    controls=[
+                        Text(
+                            '4 черга',
+                            size=24,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Container(
+                            alignment=alignment.center,
+                            padding=10,
+                            content=Column(
+                                scroll=ScrollMode.ADAPTIVE,
+                                alignment='center',
+                                horizontal_alignment='center',
+                                spacing=9,
+                                controls=[
+                                    four_cherg_1,
+                                    four_cherg_2,
+                                    four_cherg_3,
+                                    four_cherg_4,
+                                    four_cherg_5,
+                                    four_cherg_6,
+                                ]
+                            )
+                        )
+                    ]
+                ),
+                VerticalDivider(
+                    color=colors.BLACK,
+                    width=10,
+                ),
+                Column(
+                    spacing=1,
+                    horizontal_alignment='center',
+                    # alignment='center',
+                    controls=[
+                        Text(
+                            '5 черга',
+                            size=24,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Container(
+                            alignment=alignment.center,
+                            padding=10,
+                            content=Column(
+                                scroll=ScrollMode.ADAPTIVE,
+                                alignment='center',
+                                horizontal_alignment='center',
+                                spacing=9,
+                                controls=[
+                                    five_cherg_1,
+                                    five_cherg_2,
+                                    five_cherg_3,
+                                    five_cherg_4,
+                                    five_cherg_5,
+                                    five_cherg_6,
+                                ]
+                            )
+                        )
+                    ]
+                ),
+                VerticalDivider(
+                    color=colors.BLACK,
+                    width=10,
+                ),
+                Column(
+                    spacing=1,
+                    horizontal_alignment='center',
+                    # alignment='center',
+                    controls=[
+                        Text(
+                            '6 черга',
+                            size=24,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Container(
+                            alignment=alignment.center,
+                            padding=10,
+                            content=Column(
+                                scroll=ScrollMode.ADAPTIVE,
+                                alignment='center',
+                                horizontal_alignment='center',
+                                spacing=9,
+                                controls=[
+                                    six_cherg_1,
+                                    six_cherg_2,
+                                    six_cherg_3,
+                                    six_cherg_4,
+                                    six_cherg_5,
+                                    six_cherg_6,
+                                ]
+                            )
+                        )
+                    ]
+                ),
+
+            ]
+        )
+    )
+
     main_container = Container(
         expand=True,
         gradient=LinearGradient(
@@ -1844,232 +2192,7 @@ def main(page: Page):
             alignment='center',
             controls=[
                 head,
-                Container(
-                    blur=10,
-                    padding=5,
-                    bgcolor=colors.BLACK26,
-                    border_radius=15,
-                    content=Row(
-                        spacing=1,
-                        vertical_alignment='center',
-                        alignment='center',
-                        controls=[
-                            Column(
-                                spacing=1,
-                                horizontal_alignment='center',
-                                # alignment='center',
-                                controls=[
-                                    Text(
-                                        '1 черга',
-                                        size=24,
-                                        weight='w500',
-                                        color=colors.BLACK,
-                                        font_family="Golos Text"
-                                    ),
-                                    Container(
-                                        alignment=alignment.center,
-                                        padding=10,
-                                        content=Column(
-                                            scroll=ScrollMode.ADAPTIVE,
-                                            alignment='center',
-                                            horizontal_alignment='center',
-                                            spacing=9,
-                                            controls=[
-                                                one_cherg_1,
-                                                one_cherg_2,
-                                                one_cherg_3,
-                                                one_cherg_4,
-                                                one_cherg_5,
-                                                one_cherg_6,
-                                            ]
-                                        )
-                                    )
-                                ]
-                            ),
-                            VerticalDivider(
-                                color=colors.BLACK,
-                                width=10,
-                            ),
-                            Column(
-                                spacing=1,
-                                horizontal_alignment='center',
-                                # alignment='center',
-                                controls=[
-                                    Text(
-                                        '2 черга',
-                                        size=24,
-                                        weight='w500',
-                                        color=colors.BLACK,
-                                        font_family="Golos Text"
-                                    ),
-                                    Container(
-                                        alignment=alignment.center,
-                                        padding=10,
-                                        content=Column(
-                                            scroll=ScrollMode.ADAPTIVE,
-                                            alignment='center',
-                                            horizontal_alignment='center',
-                                            spacing=9,
-                                            controls=[
-                                                two_cherg_1,
-                                                two_cherg_2,
-                                                two_cherg_3,
-                                                two_cherg_4,
-                                                two_cherg_5,
-                                                two_cherg_6,
-                                            ]
-                                        )
-                                    )
-                                ]
-                            ),
-                            VerticalDivider(
-                                color=colors.BLACK,
-                                width=10,
-                            ),
-                            Column(
-                                spacing=1,
-                                horizontal_alignment='center',
-                                # alignment='center',
-                                controls=[
-                                    Text(
-                                        '3 черга',
-                                        size=24,
-                                        weight='w500',
-                                        color=colors.BLACK,
-                                        font_family="Golos Text"
-                                    ),
-                                    Container(
-                                        alignment=alignment.center,
-                                        padding=10,
-                                        content=Column(
-                                            scroll=ScrollMode.ADAPTIVE,
-                                            alignment='center',
-                                            horizontal_alignment='center',
-                                            spacing=9,
-                                            controls=[
-                                                three_cherg_1,
-                                                three_cherg_2,
-                                                three_cherg_3,
-                                                three_cherg_4,
-                                                three_cherg_5,
-                                                three_cherg_6,
-                                            ]
-                                        )
-                                    )
-                                ]
-                            ),
-                            VerticalDivider(
-                                color=colors.BLACK,
-                                width=10,
-                            ),
-                            Column(
-                                spacing=1,
-                                horizontal_alignment='center',
-                                # alignment='center',
-                                controls=[
-                                    Text(
-                                        '4 черга',
-                                        size=24,
-                                        weight='w500',
-                                        color=colors.BLACK,
-                                        font_family="Golos Text"
-                                    ),
-                                    Container(
-                                        alignment=alignment.center,
-                                        padding=10,
-                                        content=Column(
-                                            scroll=ScrollMode.ADAPTIVE,
-                                            alignment='center',
-                                            horizontal_alignment='center',
-                                            spacing=9,
-                                            controls=[
-                                                four_cherg_1,
-                                                four_cherg_2,
-                                                four_cherg_3,
-                                                four_cherg_4,
-                                                four_cherg_5,
-                                                four_cherg_6,
-                                            ]
-                                        )
-                                    )
-                                ]
-                            ),
-                            VerticalDivider(
-                                color=colors.BLACK,
-                                width=10,
-                            ),
-                            Column(
-                                spacing=1,
-                                horizontal_alignment='center',
-                                # alignment='center',
-                                controls=[
-                                    Text(
-                                        '5 черга',
-                                        size=24,
-                                        weight='w500',
-                                        color=colors.BLACK,
-                                        font_family="Golos Text"
-                                    ),
-                                    Container(
-                                        alignment=alignment.center,
-                                        padding=10,
-                                        content=Column(
-                                            scroll=ScrollMode.ADAPTIVE,
-                                            alignment='center',
-                                            horizontal_alignment='center',
-                                            spacing=9,
-                                            controls=[
-                                                five_cherg_1,
-                                                five_cherg_2,
-                                                five_cherg_3,
-                                                five_cherg_4,
-                                                five_cherg_5,
-                                                five_cherg_6,
-                                            ]
-                                        )
-                                    )
-                                ]
-                            ),
-                            VerticalDivider(
-                                color=colors.BLACK,
-                                width=10,
-                            ),
-                            Column(
-                                spacing=1,
-                                horizontal_alignment='center',
-                                # alignment='center',
-                                controls=[
-                                    Text(
-                                        '6 черга',
-                                        size=24,
-                                        weight='w500',
-                                        color=colors.BLACK,
-                                        font_family="Golos Text"
-                                    ),
-                                    Container(
-                                        alignment=alignment.center,
-                                        padding=10,
-                                        content=Column(
-                                            scroll=ScrollMode.ADAPTIVE,
-                                            alignment='center',
-                                            horizontal_alignment='center',
-                                            spacing=9,
-                                            controls=[
-                                                six_cherg_1,
-                                                six_cherg_2,
-                                                six_cherg_3,
-                                                six_cherg_4,
-                                                six_cherg_5,
-                                                six_cherg_6,
-                                            ]
-                                        )
-                                    )
-                                ]
-                            ),
-
-                        ]
-                    )
-                )
+                chergs_table
             ]
         )
     )
@@ -2086,7 +2209,7 @@ def main(page: Page):
     page.horizontal_alignment = 'center'
     # page.window_center()
     # page.window_resizable = False
-    # page.window_title_bar_hidden = True
+    page.window_title_bar_hidden = True
     page.add(main_container)
     page.update()
     one_cherg()
