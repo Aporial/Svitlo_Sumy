@@ -10,7 +10,7 @@ from datetime import datetime
 def main(page: Page):
 
     database_connection = firebase.FirebaseApplication(
-        'https://test-svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
+        'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
     main_database = database_connection.get("/", None)
     database = main_database.get("database")
     print('DATABASE:', database)
@@ -3609,6 +3609,20 @@ def main(page: Page):
             page.update()
             print('Connection is not forecast!')
 
+    day_container = Container(
+        blur=10,
+        padding=1,
+        bgcolor=colors.BLACK26,
+        border_radius=15,
+        content=Text(
+            f" {day} ",
+            size=35,
+            weight='w500',
+            color='#ffcc66',
+            font_family="Golos Text"
+        )
+    )
+
     logo = Container(
         content=Image(
             src=f"/icon.png",
@@ -3619,7 +3633,7 @@ def main(page: Page):
     )
 
     title = Text(
-        f'Світло Суми - Графік відключень на {day}',
+        'Світло Суми - Графік відключень на',
         size=35,
         weight='w500',
         color=colors.BLACK,
@@ -3630,7 +3644,8 @@ def main(page: Page):
         alignment='center',
         controls=[
             logo,
-            title
+            title,
+            day_container
         ]
     )
 
@@ -3658,16 +3673,122 @@ def main(page: Page):
         cells=[]
     )
 
+    chergs_names = Row(
+        alignment=MainAxisAlignment.CENTER,
+        spacing=43,
+        controls=[
+            Container(
+                blur=10,
+                padding=5,
+                bgcolor=colors.BLACK26,
+                border_radius=15,
+                width=125,
+                content=Text(
+                    "1 черга",
+                    size=24,
+                    weight='w500',
+                    color='#ffcc66',
+                    font_family="Golos Text",
+                    text_align='center'
+                )
+            ),
+            Container(
+                blur=10,
+                padding=5,
+                bgcolor=colors.BLACK26,
+                border_radius=15,
+                width=125,
+                content=Text(
+                    "2 черга",
+                    size=24,
+                    weight='w500',
+                    color='#ffcc66',
+                    font_family="Golos Text",
+                    text_align='center'
+                )
+            ),
+            Container(
+                blur=10,
+                padding=5,
+                bgcolor=colors.BLACK26,
+                border_radius=15,
+                width=125,
+                content=Text(
+                    "3 черга",
+                    size=24,
+                    weight='w500',
+                    color='#ffcc66',
+                    font_family="Golos Text",
+                    text_align='center'
+                )
+            ),
+            Container(
+                blur=10,
+                padding=5,
+                bgcolor=colors.BLACK26,
+                border_radius=15,
+                width=125,
+                content=Text(
+                    "4 черга",
+                    size=24,
+                    weight='w500',
+                    color='#ffcc66',
+                    font_family="Golos Text",
+                    text_align='center'
+                )
+            ),
+            Container(
+                blur=10,
+                padding=5,
+                bgcolor=colors.BLACK26,
+                border_radius=15,
+                width=125,
+                content=Text(
+                    "5 черга",
+                    size=24,
+                    weight='w500',
+                    color='#ffcc66',
+                    font_family="Golos Text",
+                    text_align='center'
+                )
+            ),
+            Container(
+                blur=10,
+                padding=5,
+                bgcolor=colors.BLACK26,
+                border_radius=15,
+                width=125,
+                content=Text(
+                    "6 черга",
+                    size=24,
+                    weight='w500',
+                    color='#ffcc66',
+                    font_family="Golos Text",
+                    text_align='center'
+                )
+            ),
+
+        ]
+    )
+
     chergs_table = Container(
+        alignment=alignment.center,
         blur=10,
         padding=5,
         bgcolor=colors.BLACK26,
         border_radius=15,
         content=DataTable(
+            heading_row_height=0,
+            horizontal_margin=12,
+            data_row_max_height=70,
+            vertical_lines=BorderSide(1, colors.BLACK),
+            # horizontal_lines=BorderSide(1, colors.BLACK),
+            divider_thickness=0.01,
+            column_spacing=25,
             columns=[
                 DataColumn(
                     Text(
-                        '1 черга',
+                        '     1 черга',
                         size=24,
                         weight='w500',
                         color=colors.BLACK,
@@ -3676,7 +3797,7 @@ def main(page: Page):
                 ),
                 DataColumn(
                     Text(
-                        '2 черга',
+                        '     2 черга',
                         size=24,
                         weight='w500',
                         color=colors.BLACK,
@@ -3685,7 +3806,7 @@ def main(page: Page):
                 ),
                 DataColumn(
                     Text(
-                        '3 черга',
+                        '     3 черга',
                         size=24,
                         weight='w500',
                         color=colors.BLACK,
@@ -3694,7 +3815,7 @@ def main(page: Page):
                 ),
                 DataColumn(
                     Text(
-                        '4 черга',
+                        '     4 черга',
                         size=24,
                         weight='w500',
                         color=colors.BLACK,
@@ -3703,7 +3824,7 @@ def main(page: Page):
                 ),
                 DataColumn(
                     Text(
-                        '5 черга',
+                        '     5 черга',
                         size=24,
                         weight='w500',
                         color=colors.BLACK,
@@ -3712,7 +3833,7 @@ def main(page: Page):
                 ),
                 DataColumn(
                     Text(
-                        '6 черга',
+                        '     6 черга',
                         size=24,
                         weight='w500',
                         color=colors.BLACK,
@@ -3720,13 +3841,14 @@ def main(page: Page):
                     )
                 )
             ],
-            rows=[line_1,
-                  line_2,
-                  line_3,
-                  line_4,
-                  line_5,
-                  line_6
-                  ]
+            rows=[
+                line_1,
+                line_2,
+                # line_3,
+                # line_4,
+                # line_5,
+                # line_6
+            ]
         )
     )
 
@@ -3969,6 +4091,7 @@ def main(page: Page):
             alignment='center',
             controls=[
                 head,
+                chergs_names,
                 chergs_table
             ]
         )
@@ -3979,14 +4102,14 @@ def main(page: Page):
     }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ThemeMode.LIGHT
-    page.window_height = 500
-    page.window_width = 1110
+    page.window_height = 402
+    page.window_width = 1074
     page.padding = 0
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
-    # page.window_center()
+    page.window_center()
     # page.window_resizable = False
-    # page.window_title_bar_hidden = True
+    page.window_title_bar_hidden = True
     page.add(main_container)
     one_line()
     two_line()
