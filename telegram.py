@@ -2105,7 +2105,7 @@ def main(page: Page):
     }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ThemeMode.LIGHT
-    page.window_height = 402
+    page.window_height = 600
     page.window_width = 1074
     page.padding = 0
     page.vertical_alignment = 'center'
