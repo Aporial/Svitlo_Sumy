@@ -49,9 +49,12 @@ def main(page: Page):
 
     def check_telegram():
         if page.client_storage.get('telegram_check') == None:
-            time.sleep(2)
-            telegram_banner.open = True
-            print("Telegram was not opened!")
+            if page.client_storage.get("number") == None:
+                print('Queue has not yet been selected!')
+            else:
+                time.sleep(2)
+                telegram_banner.open = True
+                print("Telegram was not opened!")
         if page.client_storage.get('telegram_check') == True:
             print("Telegram was opened!")
         if page.client_storage.get('telegram_check') == False:
