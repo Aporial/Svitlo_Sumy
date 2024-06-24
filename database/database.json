@@ -95,5 +95,5 @@
     "two_3": "20:00-22:00"
   },
   "database": 1,
-  "source": "github"
+  "source": "firebase"
 }
