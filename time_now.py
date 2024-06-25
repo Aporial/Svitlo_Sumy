@@ -119,3 +119,123 @@ time_now_6 = Container(
             font_family="Golos Text"
     )
 )
+
+time_now_7 = Container(
+    visible=False,
+    shadow=BoxShadow(
+        blur_radius=2,
+        blur_style=ShadowBlurStyle.NORMAL,
+        offset=Offset(0, 2),
+        color=colors.BLACK54
+    ),
+    bgcolor='#ffcc66',
+    border_radius=5,
+    padding=10,
+    alignment=alignment.center,
+    content=Text(
+        size=21,
+        weight='w500',
+        color=colors.BLACK,
+        font_family="Golos Text"
+    )
+)
+
+time_now_8 = Container(
+    visible=False,
+    shadow=BoxShadow(
+        blur_radius=2,
+        blur_style=ShadowBlurStyle.NORMAL,
+        offset=Offset(0, 2),
+        color=colors.BLACK54
+    ),
+    bgcolor='#ffcc66',
+    border_radius=5,
+    padding=10,
+    alignment=alignment.center,
+    content=Text(
+            size=21,
+            weight='w500',
+            color=colors.BLACK,
+            font_family="Golos Text"
+    )
+)
+
+time_now_9 = Container(
+    visible=False,
+    shadow=BoxShadow(
+        blur_radius=2,
+        blur_style=ShadowBlurStyle.NORMAL,
+        offset=Offset(0, 2),
+        color=colors.BLACK54
+    ),
+    bgcolor='#ffcc66',
+    border_radius=5,
+    padding=10,
+    alignment=alignment.center,
+    content=Text(
+            size=21,
+            weight='w500',
+            color=colors.BLACK,
+            font_family="Golos Text"
+    )
+)
+
+time_now_10 = Container(
+    visible=False,
+    shadow=BoxShadow(
+        blur_radius=2,
+        blur_style=ShadowBlurStyle.NORMAL,
+        offset=Offset(0, 2),
+        color=colors.BLACK54
+    ),
+    bgcolor='#ffcc66',
+    border_radius=5,
+    padding=10,
+    alignment=alignment.center,
+    content=Text(
+            size=21,
+            weight='w500',
+            color=colors.BLACK,
+            font_family="Golos Text"
+    )
+)
+
+time_now_11 = Container(
+    visible=False,
+    shadow=BoxShadow(
+        blur_radius=2,
+        blur_style=ShadowBlurStyle.NORMAL,
+        offset=Offset(0, 2),
+        color=colors.BLACK54
+    ),
+    bgcolor='#ffcc66',
+    border_radius=5,
+    padding=10,
+    alignment=alignment.center,
+    content=Text(
+            size=21,
+            weight='w500',
+            color=colors.BLACK,
+            font_family="Golos Text"
+    )
+)
+
+time_now_12 = Container(
+    visible=False,
+    shadow=BoxShadow(
+        blur_radius=2,
+        blur_style=ShadowBlurStyle.NORMAL,
+        offset=Offset(0, 2),
+        color=colors.BLACK54
+    ),
+    bgcolor='#ffcc66',
+    border_radius=5,
+    padding=10,
+    alignment=alignment.center,
+    content=Text(
+            size=21,
+            weight='w500',
+            color=colors.BLACK,
+            font_family="Golos Text"
+    )
+)

@@ -1,14 +1,114 @@
 from flet import *
-from database_1 import db1_day_num_one, db1_day_num_two, db1_day_num_three, db1_day_num_four, db1_day_num_five, db1_day_num_six
-from database_1 import db1_day_tomorrow_one, db1_day_tomorrow_two, db1_day_tomorrow_three, db1_day_tomorrow_four, db1_day_tomorrow_five, db1_day_tomorrow_six
-from database_1 import db1_day_after_tomorrow_one, db1_day_after_tomorrow_two, db1_day_after_tomorrow_three, db1_day_after_tomorrow_four, db1_day_after_tomorrow_five, db1_day_after_tomorrow_six
-from database_2 import db2_day_num_one, db2_day_num_two, db2_day_num_three, db2_day_num_four, db2_day_num_five, db2_day_num_six
-from database_2 import db2_day_tomorrow_one, db2_day_tomorrow_two, db2_day_tomorrow_three, db2_day_tomorrow_four, db2_day_tomorrow_five, db2_day_tomorrow_six
-from database_2 import db2_day_after_tomorrow_one, db2_day_after_tomorrow_two, db2_day_after_tomorrow_three, db2_day_after_tomorrow_four, db2_day_after_tomorrow_five, db2_day_after_tomorrow_six
+from database_1 import (db1_day_num_one,
+                        db1_day_num_two,
+                        db1_day_num_three,
+                        db1_day_num_four,
+                        db1_day_num_five,
+                        db1_day_num_six,
+                        db1_day_num_seven,
+                        db1_day_num_eight,
+                        db1_day_num_nine,
+                        db1_day_num_ten,
+                        db1_day_num_eleven,
+                        db1_day_num_twelve)
+from database_1 import (db1_day_tomorrow_one,
+                        db1_day_tomorrow_two,
+                        db1_day_tomorrow_three,
+                        db1_day_tomorrow_four,
+                        db1_day_tomorrow_five,
+                        db1_day_tomorrow_six,
+                        db1_day_tomorrow_seven,
+                        db1_day_tomorrow_eight,
+                        db1_day_tomorrow_nine,
+                        db1_day_tomorrow_ten,
+                        db1_day_tomorrow_eleven,
+                        db1_day_tomorrow_twelve)
+from database_1 import (db1_day_after_tomorrow_one,
+                        db1_day_after_tomorrow_two,
+                        db1_day_after_tomorrow_three,
+                        db1_day_after_tomorrow_four,
+                        db1_day_after_tomorrow_five,
+                        db1_day_after_tomorrow_six,
+                        db1_day_after_tomorrow_seven,
+                        db1_day_after_tomorrow_eight,
+                        db1_day_after_tomorrow_nine,
+                        db1_day_after_tomorrow_ten,
+                        db1_day_after_tomorrow_eleven,
+                        db1_day_after_tomorrow_twelve)
+from database_2 import (db2_day_num_one,
+                        db2_day_num_two,
+                        db2_day_num_three,
+                        db2_day_num_four,
+                        db2_day_num_five,
+                        db2_day_num_six,
+                        db2_day_num_seven,
+                        db2_day_num_eight,
+                        db2_day_num_nine,
+                        db2_day_num_ten,
+                        db2_day_num_eleven,
+                        db2_day_num_twelve)
+from database_2 import (db2_day_tomorrow_one,
+                        db2_day_tomorrow_two,
+                        db2_day_tomorrow_three,
+                        db2_day_tomorrow_four,
+                        db2_day_tomorrow_five,
+                        db2_day_tomorrow_six,
+                        db2_day_tomorrow_seven,
+                        db2_day_tomorrow_eight,
+                        db2_day_tomorrow_nine,
+                        db2_day_tomorrow_ten,
+                        db2_day_tomorrow_eleven,
+                        db2_day_tomorrow_twelve)
+from database_2 import (db2_day_after_tomorrow_one,
+                        db2_day_after_tomorrow_two,
+                        db2_day_after_tomorrow_three,
+                        db2_day_after_tomorrow_four,
+                        db2_day_after_tomorrow_five,
+                        db2_day_after_tomorrow_six,
+                        db2_day_after_tomorrow_seven,
+                        db2_day_after_tomorrow_eight,
+                        db2_day_after_tomorrow_nine,
+                        db2_day_after_tomorrow_ten,
+                        db2_day_after_tomorrow_eleven,
+                        db2_day_after_tomorrow_twelve)
 from functions import check_cherg, day_of_week_today, day_of_week_tomorrow, day_of_week_after_tomorrow, seven_days, today
-from time_now import time_now_1, time_now_2, time_now_3, time_now_4, time_now_5, time_now_6
-from time_tomorrow import time_tomorrow_1, time_tomorrow_2, time_tomorrow_3, time_tomorrow_4, time_tomorrow_5, time_tomorrow_6
-from time_after_tomorrow import time_after_tomorrow_1, time_after_tomorrow_2, time_after_tomorrow_3, time_after_tomorrow_4, time_after_tomorrow_5, time_after_tomorrow_6
+from time_now import (time_now_1,
+                      time_now_2,
+                      time_now_3,
+                      time_now_4,
+                      time_now_5,
+                      time_now_6,
+                      time_now_7,
+                      time_now_8,
+                      time_now_9,
+                      time_now_10,
+                      time_now_11,
+                      time_now_12)
+from time_tomorrow import (time_tomorrow_1,
+                           time_tomorrow_2,
+                           time_tomorrow_3,
+                           time_tomorrow_4,
+                           time_tomorrow_5,
+                           time_tomorrow_6,
+                           time_tomorrow_7,
+                           time_tomorrow_8,
+                           time_tomorrow_9,
+                           time_tomorrow_10,
+                           time_tomorrow_11,
+                           time_tomorrow_12)
+from time_after_tomorrow import (time_after_tomorrow_1,
+                                 time_after_tomorrow_2,
+                                 time_after_tomorrow_3,
+                                 time_after_tomorrow_4,
+                                 time_after_tomorrow_5,
+                                 time_after_tomorrow_6,
+                                 time_after_tomorrow_7,
+                                 time_after_tomorrow_8,
+                                 time_after_tomorrow_9,
+                                 time_after_tomorrow_10,
+                                 time_after_tomorrow_11,
+                                 time_after_tomorrow_12
+                                 )
 from datetime import datetime
 import time
 import urllib.request
@@ -219,6 +319,12 @@ def main(page: Page):
             day_num_four = db1_day_num_four
             day_num_five = db1_day_num_five
             day_num_six = db1_day_num_six
+            day_num_seven = db1_day_num_seven
+            day_num_eight = db1_day_num_eight
+            day_num_nine = db1_day_num_nine
+            day_num_ten = db1_day_num_ten
+            day_num_eleven = db1_day_num_eleven
+            day_num_twelve = db1_day_num_twelve
         if page.client_storage.get("database_storage") == 2:
             day_num_one = db2_day_num_one
             day_num_two = db2_day_num_two
@@ -226,6 +332,12 @@ def main(page: Page):
             day_num_four = db2_day_num_four
             day_num_five = db2_day_num_five
             day_num_six = db2_day_num_six
+            day_num_seven = db2_day_num_seven
+            day_num_eight = db2_day_num_eight
+            day_num_nine = db2_day_num_nine
+            day_num_ten = db2_day_num_ten
+            day_num_eleven = db2_day_num_eleven
+            day_num_twelve = db2_day_num_twelve
 
         result_one = main_database.get(f"{cherg}").get(f"{day_num_one}")
         if result_one == None:
@@ -680,6 +792,438 @@ def main(page: Page):
             page.update()
             print("Six found!")
 
+        result_seven = main_database.get(f"{cherg}").get(f"{day_num_seven}")
+        if result_seven == None:
+            page.client_storage.remove("seven")
+            time_now_7.visible = False
+            print("Seven not found!")
+        else:
+            page.client_storage.set("seven", result_seven)
+            seven_check = page.client_storage.get("seven")
+            start_time, end_time = seven_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if end_time == '23:59':
+                seven = f'{start_time}-24:00'
+            else:
+                seven = page.client_storage.get("seven")
+            time_now_7.visible = True
+            if time_end <= current_time:
+                time_now_7.bgcolor = colors.GREY_400
+                time_now_7.content = Row(
+                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        Container(width=25),
+                        Text(
+                            seven,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Icon(
+                            name=icons.DONE_ALL_ROUNDED,
+                            color=colors.BLACK
+                        )
+                    ]
+                )
+            elif time_start <= current_time <= time_end:
+                time_now_7.bgcolor = '#ffcc66'
+                time_now_7.content = Row(
+                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        Container(width=25),
+                        Text(
+                            seven,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Icon(
+                            name=icons.BROWSE_GALLERY_OUTLINED,
+                            color=colors.BLACK
+                        )
+                    ]
+                )
+            else:
+                time_now_7.bgcolor = '#ffcc66'
+                time_now_7.content = Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        Text(
+                            seven,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+            page.update()
+            print("Seven found!")
+
+        result_eight = main_database.get(f"{cherg}").get(f"{day_num_eight}")
+        if result_eight == None:
+            page.client_storage.remove("eight")
+            time_now_8.visible = False
+            print("Eight not found!")
+        else:
+            page.client_storage.set("eight", result_eight)
+            eight_check = page.client_storage.get("eight")
+            start_time, end_time = eight_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if end_time == '23:59':
+                eight = f'{start_time}-24:00'
+            else:
+                eight = page.client_storage.get("eight")
+            time_now_8.visible = True
+            if time_end <= current_time:
+                time_now_8.bgcolor = colors.GREY_400
+                time_now_8.content = Row(
+                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        Container(width=25),
+                        Text(
+                            eight,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Icon(
+                            name=icons.DONE_ALL_ROUNDED,
+                            color=colors.BLACK
+                        )
+                    ]
+                )
+            elif time_start <= current_time <= time_end:
+                time_now_8.bgcolor = '#ffcc66'
+                time_now_8.content = Row(
+                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        Container(width=25),
+                        Text(
+                            eight,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Icon(
+                            name=icons.BROWSE_GALLERY_OUTLINED,
+                            color=colors.BLACK
+                        )
+                    ]
+                )
+            else:
+                time_now_8.bgcolor = '#ffcc66'
+                time_now_8.content = Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        Text(
+                            eight,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+            page.update()
+            print("Eight found!")
+
+        result_nine = main_database.get(f"{cherg}").get(f"{day_num_nine}")
+        if result_nine == None:
+            page.client_storage.remove("nine")
+            time_now_9.visible = False
+            print("Nine not found!")
+        else:
+            page.client_storage.set("nine", result_nine)
+            nine_check = page.client_storage.get("nine")
+            start_time, end_time = nine_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if end_time == '23:59':
+                nine = f'{start_time}-24:00'
+            else:
+                nine = page.client_storage.get("three")
+            time_now_9.visible = True
+            if time_end <= current_time:
+                time_now_9.bgcolor = colors.GREY_400
+                time_now_9.content = Row(
+                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        Container(width=25),
+                        Text(
+                            nine,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Icon(
+                            name=icons.DONE_ALL_ROUNDED,
+                            color=colors.BLACK
+                        )
+                    ]
+                )
+            elif time_start <= current_time <= time_end:
+                time_now_9.bgcolor = '#ffcc66'
+                time_now_9.content = Row(
+                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        Container(width=25),
+                        Text(
+                            nine,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Icon(
+                            name=icons.BROWSE_GALLERY_OUTLINED,
+                            color=colors.BLACK
+                        )
+                    ]
+                )
+            else:
+                time_now_9.bgcolor = '#ffcc66'
+                time_now_9.content = Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        Text(
+                            nine,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+            page.update()
+            print("Nine found!")
+
+        result_ten = main_database.get(f"{cherg}").get(f"{day_num_ten}")
+        if result_ten == None:
+            page.client_storage.remove("ten")
+            time_now_10.visible = False
+            print("Ten not found!")
+        else:
+            page.client_storage.set("ten", result_ten)
+            ten_check = page.client_storage.get("ten")
+            start_time, end_time = ten_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if end_time == '23:59':
+                ten = f'{start_time}-24:00'
+            else:
+                ten = page.client_storage.get("four")
+            time_now_10.visible = True
+            if time_end <= current_time:
+                time_now_10.bgcolor = colors.GREY_400
+                time_now_10.content = Row(
+                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        Container(width=25),
+                        Text(
+                            ten,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Icon(
+                            name=icons.DONE_ALL_ROUNDED,
+                            color=colors.BLACK
+                        )
+                    ]
+                )
+            elif time_start <= current_time <= time_end:
+                time_now_10.bgcolor = '#ffcc66'
+                time_now_10.content = Row(
+                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        Container(width=25),
+                        Text(
+                            ten,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Icon(
+                            name=icons.BROWSE_GALLERY_OUTLINED,
+                            color=colors.BLACK
+                        )
+                    ]
+                )
+            else:
+                time_now_10.bgcolor = '#ffcc66'
+                time_now_10.content = Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        Text(
+                            ten,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+            page.update()
+            print("Ten found!")
+
+        result_eleven = main_database.get(f"{cherg}").get(f"{day_num_eleven}")
+        if result_eleven == None:
+            page.client_storage.remove("eleven")
+            time_now_11.visible = False
+            print("Eleven not found!")
+        else:
+            page.client_storage.set("eleven", result_eleven)
+            eleven_check = page.client_storage.get("eleven")
+            start_time, end_time = eleven_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if end_time == '23:59':
+                eleven = f'{start_time}-24:00'
+            else:
+                eleven = page.client_storage.get("five")
+            time_now_11.visible = True
+            if time_end <= current_time:
+                time_now_11.bgcolor = colors.GREY_400
+                time_now_11.content = Row(
+                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        Container(width=25),
+                        Text(
+                            eleven,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Icon(
+                            name=icons.DONE_ALL_ROUNDED,
+                            color=colors.BLACK
+                        )
+                    ]
+                )
+            elif time_start <= current_time <= time_end:
+                time_now_11.bgcolor = '#ffcc66'
+                time_now_11.content = Row(
+                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        Container(width=25),
+                        Text(
+                            eleven,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Icon(
+                            name=icons.BROWSE_GALLERY_OUTLINED,
+                            color=colors.BLACK
+                        )
+                    ]
+                )
+            else:
+                time_now_11.bgcolor = '#ffcc66'
+                time_now_11.content = Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        Text(
+                            eleven,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+            page.update()
+            print("Eleven found!")
+
+        result_twelve = main_database.get(f"{cherg}").get(f"{day_num_twelve}")
+        if result_twelve == None:
+            page.client_storage.remove("twelve")
+            time_now_12.visible = False
+            print("Twelve not found!")
+        else:
+            page.client_storage.set("twelve", result_twelve)
+            twelve_check = page.client_storage.get("twelve")
+            start_time, end_time = twelve_check.split('-')
+            time_start = datetime.strptime(start_time, '%H:%M').time()
+            time_end = datetime.strptime(end_time, '%H:%M').time()
+            if end_time == '23:59':
+                twelve = f'{start_time}-24:00'
+            else:
+                twelve = page.client_storage.get("six")
+            time_now_12.visible = True
+            if time_end <= current_time:
+                time_now_12.bgcolor = colors.GREY_400
+                time_now_12.content = Row(
+                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        Container(width=25),
+                        Text(
+                            twelve,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Icon(
+                            name=icons.DONE_ALL_ROUNDED,
+                            color=colors.BLACK
+                        )
+                    ]
+                )
+            elif time_start <= current_time <= time_end:
+                time_now_12.bgcolor = '#ffcc66'
+                time_now_12.content = Row(
+                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    controls=[
+                        Container(width=25),
+                        Text(
+                            twelve,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        ),
+                        Icon(
+                            name=icons.BROWSE_GALLERY_OUTLINED,
+                            color=colors.BLACK
+                        )
+                    ]
+                )
+            else:
+                time_now_12.bgcolor = '#ffcc66'
+                time_now_12.content = Row(
+                    alignment="center",
+                    vertical_alignment='center',
+                    controls=[
+                        Text(
+                            twelve,
+                            size=21,
+                            weight='w500',
+                            color=colors.BLACK,
+                            font_family="Golos Text"
+                        )
+                    ]
+                )
+            page.update()
+            print("Twelve found!")
+
         progress_bar.visible = False
         main_info.padding = 0
         main_info.expand = True
@@ -765,6 +1309,12 @@ def main(page: Page):
             day_tomorrow_four = db1_day_tomorrow_four
             day_tomorrow_five = db1_day_tomorrow_five
             day_tomorrow_six = db1_day_tomorrow_six
+            day_tomorrow_seven = db1_day_tomorrow_seven
+            day_tomorrow_eight = db1_day_tomorrow_eight
+            day_tomorrow_nine = db1_day_tomorrow_nine
+            day_tomorrow_ten = db1_day_tomorrow_ten
+            day_tomorrow_eleven = db1_day_tomorrow_eleven
+            day_tomorrow_twelve = db1_day_tomorrow_twelve
         if page.client_storage.get("database_storage") == 2:
             day_tomorrow_one = db2_day_tomorrow_one
             day_tomorrow_two = db2_day_tomorrow_two
@@ -772,6 +1322,12 @@ def main(page: Page):
             day_tomorrow_four = db2_day_tomorrow_four
             day_tomorrow_five = db2_day_tomorrow_five
             day_tomorrow_six = db2_day_tomorrow_six
+            day_tomorrow_seven = db2_day_tomorrow_seven
+            day_tomorrow_eight = db2_day_tomorrow_eight
+            day_tomorrow_nine = db2_day_tomorrow_nine
+            day_tomorrow_ten = db2_day_tomorrow_ten
+            day_tomorrow_eleven = db2_day_tomorrow_eleven
+            day_tomorrow_twelve = db2_day_tomorrow_twelve
 
         result_one = main_database.get(f"{cherg}").get(f"{day_tomorrow_one}")
         if result_one == None:
@@ -940,6 +1496,154 @@ def main(page: Page):
                 page.update()
                 print("Six_Tomorrow found!")
 
+        result_seven = main_database.get(
+            f"{cherg}").get(f"{day_tomorrow_seven}")
+        if result_seven == None:
+            page.client_storage.remove("seven_tomorrow")
+            time_tomorrow_7.visible = False
+            print("Seven_Tomorrow not found!")
+        else:
+            page.client_storage.set("seven_tomorrow", result_seven)
+            seven_check = page.client_storage.get("seven_tomorrow")
+            start_time, end_time = seven_check.split('-')
+            if end_time == '23:59':
+                seven = f'{start_time}-24:00'
+            else:
+                seven = page.client_storage.get("seven_tomorrow")
+            time_tomorrow_7.visible = True
+            time_tomorrow_7.content = Text(
+                seven,
+                size=21,
+                weight='w500',
+                color=colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Seven_Tomorrow found!")
+
+        result_eight = main_database.get(
+            f"{cherg}").get(f"{day_tomorrow_eight}")
+        if result_eight == None:
+            page.client_storage.remove("eight_tomorrow")
+            time_tomorrow_8.visible = False
+            print("Eight_Tomorrow not found!")
+        else:
+            page.client_storage.set("eight_tomorrow", result_eight)
+            eight_check = page.client_storage.get("eight_tomorrow")
+            start_time, end_time = eight_check.split('-')
+            if end_time == '23:59':
+                eight = f'{start_time}-24:00'
+            else:
+                eight = page.client_storage.get("eight_tomorrow")
+            time_tomorrow_8.visible = True
+            time_tomorrow_8.content = Text(
+                eight,
+                size=21,
+                weight='w500',
+                color=colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Eight_Tomorrow found!")
+
+        result_nine = main_database.get(f"{cherg}").get(f"{day_tomorrow_nine}")
+        if result_nine == None:
+            page.client_storage.remove("nine_tomorrow")
+            time_tomorrow_9.visible = False
+            print("Nine_Tomorrow not found!")
+        else:
+            page.client_storage.set("nine_tomorrow", result_nine)
+            nine_check = page.client_storage.get("nine_tomorrow")
+            start_time, end_time = nine_check.split('-')
+            if end_time == '23:59':
+                nine = f'{start_time}-24:00'
+            else:
+                nine = page.client_storage.get("nine_tomorrow")
+            time_tomorrow_9.visible = True
+            time_tomorrow_9.content = Text(
+                nine,
+                size=21,
+                weight='w500',
+                color=colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Nine_Tomorrow found!")
+
+        result_ten = main_database.get(f"{cherg}").get(f"{day_tomorrow_ten}")
+        if result_ten == None:
+            page.client_storage.remove("ten_tomorrow")
+            time_tomorrow_10.visible = False
+            print("Ten_Tomorrow not found!")
+        else:
+            page.client_storage.set("ten_tomorrow", result_ten)
+            ten_check = page.client_storage.get("ten_tomorrow")
+            start_time, end_time = ten_check.split('-')
+            if end_time == '23:59':
+                ten = f'{start_time}-24:00'
+            else:
+                ten = page.client_storage.get("ten_tomorrow")
+            time_tomorrow_10.visible = True
+            time_tomorrow_10.content = Text(
+                ten,
+                size=21,
+                weight='w500',
+                color=colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Ten_Tomorrow found!")
+
+        result_eleven = main_database.get(
+            f"{cherg}").get(f"{day_tomorrow_eleven}")
+        if result_eleven == None:
+            page.client_storage.remove("eleven_tomorrow")
+            time_tomorrow_11.visible = False
+            print("Eleven_Tomorrow not found!")
+        else:
+            page.client_storage.set("eleven_tomorrow", result_eleven)
+            eleven_check = page.client_storage.get("eleven_tomorrow")
+            start_time, end_time = eleven_check.split('-')
+            if end_time == '23:59':
+                eleven = f'{start_time}-24:00'
+            else:
+                eleven = page.client_storage.get("eleven_tomorrow")
+            time_tomorrow_11.visible = True
+            time_tomorrow_11.content = Text(
+                eleven,
+                size=21,
+                weight='w500',
+                color=colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Eleven_Tomorrow found!")
+
+            result_twelve = main_database.get(
+                f"{cherg}").get(f"{day_tomorrow_twelve}")
+            if result_twelve == None:
+                page.client_storage.remove("twelve_tomorrow")
+                time_tomorrow_12.visible = False
+                print("Twelve_Tomorrow not found!")
+            else:
+                page.client_storage.set("twelve_tomorrow", result_twelve)
+                twelve_check = page.client_storage.get("twelve_tomorrow")
+                start_time, end_time = twelve_check.split('-')
+                if end_time == '23:59':
+                    twelve = f'{start_time}-24:00'
+                else:
+                    twelve = page.client_storage.get("twelve_tomorrow")
+                time_tomorrow_12.visible = True
+                time_tomorrow_12.content = Text(
+                    twelve,
+                    size=21,
+                    weight='w500',
+                    color=colors.BLACK,
+                    font_family="Golos Text"
+                )
+                page.update()
+                print("Twelve_Tomorrow found!")
+
         page.update()
 
     def get_time_after_tomorrow():
@@ -953,6 +1657,12 @@ def main(page: Page):
             day_after_tomorrow_four = db1_day_after_tomorrow_four
             day_after_tomorrow_five = db1_day_after_tomorrow_five
             day_after_tomorrow_six = db1_day_after_tomorrow_six
+            day_after_tomorrow_seven = db1_day_after_tomorrow_seven
+            day_after_tomorrow_eight = db1_day_after_tomorrow_eight
+            day_after_tomorrow_nine = db1_day_after_tomorrow_nine
+            day_after_tomorrow_ten = db1_day_after_tomorrow_ten
+            day_after_tomorrow_eleven = db1_day_after_tomorrow_eleven
+            day_after_tomorrow_twelve = db1_day_after_tomorrow_twelve
         if page.client_storage.get("database_storage") == 2:
             day_after_tomorrow_one = db2_day_after_tomorrow_one
             day_after_tomorrow_two = db2_day_after_tomorrow_two
@@ -960,6 +1670,12 @@ def main(page: Page):
             day_after_tomorrow_four = db2_day_after_tomorrow_four
             day_after_tomorrow_five = db2_day_after_tomorrow_five
             day_after_tomorrow_six = db2_day_after_tomorrow_six
+            day_after_tomorrow_seven = db2_day_after_tomorrow_seven
+            day_after_tomorrow_eight = db2_day_after_tomorrow_eight
+            day_after_tomorrow_nine = db2_day_after_tomorrow_nine
+            day_after_tomorrow_ten = db2_day_after_tomorrow_ten
+            day_after_tomorrow_eleven = db2_day_after_tomorrow_eleven
+            day_after_tomorrow_twelve = db2_day_after_tomorrow_twelve
 
         result_one = main_database.get(f"{cherg}").get(
             f"{day_after_tomorrow_one}")
@@ -1132,6 +1848,156 @@ def main(page: Page):
             page.update()
             print("Six_After_Tomorrow found!")
 
+        result_seven = main_database.get(f"{cherg}").get(
+            f"{day_after_tomorrow_seven}")
+        if result_seven == None:
+            page.client_storage.remove("seven_after_tomorrow")
+            time_after_tomorrow_7.visible = False
+            print("Seven_After_Tomorrow not found!")
+        else:
+            page.client_storage.set("seven_after_tomorrow", result_seven)
+            seven_check = page.client_storage.get("seven_after_tomorrow")
+            start_time, end_time = seven_check.split('-')
+            if end_time == '23:59':
+                seven = f'{start_time}-24:00'
+            else:
+                seven = page.client_storage.get("seven_after_tomorrow")
+            time_after_tomorrow_7.visible = True
+            time_after_tomorrow_7.content = Text(
+                seven,
+                size=21,
+                weight='w500',
+                color=colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Seven_After_Tomorrow found!")
+
+        result_eight = main_database.get(f"{cherg}").get(
+            f"{day_after_tomorrow_eight}")
+        if result_eight == None:
+            page.client_storage.remove("eight_after_tomorrow")
+            time_after_tomorrow_8.visible = False
+            print("Eight_After_Tomorrow not found!")
+        else:
+            page.client_storage.set("eight_after_tomorrow", result_eight)
+            eight_check = page.client_storage.get("eight_after_tomorrow")
+            start_time, end_time = eight_check.split('-')
+            if end_time == '23:59':
+                eight = f'{start_time}-24:00'
+            else:
+                eight = page.client_storage.get("eight_after_tomorrow")
+            time_after_tomorrow_8.visible = True
+            time_after_tomorrow_8.content = Text(
+                eight,
+                size=21,
+                weight='w500',
+                color=colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Eight_After_Tomorrow found!")
+
+        result_nine = main_database.get(f"{cherg}").get(
+            f"{day_after_tomorrow_nine}")
+        if result_nine == None:
+            page.client_storage.remove("nine_after_tomorrow")
+            time_after_tomorrow_9.visible = False
+            print("Nine_After_Tomorrow not found!")
+        else:
+            page.client_storage.set("nine_after_tomorrow", result_nine)
+            nine_check = page.client_storage.get("nine_after_tomorrow")
+            start_time, end_time = nine_check.split('-')
+            if end_time == '23:59':
+                nine = f'{start_time}-24:00'
+            else:
+                nine = page.client_storage.get("nine_after_tomorrow")
+            time_after_tomorrow_9.visible = True
+            time_after_tomorrow_9.content = Text(
+                nine,
+                size=21,
+                weight='w500',
+                color=colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Nine_After_Tomorrow found!")
+
+        result_ten = main_database.get(f"{cherg}").get(
+            f"{day_after_tomorrow_ten}")
+        if result_ten == None:
+            page.client_storage.remove("ten_after_tomorrow")
+            time_after_tomorrow_10.visible = False
+            print("Ten_After_Tomorrow not found!")
+        else:
+            page.client_storage.set("ten_after_tomorrow", result_ten)
+            ten_check = page.client_storage.get("ten_after_tomorrow")
+            start_time, end_time = ten_check.split('-')
+            if end_time == '23:59':
+                ten = f'{start_time}-24:00'
+            else:
+                ten = page.client_storage.get("ten_after_tomorrow")
+            time_after_tomorrow_10.visible = True
+            time_after_tomorrow_10.content = Text(
+                ten,
+                size=21,
+                weight='w500',
+                color=colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Ten_After_Tomorrow found!")
+
+        result_eleven = main_database.get(f"{cherg}").get(
+            f"{day_after_tomorrow_eleven}")
+        if result_eleven == None:
+            page.client_storage.remove("eleven_after_tomorrow")
+            time_after_tomorrow_11.visible = False
+            print("Eleven_After_Tomorrow not found!")
+        else:
+            page.client_storage.set("eleven_after_tomorrow", result_eleven)
+            eleven_check = page.client_storage.get("eleven_after_tomorrow")
+            start_time, end_time = eleven_check.split('-')
+            if end_time == '23:59':
+                eleven = f'{start_time}-24:00'
+            else:
+                eleven = page.client_storage.get("eleven_after_tomorrow")
+            time_after_tomorrow_11.visible = True
+            time_after_tomorrow_11.content = Text(
+                eleven,
+                size=21,
+                weight='w500',
+                color=colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Eleven_After_Tomorrow found!")
+
+        result_twelve = main_database.get(f"{cherg}").get(
+            f"{day_after_tomorrow_twelve}")
+        if result_twelve == None:
+            page.client_storage.remove("twelve_after_tomorrow")
+            time_after_tomorrow_12.visible = False
+            print("Twelve_After_Tomorrow not found!")
+        else:
+            page.client_storage.set("twelve_after_tomorrow", result_twelve)
+            twelve_check = page.client_storage.get("twelve_after_tomorrow")
+            start_time, end_time = twelve_check.split('-')
+            if end_time == '23:59':
+                twelve = f'{start_time}-24:00'
+            else:
+                twelve = page.client_storage.get("twelve_after_tomorrow")
+            time_after_tomorrow_12.visible = True
+            time_after_tomorrow_12.content = Text(
+                twelve,
+                size=21,
+                weight='w500',
+                color=colors.BLACK,
+                font_family="Golos Text"
+            )
+            page.update()
+            print("Twelve_After_Tomorrow found!")
+
         page.update()
 
     def main_tab_anim():
@@ -1260,6 +2126,12 @@ def main(page: Page):
                 time_now_4,
                 time_now_5,
                 time_now_6,
+                time_now_7,
+                time_now_8,
+                time_now_9,
+                time_now_10,
+                time_now_11,
+                time_now_12
             ]
         )
     )
@@ -1279,6 +2151,12 @@ def main(page: Page):
                 time_tomorrow_4,
                 time_tomorrow_5,
                 time_tomorrow_6,
+                time_tomorrow_7,
+                time_tomorrow_8,
+                time_tomorrow_9,
+                time_tomorrow_10,
+                time_tomorrow_11,
+                time_tomorrow_12
             ]
         )
     )
@@ -1298,6 +2176,12 @@ def main(page: Page):
                 time_after_tomorrow_4,
                 time_after_tomorrow_5,
                 time_after_tomorrow_6,
+                time_after_tomorrow_7,
+                time_after_tomorrow_8,
+                time_after_tomorrow_9,
+                time_after_tomorrow_10,
+                time_after_tomorrow_11,
+                time_after_tomorrow_12
             ]
         )
     )
