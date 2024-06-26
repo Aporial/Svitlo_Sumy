@@ -1,4 +1,4 @@
-from flet import *
+import flet as ft
 from database_1 import (db1_day_num_one,
                         db1_day_num_two,
                         db1_day_num_three,
@@ -116,7 +116,7 @@ import json
 from firebase import firebase
 
 
-def main(page: Page):
+def main(page: ft.Page):
 
     def source_github():
         with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
@@ -166,7 +166,7 @@ def main(page: Page):
 
     def check_cherg_main():
         if storage() == None:
-            text_after_img.content = Text(
+            text_after_img.content = ft.Text(
                 "Оберіть чергу",
                 size=24,
                 weight='w500',
@@ -176,7 +176,7 @@ def main(page: Page):
             )
             text_after_img.update()
         else:
-            text_after_img.content = Text(
+            text_after_img.content = ft.Text(
                 f"{storage()} черга",
                 size=24,
                 weight='w500',
@@ -357,54 +357,54 @@ def main(page: Page):
                     one = page.client_storage.get("one")
                 time_now_1.visible = True
                 if time_end <= current_time:
-                    time_now_1.bgcolor = colors.GREY_400
-                    time_now_1.content = Row(
-                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    time_now_1.bgcolor = ft.colors.GREY_400
+                    time_now_1.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                         controls=[
-                            Container(width=25),
-                            Text(
+                            ft.Container(width=25),
+                            ft.Text(
                                 one,
                                 size=21,
                                 weight='w500',
-                                color=colors.BLACK,
+                                color=ft.colors.BLACK,
                                 font_family="Golos Text"
                             ),
-                            Icon(
-                                name=icons.DONE_ALL_ROUNDED,
-                                color=colors.BLACK
+                            ft.Icon(
+                                name=ft.icons.DONE_ALL_ROUNDED,
+                                color=ft.colors.BLACK
                             )
                         ]
                     )
                 elif time_start <= current_time <= time_end:
                     time_now_1.bgcolor = '#ffcc66'
-                    time_now_1.content = Row(
-                        alignment=MainAxisAlignment.SPACE_BETWEEN,
+                    time_now_1.content = ft.Row(
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                         controls=[
-                            Container(width=25),
-                            Text(
+                            ft.Container(width=25),
+                            ft.Text(
                                 one,
                                 size=21,
                                 weight='w500',
-                                color=colors.BLACK,
+                                color=ft.colors.BLACK,
                                 font_family="Golos Text"
                             ),
-                            Icon(
-                                name=icons.BROWSE_GALLERY_OUTLINED,
-                                color=colors.BLACK
+                            ft.Icon(
+                                name=ft.icons.BROWSE_GALLERY_OUTLINED,
+                                color=ft.colors.BLACK
                             )
                         ]
                     )
                 else:
                     time_now_1.bgcolor = '#ffcc66'
-                    time_now_1.content = Row(
+                    time_now_1.content = ft.Row(
                         alignment="center",
                         vertical_alignment='center',
                         controls=[
-                            Text(
+                            ft.Text(
                                 one,
                                 size=21,
                                 weight='w500',
-                                color=colors.BLACK,
+                                color=ft.colors.BLACK,
                                 font_family="Golos Text"
                             )
                         ]
@@ -415,17 +415,17 @@ def main(page: Page):
                 one = page.client_storage.get("one")
                 time_now_1.visible = True
                 time_now_1.bgcolor = '#ffcc66'
-                time_now_1.content = Row(
+                time_now_1.content = ft.Row(
                     wrap=True,
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             one,
                             text_align='center',
                             size=18,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -449,54 +449,54 @@ def main(page: Page):
                 two = page.client_storage.get("two")
             time_now_2.visible = True
             if time_end <= current_time:
-                time_now_2.bgcolor = colors.GREY_400
-                time_now_2.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_2.bgcolor = ft.colors.GREY_400
+                time_now_2.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             two,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             elif time_start <= current_time <= time_end:
                 time_now_2.bgcolor = '#ffcc66'
-                time_now_2.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_2.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             two,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             else:
                 time_now_2.bgcolor = '#ffcc66'
-                time_now_2.content = Row(
+                time_now_2.content = ft.Row(
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             two,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -521,54 +521,54 @@ def main(page: Page):
                 three = page.client_storage.get("three")
             time_now_3.visible = True
             if time_end <= current_time:
-                time_now_3.bgcolor = colors.GREY_400
-                time_now_3.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_3.bgcolor = ft.colors.GREY_400
+                time_now_3.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             three,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             elif time_start <= current_time <= time_end:
                 time_now_3.bgcolor = '#ffcc66'
-                time_now_3.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_3.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             three,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             else:
                 time_now_3.bgcolor = '#ffcc66'
-                time_now_3.content = Row(
+                time_now_3.content = ft.Row(
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             three,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -593,54 +593,54 @@ def main(page: Page):
                 four = page.client_storage.get("four")
             time_now_4.visible = True
             if time_end <= current_time:
-                time_now_4.bgcolor = colors.GREY_400
-                time_now_4.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_4.bgcolor = ft.colors.GREY_400
+                time_now_4.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             four,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             elif time_start <= current_time <= time_end:
                 time_now_4.bgcolor = '#ffcc66'
-                time_now_4.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_4.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             four,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             else:
                 time_now_4.bgcolor = '#ffcc66'
-                time_now_4.content = Row(
+                time_now_4.content = ft.Row(
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             four,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -665,54 +665,54 @@ def main(page: Page):
                 five = page.client_storage.get("five")
             time_now_5.visible = True
             if time_end <= current_time:
-                time_now_5.bgcolor = colors.GREY_400
-                time_now_5.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_5.bgcolor = ft.colors.GREY_400
+                time_now_5.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             five,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             elif time_start <= current_time <= time_end:
                 time_now_5.bgcolor = '#ffcc66'
-                time_now_5.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_5.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             five,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             else:
                 time_now_5.bgcolor = '#ffcc66'
-                time_now_5.content = Row(
+                time_now_5.content = ft.Row(
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             five,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -737,54 +737,54 @@ def main(page: Page):
                 six = page.client_storage.get("six")
             time_now_6.visible = True
             if time_end <= current_time:
-                time_now_6.bgcolor = colors.GREY_400
-                time_now_6.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_6.bgcolor = ft.colors.GREY_400
+                time_now_6.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             six,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             elif time_start <= current_time <= time_end:
                 time_now_6.bgcolor = '#ffcc66'
-                time_now_6.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_6.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             six,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             else:
                 time_now_6.bgcolor = '#ffcc66'
-                time_now_6.content = Row(
+                time_now_6.content = ft.Row(
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             six,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -809,54 +809,54 @@ def main(page: Page):
                 seven = page.client_storage.get("seven")
             time_now_7.visible = True
             if time_end <= current_time:
-                time_now_7.bgcolor = colors.GREY_400
-                time_now_7.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_7.bgcolor = ft.colors.GREY_400
+                time_now_7.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             seven,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             elif time_start <= current_time <= time_end:
                 time_now_7.bgcolor = '#ffcc66'
-                time_now_7.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_7.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             seven,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             else:
                 time_now_7.bgcolor = '#ffcc66'
-                time_now_7.content = Row(
+                time_now_7.content = ft.Row(
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             seven,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -881,54 +881,54 @@ def main(page: Page):
                 eight = page.client_storage.get("eight")
             time_now_8.visible = True
             if time_end <= current_time:
-                time_now_8.bgcolor = colors.GREY_400
-                time_now_8.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_8.bgcolor = ft.colors.GREY_400
+                time_now_8.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             eight,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             elif time_start <= current_time <= time_end:
                 time_now_8.bgcolor = '#ffcc66'
-                time_now_8.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_8.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             eight,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             else:
                 time_now_8.bgcolor = '#ffcc66'
-                time_now_8.content = Row(
+                time_now_8.content = ft.Row(
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             eight,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -953,54 +953,54 @@ def main(page: Page):
                 nine = page.client_storage.get("three")
             time_now_9.visible = True
             if time_end <= current_time:
-                time_now_9.bgcolor = colors.GREY_400
-                time_now_9.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_9.bgcolor = ft.colors.GREY_400
+                time_now_9.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             nine,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             elif time_start <= current_time <= time_end:
                 time_now_9.bgcolor = '#ffcc66'
-                time_now_9.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_9.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             nine,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             else:
                 time_now_9.bgcolor = '#ffcc66'
-                time_now_9.content = Row(
+                time_now_9.content = ft.Row(
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             nine,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -1025,54 +1025,54 @@ def main(page: Page):
                 ten = page.client_storage.get("four")
             time_now_10.visible = True
             if time_end <= current_time:
-                time_now_10.bgcolor = colors.GREY_400
-                time_now_10.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_10.bgcolor = ft.colors.GREY_400
+                time_now_10.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             ten,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             elif time_start <= current_time <= time_end:
                 time_now_10.bgcolor = '#ffcc66'
-                time_now_10.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_10.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             ten,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             else:
                 time_now_10.bgcolor = '#ffcc66'
-                time_now_10.content = Row(
+                time_now_10.content = ft.Row(
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             ten,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -1097,54 +1097,54 @@ def main(page: Page):
                 eleven = page.client_storage.get("five")
             time_now_11.visible = True
             if time_end <= current_time:
-                time_now_11.bgcolor = colors.GREY_400
-                time_now_11.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_11.bgcolor = ft.colors.GREY_400
+                time_now_11.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             eleven,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             elif time_start <= current_time <= time_end:
                 time_now_11.bgcolor = '#ffcc66'
-                time_now_11.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_11.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             eleven,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             else:
                 time_now_11.bgcolor = '#ffcc66'
-                time_now_11.content = Row(
+                time_now_11.content = ft.Row(
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             eleven,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -1169,54 +1169,54 @@ def main(page: Page):
                 twelve = page.client_storage.get("six")
             time_now_12.visible = True
             if time_end <= current_time:
-                time_now_12.bgcolor = colors.GREY_400
-                time_now_12.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_12.bgcolor = ft.colors.GREY_400
+                time_now_12.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             twelve,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.DONE_ALL_ROUNDED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.DONE_ALL_ROUNDED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             elif time_start <= current_time <= time_end:
                 time_now_12.bgcolor = '#ffcc66'
-                time_now_12.content = Row(
-                    alignment=MainAxisAlignment.SPACE_BETWEEN,
+                time_now_12.content = ft.Row(
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        Container(width=25),
-                        Text(
+                        ft.Container(width=25),
+                        ft.Text(
                             twelve,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         ),
-                        Icon(
-                            name=icons.BROWSE_GALLERY_OUTLINED,
-                            color=colors.BLACK
+                        ft.Icon(
+                            name=ft.icons.BROWSE_GALLERY_OUTLINED,
+                            color=ft.colors.BLACK
                         )
                     ]
                 )
             else:
                 time_now_12.bgcolor = '#ffcc66'
-                time_now_12.content = Row(
+                time_now_12.content = ft.Row(
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             twelve,
                             size=21,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -1263,7 +1263,7 @@ def main(page: Page):
         end_time = datetime.strptime(end_time_str, '%H:%M').time()
 
         if start_time <= current_time <= end_time:
-            lamp_img.content = Image(
+            lamp_img.content = ft.Image(
                 src=f"/Images/lamp_off.png",
                 gapless_playback=True,
                 height=280,
@@ -1272,7 +1272,7 @@ def main(page: Page):
             lamp_img.update()
             return True
         else:
-            lamp_img.content = Image(
+            lamp_img.content = ft.Image(
                 src=f"/Images/lamp_on.png",
                 gapless_playback=True,
                 height=280,
@@ -1283,7 +1283,7 @@ def main(page: Page):
 
     def alert_conn_start():
         time = page.client_storage.get('time')
-        alert_conn.content = Text(
+        alert_conn.content = ft.Text(
             f"Немає доступу до Інтернету. Останнє оновлення: {time}",
             size=16,
             color='black',
@@ -1344,11 +1344,11 @@ def main(page: Page):
                 else:
                     one = page.client_storage.get("one_tomorrow")
                 time_tomorrow_1.visible = True
-                time_tomorrow_1.content = Text(
+                time_tomorrow_1.content = ft.Text(
                     one,
                     size=21,
                     weight='w500',
-                    color=colors.BLACK,
+                    color=ft.colors.BLACK,
                     font_family="Golos Text"
                 )
                 page.update()
@@ -1356,17 +1356,17 @@ def main(page: Page):
             except:
                 one = page.client_storage.get("one_tomorrow")
                 time_tomorrow_1.visible = True
-                time_tomorrow_1.content = Row(
+                time_tomorrow_1.content = ft.Row(
                     wrap=True,
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             one,
                             text_align='center',
                             size=18,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -1388,11 +1388,11 @@ def main(page: Page):
             else:
                 two = page.client_storage.get("two_tomorrow")
             time_tomorrow_2.visible = True
-            time_tomorrow_2.content = Text(
+            time_tomorrow_2.content = ft.Text(
                 two,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1413,11 +1413,11 @@ def main(page: Page):
             else:
                 three = page.client_storage.get("three_tomorrow")
             time_tomorrow_3.visible = True
-            time_tomorrow_3.content = Text(
+            time_tomorrow_3.content = ft.Text(
                 three,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1437,11 +1437,11 @@ def main(page: Page):
             else:
                 four = page.client_storage.get("four_tomorrow")
             time_tomorrow_4.visible = True
-            time_tomorrow_4.content = Text(
+            time_tomorrow_4.content = ft.Text(
                 four,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1461,11 +1461,11 @@ def main(page: Page):
             else:
                 five = page.client_storage.get("five_tomorrow")
             time_tomorrow_5.visible = True
-            time_tomorrow_5.content = Text(
+            time_tomorrow_5.content = ft.Text(
                 five,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1486,11 +1486,11 @@ def main(page: Page):
                 else:
                     six = page.client_storage.get("six_tomorrow")
                 time_tomorrow_6.visible = True
-                time_tomorrow_6.content = Text(
+                time_tomorrow_6.content = ft.Text(
                     six,
                     size=21,
                     weight='w500',
-                    color=colors.BLACK,
+                    color=ft.colors.BLACK,
                     font_family="Golos Text"
                 )
                 page.update()
@@ -1511,11 +1511,11 @@ def main(page: Page):
             else:
                 seven = page.client_storage.get("seven_tomorrow")
             time_tomorrow_7.visible = True
-            time_tomorrow_7.content = Text(
+            time_tomorrow_7.content = ft.Text(
                 seven,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1536,11 +1536,11 @@ def main(page: Page):
             else:
                 eight = page.client_storage.get("eight_tomorrow")
             time_tomorrow_8.visible = True
-            time_tomorrow_8.content = Text(
+            time_tomorrow_8.content = ft.Text(
                 eight,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1560,11 +1560,11 @@ def main(page: Page):
             else:
                 nine = page.client_storage.get("nine_tomorrow")
             time_tomorrow_9.visible = True
-            time_tomorrow_9.content = Text(
+            time_tomorrow_9.content = ft.Text(
                 nine,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1584,11 +1584,11 @@ def main(page: Page):
             else:
                 ten = page.client_storage.get("ten_tomorrow")
             time_tomorrow_10.visible = True
-            time_tomorrow_10.content = Text(
+            time_tomorrow_10.content = ft.Text(
                 ten,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1609,11 +1609,11 @@ def main(page: Page):
             else:
                 eleven = page.client_storage.get("eleven_tomorrow")
             time_tomorrow_11.visible = True
-            time_tomorrow_11.content = Text(
+            time_tomorrow_11.content = ft.Text(
                 eleven,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1634,11 +1634,11 @@ def main(page: Page):
                 else:
                     twelve = page.client_storage.get("twelve_tomorrow")
                 time_tomorrow_12.visible = True
-                time_tomorrow_12.content = Text(
+                time_tomorrow_12.content = ft.Text(
                     twelve,
                     size=21,
                     weight='w500',
-                    color=colors.BLACK,
+                    color=ft.colors.BLACK,
                     font_family="Golos Text"
                 )
                 page.update()
@@ -1693,11 +1693,11 @@ def main(page: Page):
                 else:
                     one = page.client_storage.get("one_after_tomorrow")
                 time_after_tomorrow_1.visible = True
-                time_after_tomorrow_1.content = Text(
+                time_after_tomorrow_1.content = ft.Text(
                     one,
                     size=21,
                     weight='w500',
-                    color=colors.BLACK,
+                    color=ft.colors.BLACK,
                     font_family="Golos Text"
                 )
                 page.update()
@@ -1705,17 +1705,17 @@ def main(page: Page):
             except:
                 one = page.client_storage.get("one_after_tomorrow")
                 time_after_tomorrow_1.visible = True
-                time_after_tomorrow_1.content = Row(
+                time_after_tomorrow_1.content = ft.Row(
                     wrap=True,
                     alignment="center",
                     vertical_alignment='center',
                     controls=[
-                        Text(
+                        ft.Text(
                             one,
                             text_align='center',
                             size=18,
                             weight='w500',
-                            color=colors.BLACK,
+                            color=ft.colors.BLACK,
                             font_family="Golos Text"
                         )
                     ]
@@ -1738,11 +1738,11 @@ def main(page: Page):
             else:
                 two = page.client_storage.get("two_after_tomorrow")
             time_after_tomorrow_2.visible = True
-            time_after_tomorrow_2.content = Text(
+            time_after_tomorrow_2.content = ft.Text(
                 two,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1763,11 +1763,11 @@ def main(page: Page):
             else:
                 three = page.client_storage.get("three_after_tomorrow")
             time_after_tomorrow_3.visible = True
-            time_after_tomorrow_3.content = Text(
+            time_after_tomorrow_3.content = ft.Text(
                 three,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1788,11 +1788,11 @@ def main(page: Page):
             else:
                 four = page.client_storage.get("four_after_tomorrow")
             time_after_tomorrow_4.visible = True
-            time_after_tomorrow_4.content = Text(
+            time_after_tomorrow_4.content = ft.Text(
                 four,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1813,11 +1813,11 @@ def main(page: Page):
             else:
                 five = page.client_storage.get("five_after_tomorrow")
             time_after_tomorrow_5.visible = True
-            time_after_tomorrow_5.content = Text(
+            time_after_tomorrow_5.content = ft.Text(
                 five,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1838,11 +1838,11 @@ def main(page: Page):
             else:
                 six = page.client_storage.get("six_after_tomorrow")
             time_after_tomorrow_6.visible = True
-            time_after_tomorrow_6.content = Text(
+            time_after_tomorrow_6.content = ft.Text(
                 six,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1863,11 +1863,11 @@ def main(page: Page):
             else:
                 seven = page.client_storage.get("seven_after_tomorrow")
             time_after_tomorrow_7.visible = True
-            time_after_tomorrow_7.content = Text(
+            time_after_tomorrow_7.content = ft.Text(
                 seven,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1888,11 +1888,11 @@ def main(page: Page):
             else:
                 eight = page.client_storage.get("eight_after_tomorrow")
             time_after_tomorrow_8.visible = True
-            time_after_tomorrow_8.content = Text(
+            time_after_tomorrow_8.content = ft.Text(
                 eight,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1913,11 +1913,11 @@ def main(page: Page):
             else:
                 nine = page.client_storage.get("nine_after_tomorrow")
             time_after_tomorrow_9.visible = True
-            time_after_tomorrow_9.content = Text(
+            time_after_tomorrow_9.content = ft.Text(
                 nine,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1938,11 +1938,11 @@ def main(page: Page):
             else:
                 ten = page.client_storage.get("ten_after_tomorrow")
             time_after_tomorrow_10.visible = True
-            time_after_tomorrow_10.content = Text(
+            time_after_tomorrow_10.content = ft.Text(
                 ten,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1963,11 +1963,11 @@ def main(page: Page):
             else:
                 eleven = page.client_storage.get("eleven_after_tomorrow")
             time_after_tomorrow_11.visible = True
-            time_after_tomorrow_11.content = Text(
+            time_after_tomorrow_11.content = ft.Text(
                 eleven,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -1988,11 +1988,11 @@ def main(page: Page):
             else:
                 twelve = page.client_storage.get("twelve_after_tomorrow")
             time_after_tomorrow_12.visible = True
-            time_after_tomorrow_12.content = Text(
+            time_after_tomorrow_12.content = ft.Text(
                 twelve,
                 size=21,
                 weight='w500',
-                color=colors.BLACK,
+                color=ft.colors.BLACK,
                 font_family="Golos Text"
             )
             page.update()
@@ -2002,7 +2002,7 @@ def main(page: Page):
 
     def main_tab_anim():
         main_info.expand = True
-        main_info.content = Column(
+        main_info.content = ft.Column(
             controls=[
                 main_tab
             ]
@@ -2011,7 +2011,7 @@ def main(page: Page):
 
     def refresh():
         current_time = datetime.now().strftime("%H:%M")
-        refresh_bar.content = Text(
+        refresh_bar.content = ft.Text(
             f"Оновлено о {current_time}",
             size=18,
             color='black',
@@ -2037,35 +2037,35 @@ def main(page: Page):
         page.client_storage.set('day_close', day_close)
         page.update()
 
-    telegram_banner = Banner(
+    telegram_banner = ft.Banner(
         elevation=5,
         bgcolor='#ffcc66',
-        surface_tint_color=colors.BACKGROUND,
-        leading=Image(
+        surface_tint_color=ft.colors.BACKGROUND,
+        leading=ft.Image(
             src=f"/Images/telegram.svg",
             height=40,
             width=40,),
-        content=Text(
+        content=ft.Text(
             value="Запрошуємо в наш телеграм канал - Світло Суми!",
             size=18,
             weight='w500',
-            color=colors.BLACK,
+            color=ft.colors.BLACK,
             font_family="Golos Text",
         ),
         actions=[
-            TextButton(text="Перейти", style=ButtonStyle(
-                color=colors.BLACK), on_click=open_telegram),
-            TextButton(text="Закрити", style=ButtonStyle(
-                color=colors.BLACK), on_click=close_bunner)
+            ft.TextButton(text="Перейти", style=ft.ButtonStyle(
+                color=ft.colors.BLACK), on_click=open_telegram),
+            ft.TextButton(text="Закрити", style=ft.ButtonStyle(
+                color=ft.colors.BLACK), on_click=close_bunner)
         ]
     )
 
-    alert_conn = SnackBar(
-        behavior=SnackBarBehavior.FLOATING,
+    alert_conn = ft.SnackBar(
+        behavior=ft.SnackBarBehavior.FLOATING,
         elevation=15,
         duration=5000,
         bgcolor='#ffcc66',
-        content=Text(
+        content=ft.Text(
             size=16,
             color='black',
             text_align='center',
@@ -2074,12 +2074,12 @@ def main(page: Page):
         )
     )
 
-    alert_first_conn = SnackBar(
-        behavior=SnackBarBehavior.FLOATING,
+    alert_first_conn = ft.SnackBar(
+        behavior=ft.SnackBarBehavior.FLOATING,
         elevation=15,
         duration=5000,
         bgcolor='#ffcc66',
-        content=Text(
+        content=ft.Text(
             "Немає доступу до Інтернету. Для оновлення інформації потрібне підключення до Інтернету!",
             size=16,
             color='black',
@@ -2089,12 +2089,12 @@ def main(page: Page):
         )
     )
 
-    refresh_bar = SnackBar(
-        behavior=SnackBarBehavior.FLOATING,
+    refresh_bar = ft.SnackBar(
+        behavior=ft.SnackBarBehavior.FLOATING,
         elevation=15,
         duration=3000,
         bgcolor='#ffcc66',
-        content=Text(
+        content=ft.Text(
             # f"Оновлено о ",
             size=18,
             color='black',
@@ -2104,18 +2104,18 @@ def main(page: Page):
         )
     )
 
-    progress_bar = ProgressBar(
+    progress_bar = ft.ProgressBar(
         visible=True,
         bgcolor="white",
         color="#ffcc66",
         bar_height=5,
     )
 
-    time_now = Container(
-        alignment=alignment.center,
+    time_now = ft.Container(
+        alignment=ft.alignment.center,
         padding=10,
-        content=Column(
-            scroll=ScrollMode.ADAPTIVE,
+        content=ft.Column(
+            scroll=ft.ScrollMode.ADAPTIVE,
             alignment='center',
             horizontal_alignment='center',
             spacing=9,
@@ -2136,11 +2136,11 @@ def main(page: Page):
         )
     )
 
-    time_tomorrow = Container(
-        alignment=alignment.center,
+    time_tomorrow = ft.Container(
+        alignment=ft.alignment.center,
         padding=10,
-        content=Column(
-            scroll=ScrollMode.ADAPTIVE,
+        content=ft.Column(
+            scroll=ft.ScrollMode.ADAPTIVE,
             alignment='center',
             horizontal_alignment='center',
             spacing=9,
@@ -2161,11 +2161,11 @@ def main(page: Page):
         )
     )
 
-    time_after_tomorrow = Container(
-        alignment=alignment.center,
+    time_after_tomorrow = ft.Container(
+        alignment=ft.alignment.center,
         padding=10,
-        content=Column(
-            scroll=ScrollMode.ADAPTIVE,
+        content=ft.Column(
+            scroll=ft.ScrollMode.ADAPTIVE,
             alignment='center',
             horizontal_alignment='center',
             spacing=9,
@@ -2186,39 +2186,39 @@ def main(page: Page):
         )
     )
 
-    one_button = ElevatedButton(content=Text("Перша", size=22, weight='w500', font_family="Golos Text"),
-                                style=ButtonStyle(shape=RoundedRectangleBorder(radius=15), overlay_color=colors.AMBER_200), width=250, height=50,
-                                color=colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=1)
+    one_button = ft.ElevatedButton(content=ft.Text("Перша", size=22, weight='w500', font_family="Golos Text"),
+                                   style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                   color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=1)
 
-    two_button = ElevatedButton(content=Text("Друга", size=22, weight='w500', font_family="Golos Text"),
-                                style=ButtonStyle(shape=RoundedRectangleBorder(radius=15), overlay_color=colors.AMBER_200), width=250, height=50,
-                                color=colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=2)
+    two_button = ft.ElevatedButton(content=ft.Text("Друга", size=22, weight='w500', font_family="Golos Text"),
+                                   style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                   color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=2)
 
-    three_button = ElevatedButton(content=Text("Третя", size=22, weight='w500', font_family="Golos Text"),
-                                  style=ButtonStyle(shape=RoundedRectangleBorder(radius=15), overlay_color=colors.AMBER_200), width=250, height=50,
-                                  color=colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=3)
+    three_button = ft.ElevatedButton(content=ft.Text("Третя", size=22, weight='w500', font_family="Golos Text"),
+                                     style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                     color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=3)
 
-    four_button = ElevatedButton(content=Text("Четверта", size=22, weight='w500', font_family="Golos Text"),
-                                 style=ButtonStyle(shape=RoundedRectangleBorder(radius=15), overlay_color=colors.AMBER_200), width=250, height=50,
-                                 color=colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=4)
+    four_button = ft.ElevatedButton(content=ft.Text("Четверта", size=22, weight='w500', font_family="Golos Text"),
+                                    style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                    color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=4)
 
-    five_button = ElevatedButton(content=Text("П'ята", size=22, weight='w500', font_family="Golos Text"),
-                                 style=ButtonStyle(shape=RoundedRectangleBorder(radius=15), overlay_color=colors.AMBER_200), width=250, height=50,
-                                 color=colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=5)
+    five_button = ft.ElevatedButton(content=ft.Text("П'ята", size=22, weight='w500', font_family="Golos Text"),
+                                    style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                    color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=5)
 
-    six_button = ElevatedButton(content=Text("Шоста", size=22, weight='w500', font_family="Golos Text"),
-                                style=ButtonStyle(shape=RoundedRectangleBorder(radius=15), overlay_color=colors.AMBER_200), width=250, height=50,
-                                color=colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=6)
+    six_button = ft.ElevatedButton(content=ft.Text("Шоста", size=22, weight='w500', font_family="Golos Text"),
+                                   style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
+                                   color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=6)
 
-    bs = BottomSheet(
-        content=Column(
+    bs = ft.BottomSheet(
+        content=ft.Column(
             horizontal_alignment='center',
             alignment='end',
             height=380,
             width=400,
             spacing=5,
             controls=[
-                Text(
+                ft.Text(
                     "Оберіть чергу:",
                     size=20,
                     weight='w500',
@@ -2231,15 +2231,15 @@ def main(page: Page):
                 four_button,
                 five_button,
                 six_button,
-                Container(height=10),
+                ft.Container(height=10),
             ]
         ),
-        bgcolor=colors.WHITE,
+        bgcolor=ft.colors.WHITE,
     )
 
-    lamp_img = SafeArea(
-        Container(
-            content=Image(
+    lamp_img = ft.SafeArea(
+        ft.Container(
+            content=ft.Image(
                 src=f"/Images/lamp_on.png",
                 gapless_playback=True,
                 height=280,
@@ -2248,13 +2248,13 @@ def main(page: Page):
         )
     )
 
-    text_after_img = Container(
+    text_after_img = ft.Container(
         blur=10,
         padding=5,
-        bgcolor=colors.BLACK26,
+        bgcolor=ft.colors.BLACK26,
         border_radius=15,
         width=250,
-        content=Text(
+        content=ft.Text(
             # f"{storage()} черга",
             size=24,
             weight='w500',
@@ -2264,19 +2264,19 @@ def main(page: Page):
         )
     )
 
-    main_tab = Tabs(
+    main_tab = ft.Tabs(
         visible=False,
-        tab_alignment=TabAlignment.CENTER,
-        divider_color=colors.BLACK26,
+        tab_alignment=ft.TabAlignment.CENTER,
+        divider_color=ft.colors.BLACK26,
         animation_duration=300,
         scrollable=True,
         indicator_color='#ffcc66',
         label_color='#ffcc66',
-        unselected_label_color=colors.BLACK87,
+        unselected_label_color=ft.colors.BLACK87,
         selected_index=0,
         tabs=[
-            Tab(
-                tab_content=Text(
+            ft.Tab(
+                tab_content=ft.Text(
                     day_of_week_today,
                     size=18,
                     text_align='center',
@@ -2285,8 +2285,8 @@ def main(page: Page):
                 ),
                 content=time_now
             ),
-            Tab(
-                tab_content=Text(
+            ft.Tab(
+                tab_content=ft.Text(
                     day_of_week_tomorrow,
                     size=18,
                     text_align='center',
@@ -2295,8 +2295,8 @@ def main(page: Page):
                 ),
                 content=time_tomorrow
             ),
-            Tab(
-                tab_content=Text(
+            ft.Tab(
+                tab_content=ft.Text(
                     day_of_week_after_tomorrow,
                     size=18,
                     text_align='center',
@@ -2309,12 +2309,12 @@ def main(page: Page):
         expand=True
     )
 
-    main_info = Container(
+    main_info = ft.Container(
         blur=10,
         padding=15,
-        bgcolor=colors.BLACK26,
+        bgcolor=ft.colors.BLACK26,
         border_radius=15,
-        content=Column(
+        content=ft.Column(
             horizontal_alignment='center',
             alignment="center",
             controls=[
@@ -2323,28 +2323,28 @@ def main(page: Page):
         )
     )
 
-    info_tab = SafeArea(
-        Container(
+    info_tab = ft.SafeArea(
+        ft.Container(
             blur=10,
-            bgcolor=colors.BLACK12,
+            bgcolor=ft.colors.BLACK12,
             border_radius=15,
             padding=15,
-            alignment=alignment.center,
-            content=Column(
-                scroll=ScrollMode.ADAPTIVE,
+            alignment=ft.alignment.center,
+            content=ft.Column(
+                scroll=ft.ScrollMode.ADAPTIVE,
                 horizontal_alignment='center',
                 alignment='start',
                 controls=[
-                    Text(
+                    ft.Text(
                         'Інформація',
                         size=30,
-                        color=colors.BLACK87,
+                        color=ft.colors.BLACK87,
                         weight="w400",
                         font_family="Golos Text",
                         text_align="center"
                     ),
-                    Divider(height=0.1, color=colors.BLACK26),
-                    Text(
+                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
+                    ft.Text(
                         "Розроблено для безплатного користування.",
                         size=16,
                         color='black',
@@ -2352,8 +2352,8 @@ def main(page: Page):
                         font_family="Golos Text",
                         weight="w500"
                     ),
-                    Divider(height=0.1, color=colors.BLACK26),
-                    Text(
+                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
+                    ft.Text(
                         "Застосунок використовує актуальні графіки відключень світла з сайту Сумиобленерго.",
                         size=16,
                         color='black',
@@ -2361,8 +2361,8 @@ def main(page: Page):
                         font_family="Golos Text",
                         weight="w500"
                     ),
-                    Divider(height=0.1, color=colors.BLACK26),
-                    Text(
+                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
+                    ft.Text(
                         "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку монобанку.",
                         size=16,
                         color='black',
@@ -2370,23 +2370,23 @@ def main(page: Page):
                         font_family="Golos Text",
                         weight="w500"
                     ),
-                    Divider(height=0.1, color=colors.BLACK26),
-                    ElevatedButton(
-                        content=Container(
+                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
+                    ft.ElevatedButton(
+                        content=ft.Container(
                             # padding=10,
-                            content=Row(
+                            content=ft.Row(
                                 alignment='center',
                                 vertical_alignment='center',
                                 spacing=3,
                                 wrap=True,
                                 expand=True,
                                 controls=[
-                                    Image(
+                                    ft.Image(
                                         src=f"/Images/telegram.svg",
                                         height=40,
                                         width=40,
                                     ),
-                                    Text(
+                                    ft.Text(
                                         "Світло Суми",
                                         size=18,
                                         color='black',
@@ -2397,26 +2397,26 @@ def main(page: Page):
                                 ]
                             )
                         ),
-                        style=ButtonStyle(
-                            shape=RoundedRectangleBorder(radius=15),
-                            overlay_color=colors.AMBER_200),
+                        style=ft.ButtonStyle(
+                            shape=ft.RoundedRectangleBorder(radius=15),
+                            overlay_color=ft.colors.AMBER_200),
                         # height=50,
-                        color=colors.BLACK,
+                        color=ft.colors.BLACK,
                         bgcolor='#ffcc66',
                         on_click=open_telegram_channel
                     ),
-                    Divider(height=0.1, color=colors.BLACK26),
-                    TextButton(
-                        style=ButtonStyle(
-                            overlay_color=colors.AMBER_200),
+                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
+                    ft.TextButton(
+                        style=ft.ButtonStyle(
+                            overlay_color=ft.colors.AMBER_200),
                         on_click=mono_click,
-                        content=Image(
+                        content=ft.Image(
                             src=f"/Images/monobanka.png",
                             height=100,
                             width=100,
                         )
                     ),
-                    Text(
+                    ft.Text(
                         "Підтримати розробника",
                         size=20,
                         color='black',
@@ -2424,28 +2424,28 @@ def main(page: Page):
                         font_family="Golos Text",
                         weight="w500"
                     ),
-                    Divider(height=0.1, color=colors.BLACK26),
-                    ElevatedButton(
-                        style=ButtonStyle(
-                            shape=RoundedRectangleBorder(radius=15),
-                            overlay_color=colors.AMBER_200),
-                        color=colors.BLACK,
+                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
+                    ft.ElevatedButton(
+                        style=ft.ButtonStyle(
+                            shape=ft.RoundedRectangleBorder(radius=15),
+                            overlay_color=ft.colors.AMBER_200),
+                        color=ft.colors.BLACK,
                         bgcolor='#ffcc66',
                         on_click=telegram_click,
                         # width=300,
-                        content=Row(
+                        content=ft.Row(
                             alignment='center',
                             vertical_alignment='center',
                             spacing=3,
                             wrap=True,
                             expand=True,
                             controls=[
-                                Image(
+                                ft.Image(
                                     src=f"/Images/telegram.svg",
                                     height=40,
                                     width=40,
                                 ),
-                                Text(
+                                ft.Text(
                                     "Написати розробнику",
                                     size=17,
                                     color='black',
@@ -2463,14 +2463,14 @@ def main(page: Page):
         visible=False
     )
 
-    main_container = Container(
-        gradient=LinearGradient(
-            begin=alignment.top_right,
-            end=alignment.bottom_left,
+    main_container = ft.Container(
+        gradient=ft.LinearGradient(
+            begin=ft.alignment.top_right,
+            end=ft.alignment.bottom_left,
             colors=['#ffcc66', '#ff6666']
         ),
         padding=15,
-        content=Column(
+        content=ft.Column(
             horizontal_alignment='center',
             alignment='center',
             controls=[
@@ -2487,26 +2487,26 @@ def main(page: Page):
         "Golos Text": "/fonts/GolosText.ttf"
     }
     page.title = 'Svitlo Sumy'
-    page.theme_mode = ThemeMode.LIGHT
+    page.theme_mode = ft.ThemeMode.LIGHT
     page.window_height = 700
     page.window_width = 400
     page.padding = 0
     # page.window_center()
     page.window_resizable = True
-    page.navigation_bar = NavigationBar(
+    page.navigation_bar = ft.NavigationBar(
         surface_tint_color='#ff6666',
         indicator_color='#ffcc66',
-        indicator_shape=RoundedRectangleBorder(radius=10),
+        indicator_shape=ft.RoundedRectangleBorder(radius=10),
         height=65,
         on_change=on_tab,
         selected_index=1,
         destinations=[
-            NavigationDestination(
-                icon=icons.LIST_ROUNDED, label='Черги',),
-            NavigationDestination(
-                icon=icons.HOME_ROUNDED, label='Головна'),
-            NavigationDestination(
-                icon=icons.INFO, selected_icon=icons.INFO_OUTLINE, label='Інформація')
+            ft.NavigationDestination(
+                icon=ft.icons.LIST_ROUNDED, label='Черги',),
+            ft.NavigationDestination(
+                icon=ft.icons.HOME_ROUNDED, label='Головна'),
+            ft.NavigationDestination(
+                icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація')
         ]
     )
 
@@ -2532,7 +2532,7 @@ def main(page: Page):
             print("Update Not Complete!")
 
 
-app(
+ft.app(
     target=main,
     name="Svitlo Sumy",
     assets_dir='assets',
