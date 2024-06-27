@@ -32,7 +32,7 @@ from datetime import datetime
 def main(page: Page):
 
     database_connection = firebase.FirebaseApplication(
-        'https://test-svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
+        'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
     main_database = database_connection.get("/", None)
     database = main_database.get("database")
     print('DATABASE:', database)
