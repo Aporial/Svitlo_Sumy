@@ -32,7 +32,7 @@ from datetime import datetime
 def main(page: Page):
 
     database_connection = firebase.FirebaseApplication(
-        'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
+        'https://test-svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
     main_database = database_connection.get("/", None)
     database = main_database.get("database")
     print('DATABASE:', database)
@@ -3944,7 +3944,7 @@ def main(page: Page):
                         line_2,
                         line_3,
                         line_4,
-                        line_5,
+                        # line_5,
                         # line_6,
                         # line_7,
                         # line_8,
