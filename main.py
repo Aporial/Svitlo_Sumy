@@ -291,9 +291,9 @@ def main(page: ft.Page):
                 source_github()
             if page.client_storage.get("source") == "firebase":
                 source_firebase()
-            time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
-            page.client_storage.set('time', time)
-            refresh()
+            data = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
+            page.client_storage.set('time', data)
+            time.sleep(1)
             print('Connected!')
         except:
             alert_conn_start()
@@ -2524,8 +2524,18 @@ def main(page: ft.Page):
     check_storage()
     check_telegram()
     while True:
-        time.sleep(30)
+        time.sleep(60)
         try:
+            main_info.padding = 15
+            main_info.content = ft.Column(
+                horizontal_alignment='center',
+                alignment="center",
+                controls=[
+                    progress_bar
+                ]
+            )
+            progress_bar.visible = True
+            page.update()
             check_storage_refresh()
             print("Update Complete!")
         except:
