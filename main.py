@@ -2526,6 +2526,7 @@ def main(page: ft.Page):
     while True:
         time.sleep(60)
         try:
+            main_info.expand = False
             main_info.padding = 15
             main_info.content = ft.Column(
                 horizontal_alignment='center',
