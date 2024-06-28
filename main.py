@@ -1273,13 +1273,13 @@ async def main(page: ft.Page):
             )
             lamp_img.update()
             if bg_switch.value == True:
-                # await page.client_storage.set_async('bg_options', True)
                 page.theme_mode = ft.ThemeMode.DARK
                 main_container.gradient = ft.LinearGradient(
                     begin=ft.alignment.top_right,
                     end=ft.alignment.bottom_left,
                     colors=['#4d4d4d', '#ff6666']
                 )
+                page.navigation_bar.indicator_color = '#4d4d4d'
             page.update()
             return True
         else:
@@ -1297,6 +1297,9 @@ async def main(page: ft.Page):
                     end=ft.alignment.bottom_left,
                     colors=['#ffcc66', '#ff6666']
                 )
+                page.navigation_bar.indicator_color = '#ffcc66'
+            if bg_switch.value == False:
+                page.navigation_bar.indicator_color = '#ffcc66'
             page.update()
             return False
 
@@ -2088,6 +2091,7 @@ async def main(page: ft.Page):
             print('Lamp ON')
         if lamp_switch.value == False:
             await page.client_storage.set_async('lamp_options', False)
+            # page.navigation_bar.indicator_color = '#ffcc66'
             lamp_img.visible = False
             print('Lamp OFF')
         page.update()
@@ -2288,8 +2292,7 @@ async def main(page: ft.Page):
                 six_button,
                 ft.Container(height=10),
             ]
-        ),
-        bgcolor=ft.colors.WHITE,
+        )
     )
 
     lamp_img = ft.SafeArea(
