@@ -1227,7 +1227,7 @@ async def main(page: ft.Page):
 
         progress_bar.visible = False
         main_info.padding = 0
-        main_info.expand = True
+        # main_info.expand = True
         main_tab.visible = True
         time_now.visible = True
         time_tomorrow.visible = True
@@ -1264,20 +1264,20 @@ async def main(page: ft.Page):
         end_time = datetime.strptime(end_time_str, '%H:%M').time()
 
         if start_time <= current_time <= end_time:
-            lamp_img.content = ft.Image(
-                src=f"/Images/lamp_off.png",
-                gapless_playback=True,
-                height=280,
-                width=280,
+            lamp_img.content = ft.SafeArea(
+                content=ft.Image(
+                    src=f"/Images/lamp_off.png",
+                    # gapless_playback=True,
+                )
             )
             lamp_img.update()
             return True
         else:
-            lamp_img.content = ft.Image(
-                src=f"/Images/lamp_on.png",
-                gapless_playback=True,
-                height=280,
-                width=280,
+            lamp_img.content = ft.SafeArea(
+                content=ft.Image(
+                    src=f"/Images/lamp_on.png",
+                    # gapless_playback=True,
+                )
             )
             lamp_img.update()
             return False
@@ -2002,7 +2002,6 @@ async def main(page: ft.Page):
         page.update()
 
     def main_tab_anim():
-        main_info.expand = True
         main_info.content = ft.Column(
             controls=[
                 main_tab
@@ -2037,6 +2036,16 @@ async def main(page: ft.Page):
         print(day_close)
         await page.client_storage.set_async('day_close', day_close)
         page.update()
+
+    async def lamp_options():
+        await page.client_storage.set_async('lamp_options', False)
+        lamp_status = await page.client_storage.get_async('lamp_options')
+        if lamp_status == False:
+            lamp_img.visible = False
+            page.update()
+        if lamp_status == True:
+            lamp_img.visible = True
+            page.update()
 
     telegram_banner = ft.Banner(
         elevation=5,
@@ -2239,14 +2248,11 @@ async def main(page: ft.Page):
     )
 
     lamp_img = ft.SafeArea(
-        ft.Container(
-            content=ft.Image(
-                src=f"/Images/lamp_on.png",
-                gapless_playback=True,
-                height=280,
-                width=280,
-            )
-        )
+        content=ft.Image(
+            src=f"/Images/lamp_on.png",
+            # gapless_playback=True,
+        ),
+        expand=2
     )
 
     text_after_img = ft.Container(
@@ -2311,6 +2317,7 @@ async def main(page: ft.Page):
     )
 
     main_info = ft.Container(
+        expand=3,
         blur=10,
         padding=15,
         bgcolor=ft.colors.BLACK26,
@@ -2319,7 +2326,7 @@ async def main(page: ft.Page):
             horizontal_alignment='center',
             alignment="center",
             controls=[
-                progress_bar,
+                progress_bar
             ]
         )
     )
@@ -2525,11 +2532,11 @@ async def main(page: ft.Page):
     await check_telegram()
     page.run_task(check_storage)
     page.update()
+    # await lamp_options()
 
     while True:
         await asyncio.sleep(5)
         try:
-            main_info.expand = False
             main_info.padding = 15
             main_info.content = ft.Column(
                 horizontal_alignment='center',
