@@ -2736,24 +2736,24 @@ async def main(page: ft.Page):
     page.run_task(check_storage)
     page.update()
 
-    # while True:
-    #     await asyncio.sleep(60)
-    #     try:
-    #         main_info.padding = 15
-    #         main_info.content = ft.Column(
-    #             horizontal_alignment='center',
-    #             alignment="center",
-    #             controls=[
-    #                 progress_bar
-    #             ]
-    #         )
-    #         progress_bar.visible = True
-    #         page.update()
-    #         await asyncio.sleep(1)
-    #         await check_storage_refresh()
-    #         print("Update Complete!")
-    #     except:
-    #         print("Update Not Complete!")
+    while True:
+        await asyncio.sleep(60)
+        try:
+            main_info.padding = 15
+            main_info.content = ft.Column(
+                horizontal_alignment='center',
+                alignment="center",
+                controls=[
+                    progress_bar
+                ]
+            )
+            progress_bar.visible = True
+            page.update()
+            await asyncio.sleep(1)
+            await check_storage_refresh()
+            print("Update Complete!")
+        except:
+            print("Update Not Complete!")
 
 
 ft.app(
