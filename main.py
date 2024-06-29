@@ -2575,49 +2575,31 @@ async def main(page: ft.Page):
                 content=ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
-                        ft.Text(
-                            'Змінювати фон у темряві',
-                            size=16,
-                            color=ft.colors.BLACK87,
-                            weight="w400",
-                            font_family="Golos Text",
-                            text_align="center"
+                        ft.Column(
+                            spacing=0,
+                            controls=[
+                                ft.Text(
+                                    "Змінювати фон,",
+                                    size=16,
+                                    color=ft.colors.BLACK87,
+                                    weight="w400",
+                                    font_family="Golos Text",
+                                    text_align="start",
+                                ),
+                                ft.Text(
+                                    "якщо світло вимкнуте",
+                                    size=16,
+                                    color=ft.colors.BLACK87,
+                                    weight="w400",
+                                    font_family="Golos Text",
+                                    text_align="start",
+                                )
+                            ]
                         ),
                         bg_switch
                     ]
                 )
             ),
-            ft.Container(
-                blur=10,
-                bgcolor=ft.colors.BLACK12,
-                border_radius=15,
-                padding=15,
-                alignment=ft.alignment.center,
-                content=ft.Row(
-                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
-                    controls=[
-                        ft.Text(
-                            '**********',
-                            size=16,
-                            color=ft.colors.BLACK87,
-                            weight="w400",
-                            font_family="Golos Text",
-                            text_align="center"
-                        ),
-                        ft.Switch(
-                            value=False,
-                            active_color='#ffcc66',
-                            inactive_thumb_color=ft.colors.GREY,
-                            active_track_color=ft.colors.WHITE,
-                            inactive_track_color=ft.colors.WHITE,
-                            hover_color=ft.colors.WHITE12,
-                            label_position=ft.LabelPosition.LEFT,
-                            track_outline_color=ft.colors.WHITE
-                        )
-                    ]
-                )
-            ),
-
         ]
     )
 
