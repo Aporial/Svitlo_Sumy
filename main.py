@@ -2609,7 +2609,7 @@ async def main(page: ft.Page):
                             spacing=0,
                             controls=[
                                 ft.Text(
-                                    "Змінювати фон,",
+                                    "Змінювати фон",
                                     size=16,
                                     color=ft.colors.BLACK87,
                                     weight="w400",
