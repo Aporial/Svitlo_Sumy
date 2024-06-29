@@ -5,18 +5,18 @@ def main(page: ft.Page):
 
     logo = ft.Image(
         src=f"/logo.png",
-        height=150,
-        width=150,
-        border_radius=100,
+        height=300,
+        width=300,
+        border_radius=200,
     )
 
     lable_name = ft.Text(
         "Світло Суми",
-            size=22,
-            color=ft.colors.BLACK87,
-            weight="w400",
-            font_family="Golos Text",
-            text_align="center"
+        size=30,
+        color=ft.colors.BLACK87,
+        weight="w400",
+        font_family="Golos Text",
+        text_align="center"
     )
 
     lable_text = ft.Container(
@@ -34,8 +34,6 @@ def main(page: ft.Page):
             text_align="center"
         )
     )
-
-
 
     main_container = ft.Container(
         expand=True,
@@ -61,8 +59,8 @@ def main(page: ft.Page):
     }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ft.ThemeMode.LIGHT
-    page.window_height = 350
-    page.window_width = 350
+    page.window_height = 650
+    page.window_width = 650
     page.padding = 0
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
