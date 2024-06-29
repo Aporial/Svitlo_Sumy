@@ -379,7 +379,7 @@ async def main(page: ft.Page):
                         ]
                     )
                 elif time_start <= current_time <= time_end:
-                    time_now_1.bgcolor = '#ffcc66'
+                    time_now_1.bgcolor = '#ffa067'
                     time_now_1.content = ft.Row(
                         alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                         controls=[
@@ -471,7 +471,7 @@ async def main(page: ft.Page):
                     ]
                 )
             elif time_start <= current_time <= time_end:
-                time_now_2.bgcolor = '#ffcc66'
+                time_now_2.bgcolor = '#ffa067'
                 time_now_2.content = ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
@@ -543,7 +543,7 @@ async def main(page: ft.Page):
                     ]
                 )
             elif time_start <= current_time <= time_end:
-                time_now_3.bgcolor = '#ffcc66'
+                time_now_3.bgcolor = '#ffa067'
                 time_now_3.content = ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
@@ -615,7 +615,7 @@ async def main(page: ft.Page):
                     ]
                 )
             elif time_start <= current_time <= time_end:
-                time_now_4.bgcolor = '#ffcc66'
+                time_now_4.bgcolor = '#ffa067'
                 time_now_4.content = ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
@@ -687,7 +687,7 @@ async def main(page: ft.Page):
                     ]
                 )
             elif time_start <= current_time <= time_end:
-                time_now_5.bgcolor = '#ffcc66'
+                time_now_5.bgcolor = '#ffa067'
                 time_now_5.content = ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
@@ -759,7 +759,7 @@ async def main(page: ft.Page):
                     ]
                 )
             elif time_start <= current_time <= time_end:
-                time_now_6.bgcolor = '#ffcc66'
+                time_now_6.bgcolor = '#ffa067'
                 time_now_6.content = ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
@@ -831,7 +831,7 @@ async def main(page: ft.Page):
                     ]
                 )
             elif time_start <= current_time <= time_end:
-                time_now_7.bgcolor = '#ffcc66'
+                time_now_7.bgcolor = '#ffa067'
                 time_now_7.content = ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
@@ -903,7 +903,7 @@ async def main(page: ft.Page):
                     ]
                 )
             elif time_start <= current_time <= time_end:
-                time_now_8.bgcolor = '#ffcc66'
+                time_now_8.bgcolor = '#ffa067'
                 time_now_8.content = ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
@@ -975,7 +975,7 @@ async def main(page: ft.Page):
                     ]
                 )
             elif time_start <= current_time <= time_end:
-                time_now_9.bgcolor = '#ffcc66'
+                time_now_9.bgcolor = '#ffa067'
                 time_now_9.content = ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
@@ -1047,7 +1047,7 @@ async def main(page: ft.Page):
                     ]
                 )
             elif time_start <= current_time <= time_end:
-                time_now_10.bgcolor = '#ffcc66'
+                time_now_10.bgcolor = '#ffa067'
                 time_now_10.content = ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
@@ -1119,7 +1119,7 @@ async def main(page: ft.Page):
                     ]
                 )
             elif time_start <= current_time <= time_end:
-                time_now_11.bgcolor = '#ffcc66'
+                time_now_11.bgcolor = '#ffa067'
                 time_now_11.content = ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
@@ -1191,7 +1191,7 @@ async def main(page: ft.Page):
                     ]
                 )
             elif time_start <= current_time <= time_end:
-                time_now_12.bgcolor = '#ffcc66'
+                time_now_12.bgcolor = '#ffa067'
                 time_now_12.content = ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     controls=[
