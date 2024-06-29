@@ -2096,6 +2096,36 @@ async def main(page: ft.Page):
             print('Lamp OFF')
         page.update()
 
+    async def info_check():
+        source = await page.client_storage.get_async('source')
+        if await page.client_storage.get_async('database_storage') == 1:
+            database = "+10-2"
+        elif await page.client_storage.get_async('database_storage') == 2:
+            database = "+4-2"
+        else:
+            database = await page.client_storage.get_async('database_storage')
+        info_options.content = ft.Row(
+            alignment='center',
+            controls=[
+                ft.Text(
+                    f"Джерело: {source}",
+                    color=ft.colors.BLACK87,
+                    weight="w400",
+                    font_family="Golos Text",
+                    text_align="center"
+                ),
+                ft.Text(
+                    f"База даних: {database}",
+                    color=ft.colors.BLACK87,
+                    weight="w400",
+                    font_family="Golos Text",
+                    text_align="center"
+                )
+            ]
+        )
+        info_options.visible = True
+        page.update()
+
     telegram_banner = ft.Banner(
         elevation=5,
         bgcolor='#ffcc66',
@@ -2603,9 +2633,13 @@ async def main(page: ft.Page):
         ]
     )
 
+    info_options = ft.Container(
+        visible=False,
+        content=ft.Column()
+    )
+
     options_tab = ft.SafeArea(
         visible=False,
-        # expand=True,
         content=ft.Container(
             blur=10,
             bgcolor=ft.colors.BLACK12,
@@ -2617,7 +2651,8 @@ async def main(page: ft.Page):
                 horizontal_alignment='center',
                 alignment='start',
                 controls=[
-                    option_switchers
+                    option_switchers,
+                    info_options
                 ]
             )
         )
@@ -2697,27 +2732,28 @@ async def main(page: ft.Page):
     await check_cherg_main()
     await check_telegram()
     await options_check()
+    await info_check()
     page.run_task(check_storage)
     page.update()
 
-    while True:
-        await asyncio.sleep(60)
-        try:
-            main_info.padding = 15
-            main_info.content = ft.Column(
-                horizontal_alignment='center',
-                alignment="center",
-                controls=[
-                    progress_bar
-                ]
-            )
-            progress_bar.visible = True
-            page.update()
-            await asyncio.sleep(1)
-            await check_storage_refresh()
-            print("Update Complete!")
-        except:
-            print("Update Not Complete!")
+    # while True:
+    #     await asyncio.sleep(60)
+    #     try:
+    #         main_info.padding = 15
+    #         main_info.content = ft.Column(
+    #             horizontal_alignment='center',
+    #             alignment="center",
+    #             controls=[
+    #                 progress_bar
+    #             ]
+    #         )
+    #         progress_bar.visible = True
+    #         page.update()
+    #         await asyncio.sleep(1)
+    #         await check_storage_refresh()
+    #         print("Update Complete!")
+    #     except:
+    #         print("Update Not Complete!")
 
 
 ft.app(
