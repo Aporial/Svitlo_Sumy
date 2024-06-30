@@ -39,7 +39,7 @@ def main(page: Page):
     page.client_storage.set("database_storage", database)
     page.client_storage.set("main_database", main_database)
 
-    if page.client_storage.get("database_storage") == 3:
+    if page.client_storage.get("database_storage") == 1:
         day_num_one = db1_day_num_one
         day_num_two = db1_day_num_two
         day_num_three = db1_day_num_three
