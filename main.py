@@ -251,6 +251,7 @@ async def main(page: ft.Page):
                     await source_firebase()
                 time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
                 await page.client_storage.set_async('time', time)
+                await info_check()
                 open_list()
                 print('Connected!')
             except:
@@ -276,6 +277,7 @@ async def main(page: ft.Page):
                     await source_firebase()
                 time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
                 await page.client_storage.set_async('time', time)
+                await info_check()
                 print('Connected!')
             except:
                 await alert_conn_start()
@@ -2732,7 +2734,6 @@ async def main(page: ft.Page):
     await check_cherg_main()
     await check_telegram()
     await options_check()
-    await info_check()
     page.run_task(check_storage)
     page.update()
 
