@@ -66,7 +66,7 @@ def main(page: Page):
         day_num_eleven = db2_day_num_eleven
         day_num_twelve = db2_day_num_twelve
 
-    day = datetime.now().strftime(f"{today}.%m.%Y")
+    day = datetime.now().strftime(f"0{today}.%m.%Y")
 
     # day = "01.07.2024"
 
