@@ -2101,9 +2101,9 @@ async def main(page: ft.Page):
     async def info_check():
         source = await page.client_storage.get_async('source')
         if await page.client_storage.get_async('database_storage') == 1:
-            database = "+10-2"
+            database = "1"
         elif await page.client_storage.get_async('database_storage') == 2:
-            database = "+4-2"
+            database = "2"
         else:
             database = await page.client_storage.get_async('database_storage')
         info_options.content = ft.Row(
