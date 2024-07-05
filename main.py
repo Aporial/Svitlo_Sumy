@@ -114,6 +114,7 @@ import urllib.request
 import json
 from firebase import firebase
 import asyncio
+import os
 
 
 async def main(page: ft.Page):
@@ -2738,6 +2739,12 @@ async def main(page: ft.Page):
     await options_check()
     page.run_task(check_storage)
     page.update()
+
+    def event(e):
+        if e.data == "detach" and page.platform == ft.PagePlatform.ANDROID:
+            os._exit(1)
+
+    page.on_app_lifecycle_state_change = event
 
     while True:
         await asyncio.sleep(60)
