@@ -1,1 +1,1 @@
-today = 7
+today = 6
