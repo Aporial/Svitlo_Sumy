@@ -2740,11 +2740,21 @@ async def main(page: ft.Page):
     page.run_task(check_storage)
     page.update()
 
-    def event(e):
+    def event_detach(e):
         if e.data == "detach" and page.platform == ft.PagePlatform.ANDROID:
             os._exit(1)
 
-    page.on_app_lifecycle_state_change = event
+    def event_hide(e):
+        if e.data == "hide" and page.platform == ft.PagePlatform.ANDROID:
+            os._exit(1)
+
+    def event_pause(e):
+        if e.data == "pause" and page.platform == ft.PagePlatform.ANDROID:
+            os._exit(1)
+
+    page.on_app_lifecycle_state_change = event_detach
+    page.on_app_lifecycle_state_change = event_hide
+    page.on_app_lifecycle_state_change = event_pause
 
     while True:
         await asyncio.sleep(60)
