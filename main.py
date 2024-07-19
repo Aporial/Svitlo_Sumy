@@ -2753,8 +2753,8 @@ async def main(page: ft.Page):
             os._exit(1)
 
     page.on_app_lifecycle_state_change = event_detach
-    page.on_app_lifecycle_state_change = event_hide
-    page.on_app_lifecycle_state_change = event_pause
+    # page.on_app_lifecycle_state_change = event_hide
+    # page.on_app_lifecycle_state_change = event_pause
 
     while True:
         await asyncio.sleep(60)
