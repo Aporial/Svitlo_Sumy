@@ -1,1 +1,1 @@
-today = 24
+today = 23
