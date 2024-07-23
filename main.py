@@ -2304,13 +2304,12 @@ async def main(page: ft.Page):
                                    style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200), width=250, height=50,
                                    color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=cherg_choise, data=6)
 
-    bs = ft.BottomSheet(
+    bs = ft.AlertDialog(
+        modal=False,
         content=ft.Column(
             horizontal_alignment='center',
-            alignment='end',
+            alignment='center',
             height=380,
-            width=400,
-            spacing=5,
             controls=[
                 ft.Text(
                     "Оберіть чергу:",
@@ -2325,10 +2324,39 @@ async def main(page: ft.Page):
                 four_button,
                 five_button,
                 six_button,
-                ft.Container(height=10),
             ]
         )
     )
+
+    # bs = ft.BottomSheet(
+    #     content=ft.Container(
+    #         margin=10,
+    #         content=ft.Column(
+    #             horizontal_alignment='center',
+    #             alignment='center',
+    #             # height=380,
+    #             # width=400,
+    #             # spacing=5,
+    #             # wrap=True,
+    #             controls=[
+    #                 ft.Text(
+    #                     "Оберіть чергу:",
+    #                     size=20,
+    #                     weight='w500',
+    #                     text_align='center',
+    #                     font_family="Golos Text"
+    #                 ),
+    #                 one_button,
+    #                 two_button,
+    #                 three_button,
+    #                 four_button,
+    #                 five_button,
+    #                 six_button,
+    #                 # ft.Container(height=10),
+    #             ]
+    #         )
+    #     )
+    # )
 
     lamp_img = ft.SafeArea(
         content=ft.Image(
