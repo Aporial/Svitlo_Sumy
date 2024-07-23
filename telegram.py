@@ -25,15 +25,17 @@ from for_telegram.database_2 import (db2_day_num_one,
                                      db2_day_num_ten,
                                      db2_day_num_eleven,
                                      db2_day_num_twelve)
-from firebase import firebase
+# from firebase import firebase
+import json
 from datetime import datetime
 
 
 def main(page: Page):
 
-    database_connection = firebase.FirebaseApplication(
-        'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
-    main_database = database_connection.get("/", None)
+    # database_connection = firebase.FirebaseApplication(
+    #     'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
+    # main_database = database_connection.get("/", None)
+    main_database = json.load(open("database/database.json"))
     database = main_database.get("database")
     print('DATABASE:', database)
     page.client_storage.set("database_storage", database)
@@ -3875,7 +3877,7 @@ def main(page: Page):
         bgcolor=colors.BLACK26,
         border_radius=15,
         content=Column(
-            scroll=ScrollMode.ADAPTIVE,
+            scroll=ScrollMode.HIDDEN,
             controls=[
                 DataTable(
                     heading_row_height=0,
@@ -3945,15 +3947,15 @@ def main(page: Page):
                         line_1,
                         line_2,
                         line_3,
-                        # line_4,
-                        # line_5,
-                        # line_6,
-                        # line_7,
-                        # line_8,
-                        # line_9,
-                        # line_10,
-                        # line_11,
-                        # line_12
+                        line_4,
+                        line_5,
+                        line_6,
+                        line_7,
+                        line_8,
+                        line_9,
+                        line_10,
+                        line_11,
+                        line_12
                     ]
                 )
             ]
@@ -3983,7 +3985,7 @@ def main(page: Page):
     }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ThemeMode.LIGHT
-    page.window_height = 600
+    page.window_height = 634
     page.window_width = 1074
     page.padding = 0
     page.vertical_alignment = 'center'
