@@ -2140,7 +2140,7 @@ async def main(page: ft.Page):
                 weight='w500',
                 color=ft.colors.BLACK,
                 font_family="Golos Text",
-                height=18
+                size=14
             )
         page.update()
 
@@ -2690,8 +2690,7 @@ async def main(page: ft.Page):
         ft.Text(
             weight='w500',
             color=ft.colors.BLACK,
-            font_family="Golos Text",
-            height=18
+            font_family="Golos Text"
         )
     )
 
