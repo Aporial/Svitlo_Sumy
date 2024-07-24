@@ -262,7 +262,7 @@ async def main(page: ft.Page):
                 open_list()
                 update_time = await page.client_storage.get_async("update_time")
                 grafic_refresh.content = ft.Text(
-                    f"Графік оновлено {update_time}",
+                    f"Графік оновлено: {update_time}",
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text",
@@ -295,7 +295,7 @@ async def main(page: ft.Page):
                 await check_cherg_main()
                 update_time = await page.client_storage.get_async("update_time")
                 grafic_refresh.content = ft.Text(
-                    f"Графік оновлено {update_time}",
+                    f"Графік оновлено: {update_time}",
                     weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text",
@@ -1342,7 +1342,7 @@ async def main(page: ft.Page):
         )
         update_time = await page.client_storage.get_async("update_time")
         grafic_refresh.content = ft.Text(
-            f"Останнє оновлення графіку {update_time}",
+            f"Останнє оновлення графіку: {update_time}",
             weight='w500',
             color=ft.colors.BLACK,
             font_family="Golos Text",
