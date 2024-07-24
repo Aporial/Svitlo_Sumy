@@ -260,14 +260,6 @@ async def main(page: ft.Page):
                 await info_check()
                 await check_cherg_main()
                 open_list()
-                update_time = await page.client_storage.get_async("update_time")
-                grafic_refresh.content = ft.Text(
-                    f"Графік оновлено: {update_time}",
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text",
-                    height=18
-                )
                 print('Connected!')
             except:
                 one_button.disabled = True
@@ -293,14 +285,6 @@ async def main(page: ft.Page):
                 await page.client_storage.set_async('time', time)
                 await info_check()
                 await check_cherg_main()
-                update_time = await page.client_storage.get_async("update_time")
-                grafic_refresh.content = ft.Text(
-                    f"Графік оновлено: {update_time}",
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text",
-                    height=18
-                )
                 print('Connected!')
             except:
                 await alert_conn_start()
@@ -1258,6 +1242,7 @@ async def main(page: ft.Page):
         time_now.visible = True
         time_tomorrow.visible = True
         time_after_tomorrow.visible = True
+        await upload_time()
         main_tab_anim()
         try:
             if await check_time_interval(one_check) == True:
@@ -1340,26 +1325,11 @@ async def main(page: ft.Page):
             font_family="Golos Text",
             weight="w500",
         )
-        update_time = await page.client_storage.get_async("update_time")
-        grafic_refresh.content = ft.Text(
-            f"Останнє оновлення графіку: {update_time}",
-            weight='w500',
-            color=ft.colors.BLACK,
-            font_family="Golos Text",
-            height=18
-        )
         alert_conn.open = True
         page.update()
 
     def alert_conn_first():
         alert_first_conn.open = True
-        grafic_refresh.content = ft.Text(
-            "Не вдалось завантажити графік",
-            weight='w500',
-            color=ft.colors.BLACK,
-            font_family="Golos Text",
-            height=18
-        )
         page.update()
 
     async def get_time_tomorrow():
@@ -2155,6 +2125,25 @@ async def main(page: ft.Page):
         info_options.visible = True
         page.update()
 
+    async def upload_time():
+        update_time = await page.client_storage.get_async("update_time")
+        if update_time == None:
+            grafic_refresh.content = ft.Text(
+                f"Не вдалось завантажити графік",
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text",
+                height=18
+            )
+        else:
+            grafic_refresh.content = ft.Text(
+                f"Графік оновлено: {update_time}",
+                weight='w500',
+                color=ft.colors.BLACK,
+                font_family="Golos Text",
+                height=18
+            )
+
     telegram_banner = ft.Banner(
         elevation=5,
         bgcolor='#ffcc66',
@@ -2351,36 +2340,6 @@ async def main(page: ft.Page):
             ]
         )
     )
-
-    # bs = ft.BottomSheet(
-    #     content=ft.Container(
-    #         margin=10,
-    #         content=ft.Column(
-    #             horizontal_alignment='center',
-    #             alignment='center',
-    #             # height=380,
-    #             # width=400,
-    #             # spacing=5,
-    #             # wrap=True,
-    #             controls=[
-    #                 ft.Text(
-    #                     "Оберіть чергу:",
-    #                     size=20,
-    #                     weight='w500',
-    #                     text_align='center',
-    #                     font_family="Golos Text"
-    #                 ),
-    #                 one_button,
-    #                 two_button,
-    #                 three_button,
-    #                 four_button,
-    #                 five_button,
-    #                 six_button,
-    #                 # ft.Container(height=10),
-    #             ]
-    #         )
-    #     )
-    # )
 
     lamp_img = ft.SafeArea(
         content=ft.Image(
