@@ -2029,8 +2029,17 @@ async def main(page: ft.Page):
 
     def main_tab_anim():
         main_info.content = ft.Column(
+            # alignment=ft.alignment.center,
+            horizontal_alignment='center',
             controls=[
-                main_tab
+                main_tab,
+                ft.Text(
+                    'Графік оновлений о 12:01',
+                    # size=21,
+                    weight='w500',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text"
+                )
             ]
         )
         page.update()
