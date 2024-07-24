@@ -128,8 +128,11 @@ async def main(page: ft.Page):
                 await page.client_storage.set_async("source", source_check)
                 database = main_database.get("database")
                 print('DATABASE:', database)
+                update_time = main_database.get("update_time")
+                print("Update time:", update_time)
                 await page.client_storage.set_async("database_storage", database)
                 await page.client_storage.set_async("main_database", main_database)
+                await page.client_storage.set_async("update_time", update_time)
             if source_check == 'firebase':
                 await source_firebase()
 
@@ -143,8 +146,11 @@ async def main(page: ft.Page):
             await page.client_storage.set_async("source", source_check)
             database = main_database.get("database")
             print('DATABASE:', database)
+            update_time = main_database.get("update_time")
+            print("Update time:", update_time)
             await page.client_storage.set_async("database_storage", database)
             await page.client_storage.set_async("main_database", main_database)
+            await page.client_storage.set_async("update_time", update_time)
         if source_check == 'github':
             await source_github()
 
@@ -240,7 +246,6 @@ async def main(page: ft.Page):
     async def check_storage():
         if await page.client_storage.get_async("number") == None:
             try:
-                await check_cherg_main()
                 if await page.client_storage.get_async("source") == None:
                     try:
                         await source_github()
@@ -253,6 +258,7 @@ async def main(page: ft.Page):
                 time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
                 await page.client_storage.set_async('time', time)
                 await info_check()
+                await check_cherg_main()
                 open_list()
                 print('Connected!')
             except:
@@ -266,7 +272,6 @@ async def main(page: ft.Page):
                 print("Fail connection!")
         else:
             try:
-                await check_cherg_main()
                 if await page.client_storage.get_async("source") == None:
                     try:
                         await source_github()
@@ -279,6 +284,15 @@ async def main(page: ft.Page):
                 time = datetime.now().strftime("%d.%m.%Y о %H:%M:%S")
                 await page.client_storage.set_async('time', time)
                 await info_check()
+                await check_cherg_main()
+                update_time = await page.client_storage.get_async("update_time")
+                grafic_refresh.content = ft.Text(
+                    f"Графік оновлено о {update_time}",
+                    weight='w400',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text",
+                    height=18
+                )
                 print('Connected!')
             except:
                 await alert_conn_start()
@@ -1318,11 +1332,26 @@ async def main(page: ft.Page):
             font_family="Golos Text",
             weight="w500",
         )
+        update_time = await page.client_storage.get_async("update_time")
+        grafic_refresh.content = ft.Text(
+            f"Останнє оновлення графіку о {update_time}",
+            weight='w400',
+            color=ft.colors.BLACK,
+            font_family="Golos Text",
+            height=18
+        )
         alert_conn.open = True
         page.update()
 
     def alert_conn_first():
         alert_first_conn.open = True
+        grafic_refresh.content = ft.Text(
+            "Не вдалось завантажити графік",
+            weight='w400',
+            color=ft.colors.BLACK,
+            font_family="Golos Text",
+            height=18
+        )
         page.update()
 
     async def get_time_tomorrow():
@@ -2035,19 +2064,6 @@ async def main(page: ft.Page):
         )
         page.update()
 
-    def refresh():
-        current_time = datetime.now().strftime("%H:%M")
-        refresh_bar.content = ft.Text(
-            f"Оновлено о {current_time}",
-            size=18,
-            color='black',
-            text_align='center',
-            font_family="Golos Text",
-            weight="w500",
-        )
-        refresh_bar.open = True
-        page.update()
-
     async def open_telegram(e):
         page.launch_url('https://t.me/sumy_svitlo',
                         web_window_name='Telegram')
@@ -2692,12 +2708,13 @@ async def main(page: ft.Page):
         )
     )
 
-    grafic_refresh = ft.Text(
-        "Графік оновлено о 12:01",
-        weight='w400',
-        color=ft.colors.BLACK,
-        font_family="Golos Text",
-        height=18
+    grafic_refresh = ft.Container(
+        ft.Text(
+            weight='w400',
+            color=ft.colors.BLACK,
+            font_family="Golos Text",
+            height=18
+        )
     )
 
     main = ft.SafeArea(
