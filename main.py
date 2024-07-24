@@ -263,7 +263,7 @@ async def main(page: ft.Page):
                 update_time = await page.client_storage.get_async("update_time")
                 grafic_refresh.content = ft.Text(
                     f"Графік оновлено о {update_time}",
-                    weight='w400',
+                    weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text",
                     height=18
@@ -296,7 +296,7 @@ async def main(page: ft.Page):
                 update_time = await page.client_storage.get_async("update_time")
                 grafic_refresh.content = ft.Text(
                     f"Графік оновлено о {update_time}",
-                    weight='w400',
+                    weight='w500',
                     color=ft.colors.BLACK,
                     font_family="Golos Text",
                     height=18
@@ -1343,7 +1343,7 @@ async def main(page: ft.Page):
         update_time = await page.client_storage.get_async("update_time")
         grafic_refresh.content = ft.Text(
             f"Останнє оновлення графіку о {update_time}",
-            weight='w400',
+            weight='w500',
             color=ft.colors.BLACK,
             font_family="Golos Text",
             height=18
@@ -1355,7 +1355,7 @@ async def main(page: ft.Page):
         alert_first_conn.open = True
         grafic_refresh.content = ft.Text(
             "Не вдалось завантажити графік",
-            weight='w400',
+            weight='w500',
             color=ft.colors.BLACK,
             font_family="Golos Text",
             height=18
@@ -2730,7 +2730,7 @@ async def main(page: ft.Page):
 
     grafic_refresh = ft.Container(
         ft.Text(
-            weight='w400',
+            weight='w500',
             color=ft.colors.BLACK,
             font_family="Golos Text",
             height=18
