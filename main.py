@@ -2131,16 +2131,14 @@ async def main(page: ft.Page):
             grafic_refresh.content = ft.Text(
                 weight='w500',
                 color=ft.colors.BLACK,
-                font_family="Golos Text",
-                height=18
+                font_family="Golos Text"
             )
         else:
             grafic_refresh.content = ft.Text(
                 f"Графік оновлено: {update_time}",
                 weight='w500',
                 color=ft.colors.BLACK,
-                font_family="Golos Text",
-                height=18
+                font_family="Golos Text"
             )
         page.update()
 
@@ -2690,8 +2688,7 @@ async def main(page: ft.Page):
         ft.Text(
             weight='w500',
             color=ft.colors.BLACK,
-            font_family="Golos Text",
-            height=18
+            font_family="Golos Text"
         )
     )
 
