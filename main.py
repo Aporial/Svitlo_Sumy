@@ -260,6 +260,14 @@ async def main(page: ft.Page):
                 await info_check()
                 await check_cherg_main()
                 open_list()
+                update_time = await page.client_storage.get_async("update_time")
+                grafic_refresh.content = ft.Text(
+                    f"Графік оновлено о {update_time}",
+                    weight='w400',
+                    color=ft.colors.BLACK,
+                    font_family="Golos Text",
+                    height=18
+                )
                 print('Connected!')
             except:
                 one_button.disabled = True
