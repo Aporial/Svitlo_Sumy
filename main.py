@@ -2632,15 +2632,27 @@ async def main(page: ft.Page):
                 alignment=ft.alignment.center,
                 content=ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
-                    wrap=True,
                     controls=[
-                        ft.Text(
-                            'Відображення Лампочки',
-                            size=16,
-                            color=ft.colors.BLACK87,
-                            weight="w400",
-                            font_family="Golos Text",
-                            text_align="center"
+                        ft.Column(
+                            spacing=0,
+                            controls=[
+                                ft.Text(
+                                    "Відображення",
+                                    size=16,
+                                    color=ft.colors.BLACK87,
+                                    weight="w400",
+                                    font_family="Golos Text",
+                                    text_align="start",
+                                ),
+                                ft.Text(
+                                    "Лампочки",
+                                    size=16,
+                                    color=ft.colors.BLACK87,
+                                    weight="w400",
+                                    font_family="Golos Text",
+                                    text_align="start",
+                                )
+                            ]
                         ),
                         lamp_switch
                     ]
