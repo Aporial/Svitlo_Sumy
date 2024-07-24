@@ -2768,10 +2768,10 @@ async def main(page: ft.Page):
     # page.window_title_bar_hidden = True
     # page.window_title_bar_buttons_hidden = True
     await check_cherg_main()
-    await check_telegram()
     await options_check()
     await upload_time()
     page.run_task(check_storage)
+    await check_telegram()
     page.update()
 
     def event_detach(e):
