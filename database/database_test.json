@@ -162,5 +162,6 @@
     "six_5": "22:00-23:59"
   },
   "database": 1,
-  "source": "github"
+  "source": "github",
+  "update_time": "12:01"
 }

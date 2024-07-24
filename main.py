@@ -120,7 +120,7 @@ import os
 async def main(page: ft.Page):
 
     async def source_github():
-        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
+        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database_test.json") as url:
             main_database = json.load(url)
             source_check = main_database.get("source")
             if source_check == 'github':
@@ -2029,17 +2029,8 @@ async def main(page: ft.Page):
 
     def main_tab_anim():
         main_info.content = ft.Column(
-            # alignment=ft.alignment.center,
-            horizontal_alignment='center',
             controls=[
                 main_tab,
-                ft.Text(
-                    'Графік оновлений о 12:01',
-                    # size=21,
-                    weight='w500',
-                    color=ft.colors.BLACK,
-                    font_family="Golos Text"
-                )
             ]
         )
         page.update()
@@ -2625,6 +2616,7 @@ async def main(page: ft.Page):
                 alignment=ft.alignment.center,
                 content=ft.Row(
                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    wrap=True,
                     controls=[
                         ft.Text(
                             'Відображення Лампочки',
@@ -2700,6 +2692,14 @@ async def main(page: ft.Page):
         )
     )
 
+    grafic_refresh = ft.Text(
+        "Графік оновлено о 12:01",
+        weight='w400',
+        color=ft.colors.BLACK,
+        font_family="Golos Text",
+        height=18
+    )
+
     main = ft.SafeArea(
         ft.Column(
             horizontal_alignment='center',
@@ -2707,7 +2707,8 @@ async def main(page: ft.Page):
             controls=[
                 lamp_img,
                 text_after_img,
-                main_info
+                main_info,
+                grafic_refresh
             ]
         ),
         expand=True
