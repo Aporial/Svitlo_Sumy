@@ -2129,7 +2129,6 @@ async def main(page: ft.Page):
         update_time = await page.client_storage.get_async("update_time")
         if update_time == None:
             grafic_refresh.content = ft.Text(
-                f"Не вдалось завантажити графік",
                 weight='w500',
                 color=ft.colors.BLACK,
                 font_family="Golos Text",
@@ -2203,7 +2202,6 @@ async def main(page: ft.Page):
         duration=3000,
         bgcolor='#ffcc66',
         content=ft.Text(
-            # f"Оновлено о ",
             size=18,
             color='black',
             text_align='center',
@@ -2772,6 +2770,7 @@ async def main(page: ft.Page):
     await check_cherg_main()
     await check_telegram()
     await options_check()
+    await upload_time()
     page.run_task(check_storage)
     page.update()
 
