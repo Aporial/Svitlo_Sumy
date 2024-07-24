@@ -2143,6 +2143,7 @@ async def main(page: ft.Page):
                 font_family="Golos Text",
                 height=18
             )
+        page.update()
 
     telegram_banner = ft.Banner(
         elevation=5,
