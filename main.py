@@ -201,6 +201,9 @@ async def main(page: ft.Page):
         bs.update()
         page.update()
 
+    def open_list_str(e):
+        open_list()
+
     def on_tab(e):
         my_index = e.control.selected_index
         if my_index == 0:
@@ -2347,6 +2350,7 @@ async def main(page: ft.Page):
     )
 
     text_after_img = ft.Container(
+        on_click=open_list_str,
         blur=10,
         padding=5,
         bgcolor=ft.colors.BLACK26,
