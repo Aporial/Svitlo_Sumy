@@ -1270,21 +1270,14 @@ async def main(page: ft.Page):
         storage = await page.client_storage.get_async("number")
         return storage
 
-    async def check_time_interval(time_interval):
-        current_time = datetime.now().time()
-        start_time_str, end_time_str = time_interval.split('-')
-
-        start_time = datetime.strptime(start_time_str, '%H:%M').time()
-        end_time = datetime.strptime(end_time_str, '%H:%M').time()
-
-        if start_time <= current_time <= end_time:
+    def change_background(dark_mode):
+        if dark_mode:
             lamp_img.content = ft.SafeArea(
                 content=ft.Image(
                     src=f"/Images/lamp_off.png",
                     # gapless_playback=True,
                 )
             )
-            lamp_img.update()
             if bg_switch.value == True:
                 page.theme_mode = ft.ThemeMode.DARK
                 main_container.gradient = ft.LinearGradient(
@@ -1295,8 +1288,6 @@ async def main(page: ft.Page):
                 page.navigation_bar.indicator_color = '#4d4d4d'
             if bg_switch.value == False:
                 page.navigation_bar.indicator_color = '#ffcc66'
-            page.update()
-            return True
         else:
             lamp_img.content = ft.SafeArea(
                 content=ft.Image(
@@ -1304,7 +1295,6 @@ async def main(page: ft.Page):
                     # gapless_playback=True,
                 )
             )
-            lamp_img.update()
             if bg_switch.value == True:
                 page.theme_mode = ft.ThemeMode.LIGHT
                 main_container.gradient = ft.LinearGradient(
@@ -1315,7 +1305,24 @@ async def main(page: ft.Page):
                 page.navigation_bar.indicator_color = '#ffcc66'
             if bg_switch.value == False:
                 page.navigation_bar.indicator_color = '#ffcc66'
-            page.update()
+        lamp_img.update()
+        page.update()
+
+    async def check_time_interval(time_interval):
+        try:
+            current_time = datetime.now().time()
+            start_time_str, end_time_str = time_interval.split('-')
+
+            start_time = datetime.strptime(start_time_str, '%H:%M').time()
+            end_time = datetime.strptime(end_time_str, '%H:%M').time()
+        except:
+            change_background(False)        
+
+        if start_time <= current_time <= end_time:
+            change_background(True)
+            return True
+        else:
+            change_background(False)
             return False
 
     async def alert_conn_start():
