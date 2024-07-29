@@ -1,6 +1,7 @@
 /build
 /dist
 /.vscode
+/.idea
 /__pycache__
 for_telegram/__pycache__
 for_telegram/day.py
