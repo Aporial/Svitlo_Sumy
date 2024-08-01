@@ -119,9 +119,27 @@ import os
 
 async def main(page: ft.Page):
 
-    async def zbir_open():
+    async def zbir_check():
+        if await page.client_storage.get_async('zbir_check') == None:
+            zbir.open = True
+        await page.client_storage.set_async('zbir_check', True)
+        zbir.update()
+
+    def zbir_open(e):
         zbir.open = True
         zbir.update()
+
+    async def zbir_close(e):
+        zbir.open = False
+        zbir.update()
+
+    def zbir_mono(e):
+        page.launch_url('https://send.monobank.ua/jar/6aCSwXTPgK',
+                        web_window_name='Monobank')
+
+    def zbir_telegram(e):
+        page.launch_url('https://t.me/sumy_svitlo/130',
+                        web_window_name='Telegram')
 
     async def source_github():
         with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
@@ -1266,7 +1284,7 @@ async def main(page: ft.Page):
                 print("Six time check is True!")
         except:
             print("All time check is False!")
-        await zbir_open()
+        await zbir_check()
         page.update()
         await get_time_tomorrow()
         await get_time_after_tomorrow()
@@ -2159,6 +2177,22 @@ async def main(page: ft.Page):
 
     zbir = ft.AlertDialog(
         modal=True,
+        actions=[
+            ft.TextButton(
+                "Підтримати",
+                on_click=zbir_mono,
+                style=ft.ButtonStyle(bgcolor='#ffcc66', color=ft.colors.BLACK, shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200),
+                ),
+            ft.TextButton(
+                "Пост",
+                style=ft.ButtonStyle(color=ft.colors.BLACK, shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.LIGHT_BLUE_400),
+                on_click=zbir_telegram),
+            ft.TextButton(
+                "Закрити",
+                style=ft.ButtonStyle(color=ft.colors.BLACK, shape=ft.RoundedRectangleBorder(radius=15), overlay_color='#ff6666'),
+                on_click=zbir_close)
+        ],
+        actions_alignment=ft.MainAxisAlignment.CENTER,
         content=ft.Column(
             scroll=ft.ScrollMode.ALWAYS,
             controls=[
@@ -2166,24 +2200,21 @@ async def main(page: ft.Page):
                     controls=[
                         ft.Image(
                             src=f"/zbir/1.jpg",
-                            # width=200,
                             height=200,
                             border_radius=ft.border_radius.all(10),
                         ),
                         ft.Image(
                             src=f"/zbir/2.jpg",
-                            # width=200,
                             height=200,
                             border_radius=ft.border_radius.all(10),
                         ),
                         ft.Image(
                             src=f"/zbir/3.png",
-                            # width=200,
                             height=200,
                             border_radius=ft.border_radius.all(10),
                         ),
                     ],
-                    scroll=ft.ScrollMode.HIDDEN,
+                    scroll=ft.ScrollMode.ADAPTIVE,
                     wrap=False
                 ),
                 ft.Text(
@@ -2561,6 +2592,20 @@ async def main(page: ft.Page):
                         color=ft.colors.BLACK,
                         bgcolor='#ffcc66',
                         on_click=open_telegram_channel
+                    ),
+                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
+                    ft.TextButton(
+                        content=ft.Text(
+                            'Збір для Кравцова Максима',
+                            size=18,
+                            color='black',
+                            text_align='center',
+                            font_family="Golos Text",
+                            weight="w500"
+                        ),
+                        height=50,
+                        style=ft.ButtonStyle(bgcolor='#ffcc66', color=ft.colors.BLACK, shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200),
+                        on_click=zbir_open,
                     ),
                     ft.Divider(height=0.1, color=ft.colors.BLACK26),
                     ft.TextButton(
