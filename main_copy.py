@@ -2184,7 +2184,7 @@ async def main(page: ft.Page):
                 style=ft.ButtonStyle(bgcolor='#ffcc66', color=ft.colors.BLACK, shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.AMBER_200),
                 ),
             ft.TextButton(
-                "Пост",
+                "Телеграм",
                 style=ft.ButtonStyle(color=ft.colors.BLACK, shape=ft.RoundedRectangleBorder(radius=15), overlay_color=ft.colors.LIGHT_BLUE_400),
                 on_click=zbir_telegram),
             ft.TextButton(
