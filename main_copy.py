@@ -2194,9 +2194,11 @@ async def main(page: ft.Page):
         ],
         actions_alignment=ft.MainAxisAlignment.CENTER,
         content=ft.Column(
+            alignment='center',
             scroll=ft.ScrollMode.ALWAYS,
             controls=[
                 ft.Row(
+                    alignment='center',
                     controls=[
                         ft.Image(
                             src=f"/zbir/1.jpg",
@@ -2205,11 +2207,6 @@ async def main(page: ft.Page):
                         ),
                         ft.Image(
                             src=f"/zbir/2.jpg",
-                            height=200,
-                            border_radius=ft.border_radius.all(10),
-                        ),
-                        ft.Image(
-                            src=f"/zbir/3.png",
                             height=200,
                             border_radius=ft.border_radius.all(10),
                         ),
