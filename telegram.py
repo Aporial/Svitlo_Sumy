@@ -35,7 +35,7 @@ def main(page: Page):
     # database_connection = firebase.FirebaseApplication(
     #     'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
     # main_database = database_connection.get("/", None)
-    main_database = json.load(open("database/database.json"))
+    main_database = json.load(open("database/database.json", encoding='utf-8'))
     database = main_database.get("database")
     print('DATABASE:', database)
     page.client_storage.set("database_storage", database)
