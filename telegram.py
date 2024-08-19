@@ -3706,6 +3706,17 @@ def main(page: Page):
         )
     )
 
+    watermark = Container(
+        alignment=alignment.center,
+        content=Text(
+            't.me/sumy_svitlo',
+            size=35,
+            weight='w500',
+            color='#ffc366',
+            font_family="Golos Text"
+        )
+    )
+
     title = Text(
         'Світло Суми - Графік відключень на',
         size=35,
@@ -3973,7 +3984,10 @@ def main(page: Page):
         content=Column(
             alignment='center',
             controls=[
-                head,
+                Stack(
+                    [watermark,
+                     head]
+                ),
                 chergs_names,
                 chergs_table
             ]
