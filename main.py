@@ -1316,7 +1316,7 @@ async def main(page: ft.Page):
             start_time = datetime.strptime(start_time_str, '%H:%M').time()
             end_time = datetime.strptime(end_time_str, '%H:%M').time()
         except:
-            change_background(False)        
+            change_background(False)
 
         if start_time <= current_time <= end_time:
             change_background(True)
@@ -2454,26 +2454,38 @@ async def main(page: ft.Page):
                         text_align="center"
                     ),
                     ft.Divider(height=0.1, color=ft.colors.BLACK26),
-                    ft.Text(
-                        "Розроблено для безплатного користування.",
-                        size=16,
-                        color='black',
-                        text_align='center',
-                        font_family="Golos Text",
-                        weight="w500"
+                    ft.Column(
+                        spacing=5,
+                        controls=[
+                            ft.Text(
+                                "Цей застосунок НЕ є офіційним джерелом інформації.",
+                                size=16,
+                                color='black',
+                                text_align='center',
+                                font_family="Golos Text",
+                                weight="w500"
+                            ),
+                            ft.Text(
+                                "Дані про вимкнення світла збираються з відкритих джерел.",
+                                size=16,
+                                color='black',
+                                text_align='center',
+                                font_family="Golos Text",
+                                weight="w500"
+                            ),
+                            ft.Text(
+                                "Завжди перевіряйте інформацію через офіційні канали перед прийняттям рішень!",
+                                size=16,
+                                color='black',
+                                text_align='center',
+                                font_family="Golos Text",
+                                weight="w500"
+                            ),
+                        ]
                     ),
                     ft.Divider(height=0.1, color=ft.colors.BLACK26),
                     ft.Text(
-                        "Застосунок використовує актуальні графіки відключень світла з сайту Сумиобленерго.",
-                        size=16,
-                        color='black',
-                        text_align='center',
-                        font_family="Golos Text",
-                        weight="w500"
-                    ),
-                    ft.Divider(height=0.1, color=ft.colors.BLACK26),
-                    ft.Text(
-                        "В застосунку немає та не буде жодної реклами. Якщо ви хочете підтримати розробника - нижче залишу банку монобанку.",
+                        "Якщо ви хочете підтримати розробника - нижче залишу банку монобанку.",
                         size=16,
                         color='black',
                         text_align='center',
