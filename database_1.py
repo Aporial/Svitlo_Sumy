@@ -6,7 +6,7 @@ three = (3, 9, 15, 21, 27)
 four = (4, 10, 16, 22, 28)
 five = (5, 11, 17, 23, 29)
 six = (6, 12, 18, 24, 30)
-seven = (31)
+seven = [6, 12, 18, 24, 30]
 
 if today.day in one:
     db1_day_num_one = 'one_1'
