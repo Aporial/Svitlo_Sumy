@@ -1,11 +1,12 @@
 from for_telegram.day import today
 
-one = [1, 7, 13, 19, 25, 31]
-two = (2, 8, 14, 20, 26)
-three = (3, 9, 15, 21, 27)
-four = (4, 10, 16, 22, 28)
-five = (5, 11, 17, 23, 29)
-six = (6, 12, 18, 24, 30)
+one = [1, 7, 13, 19, 25]
+two = [2, 8, 14, 20, 26]
+three = [3, 9, 15, 21, 27]
+four = [4, 10, 16, 22, 28]
+five = [5, 11, 17, 23, 29]
+six = [6, 12, 18, 24, 30]
+seven = [31]
 
 if today in one:
     db1_day_num_one = 'one_1'
@@ -85,3 +86,16 @@ if today in six:
     db1_day_num_ten = 'six_10'
     db1_day_num_eleven = 'six_11'
     db1_day_num_twelve = 'six_12'
+if today in seven:
+    db1_day_num_one = 'seven_1'
+    db1_day_num_two = 'seven_2'
+    db1_day_num_three = 'seven_3'
+    db1_day_num_four = 'seven_4'
+    db1_day_num_five = 'seven_5'
+    db1_day_num_six = 'seven_6'
+    db1_day_num_seven = 'seven_7'
+    db1_day_num_eight = 'seven_8'
+    db1_day_num_nine = 'seven_9'
+    db1_day_num_ten = 'seven_10'
+    db1_day_num_eleven = 'seven_11'
+    db1_day_num_twelve = 'seven_12'
