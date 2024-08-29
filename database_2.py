@@ -1,8 +1,9 @@
 from functions import today, tomorrow, after_tomorrow
 
 one = [1, 4, 7, 10, 13, 16, 19, 22, 25, 28]
-two = (2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 31)
-three = (3, 6, 9, 12, 15, 18, 21, 24, 27, 30)
+two = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29]
+three = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
+four = [31]
 
 if today.day in one:
     db2_day_num_one = 'one_1'
@@ -43,6 +44,19 @@ if today.day in three:
     db2_day_num_ten = 'three_10'
     db2_day_num_eleven = 'three_11'
     db2_day_num_twelve = 'three_12'
+if today.day in four:
+    db2_day_num_one = 'four_1'
+    db2_day_num_two = 'four_2'
+    db2_day_num_three = 'four_3'
+    db2_day_num_four = 'four_4'
+    db2_day_num_five = 'four_5'
+    db2_day_num_six = 'four_6'
+    db2_day_num_seven = 'four_7'
+    db2_day_num_eight = 'four_8'
+    db2_day_num_nine = 'four_9'
+    db2_day_num_ten = 'four_10'
+    db2_day_num_eleven = 'four_11'
+    db2_day_num_twelve = 'four_12'
 
 if tomorrow.day in one:
     db2_day_tomorrow_one = 'one_1'
@@ -83,6 +97,19 @@ if tomorrow.day in three:
     db2_day_tomorrow_ten = 'three_10'
     db2_day_tomorrow_eleven = 'three_11'
     db2_day_tomorrow_twelve = 'three_12'
+if tomorrow.day in four:
+    db2_day_tomorrow_one = 'four_1'
+    db2_day_tomorrow_two = 'four_2'
+    db2_day_tomorrow_three = 'four_3'
+    db2_day_tomorrow_four = 'four_4'
+    db2_day_tomorrow_five = 'four_5'
+    db2_day_tomorrow_six = 'four_6'
+    db2_day_tomorrow_seven = 'four_7'
+    db2_day_tomorrow_eight = 'four_8'
+    db2_day_tomorrow_nine = 'four_9'
+    db2_day_tomorrow_ten = 'four_10'
+    db2_day_tomorrow_eleven = 'four_11'
+    db2_day_tomorrow_twelve = 'four_12'
 
 if after_tomorrow.day in one:
     db2_day_after_tomorrow_one = 'one_1'
@@ -123,3 +150,16 @@ if after_tomorrow.day in three:
     db2_day_after_tomorrow_ten = 'three_10'
     db2_day_after_tomorrow_eleven = 'three_11'
     db2_day_after_tomorrow_twelve = 'three_12'
+if after_tomorrow.day in four:
+    db2_day_after_tomorrow_one = 'four_1'
+    db2_day_after_tomorrow_two = 'four_2'
+    db2_day_after_tomorrow_three = 'four_3'
+    db2_day_after_tomorrow_four = 'four_4'
+    db2_day_after_tomorrow_five = 'four_5'
+    db2_day_after_tomorrow_six = 'four_6'
+    db2_day_after_tomorrow_seven = 'four_7'
+    db2_day_after_tomorrow_eight = 'four_8'
+    db2_day_after_tomorrow_nine = 'four_9'
+    db2_day_after_tomorrow_ten = 'four_10'
+    db2_day_after_tomorrow_eleven = 'four_11'
+    db2_day_after_tomorrow_twelve = 'four_12'

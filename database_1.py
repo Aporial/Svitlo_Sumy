@@ -1,12 +1,12 @@
 from functions import today, tomorrow, after_tomorrow
 
 one = [1, 7, 13, 19, 25]
-two = (2, 8, 14, 20, 26)
-three = (3, 9, 15, 21, 27)
-four = (4, 10, 16, 22, 28)
-five = (5, 11, 17, 23, 29)
-six = (6, 12, 18, 24, 30)
-seven = [6, 12, 18, 24, 30]
+two = [2, 8, 14, 20, 26]
+three = [3, 9, 15, 21, 27]
+four = [4, 10, 16, 22, 28]
+five = [5, 11, 17, 23, 29]
+six = [6, 12, 18, 24, 30]
+seven = [31]
 
 if today.day in one:
     db1_day_num_one = 'one_1'
