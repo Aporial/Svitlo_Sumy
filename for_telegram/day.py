@@ -1,1 +1,1 @@
-today = 31
+today = 1
