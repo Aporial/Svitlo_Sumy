@@ -1319,23 +1319,34 @@ async def main(page: ft.Page):
             change_background(False)
         try:
             one_check = await page.client_storage.get_async("one")
+
+            current_time = datetime.now().time()
+            start_time_str, end_time_str = time_interval.split('-')
+
+            start_time = datetime.strptime(start_time_str, '%H:%M').time()
+            end_time = datetime.strptime(end_time_str, '%H:%M').time()
+
             if one_check == "Аварійні відключення":
                 change_background(True)
                 print("true")
+                if start_time <= current_time <= end_time:
+                    change_background(True)
+                    return True
+                else:
+                    change_background(False)
+                    print("false")
+                    return False
         except:
             change_background(False)
 
         if start_time <= current_time <= end_time:
             change_background(True)
             return True
-        if one_check == "Аварійні відключення":
-            change_background(True)
-            print("true")
         else:
             change_background(False)
             print("false")
             return False
-        
+
     async def alert_conn_start():
         time = await page.client_storage.get_async('time')
         alert_conn.content = ft.Text(
