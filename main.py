@@ -120,7 +120,7 @@ import os
 async def main(page: ft.Page):
 
     async def source_github():
-        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
+        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database_test.json") as url:
             main_database = json.load(url)
             source_check = main_database.get("source")
             if source_check == 'github':
@@ -1317,14 +1317,25 @@ async def main(page: ft.Page):
             end_time = datetime.strptime(end_time_str, '%H:%M').time()
         except:
             change_background(False)
+        try:
+            one_check = await page.client_storage.get_async("one")
+            if one_check == "Аварійні відключення":
+                change_background(True)
+                print("true")
+        except:
+            change_background(False)
 
         if start_time <= current_time <= end_time:
             change_background(True)
             return True
+        if one_check == "Аварійні відключення":
+            change_background(True)
+            print("true")
         else:
             change_background(False)
+            print("false")
             return False
-
+        
     async def alert_conn_start():
         time = await page.client_storage.get_async('time')
         alert_conn.content = ft.Text(
