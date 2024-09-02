@@ -2152,6 +2152,41 @@ async def main(page: ft.Page):
             )
         page.update()
 
+    async def start_mono():
+        main_database = await page.client_storage.get_async("main_database")
+
+    def open_mono():
+        mono.open = True
+        page.update()
+
+    def close_mono(e):
+        mono.open = False
+        page.update()
+
+    mono = ft.AlertDialog(
+        actions=[
+            ft.ElevatedButton(content=ft.Text("Закрити", size=18, weight='w500', font_family="Golos Text"),
+                              style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(
+                                  radius=15), overlay_color=ft.colors.RED_500),
+                              color=ft.colors.BLACK, bgcolor=ft.colors.RED_400, on_click=close_mono),
+            ft.ElevatedButton(content=ft.Text("На каву!", size=18, weight='w500', font_family="Golos Text"),
+                              style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(
+                                  radius=15), overlay_color=ft.colors.AMBER_200),
+                              color=ft.colors.BLACK, bgcolor='#ffcc66', on_click=mono_click)
+        ],
+        bgcolor=ft.colors.WHITE,
+        content=ft.Container(
+            content=ft.Text(
+                """☕️ Підтримай розробника кавою! Якщо тобі подобається моя робота та хочеш допомогти тримати швидкий темп оновлень, можеш підтримати чашкою кави. Це мотивує працювати ще краще для вас! Дякую за вашу підтримку!""",
+                size=16,
+                color='black',
+                text_align='center',
+                font_family="Golos Text",
+                weight="w500"
+            )
+        )
+    )
+
     telegram_banner = ft.Banner(
         elevation=5,
         bgcolor='#ffcc66',
@@ -2785,8 +2820,10 @@ async def main(page: ft.Page):
     page.overlay.append(alert_first_conn)
     page.overlay.append(refresh_bar)
     page.overlay.append(telegram_banner)
+    page.overlay.append(mono)
     # page.window_title_bar_hidden = True
     # page.window_title_bar_buttons_hidden = True
+    open_mono()
     await check_cherg_main()
     await options_check()
     await upload_time()
