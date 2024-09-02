@@ -2152,12 +2152,14 @@ async def main(page: ft.Page):
             )
         page.update()
 
-    async def start_mono():
+    async def check_mono():
         main_database = await page.client_storage.get_async("main_database")
-
-    def open_mono():
-        mono.open = True
-        page.update()
+        mono_value = main_database.get("mono")
+        print(f"Mono Value: {mono_value}")
+        if mono_value != await page.client_storage.get_async("mono_value"):
+            mono.open = True
+            page.update()
+            await page.client_storage.set_async("mono_value", mono_value)
 
     def close_mono(e):
         mono.open = False
@@ -2823,12 +2825,12 @@ async def main(page: ft.Page):
     page.overlay.append(mono)
     # page.window_title_bar_hidden = True
     # page.window_title_bar_buttons_hidden = True
-    open_mono()
     await check_cherg_main()
     await options_check()
     await upload_time()
     page.run_task(check_storage)
     await check_telegram()
+    await check_mono()
     page.update()
 
     def event_detach(e):
