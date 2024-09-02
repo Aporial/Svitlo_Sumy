@@ -2829,8 +2829,8 @@ async def main(page: ft.Page):
     await options_check()
     await upload_time()
     page.run_task(check_storage)
-    await check_telegram()
     await check_mono()
+    await check_telegram()
     page.update()
 
     def event_detach(e):
