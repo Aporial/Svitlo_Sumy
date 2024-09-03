@@ -1,5 +1,4 @@
 import requests
-import time
 import asyncio
 from telegram import Bot
 
