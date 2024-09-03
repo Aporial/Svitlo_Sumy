@@ -1,9 +1,9 @@
 import requests
 import asyncio
 from telegram import Bot
-
+from tg_token import token
 # Налаштування Telegram
-TELEGRAM_BOT_TOKEN = '7224705050:AAFkwraUqV77oSbK3FvAvCm1OPpTaFLyyNE'
+TELEGRAM_BOT_TOKEN = token
 TELEGRAM_CHAT_ID = '355542941'
 
 bot = Bot(token=TELEGRAM_BOT_TOKEN)

@@ -12,3 +12,4 @@ main.spec
 Svitlo Sumy.spec
 assets/firebase_init.json
 .venv
+tg_token.py
