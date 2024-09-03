@@ -4027,5 +4027,5 @@ def main(page: Page):
 app(
     target=main,
     name="Svitlo Sumy",
-    assets_dir='assets',
+    assets_dir='SvitloSumy/assets',
 )
