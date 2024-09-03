@@ -3,6 +3,8 @@
 /.vscode
 /.idea
 /__pycache__
+SvitloSumy/__pycache__
+SvitloSumy/build
 for_telegram/__pycache__
 for_telegram/day.py
 Svitlo_Sumy.spec
