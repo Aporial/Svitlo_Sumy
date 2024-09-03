@@ -70,7 +70,7 @@ def main(page: Page):
 
     # day = datetime.now().strftime(f"{today}.%m.%Y")
 
-    day = "03.09.2024"
+    day = "04.09.2024"
 
     def one_line():
         result_one = main_database.get("1_cherg").get(f"{day_num_one}")
