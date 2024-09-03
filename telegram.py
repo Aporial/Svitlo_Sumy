@@ -4008,7 +4008,6 @@ def main(page: Page):
     # page.window_resizable = False
     page.window_title_bar_hidden = True
     page.window_title_bar_buttons_hidden = True
-    page.add(main_container)
     one_line()
     two_line()
     three_line()
@@ -4021,6 +4020,7 @@ def main(page: Page):
     ten_line()
     eleven_line()
     twelve_line()
+    page.add(main_container)
     page.update()
 
 
