@@ -1,4 +1,4 @@
-from for_telegram.day import today
+from day import today
 
 one = [1, 4, 7, 10, 13, 16, 19, 22, 25, 28]
 two = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29]

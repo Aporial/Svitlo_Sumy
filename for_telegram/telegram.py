@@ -1,30 +1,30 @@
 from flet import *
-from for_telegram.chergs import *
-from for_telegram.day import today
-from for_telegram.database_1 import (db1_day_num_one,
-                                     db1_day_num_two,
-                                     db1_day_num_three,
-                                     db1_day_num_four,
-                                     db1_day_num_five,
-                                     db1_day_num_six,
-                                     db1_day_num_seven,
-                                     db1_day_num_eight,
-                                     db1_day_num_nine,
-                                     db1_day_num_ten,
-                                     db1_day_num_eleven,
-                                     db1_day_num_twelve)
-from for_telegram.database_2 import (db2_day_num_one,
-                                     db2_day_num_two,
-                                     db2_day_num_three,
-                                     db2_day_num_four,
-                                     db2_day_num_five,
-                                     db2_day_num_six,
-                                     db2_day_num_seven,
-                                     db2_day_num_eight,
-                                     db2_day_num_nine,
-                                     db2_day_num_ten,
-                                     db2_day_num_eleven,
-                                     db2_day_num_twelve)
+from chergs import *
+from day import today
+from database_1 import (db1_day_num_one,
+                        db1_day_num_two,
+                        db1_day_num_three,
+                        db1_day_num_four,
+                        db1_day_num_five,
+                        db1_day_num_six,
+                        db1_day_num_seven,
+                        db1_day_num_eight,
+                        db1_day_num_nine,
+                        db1_day_num_ten,
+                        db1_day_num_eleven,
+                        db1_day_num_twelve)
+from database_2 import (db2_day_num_one,
+                        db2_day_num_two,
+                        db2_day_num_three,
+                        db2_day_num_four,
+                        db2_day_num_five,
+                        db2_day_num_six,
+                        db2_day_num_seven,
+                        db2_day_num_eight,
+                        db2_day_num_nine,
+                        db2_day_num_ten,
+                        db2_day_num_eleven,
+                        db2_day_num_twelve)
 # from firebase import firebase
 import json
 from datetime import datetime
