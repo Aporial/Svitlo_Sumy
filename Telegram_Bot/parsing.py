@@ -2,6 +2,9 @@ import requests
 import json
 import urllib.request
 import os
+import datetime
+
+today = datetime.date.today().day
 
 
 def start_parsing():
@@ -41,7 +44,6 @@ def start_parsing():
                 print(f"Файл {INDEX_FILE} видалено.")
 
         def update_database(begin_hour, end_hour):
-            today = 4
             one = [1, 7, 13, 19, 25]
             two = [2, 8, 14, 20, 26]
             three = [3, 9, 15, 21, 27]
@@ -77,9 +79,6 @@ def start_parsing():
         if data:
             # Отримання значення поля "items_hour_disc"
             items_hour_disc = data.get('data').get('items_hour_disc')
-
-            # Форматування та збереження даних
-            formatted_times = []
 
             for item in items_hour_disc:
                 begin_hour = item.get('begin_hour')
@@ -128,7 +127,6 @@ def start_parsing():
                 print(f"Файл {INDEX_FILE} видалено.")
 
         def update_database(begin_hour, end_hour):
-            today = 4
             one = [1, 7, 13, 19, 25]
             two = [2, 8, 14, 20, 26]
             three = [3, 9, 15, 21, 27]
@@ -164,9 +162,6 @@ def start_parsing():
         if data:
             # Отримання значення поля "items_hour_disc"
             items_hour_disc = data.get('data').get('items_hour_disc')
-
-            # Форматування та збереження даних
-            formatted_times = []
 
             for item in items_hour_disc:
                 begin_hour = item.get('begin_hour')
@@ -215,7 +210,6 @@ def start_parsing():
                 print(f"Файл {INDEX_FILE} видалено.")
 
         def update_database(begin_hour, end_hour):
-            today = 4
             one = [1, 7, 13, 19, 25]
             two = [2, 8, 14, 20, 26]
             three = [3, 9, 15, 21, 27]
@@ -251,9 +245,6 @@ def start_parsing():
         if data:
             # Отримання значення поля "items_hour_disc"
             items_hour_disc = data.get('data').get('items_hour_disc')
-
-            # Форматування та збереження даних
-            formatted_times = []
 
             for item in items_hour_disc:
                 begin_hour = item.get('begin_hour')
@@ -302,7 +293,6 @@ def start_parsing():
                 print(f"Файл {INDEX_FILE} видалено.")
 
         def update_database(begin_hour, end_hour):
-            today = 4
             one = [1, 7, 13, 19, 25]
             two = [2, 8, 14, 20, 26]
             three = [3, 9, 15, 21, 27]
@@ -338,9 +328,6 @@ def start_parsing():
         if data:
             # Отримання значення поля "items_hour_disc"
             items_hour_disc = data.get('data').get('items_hour_disc')
-
-            # Форматування та збереження даних
-            formatted_times = []
 
             for item in items_hour_disc:
                 begin_hour = item.get('begin_hour')
@@ -389,7 +376,6 @@ def start_parsing():
                 print(f"Файл {INDEX_FILE} видалено.")
 
         def update_database(begin_hour, end_hour):
-            today = 4
             one = [1, 7, 13, 19, 25]
             two = [2, 8, 14, 20, 26]
             three = [3, 9, 15, 21, 27]
@@ -425,9 +411,6 @@ def start_parsing():
         if data:
             # Отримання значення поля "items_hour_disc"
             items_hour_disc = data.get('data').get('items_hour_disc')
-
-            # Форматування та збереження даних
-            formatted_times = []
 
             for item in items_hour_disc:
                 begin_hour = item.get('begin_hour')
@@ -476,7 +459,6 @@ def start_parsing():
                 print(f"Файл {INDEX_FILE} видалено.")
 
         def update_database(begin_hour, end_hour):
-            today = 4
             one = [1, 7, 13, 19, 25]
             two = [2, 8, 14, 20, 26]
             three = [3, 9, 15, 21, 27]
@@ -512,9 +494,6 @@ def start_parsing():
         if data:
             # Отримання значення поля "items_hour_disc"
             items_hour_disc = data.get('data').get('items_hour_disc')
-
-            # Форматування та збереження даних
-            formatted_times = []
 
             for item in items_hour_disc:
                 begin_hour = item.get('begin_hour')
