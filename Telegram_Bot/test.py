@@ -3,13 +3,13 @@ import json
 import urllib.request
 import os
 
-with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database_test.json") as url:
+with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
     main_database = json.load(url)
-file = 'database/database_test.json'
+file = 'database.json'
 INDEX_FILE = 'last_index.json'
 
 # URL API для моніторингу
-API_URL = 'https://www.soe.com.ua/includes/vidklyuchennya_srv_CURL.php?cmd=get_user_disconnections_image_api&cherga=2'
+API_URL = 'https://www.soe.com.ua/includes/vidklyuchennya_srv_CURL.php?cmd=get_user_disconnections_image_api&cherga=1'
 
 
 def fetch_data(url):
