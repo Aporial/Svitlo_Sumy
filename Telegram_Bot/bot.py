@@ -1,8 +1,9 @@
 import requests
 import asyncio
 import json
-from telegram import Bot
+from telegram import Bot, InputFile
 from tg_token import token
+from parsing import start_parsing
 
 # Налаштування Telegram
 TELEGRAM_BOT_TOKEN = token
@@ -16,6 +17,7 @@ CHECK_INTERVAL = 60  # Інтервал перевірки в секундах
 
 # Файл для зберігання попереднього стану даних
 STATE_FILE = 'previous_data.json'
+DATABASE_FILE = 'database.json'  # Файл, який буде надіслано
 
 
 def fetch_data(url):
@@ -41,9 +43,13 @@ def save_current_data(data):
         json.dump(data, file)
 
 
-async def send_telegram_message(chat_id, message):
+async def send_telegram_message(chat_id, message, document_path=None):
     try:
-        await bot.send_message(chat_id=chat_id, text=message)
+        if document_path:
+            with open(document_path, 'rb') as doc:
+                await bot.send_document(chat_id=chat_id, document=InputFile(doc), caption=message)
+        else:
+            await bot.send_message(chat_id=chat_id, text=message)
     except Exception as e:
         print(f"Помилка відправки повідомлення в Telegram: {e}")
 
@@ -57,10 +63,11 @@ async def monitor_api():
             # Перевіряємо, чи є зміни
             if previous_data and previous_data['data']['modified_on'] != current_data['data']['modified_on']:
                 message = (
-                    f"Дата модифікації: {current_data['data']['modified_on']}"
+                    f"Дата зміни: {current_data['data']['modified_on']}"
                 )
+                start_parsing()
                 print("Знайдено зміни на сайті!")
-                await send_telegram_message(TELEGRAM_CHAT_ID, message)
+                await send_telegram_message(TELEGRAM_CHAT_ID, message, DATABASE_FILE)
             else:
                 print("Змін не знайдено")
 
@@ -71,7 +78,6 @@ async def monitor_api():
 
         # Затримка між перевірками
         await asyncio.sleep(CHECK_INTERVAL)
-
 
 # Запуск моніторингу
 asyncio.run(monitor_api())
