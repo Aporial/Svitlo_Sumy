@@ -79,24 +79,27 @@ async def monitor_api():
             print("Не вдалося отримати дані з API")
 
         # Затримка між перевірками
-        if current_data:
-            # Перевіряємо, чи є зміни
-            if previous_data and previous_data['data']['dict_tom']['modified_on'] != current_data['data']['dict_tom']['modified_on']:
-                message = (
-                    f"Дата зміни на завтра: {
-                        current_data['data']['dict_tom']['modified_on']}"
-                )
-                start_parsing_tomorrow()
-                print("Знайдено зміни на завтра!")
-                await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
-                await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
-            else:
-                print("Змін на завтра не знайдено")
+        try:
+            if current_data:
+                # Перевіряємо, чи є зміни
+                if previous_data and previous_data['data']['dict_tom']['modified_on'] != current_data['data']['dict_tom']['modified_on']:
+                    message = (
+                        f"Дата зміни на завтра: {
+                            current_data['data']['dict_tom']['modified_on']}"
+                    )
+                    start_parsing_tomorrow()
+                    print("Знайдено зміни на завтра!")
+                    await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
+                    await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
+                else:
+                    print("Змін на завтра не знайдено")
 
-            # Оновлюємо попередні дані
-            save_current_data(current_data)
-        else:
-            print("Не вдалося отримати дані з API")
+                # Оновлюємо попередні дані
+                save_current_data(current_data)
+            else:
+                print("Не вдалося отримати дані з API")
+        except:
+            print('Інформації на завтра немає')
 
         # Затримка між перевірками
         await asyncio.sleep(CHECK_INTERVAL)
