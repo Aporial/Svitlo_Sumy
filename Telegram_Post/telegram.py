@@ -3999,15 +3999,15 @@ def main(page: Page):
     }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ThemeMode.LIGHT
-    page.window_height = 634
-    page.window_width = 1074
+    page.window.height = 634
+    page.window.width = 1074
     page.padding = 0
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
-    page.window_center()
-    # page.window_resizable = False
-    page.window_title_bar_hidden = True
-    page.window_title_bar_buttons_hidden = True
+    page.window.center()
+    # page.window.resizable = False
+    page.window.title_bar_hidden = True
+    page.window.title_bar_buttons_hidden = True
     one_line()
     two_line()
     three_line()

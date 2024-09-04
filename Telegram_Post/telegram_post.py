@@ -59,14 +59,14 @@ def main(page: ft.Page):
     }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ft.ThemeMode.LIGHT
-    page.window_height = 650
-    page.window_width = 650
+    page.window.height = 650
+    page.window.width = 650
     page.padding = 0
     page.vertical_alignment = 'center'
     page.horizontal_alignment = 'center'
     # page.window_center()
-    page.window_title_bar_hidden = True
-    page.window_title_bar_buttons_hidden = True
+    page.window.title_bar_hidden = True
+    page.window.title_bar_buttons_hidden = True
     page.add(main_container)
     page.update()
 

@@ -2790,11 +2790,11 @@ async def main(page: ft.Page):
     }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ft.ThemeMode.LIGHT
-    page.window_height = 700
-    page.window_width = 400
+    page.window.height = 700
+    page.window.width = 400
     page.padding = 0
-    # page.window_center()
-    page.window_resizable = True
+    # page.window.center()
+    page.window.resizable = True
     page.navigation_bar = ft.NavigationBar(
         surface_tint_color='#ff6666',
         indicator_color='#ffcc66',
@@ -2803,13 +2803,13 @@ async def main(page: ft.Page):
         on_change=on_tab,
         selected_index=1,
         destinations=[
-            ft.NavigationDestination(
+            ft.NavigationBarDestination(
                 icon=ft.icons.LIST_ROUNDED, label='Черги',),
-            ft.NavigationDestination(
+            ft.NavigationBarDestination(
                 icon=ft.icons.HOME_ROUNDED, label='Головна'),
-            ft.NavigationDestination(
+            ft.NavigationBarDestination(
                 icon=ft.icons.INFO, selected_icon=ft.icons.INFO_OUTLINE, label='Інформація'),
-            ft.NavigationDestination(
+            ft.NavigationBarDestination(
                 icon=ft.icons.SETTINGS_ROUNDED, selected_icon=ft.icons.SETTINGS_OUTLINED, label='Параметри'),
         ]
     )
