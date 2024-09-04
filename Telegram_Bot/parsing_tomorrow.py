@@ -512,7 +512,7 @@ def start_parsing_tomorrow():
 
             cleanup()
     except:
-        pass
+        print('Немає інформації на завтра')
     cherg_1()
     cherg_2()
     cherg_3()
