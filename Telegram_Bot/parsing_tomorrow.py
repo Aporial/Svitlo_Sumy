@@ -77,8 +77,8 @@ def start_parsing_tomorrow():
         data = fetch_data(API_URL)
         if data:
             # Отримання значення поля "items_hour_disc"
-            items_hour_disc = data.get('data').get('dict_tom').get(
-                'items_hour_disc_tomorro')
+            items_hour_disc = data.get('data').get(
+                'dict_tom').get('items_hour_disc_tomorrow')
 
             for item in items_hour_disc:
                 begin_hour = item.get('begin_hour')

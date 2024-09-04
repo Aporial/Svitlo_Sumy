@@ -505,9 +505,12 @@ def start_parsing_today():
             print("Не вдалося отримати дані з API")
 
         cleanup()
-    cherg_1()
-    cherg_2()
-    cherg_3()
-    cherg_4()
-    cherg_5()
-    cherg_6()
+    try:
+        cherg_1()
+        cherg_2()
+        cherg_3()
+        cherg_4()
+        cherg_5()
+        cherg_6()
+    except:
+        print('Немає інформації на сьогодні')

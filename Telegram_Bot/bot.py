@@ -2,13 +2,12 @@ import requests
 import asyncio
 import json
 from telegram import Bot, InputFile
-from info import tg_token, tg_chat_id, url_api
+from info import tg_token, tg_chat_id, tg_chat_id_2, url_api
 from parsing_today import start_parsing_today
 from parsing_tomorrow import start_parsing_tomorrow
 
 # Налаштування Telegram
 TELEGRAM_BOT_TOKEN = tg_token
-TELEGRAM_CHAT_ID = tg_chat_id
 
 bot = Bot(token=TELEGRAM_BOT_TOKEN)
 
@@ -69,7 +68,8 @@ async def monitor_api():
                 )
                 start_parsing_today()
                 print("Знайдено зміни на сьогодні!")
-                await send_telegram_message(TELEGRAM_CHAT_ID, message, DATABASE_FILE)
+                await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
+                await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
             else:
                 print("Змін на сьогодні не знайдено")
 
@@ -88,7 +88,8 @@ async def monitor_api():
                 )
                 start_parsing_tomorrow()
                 print("Знайдено зміни на завтра!")
-                await send_telegram_message(TELEGRAM_CHAT_ID, message, DATABASE_FILE)
+                await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
+                await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
             else:
                 print("Змін на завтра не знайдено")
 
