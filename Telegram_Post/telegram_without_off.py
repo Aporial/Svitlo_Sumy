@@ -1,6 +1,6 @@
 from flet import *
 from datetime import datetime
-from for_telegram.day import today
+from day import today
 
 
 def main(page: Page):
