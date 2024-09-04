@@ -5,7 +5,8 @@
 /__pycache__
 SvitloSumy/__pycache__
 SvitloSumy/build
-for_telegram/__pycache__
+Telegram_Post/__pycache__
+Telegram_Bot/__pycache__
 for_telegram/day.py
 Svitlo_Sumy.spec
 main.spec
