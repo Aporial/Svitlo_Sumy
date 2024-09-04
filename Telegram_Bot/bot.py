@@ -3,7 +3,8 @@ import asyncio
 import json
 from telegram import Bot, InputFile
 from info import tg_token, tg_chat_id, url_api
-from parsing import start_parsing
+from parsing_today import start_parsing_today
+from parsing_tomorrow import start_parsing_tomorrow
 
 # Налаштування Telegram
 TELEGRAM_BOT_TOKEN = tg_token
@@ -63,13 +64,33 @@ async def monitor_api():
             # Перевіряємо, чи є зміни
             if previous_data and previous_data['data']['modified_on'] != current_data['data']['modified_on']:
                 message = (
-                    f"Дата зміни: {current_data['data']['modified_on']}"
+                    f"Дата зміни на сьогодні: {
+                        current_data['data']['modified_on']}"
                 )
-                start_parsing()
-                print("Знайдено зміни на сайті!")
+                start_parsing_today()
+                print("Знайдено зміни на сьогодні!")
                 await send_telegram_message(TELEGRAM_CHAT_ID, message, DATABASE_FILE)
             else:
-                print("Змін не знайдено")
+                print("Змін на сьогодні не знайдено")
+
+            # Оновлюємо попередні дані
+            save_current_data(current_data)
+        else:
+            print("Не вдалося отримати дані з API")
+
+        # Затримка між перевірками
+        if current_data:
+            # Перевіряємо, чи є зміни
+            if previous_data and previous_data['data']['dict_tom']['modified_on'] != current_data['data']['dict_tom']['modified_on']:
+                message = (
+                    f"Дата зміни на завтра: {
+                        current_data['data']['dict_tom']['modified_on']}"
+                )
+                start_parsing_tomorrow()
+                print("Знайдено зміни на завтра!")
+                await send_telegram_message(TELEGRAM_CHAT_ID, message, DATABASE_FILE)
+            else:
+                print("Змін на завтра не знайдено")
 
             # Оновлюємо попередні дані
             save_current_data(current_data)

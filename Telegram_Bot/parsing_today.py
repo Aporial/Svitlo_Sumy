@@ -7,7 +7,7 @@ import datetime
 today = datetime.date.today().day
 
 
-def start_parsing():
+def start_parsing_today():
     def cherg_1():
         with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
             main_database = json.load(url)
