@@ -91,7 +91,7 @@ async def monitor_api():
                 await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
                 await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
             else:
-                print("Змін на завтра не знайдено.")
+                print("Змін на завтра не знайдено")
 
             # Оновлюємо попередні дані
             save_current_data(current_data)
