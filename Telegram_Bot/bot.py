@@ -2,17 +2,17 @@ import requests
 import asyncio
 import json
 from telegram import Bot, InputFile
-from tg_token import token
+from info import tg_token, tg_chat_id, url_api
 from parsing import start_parsing
 
 # Налаштування Telegram
-TELEGRAM_BOT_TOKEN = token
-TELEGRAM_CHAT_ID = '355542941'
+TELEGRAM_BOT_TOKEN = tg_token
+TELEGRAM_CHAT_ID = tg_chat_id
 
 bot = Bot(token=TELEGRAM_BOT_TOKEN)
 
 # URL API для моніторингу
-API_URL = 'https://www.soe.com.ua/includes/vidklyuchennya_srv_CURL.php?cmd=get_user_disconnections_image_api&cherga=1'
+API_URL = url_api
 CHECK_INTERVAL = 60  # Інтервал перевірки в секундах
 
 # Файл для зберігання попереднього стану даних
