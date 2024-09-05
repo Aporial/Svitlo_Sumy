@@ -11,6 +11,6 @@ for_telegram/day.py
 Svitlo_Sumy.spec
 main.spec
 Svitlo Sumy.spec
-assets/firebase_init.json
+Svitlo_Sumy/assets/firebase_init.json
 .venv
 Telegram_Bot/info.py
