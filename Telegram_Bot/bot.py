@@ -61,31 +61,33 @@ async def monitor_api():
 
         if current_data:
             # Перевіряємо, чи є зміни
-            if previous_data and previous_data['data']['modified_on'] == current_data['data']['dict_tom']['modified_on']:
-                print('Новий день')
-            elif previous_data and previous_data['data']['modified_on'] != current_data['data']['modified_on']:
-                message = (
-                    f"Дата зміни на сьогодні: {
-                        current_data['data']['modified_on']}"
-                )
-                start_parsing_today()
-                print("Знайдено зміни на сьогодні!")
-                await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
-                await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
-            elif current_data['data']['modified_on'] != '':
-                message = (
-                    f"Дата зміни на сьогодні: {
-                        current_data['data']['modified_on']}"
-                )
-                start_parsing_today()
-                print("Знайдено зміни на сьогодні!")
-                await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
-                await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
-            else:
-                print("Змін на сьогодні не знайдено")
+            try: 
+                if current_data and current_data['data']['modified_on'] == previous_data['data']['dict_tom']['modified_on']:
+                    print('Новий день')
+            except:
+                if previous_data and previous_data['data']['modified_on'] != current_data['data']['modified_on']:
+                    message = (
+                        f"Дата зміни на сьогодні: {
+                            current_data['data']['modified_on']}"
+                    )
+                    start_parsing_today()
+                    print("Знайдено зміни на сьогодні!")
+                    await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
+                    await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
+                elif current_data['data']['modified_on'] != '':
+                    message = (
+                        f"Дата зміни на сьогодні: {
+                            current_data['data']['modified_on']}"
+                    )
+                    start_parsing_today()
+                    print("Знайдено зміни на сьогодні!")
+                    await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
+                    await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
+                else:
+                    print("Змін на сьогодні не знайдено")
 
-            # Оновлюємо попередні дані
-            save_current_data(current_data)
+                # Оновлюємо попередні дані
+                save_current_data(current_data)
         else:
             print("Не вдалося отримати дані з API")
 
