@@ -70,6 +70,15 @@ async def monitor_api():
                 print("Знайдено зміни на сьогодні!")
                 await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
                 await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
+            elif current_data['data']['modified_on'] != '':
+                message = (
+                    f"Дата зміни на сьогодні: {
+                        current_data['data']['modified_on']}"
+                )
+                start_parsing_today()
+                print("Знайдено зміни на сьогодні!")
+                await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
+                await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
             else:
                 print("Змін на сьогодні не знайдено")
 
