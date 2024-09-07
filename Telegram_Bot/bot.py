@@ -61,7 +61,9 @@ async def monitor_api():
 
         if current_data:
             # Перевіряємо, чи є зміни
-            if previous_data and previous_data['data']['modified_on'] != current_data['data']['modified_on']:
+            if previous_data and previous_data['data']['modified_on'] == current_data['data']['dict_tom']['modified_on']:
+                print('Новий день')
+            elif previous_data and previous_data['data']['modified_on'] != current_data['data']['modified_on']:
                 message = (
                     f"Дата зміни на сьогодні: {
                         current_data['data']['modified_on']}"
