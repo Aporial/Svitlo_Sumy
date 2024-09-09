@@ -68,9 +68,9 @@ def main(page: Page):
         day_num_eleven = db2_day_num_eleven
         day_num_twelve = db2_day_num_twelve
 
-    # day = datetime.now().strftime(f"{today}.%m.%Y")
+    day = datetime.now().strftime(f"{today}.%m.%Y")
 
-    day = "07.09.2024"
+    # day = "07.09.2024"
 
     def one_line():
         result_one = main_database.get("1_cherg").get(f"{day_num_one}")
