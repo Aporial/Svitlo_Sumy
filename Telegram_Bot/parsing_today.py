@@ -5,15 +5,15 @@ import os
 import datetime
 
 today = datetime.date.today().day
+with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
+    main_database = json.load(url)
 
 
 def start_parsing_today():
     def cherg_1():
-        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
-            main_database = json.load(url)
+
         file = 'database.json'
         INDEX_FILE = 'last_index.json'
-
         # URL API для моніторингу
         API_URL = 'https://www.soe.com.ua/includes/vidklyuchennya_srv_CURL.php?cmd=get_user_disconnections_image_api&cherga=1'
 
@@ -92,11 +92,9 @@ def start_parsing_today():
         cleanup()
 
     def cherg_2():
-        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
-            main_database = json.load(url)
+
         file = 'database.json'
         INDEX_FILE = 'last_index.json'
-
         # URL API для моніторингу
         API_URL = 'https://www.soe.com.ua/includes/vidklyuchennya_srv_CURL.php?cmd=get_user_disconnections_image_api&cherga=2'
 
@@ -175,11 +173,9 @@ def start_parsing_today():
         cleanup()
 
     def cherg_3():
-        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
-            main_database = json.load(url)
+
         file = 'database.json'
         INDEX_FILE = 'last_index.json'
-
         # URL API для моніторингу
         API_URL = 'https://www.soe.com.ua/includes/vidklyuchennya_srv_CURL.php?cmd=get_user_disconnections_image_api&cherga=3'
 
@@ -258,11 +254,9 @@ def start_parsing_today():
         cleanup()
 
     def cherg_4():
-        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
-            main_database = json.load(url)
+
         file = 'database.json'
         INDEX_FILE = 'last_index.json'
-
         # URL API для моніторингу
         API_URL = 'https://www.soe.com.ua/includes/vidklyuchennya_srv_CURL.php?cmd=get_user_disconnections_image_api&cherga=4'
 
@@ -341,11 +335,9 @@ def start_parsing_today():
         cleanup()
 
     def cherg_5():
-        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
-            main_database = json.load(url)
+
         file = 'database.json'
         INDEX_FILE = 'last_index.json'
-
         # URL API для моніторингу
         API_URL = 'https://www.soe.com.ua/includes/vidklyuchennya_srv_CURL.php?cmd=get_user_disconnections_image_api&cherga=5'
 
@@ -424,11 +416,9 @@ def start_parsing_today():
         cleanup()
 
     def cherg_6():
-        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
-            main_database = json.load(url)
+
         file = 'database.json'
         INDEX_FILE = 'last_index.json'
-
         # URL API для моніторингу
         API_URL = 'https://www.soe.com.ua/includes/vidklyuchennya_srv_CURL.php?cmd=get_user_disconnections_image_api&cherga=6'
 
