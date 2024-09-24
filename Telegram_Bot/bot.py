@@ -5,6 +5,7 @@ from telegram import Bot, InputFile
 from info import tg_token, tg_chat_id, tg_chat_id_2, url_api
 from parsing_today import start_parsing_today
 from parsing_tomorrow import start_parsing_tomorrow
+from datetime import datetime
 
 # Налаштування Telegram
 TELEGRAM_BOT_TOKEN = tg_token
@@ -21,18 +22,29 @@ DATABASE_FILE = 'database.json'  # Файл, який буде надіслан�
 
 
 async def fetch_data(url):
-    try:
+    current_time = datetime.now().time()
+    start_time = "02:00"
+    end_time = "03:00"
+    time_start = datetime.strptime(start_time, '%H:%M').time()
+    time_end = datetime.strptime(end_time, '%H:%M').time()
+    if time_start <= current_time <= time_end:
         response = requests.get(url)
         response.raise_for_status()
+        print('Планове відключення')
         return response.json()
-    except requests.RequestException as e:
-        print(f"Помилка запиту до {url}: {e}")
-        message = (
-            "Бот не працює"
-        )
-        await send_telegram_message(tg_chat_id, message)
-        await send_telegram_message(tg_chat_id_2, message)
-        raise asyncio.CancelledError  # Зупиняємо виконання
+    else:
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            return response.json()
+        except requests.RequestException as e:
+            print(f"Помилка запиту до {url}: {e}")
+            message = (
+                f"Помилка запиту до {url}: {e}"
+            )
+            await send_telegram_message(tg_chat_id, message)
+            await send_telegram_message(tg_chat_id_2, message)
+            raise asyncio.CancelledError  # Зупиняємо виконання
 
 
 def load_previous_data():
@@ -85,7 +97,7 @@ async def monitor_api():
 
                     try:
                         if current_data and current_data['data']['modified_on'] == previous_data['data']['modified_on']:
-                            print('Без оновлень')
+                            print('Нова інформація дорівнює старій')
                     except:
                         if current_data['data']['modified_on'] != '':
                             message = (
