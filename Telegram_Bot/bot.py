@@ -23,8 +23,8 @@ DATABASE_FILE = 'database.json'  # Файл, який буде надіслан�
 
 async def fetch_data(url):
     current_time = datetime.now().time()
-    start_time = "21:00"
-    end_time = "22:00"
+    start_time = "01:30"
+    end_time = "02:30"
     time_start = datetime.strptime(start_time, '%H:%M').time()
     time_end = datetime.strptime(end_time, '%H:%M').time()
     if time_start <= current_time <= time_end:
@@ -35,9 +35,9 @@ async def fetch_data(url):
             response.raise_for_status()
             return response.json()
         except requests.RequestException as e:
-            print(f"Помилка запиту до {url}: {e}")
+            print(f"Помилка запиту до сайту.")
             message = (
-                f"Помилка запиту до {url}: {e}"
+                f"Помилка запиту до сайту."
             )
             await send_telegram_message(tg_chat_id, message)
             await send_telegram_message(tg_chat_id_2, message)
