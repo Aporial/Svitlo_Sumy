@@ -14,7 +14,7 @@ bot = Bot(token=TELEGRAM_BOT_TOKEN)
 
 # URL API для моніторингу
 API_URL = url_api
-CHECK_INTERVAL = 5  # Інтервал перевірки в секундах
+CHECK_INTERVAL = 60  # Інтервал перевірки в секундах
 
 # Файл для зберігання попереднього стану даних
 STATE_FILE = 'previous_data.json'
@@ -23,15 +23,12 @@ DATABASE_FILE = 'database.json'  # Файл, який буде надіслан�
 
 async def fetch_data(url):
     current_time = datetime.now().time()
-    start_time = "02:00"
-    end_time = "03:00"
+    start_time = "21:00"
+    end_time = "22:00"
     time_start = datetime.strptime(start_time, '%H:%M').time()
     time_end = datetime.strptime(end_time, '%H:%M').time()
     if time_start <= current_time <= time_end:
-        response = requests.get(url)
-        response.raise_for_status()
         print('Планове відключення')
-        return response.json()
     else:
         try:
             response = requests.get(url)
