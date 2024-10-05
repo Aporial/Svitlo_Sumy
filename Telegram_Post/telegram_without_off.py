@@ -7,7 +7,7 @@ def main(page: Page):
 
     day = datetime.now().strftime(f"{today}.%m.%Y")
 
-    day = "05.10.2024"
+    day = "06.10.2024"
 
     day_container = Container(
         blur=10,
