@@ -1,6 +1,8 @@
 import requests
 import asyncio
 import json
+import warnings
+from urllib3.exceptions import InsecureRequestWarning
 from telegram import Bot, InputFile
 from info import tg_token, tg_chat_id, tg_chat_id_2, url_api
 from parsing_today import start_parsing_today
@@ -31,9 +33,11 @@ async def fetch_data(url):
         print('Планове відключення')
     else:
         try:
-            response = requests.get(url)
-            response.raise_for_status()
-            return response.json()
+            warnings.simplefilter('ignore', InsecureRequestWarning)
+            response = requests.get(url, verify=False)  # або із SSL-перевіркою
+            if response.status_code == 200:
+                response.raise_for_status()
+                return response.json()
         except requests.RequestException as e:
             print(f"Помилка запиту до сайту.")
             message = (
