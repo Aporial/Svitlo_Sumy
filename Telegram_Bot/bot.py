@@ -117,8 +117,8 @@ async def monitor_api():
                     "Не вдалося отримати дані з API"
                 )
                 print("Не вдалося отримати дані з API")
-                await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
-                await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
+                await send_telegram_message(tg_chat_id, message)
+                await send_telegram_message(tg_chat_id_2, message)
 
             # Затримка між перевірками
             try:
@@ -143,8 +143,8 @@ async def monitor_api():
                         "Не вдалося отримати дані з API"
                     )
                     print("Не вдалося отримати дані з API")
-                    await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
-                    await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
+                    await send_telegram_message(tg_chat_id, message)
+                    await send_telegram_message(tg_chat_id_2, message)
             except:
                 try:
                     if current_data and 'dict_tom' in current_data['data']:
