@@ -157,12 +157,7 @@ async def monitor_api():
                         await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
                         await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
                 except:
-                    message = (
-                        "Інформації на завтра немає"
-                    )
                     print('Інформації на завтра немає')
-                    await send_telegram_message(tg_chat_id, message, DATABASE_FILE)
-                    await send_telegram_message(tg_chat_id_2, message, DATABASE_FILE)
         except asyncio.CancelledError:
             print("Моніторинг зупинено через невдале підключення.")
             break  # Завершуємо цикл, якщо було викликано CancelledError
