@@ -113,12 +113,20 @@ async def monitor_api():
                 # Оновлюємо попередні дані
                 save_current_data(current_data)
             else:
-                message = (
-                    "Не вдалося отримати дані з API"
-                )
-                print("Не вдалося отримати дані з API")
-                await send_telegram_message(tg_chat_id, message)
-                await send_telegram_message(tg_chat_id_2, message)
+                current_time = datetime.now().time()
+                start_time = "01:30"
+                end_time = "02:30"
+                time_start = datetime.strptime(start_time, '%H:%M').time()
+                time_end = datetime.strptime(end_time, '%H:%M').time()
+                if time_start <= current_time <= time_end:
+                    print('Планове відключення')
+                else:
+                    message = (
+                        "Не вдалося отримати дані з API"
+                    )
+                    print("Не вдалося отримати дані з API")
+                    await send_telegram_message(tg_chat_id, message)
+                    await send_telegram_message(tg_chat_id_2, message)
 
             # Затримка між перевірками
             try:
@@ -139,12 +147,7 @@ async def monitor_api():
                     # Оновлюємо попередні дані
                     save_current_data(current_data)
                 else:
-                    message = (
-                        "Не вдалося отримати дані з API"
-                    )
                     print("Не вдалося отримати дані з API")
-                    await send_telegram_message(tg_chat_id, message)
-                    await send_telegram_message(tg_chat_id_2, message)
             except:
                 try:
                     if current_data and 'dict_tom' in current_data['data']:
