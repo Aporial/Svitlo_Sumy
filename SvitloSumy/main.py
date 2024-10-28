@@ -120,7 +120,7 @@ import os
 async def main(page: ft.Page):
 
     async def source_github():
-        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database.json") as url:
+        with urllib.request.urlopen("https://raw.githubusercontent.com/Aporial/Svitlo_Sumy/main/database/database_test.json") as url:
             main_database = json.load(url)
             source_check = main_database.get("source")
             if source_check == 'github':
