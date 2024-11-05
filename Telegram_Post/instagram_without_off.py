@@ -12,7 +12,7 @@ def main(page: Page):
         border_radius=15,
         content=Text(
             f" {day} ",
-            size=40,
+            size=60,
             weight='w500',
             color='#ffcc66',
             font_family="Golos Text"
@@ -23,14 +23,14 @@ def main(page: Page):
         content=Image(
             src=f"/icon.png",
             gapless_playback=True,
-            height=250,
-            width=250,
+            height=500,
+            width=500,
         )
     )
 
     title = Text(
         'Без відключень на',
-        size=40,
+        size=60,
         weight='w500',
         color=colors.BLACK,
         font_family="Golos Text"
@@ -39,7 +39,6 @@ def main(page: Page):
     head = Row(
         alignment='center',
         controls=[
-            logo,
             title,
             day_container
         ]
@@ -55,7 +54,11 @@ def main(page: Page):
         padding=15,
         content=Column(
             alignment='center',
+            horizontal_alignment='center',
+            # alignment=MainAxisAlignment.SPACE_AROUND,
+            spacing=90,
             controls=[
+                logo,
                 head
             ]
         )
