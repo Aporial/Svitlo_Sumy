@@ -35,7 +35,8 @@ def main(page: Page):
     # database_connection = firebase.FirebaseApplication(
     #     'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
     # main_database = database_connection.get("/", None)
-    main_database = json.load(open("database/database_post.json", encoding='utf-8'))
+    main_database = json.load(
+        open("database/database_post.json", encoding='utf-8'))
     database = main_database.get("database")
     print('DATABASE:', database)
     page.client_storage.set("database_storage", database)
@@ -3999,7 +4000,7 @@ def main(page: Page):
     }
     page.title = 'Svitlo Sumy'
     page.theme_mode = ThemeMode.LIGHT
-    page.window.height = 634
+    page.window.height = 1074
     page.window.width = 1074
     page.padding = 0
     page.vertical_alignment = 'center'
