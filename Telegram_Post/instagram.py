@@ -4008,7 +4008,7 @@ def main(page: Page):
     page.window.center()
     # page.window.resizable = False
     page.window.title_bar_hidden = True
-    page.window.title_bar_buttons_hidden = True
+    # page.window.title_bar_buttons_hidden = True
     one_line()
     two_line()
     three_line()
