@@ -12,9 +12,9 @@ def main(page: ft.Page):
 
     lable_name = ft.Text(
         "Світло Суми",
-        size=30,
+        size=40,
         color=ft.colors.BLACK87,
-        weight="w400",
+        weight="w500",
         font_family="Golos Text",
         text_align="center"
     )
@@ -26,10 +26,10 @@ def main(page: ft.Page):
         padding=15,
         alignment=ft.alignment.center,
         content=ft.Text(
-            "1000 підписників",
+            "20 000 підписників",
             size=30,
             color=ft.colors.BLACK87,
-            weight="w400",
+            weight="w500",
             font_family="Golos Text",
             text_align="center"
         )
