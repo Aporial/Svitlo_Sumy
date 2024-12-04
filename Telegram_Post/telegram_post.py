@@ -4,7 +4,7 @@ import flet as ft
 def main(page: ft.Page):
 
     logo = ft.Image(
-        src=f"/logo.png",
+        src=f"/icon2.png",
         height=300,
         width=300,
         border_radius=200,
