@@ -35,7 +35,8 @@ def main(page: Page):
     # database_connection = firebase.FirebaseApplication(
     #     'https://svitlo-sumy-default-rtdb.europe-west1.firebasedatabase.app/', authentication=None)
     # main_database = database_connection.get("/", None)
-    main_database = json.load(open("database/database_post.json", encoding='utf-8'))
+    main_database = json.load(
+        open("database/database_post.json", encoding='utf-8'))
     database = main_database.get("database")
     print('DATABASE:', database)
     page.client_storage.set("database_storage", database)
@@ -93,7 +94,7 @@ def main(page: Page):
                         Text(
                             one,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -113,7 +114,7 @@ def main(page: Page):
                         result_one,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -143,7 +144,7 @@ def main(page: Page):
                         Text(
                             one,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -163,7 +164,7 @@ def main(page: Page):
                         result_one,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -192,7 +193,7 @@ def main(page: Page):
                         Text(
                             one,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -212,7 +213,7 @@ def main(page: Page):
                         result_one,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -242,7 +243,7 @@ def main(page: Page):
                         Text(
                             one,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -262,7 +263,7 @@ def main(page: Page):
                         result_one,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -292,7 +293,7 @@ def main(page: Page):
                         Text(
                             one,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -312,7 +313,7 @@ def main(page: Page):
                         result_one,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -342,7 +343,7 @@ def main(page: Page):
                         Text(
                             one,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -362,7 +363,7 @@ def main(page: Page):
                         result_one,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -393,7 +394,7 @@ def main(page: Page):
                         Text(
                             two,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -413,7 +414,7 @@ def main(page: Page):
                         result_two,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -443,7 +444,7 @@ def main(page: Page):
                         Text(
                             two,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -463,7 +464,7 @@ def main(page: Page):
                         result_two,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -493,7 +494,7 @@ def main(page: Page):
                         Text(
                             two,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -513,7 +514,7 @@ def main(page: Page):
                         result_two,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -543,7 +544,7 @@ def main(page: Page):
                         Text(
                             two,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -563,7 +564,7 @@ def main(page: Page):
                         result_two,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -593,7 +594,7 @@ def main(page: Page):
                         Text(
                             two,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -613,7 +614,7 @@ def main(page: Page):
                         result_two,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -643,7 +644,7 @@ def main(page: Page):
                         Text(
                             two,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -663,7 +664,7 @@ def main(page: Page):
                         result_two,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -694,7 +695,7 @@ def main(page: Page):
                         Text(
                             three,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -714,7 +715,7 @@ def main(page: Page):
                         result_three,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -744,7 +745,7 @@ def main(page: Page):
                         Text(
                             three,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -764,7 +765,7 @@ def main(page: Page):
                         result_three,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -794,7 +795,7 @@ def main(page: Page):
                         Text(
                             three,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -814,7 +815,7 @@ def main(page: Page):
                         result_three,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -844,7 +845,7 @@ def main(page: Page):
                         Text(
                             three,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -864,7 +865,7 @@ def main(page: Page):
                         result_three,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -894,7 +895,7 @@ def main(page: Page):
                         Text(
                             three,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -914,7 +915,7 @@ def main(page: Page):
                         result_three,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -944,7 +945,7 @@ def main(page: Page):
                         Text(
                             three,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -964,7 +965,7 @@ def main(page: Page):
                         result_three,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -995,7 +996,7 @@ def main(page: Page):
                         Text(
                             four,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1015,7 +1016,7 @@ def main(page: Page):
                         result_four,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1045,7 +1046,7 @@ def main(page: Page):
                         Text(
                             four,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1065,7 +1066,7 @@ def main(page: Page):
                         result_four,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1095,7 +1096,7 @@ def main(page: Page):
                         Text(
                             four,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1115,7 +1116,7 @@ def main(page: Page):
                         result_four,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1145,7 +1146,7 @@ def main(page: Page):
                         Text(
                             four,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1165,7 +1166,7 @@ def main(page: Page):
                         result_four,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1195,7 +1196,7 @@ def main(page: Page):
                         Text(
                             four,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1215,7 +1216,7 @@ def main(page: Page):
                         result_four,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1245,7 +1246,7 @@ def main(page: Page):
                         Text(
                             four,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1265,7 +1266,7 @@ def main(page: Page):
                         result_four,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1296,7 +1297,7 @@ def main(page: Page):
                         Text(
                             five,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1316,7 +1317,7 @@ def main(page: Page):
                         result_five,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1346,7 +1347,7 @@ def main(page: Page):
                         Text(
                             five,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1366,7 +1367,7 @@ def main(page: Page):
                         result_five,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1396,7 +1397,7 @@ def main(page: Page):
                         Text(
                             five,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1416,7 +1417,7 @@ def main(page: Page):
                         result_five,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1446,7 +1447,7 @@ def main(page: Page):
                         Text(
                             five,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1466,7 +1467,7 @@ def main(page: Page):
                         result_five,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1496,7 +1497,7 @@ def main(page: Page):
                         Text(
                             five,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1516,7 +1517,7 @@ def main(page: Page):
                         result_five,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1546,7 +1547,7 @@ def main(page: Page):
                         Text(
                             five,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1566,7 +1567,7 @@ def main(page: Page):
                         result_five,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1597,7 +1598,7 @@ def main(page: Page):
                         Text(
                             six,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1617,7 +1618,7 @@ def main(page: Page):
                         result_six,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1647,7 +1648,7 @@ def main(page: Page):
                         Text(
                             six,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1667,7 +1668,7 @@ def main(page: Page):
                         result_six,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1697,7 +1698,7 @@ def main(page: Page):
                         Text(
                             six,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1717,7 +1718,7 @@ def main(page: Page):
                         result_six,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1747,7 +1748,7 @@ def main(page: Page):
                         Text(
                             six,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1767,7 +1768,7 @@ def main(page: Page):
                         result_six,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1797,7 +1798,7 @@ def main(page: Page):
                         Text(
                             six,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1817,7 +1818,7 @@ def main(page: Page):
                         result_six,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1847,7 +1848,7 @@ def main(page: Page):
                         Text(
                             six,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1867,7 +1868,7 @@ def main(page: Page):
                         result_six,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1898,7 +1899,7 @@ def main(page: Page):
                         Text(
                             one,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1918,7 +1919,7 @@ def main(page: Page):
                         result_one,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1948,7 +1949,7 @@ def main(page: Page):
                         Text(
                             one,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -1968,7 +1969,7 @@ def main(page: Page):
                         result_one,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -1998,7 +1999,7 @@ def main(page: Page):
                         Text(
                             one,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2018,7 +2019,7 @@ def main(page: Page):
                         result_one,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2048,7 +2049,7 @@ def main(page: Page):
                         Text(
                             one,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2068,7 +2069,7 @@ def main(page: Page):
                         result_one,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2098,7 +2099,7 @@ def main(page: Page):
                         Text(
                             one,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2118,7 +2119,7 @@ def main(page: Page):
                         result_one,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2148,7 +2149,7 @@ def main(page: Page):
                         Text(
                             one,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2168,7 +2169,7 @@ def main(page: Page):
                         result_one,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2199,7 +2200,7 @@ def main(page: Page):
                         Text(
                             two,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2219,7 +2220,7 @@ def main(page: Page):
                         result_two,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2249,7 +2250,7 @@ def main(page: Page):
                         Text(
                             two,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2269,7 +2270,7 @@ def main(page: Page):
                         result_two,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2299,7 +2300,7 @@ def main(page: Page):
                         Text(
                             two,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2319,7 +2320,7 @@ def main(page: Page):
                         result_two,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2349,7 +2350,7 @@ def main(page: Page):
                         Text(
                             two,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2369,7 +2370,7 @@ def main(page: Page):
                         result_two,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2399,7 +2400,7 @@ def main(page: Page):
                         Text(
                             two,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2419,7 +2420,7 @@ def main(page: Page):
                         result_two,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2449,7 +2450,7 @@ def main(page: Page):
                         Text(
                             two,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2469,7 +2470,7 @@ def main(page: Page):
                         result_two,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2500,7 +2501,7 @@ def main(page: Page):
                         Text(
                             three,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2520,7 +2521,7 @@ def main(page: Page):
                         result_three,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2550,7 +2551,7 @@ def main(page: Page):
                         Text(
                             three,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2570,7 +2571,7 @@ def main(page: Page):
                         result_three,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2600,7 +2601,7 @@ def main(page: Page):
                         Text(
                             three,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2620,7 +2621,7 @@ def main(page: Page):
                         result_three,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2650,7 +2651,7 @@ def main(page: Page):
                         Text(
                             three,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2670,7 +2671,7 @@ def main(page: Page):
                         result_three,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2700,7 +2701,7 @@ def main(page: Page):
                         Text(
                             three,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2720,7 +2721,7 @@ def main(page: Page):
                         result_three,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2750,7 +2751,7 @@ def main(page: Page):
                         Text(
                             three,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2770,7 +2771,7 @@ def main(page: Page):
                         result_three,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2801,7 +2802,7 @@ def main(page: Page):
                         Text(
                             four,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2821,7 +2822,7 @@ def main(page: Page):
                         result_four,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2851,7 +2852,7 @@ def main(page: Page):
                         Text(
                             four,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2871,7 +2872,7 @@ def main(page: Page):
                         result_four,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2901,7 +2902,7 @@ def main(page: Page):
                         Text(
                             four,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2921,7 +2922,7 @@ def main(page: Page):
                         result_four,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -2951,7 +2952,7 @@ def main(page: Page):
                         Text(
                             four,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -2971,7 +2972,7 @@ def main(page: Page):
                         result_four,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3001,7 +3002,7 @@ def main(page: Page):
                         Text(
                             four,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3021,7 +3022,7 @@ def main(page: Page):
                         result_four,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3051,7 +3052,7 @@ def main(page: Page):
                         Text(
                             four,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3071,7 +3072,7 @@ def main(page: Page):
                         result_four,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3102,7 +3103,7 @@ def main(page: Page):
                         Text(
                             five,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3122,7 +3123,7 @@ def main(page: Page):
                         result_five,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3152,7 +3153,7 @@ def main(page: Page):
                         Text(
                             five,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3172,7 +3173,7 @@ def main(page: Page):
                         result_five,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3202,7 +3203,7 @@ def main(page: Page):
                         Text(
                             five,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3222,7 +3223,7 @@ def main(page: Page):
                         result_five,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3252,7 +3253,7 @@ def main(page: Page):
                         Text(
                             five,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3272,7 +3273,7 @@ def main(page: Page):
                         result_five,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3302,7 +3303,7 @@ def main(page: Page):
                         Text(
                             five,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3322,7 +3323,7 @@ def main(page: Page):
                         result_five,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3352,7 +3353,7 @@ def main(page: Page):
                         Text(
                             five,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3372,7 +3373,7 @@ def main(page: Page):
                         result_five,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3403,7 +3404,7 @@ def main(page: Page):
                         Text(
                             six,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3423,7 +3424,7 @@ def main(page: Page):
                         result_six,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3453,7 +3454,7 @@ def main(page: Page):
                         Text(
                             six,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3473,7 +3474,7 @@ def main(page: Page):
                         result_six,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3503,7 +3504,7 @@ def main(page: Page):
                         Text(
                             six,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3523,7 +3524,7 @@ def main(page: Page):
                         result_six,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3553,7 +3554,7 @@ def main(page: Page):
                         Text(
                             six,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3573,7 +3574,7 @@ def main(page: Page):
                         result_six,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3603,7 +3604,7 @@ def main(page: Page):
                         Text(
                             six,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3623,7 +3624,7 @@ def main(page: Page):
                         result_six,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3653,7 +3654,7 @@ def main(page: Page):
                         Text(
                             six,
                             size=21,
-                            weight='w500',
+                            weight='w600',
                             color=colors.BLACK,
                             font_family="Golos Text"
                         )
@@ -3673,7 +3674,7 @@ def main(page: Page):
                         result_six,
                         text_align='center',
                         size=15,
-                        weight='w500',
+                        weight='w600',
                         color=colors.BLACK,
                         font_family="Golos Text"
                     )
@@ -3691,7 +3692,7 @@ def main(page: Page):
         content=Text(
             f" {day} ",
             size=35,
-            weight='w500',
+            weight='w600',
             color='#ffcc66',
             font_family="Golos Text"
         )
@@ -3711,7 +3712,7 @@ def main(page: Page):
         content=Text(
             't.me/sumy_svitlo',
             size=35,
-            weight='w500',
+            weight='w600',
             color='#ffc366',
             font_family="Golos Text"
         )
@@ -3720,7 +3721,7 @@ def main(page: Page):
     title = Text(
         'Світло Суми - Графік відключень на',
         size=35,
-        weight='w500',
+        weight='w600',
         color=colors.BLACK,
         font_family="Golos Text"
     )
@@ -3795,7 +3796,7 @@ def main(page: Page):
                 content=Text(
                     "1 черга",
                     size=24,
-                    weight='w500',
+                    weight='w600',
                     color='#ffcc66',
                     font_family="Golos Text",
                     text_align='center'
@@ -3810,7 +3811,7 @@ def main(page: Page):
                 content=Text(
                     "2 черга",
                     size=24,
-                    weight='w500',
+                    weight='w600',
                     color='#ffcc66',
                     font_family="Golos Text",
                     text_align='center'
@@ -3825,7 +3826,7 @@ def main(page: Page):
                 content=Text(
                     "3 черга",
                     size=24,
-                    weight='w500',
+                    weight='w600',
                     color='#ffcc66',
                     font_family="Golos Text",
                     text_align='center'
@@ -3840,7 +3841,7 @@ def main(page: Page):
                 content=Text(
                     "4 черга",
                     size=24,
-                    weight='w500',
+                    weight='w600',
                     color='#ffcc66',
                     font_family="Golos Text",
                     text_align='center'
@@ -3855,7 +3856,7 @@ def main(page: Page):
                 content=Text(
                     "5 черга",
                     size=24,
-                    weight='w500',
+                    weight='w600',
                     color='#ffcc66',
                     font_family="Golos Text",
                     text_align='center'
@@ -3870,7 +3871,7 @@ def main(page: Page):
                 content=Text(
                     "6 черга",
                     size=24,
-                    weight='w500',
+                    weight='w600',
                     color='#ffcc66',
                     font_family="Golos Text",
                     text_align='center'
@@ -3903,7 +3904,7 @@ def main(page: Page):
                             Text(
                                 '     1 черга',
                                 size=24,
-                                weight='w500',
+                                weight='w600',
                                 color=colors.BLACK,
                                 font_family="Golos Text"
                             )
@@ -3912,7 +3913,7 @@ def main(page: Page):
                             Text(
                                 '     2 черга',
                                 size=24,
-                                weight='w500',
+                                weight='w600',
                                 color=colors.BLACK,
                                 font_family="Golos Text"
                             )
@@ -3921,7 +3922,7 @@ def main(page: Page):
                             Text(
                                 '     3 черга',
                                 size=24,
-                                weight='w500',
+                                weight='w600',
                                 color=colors.BLACK,
                                 font_family="Golos Text"
                             )
@@ -3930,7 +3931,7 @@ def main(page: Page):
                             Text(
                                 '     4 черга',
                                 size=24,
-                                weight='w500',
+                                weight='w600',
                                 color=colors.BLACK,
                                 font_family="Golos Text"
                             )
@@ -3939,7 +3940,7 @@ def main(page: Page):
                             Text(
                                 '     5 черга',
                                 size=24,
-                                weight='w500',
+                                weight='w600',
                                 color=colors.BLACK,
                                 font_family="Golos Text"
                             )
@@ -3948,7 +3949,7 @@ def main(page: Page):
                             Text(
                                 '     6 черга',
                                 size=24,
-                                weight='w500',
+                                weight='w600',
                                 color=colors.BLACK,
                                 font_family="Golos Text"
                             )
