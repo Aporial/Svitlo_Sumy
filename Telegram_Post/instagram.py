@@ -71,7 +71,7 @@ def main(page: Page):
 
     # day = datetime.now().strftime(f"{today}.%m.%Y")
 
-    day = "08.12.2024"
+    day = "09.12.2024"
 
     def one_line():
         result_one = main_database.get("1_cherg").get(f"{day_num_one}")
@@ -4007,7 +4007,7 @@ def main(page: Page):
     page.horizontal_alignment = 'center'
     page.window.center()
     # page.window.resizable = False
-    page.window.title_bar_hidden = True
+    # page.window.title_bar_hidden = True
     # page.window.title_bar_buttons_hidden = True
     one_line()
     two_line()
