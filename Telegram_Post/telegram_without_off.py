@@ -5,9 +5,9 @@ from day import today
 
 def main(page: Page):
 
-    # day = datetime.now().strftime(f"{today}.%m.%Y")
+    day = datetime.now().strftime(f"{today}.%m.%Y")
 
-    day = "21.11.2024"
+    # day = "21.11.2024"
 
     day_container = Container(
         blur=10,
