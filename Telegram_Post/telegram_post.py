@@ -26,7 +26,7 @@ def main(page: ft.Page):
         padding=15,
         alignment=ft.alignment.center,
         content=ft.Text(
-            "20 000 підписників",
+            "Інформація",
             size=30,
             color=ft.colors.BLACK87,
             weight="w500",
