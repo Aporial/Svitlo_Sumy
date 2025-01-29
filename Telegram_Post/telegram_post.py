@@ -4,7 +4,7 @@ import flet as ft
 def main(page: ft.Page):
 
     logo = ft.Image(
-        src=f"/christmas.png",
+        src=f"/logo.png",
         height=300,
         width=300,
         border_radius=200,
@@ -26,7 +26,7 @@ def main(page: ft.Page):
         padding=15,
         alignment=ft.alignment.center,
         content=ft.Text(
-            "🎁 З Новим роком! ❄️",
+            "СТАН ЕНЕРГОСИСТЕМИ",
             size=30,
             color=ft.colors.BLACK87,
             weight="w500",
